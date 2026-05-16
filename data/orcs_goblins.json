@@ -1,0 +1,77 @@
+{
+  "orcs": [
+    {
+      "id": "BH_ORC_WARLORD",
+      "name": "Orc Warlord",
+      "category": "Personaggi",
+      "min_size": 1,
+      "max_size": 1,
+      "base_cost": 150,
+      "cost_per_model": 0,
+      "options": [
+        { "id": "gw", "name": "Great Weapon", "cost": 10 },
+        { "id": "boar", "name": "War Boar", "cost": 25 }
+      ]
+    },
+    {
+      "id": "BH_ORC_SHAMAN",
+      "name": "Orc Shaman",
+      "category": "Personaggi",
+      "min_size": 1,
+      "max_size": 1,
+      "base_cost": 110,
+      "cost_per_model": 0,
+      "options": [
+        { "id": "lvl", "name": "Livello 2", "cost": 35 }
+      ]
+    },
+    {
+      "id": "BH_ORC_BOYZ",
+      "name": "Orc Boyz",
+      "category": "Truppe",
+      "min_size": 10,
+      "max_size": 40,
+      "base_cost": 80,
+      "cost_per_model": 8,
+      "options": [
+        { "id": "fc", "name": "Full Command", "cost": 30 },
+        { "id": "gw", "name": "Great Weapons", "cost_per_model": 2 }
+      ]
+    },
+    {
+      "id": "BH_GOBLIN_SPEARS",
+      "name": "Goblin Spearmen",
+      "category": "Truppe",
+      "min_size": 20,
+      "max_size": 50,
+      "base_cost": 60,
+      "cost_per_model": 4,
+      "options": [
+        { "id": "shields", "name": "Shields", "cost_per_model": 1 },
+        { "id": "nets", "name": "Nets", "cost": 20 }
+      ]
+    },
+    {
+      "id": "BH_ORC_BOAR_RIDERS",
+      "name": "Orc Boar Riders",
+      "category": "Macchine e Mostri",
+      "min_size": 5,
+      "max_size": 15,
+      "base_cost": 120,
+      "cost_per_model": 20,
+      "options": [
+        { "id": "lances", "name": "Lances", "cost_per_model": 3 }
+      ]
+    },
+    {
+      "id": "BH_TROLLS",
+      "name": "Trolls",
+      "category": "Macchine e Mostri",
+      "min_size": 3,
+      "max_size": 6,
+      "base_cost": 135,
+      "cost_per_model": 45,
+      "options": []
+    }
+  ]
+}
