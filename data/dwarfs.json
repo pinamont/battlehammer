@@ -1,0 +1,17 @@
+{
+  "dwarfs": [
+    {
+      "id": "BH_DWARF_LORD",
+      "name": "Dwarf Lord",
+      "category": "Personaggi",
+      "min_size": 1,
+      "max_size": 1,
+      "base_cost": 100,
+      "cost_per_model": 0,
+      "options": [
+        { "id": "armor", "name": "Armatura Pesante", "cost": 10 },
+        { "id": "shield", "name": "Scudo", "cost": 10 }
+      ]
+    }
+  ]
+}

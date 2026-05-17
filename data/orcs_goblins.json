@@ -1,75 +1,56 @@
 {
   "orcs": [
     {
-      "id": "BH_ORC_WARLORD",
-      "name": "Orc Warlord",
+      "id": "BH_CAPOGUERRA_ORCONERO",
+      "name": "Capoguerra Orco Nero",
       "category": "Personaggi",
       "min_size": 1,
       "max_size": 1,
-      "base_cost": 150,
-      "cost_per_model": 0,
-      "options": [
-        { "id": "gw", "name": "Great Weapon", "cost": 10 },
-        { "id": "boar", "name": "War Boar", "cost": 25 }
-      ]
-    },
-    {
-      "id": "BH_ORC_SHAMAN",
-      "name": "Orc Shaman",
-      "category": "Personaggi",
-      "min_size": 1,
-      "max_size": 1,
-      "base_cost": 110,
-      "cost_per_model": 0,
-      "options": [
-        { "id": "lvl", "name": "Livello 2", "cost": 35 }
-      ]
-    },
-    {
-      "id": "BH_ORC_BOYZ",
-      "name": "Orc Boyz",
-      "category": "Truppe",
-      "min_size": 10,
-      "max_size": 40,
       "base_cost": 80,
+      "cost_per_model": 0,
+      "options": [
+        { "id": "grande_arma", "name": "arma a 2 mani", "cost": 8 },
+        { "id": "armatura", "name": "armatura pesante", "cost": 4 },
+        { "id": "scudo", "name": "scudo", "cost": 4 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 30 },
+        { "id": "viverna", "name": "viverna", "cost": 180 },
+        { "id": "carro", "name": "carro", "cost": 80 }
+      ]
+    },
+    {
+      "id": "BH_ORCHI_GUERRIERI",
+      "name": "Orchi Guerrieri",
+      "category": "Truppe",
+      "min_size": 5,
+      "max_size": 20,
+      "base_cost": 40,
       "cost_per_model": 8,
       "options": [
-        { "id": "fc", "name": "Full Command", "cost": 30 },
-        { "id": "gw", "name": "Great Weapons", "cost_per_model": 2 }
+        { "id": "lancia", "name": "Lancia", "cost_per_model": 1 },
+        { "id": "stendarro", "name": "Stendardo", "cost": 10 },
+        { "id": "campione", "name": "Campione", "cost": 20 }
       ]
     },
     {
-      "id": "BH_GOBLIN_SPEARS",
-      "name": "Goblin Spearmen",
+      "id": "BH_GOBLIN_LANCIERI",
+      "name": "Goblin Lancieri",
       "category": "Truppe",
-      "min_size": 20,
-      "max_size": 50,
-      "base_cost": 60,
+      "min_size": 5,
+      "max_size": 20,
+      "base_cost": 20,
       "cost_per_model": 4,
       "options": [
-        { "id": "shields", "name": "Shields", "cost_per_model": 1 },
-        { "id": "nets", "name": "Nets", "cost": 20 }
+        { "id": "stendarro", "name": "Stendardo", "cost": 10 },
+        { "id": "campione", "name": "Campione", "cost": 20 }
       ]
     },
     {
-      "id": "BH_ORC_BOAR_RIDERS",
-      "name": "Orc Boar Riders",
+      "id": "BH_BALISTA_ORCHI",
+      "name": "Balista degli Orchi",
       "category": "Macchine e Mostri",
-      "min_size": 5,
-      "max_size": 15,
-      "base_cost": 120,
-      "cost_per_model": 20,
-      "options": [
-        { "id": "lances", "name": "Lances", "cost_per_model": 3 }
-      ]
-    },
-    {
-      "id": "BH_TROLLS",
-      "name": "Trolls",
-      "category": "Macchine e Mostri",
-      "min_size": 3,
-      "max_size": 6,
-      "base_cost": 135,
+      "min_size": 1,
+      "max_size": 1,
+      "base_cost": 45,
       "cost_per_model": 45,
       "options": []
     }

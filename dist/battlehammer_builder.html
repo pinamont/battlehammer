@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Battle Hammer Army Builder</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #1b1f23;
+      color: #e6edf3;
+    }
+    header {
+      padding: 10px 16px;
+      background: #24292f;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 18px;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr 1fr;
+      gap: 8px;
+      padding: 8px;
+      height: calc(100vh - 50px);
+      box-sizing: border-box;
+    }
+    section {
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 8px;
+      box-sizing: border-box;
+      overflow: auto;
+      background: #0d1117;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 15px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+    }
+    .faction-select select {
+      background: #0d1117;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 4px 6px;
+    }
+    .unit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .unit-card {
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .unit-card:hover {
+      background: #161b22;
+    }
+    .unit-meta {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+    .badge {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 999px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .badge-personaggi { background: #0550ae; }
+    .badge-truppe { background: #116329; }
+    .badge-macchine { background: #5a32a3; }
+
+    .config-row {
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+    .config-row label {
+      display: block;
+      margin-bottom: 2px;
+    }
+    input[type="number"] {
+      width: 80px;
+      background: #0d1117;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+    .options-list {
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 4px;
+      max-height: 140px;
+      overflow: auto;
+      font-size: 13px;
+    }
+    .options-list label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+    button {
+      background: #238636;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    button.secondary {
+      background: #30363d;
+    }
+    button.danger {
+      background: #da3633;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+    .points {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .army-unit {
+      border-bottom: 1px solid #21262d;
+      padding: 4px 0;
+      font-size: 13px;
+    }
+    .army-unit-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .army-unit-actions button {
+      margin-left: 4px;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    .summary-row strong {
+      font-weight: 600;
+    }
+    .validation {
+      margin-top: 6px;
+      font-size: 12px;
+    }
+    .validation-ok {
+      color: #3fb950;
+    }
+    .validation-error {
+      color: #f85149;
+    }
+    .pill {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 999px;
+      font-size: 11px;
+      margin-right: 4px;
+    }
+    .pill-ok { background: rgba(63,185,80,0.15); color: #3fb950; }
+    .pill-err { background: rgba(248,81,73,0.15); color: #f85149; }
+    .export-area {
+      width: 100%;
+      height: 120px;
+      background: #0d1117;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 4px;
+      font-family: monospace;
+      font-size: 11px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Battle Hammer – Army Builder (Prototype)</h1>
+  <div class="faction-select">
+    Fazione:
+    <select id="factionSelect">
+      <option value="orcs">Orchi & Goblin</option>
+      <option value="dwarfs">Nani</option>
+      <!-- altre fazioni in futuro -->
+    </select>
+    Titolo lista:
+    <input type="text" id="listTitleInput" placeholder="Titolo..." style="width:160px;" />
+    Punti massimi:
+    <input type="number" id="maxPointsInput" value="2000" min="500" step="100" />
+  </div>
+</header>
+
+<main>
+  <!-- LISTA UNITÀ -->
+  <section>
+    <h2>Unità disponibili</h2>
+    <div id="unitList" class="unit-list"></div>
+  </section>
+
+  <!-- CONFIGURATORE UNITÀ -->
+  <section>
+    <h2>Configurazione unità</h2>
+    <div id="configPanel">
+      <p style="font-size:13px; opacity:0.8;">Seleziona un'unità dalla lista per configurarla.</p>
+    </div>
+  </section>
+
+  <!-- RIEPILOGO ESERCITO -->
+  <section>
+    <h2>Esercito</h2>
+    <div id="armySummaryTop"></div>
+    <hr style="border-color:#21262d;">
+    <div id="armyUnits"></div>
+    <hr style="border-color:#21262d;">
+    <div id="validationPanel"></div>
+<!--     <h3 style="font-size:13px; margin-top:8px;">Esporta lista (testo)</h3> -->
+<!--     <textarea id="exportText" class="export-area" readonly></textarea> -->
+    <h3 style="font-size:13px; margin-top:8px;">Esporta lista</h3>
+    <button id="exportBtn" class="secondary">Esporta lista</button>
+    <div id="exportMenu" style="display:none; margin-top:6px;">
+      <button id="exportTextBtn" class="secondary">Scarica come testo</button>
+      <button id="exportJsonBtn" class="secondary">Scarica come JSON</button>
+    </div>
+    <h3 style="font-size:13px; margin-top:12px;">Importa lista</h3>
+    <button id="importBtn" class="secondary">Importa da JSON</button>
+    <input type="file" id="importFile" accept="application/json" style="display:none;">
+  </section>
+</main>
+
+<!-- QUI INIETTERAI IL JSON CON PYTHON -->
+<script id="FACTION_DATA" type="application/json">
+{
+  "dwarfs": [
+    {
+      "id": "BH_DWARF_LORD",
+      "name": "Dwarf Lord",
+      "category": "Personaggi",
+      "min_size": 1,
+      "max_size": 1,
+      "base_cost": 100,
+      "cost_per_model": 0,
+      "options": [
+        {
+          "id": "armor",
+          "name": "Armatura Pesante",
+          "cost": 10
+        },
+        {
+          "id": "shield",
+          "name": "Scudo",
+          "cost": 10
+        }
+      ]
+    }
+  ],
+  "orcs": [
+    {
+      "id": "BH_CAPOGUERRA_ORCONERO",
+      "name": "Capoguerra Orco Nero",
+      "category": "Personaggi",
+      "min_size": 1,
+      "max_size": 1,
+      "base_cost": 80,
+      "cost_per_model": 0,
+      "options": [
+        {
+          "id": "grande_arma",
+          "name": "arma a 2 mani",
+          "cost": 8
+        },
+        {
+          "id": "armatura",
+          "name": "armatura pesante",
+          "cost": 4
+        },
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 4
+        },
+        {
+          "id": "cinghiale",
+          "name": "cinghiale",
+          "cost": 30
+        },
+        {
+          "id": "viverna",
+          "name": "viverna",
+          "cost": 180
+        },
+        {
+          "id": "carro",
+          "name": "carro",
+          "cost": 80
+        }
+      ]
+    },
+    {
+      "id": "BH_ORCHI_GUERRIERI",
+      "name": "Orchi Guerrieri",
+      "category": "Truppe",
+      "min_size": 5,
+      "max_size": 20,
+      "base_cost": 40,
+      "cost_per_model": 8,
+      "options": [
+        {
+          "id": "lancia",
+          "name": "Lancia",
+          "cost_per_model": 1
+        },
+        {
+          "id": "stendarro",
+          "name": "Stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "Campione",
+          "cost": 20
+        }
+      ]
+    },
+    {
+      "id": "BH_GOBLIN_LANCIERI",
+      "name": "Goblin Lancieri",
+      "category": "Truppe",
+      "min_size": 5,
+      "max_size": 20,
+      "base_cost": 20,
+      "cost_per_model": 4,
+      "options": [
+        {
+          "id": "stendarro",
+          "name": "Stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "Campione",
+          "cost": 20
+        }
+      ]
+    },
+    {
+      "id": "BH_BALISTA_ORCHI",
+      "name": "Balista degli Orchi",
+      "category": "Macchine e Mostri",
+      "min_size": 1,
+      "max_size": 1,
+      "base_cost": 45,
+      "cost_per_model": 45,
+      "options": []
+    }
+  ]
+}
+</script>
+
+<script>
+  // --- REGOLE DI COMPOSIZIONE ----------------------------------------------
+
+  const ARMY_RULES = {
+    min_truppe_pct: 25,
+    max_personaggi_pct: 50,
+    max_macchine_pct: 25,
+    max_duplicates: 3
+  };
+
+  // --- DATI CARICATI INLINE DAL TAG JSON -----------------------------------
+
+  const UNITS_BY_FACTION = JSON.parse(
+    document.getElementById("FACTION_DATA").textContent
+  );
+
+  // --- STATO ----------------------------------------------------------------
+
+  let currentFaction = "orcs";
+  let selectedUnit = null;
+  let army = {
+    maxPoints: 2000,
+    entries: []
+  };
+  let nextEntryId = 1;
+
+  // --- UTILITY --------------------------------------------------------------
+
+  function categoryBadgeClass(cat) {
+    switch (cat) {
+      case "Personaggi": return "badge badge-personaggi";
+      case "Truppe": return "badge badge-truppe";
+      case "Macchine e Mostri": return "badge badge-macchine";
+      default: return "badge";
+    }
+  }
+
+  function calcUnitPoints(unit, size, selectedOptionIds) {
+    let total = unit.base_cost;
+    if (unit.cost_per_model) {
+      total += (size - unit.min_size) * unit.cost_per_model;
+    }
+    for (const opt of unit.options || []) {
+      if (!selectedOptionIds.includes(opt.id)) continue;
+      if (opt.cost) total += opt.cost;
+      if (opt.cost_per_model) total += opt.cost_per_model * size;
+    }
+    return total;
+  }
+
+  function computeArmyStats() {
+    let total = 0;
+    let byCat = { "Personaggi": 0, "Truppe": 0, "Macchine e Mostri": 0 };
+    for (const e of army.entries) {
+      total += e.points;
+      if (!byCat[e.category]) byCat[e.category] = 0;
+      byCat[e.category] += e.points;
+    }
+    const pct = {};
+    for (const cat of Object.keys(byCat)) {
+      pct[cat] = total > 0 ? (byCat[cat] / total) * 100 : 0;
+    }
+    return { total, byCat, pct };
+  }
+
+  function validateArmy() {
+    const stats = computeArmyStats();
+    const errors = [];
+
+    if (stats.total > army.maxPoints) {
+      errors.push("Punti totali oltre il limite.");
+    }
+    if (stats.pct["Truppe"] < ARMY_RULES.min_truppe_pct) {
+      errors.push(`Truppe sotto il minimo (${ARMY_RULES.min_truppe_pct}%).`);
+    }
+    if (stats.pct["Personaggi"] > ARMY_RULES.max_personaggi_pct) {
+      errors.push(`Personaggi oltre il massimo (${ARMY_RULES.max_personaggi_pct}%).`);
+    }
+    if (stats.pct["Macchine e Mostri"] > ARMY_RULES.max_macchine_pct) {
+      errors.push(`Macchine e Mostri oltre il massimo (${ARMY_RULES.max_macchine_pct}%).`);
+    }
+
+    const hasPersonaggio = army.entries.some(e => e.category === "Personaggi");
+    if (!hasPersonaggio) {
+      errors.push("Devi includere almeno un Personaggio.");
+    }
+
+    const counts = {};
+    for (const e of army.entries) {
+      counts[e.unitId] = (counts[e.unitId] || 0) + 1;
+    }
+    for (const [unitId, count] of Object.entries(counts)) {
+      if (count > ARMY_RULES.max_duplicates) {
+        errors.push(`Troppi duplicati di ${unitId} (max ${ARMY_RULES.max_duplicates}).`);
+      }
+    }
+
+    return { stats, errors, hasPersonaggio };
+  }
+
+  // function exportArmyText() {
+  //   const { stats } = validateArmy();
+  //   let lines = [];
+  //   lines.push(`Battle Hammer – Lista esercito (${currentFaction})`);
+  //   lines.push(`Punti totali: ${stats.total}/${army.maxPoints}`);
+  //   lines.push("");
+  //   for (const e of army.entries) {
+  //     lines.push(`${e.name} (${e.category}) – ${e.points} pt [${e.size} modelli]`);
+  //   }
+  //   return lines.join("\n");
+  // }
+  function exportArmyText() {
+    const { stats } = validateArmy();
+    const title = document.getElementById("listTitleInput").value || "Lista senza titolo";
+
+    let lines = [];
+    lines.push(title);
+    lines.push(`Battle Hammer – Fazione: ${currentFaction}`);
+    lines.push(`Punti totali: ${stats.total}/${army.maxPoints}`);
+    lines.push("");
+
+    // Ordine categorie
+    const order = ["Personaggi", "Truppe", "Macchine e Mostri"];
+
+    for (const cat of order) {
+      const entries = army.entries.filter(e => e.category === cat);
+      if (entries.length === 0) continue;
+
+      lines.push(cat.toUpperCase());
+      for (const e of entries) {
+        lines.push(`- ${e.name} – ${e.points} pt (${e.size} modelli)`);
+      }
+      lines.push("");
+    }
+
+    return lines.join("\n");
+  }
+
+  function exportArmyJson() {
+    const { stats } = validateArmy();
+    const title = document.getElementById("listTitleInput").value || "Lista senza titolo";
+
+    const data = {
+      title: title,
+      faction: currentFaction,
+      total_points: stats.total,
+      max_points: army.maxPoints,
+      categories: stats.byCat,
+      units: army.entries.map(e => ({
+        id: e.id,
+        unitId: e.unitId,
+        name: e.name,
+        category: e.category,
+        size: e.size,
+        // options: e.options,
+        options: [...e.options],   // copia sicura
+        points: e.points
+      }))
+    };
+
+    return JSON.stringify(data, null, 2);
+  }
+
+  // --- RENDERING ------------------------------------------------------------
+
+  function renderUnitList() {
+    const container = document.getElementById("unitList");
+    container.innerHTML = "";
+    const units = UNITS_BY_FACTION[currentFaction] || [];
+
+    const byCat = {};
+    for (const u of units) {
+      if (!byCat[u.category]) byCat[u.category] = [];
+      byCat[u.category].push(u);
+    }
+
+    const order = ["Personaggi", "Truppe", "Macchine e Mostri"];
+    for (const cat of order) {
+      if (!byCat[cat] || byCat[cat].length === 0) continue;
+      const title = document.createElement("div");
+      title.textContent = cat;
+      title.style.fontSize = "12px";
+      title.style.marginTop = "4px";
+      title.style.marginBottom = "2px";
+      title.style.textTransform = "uppercase";
+      title.style.opacity = "0.7";
+      container.appendChild(title);
+
+      for (const unit of byCat[cat]) {
+        const card = document.createElement("div");
+        card.className = "unit-card";
+        card.onclick = () => selectUnit(unit);
+
+        const left = document.createElement("div");
+        const name = document.createElement("div");
+        name.textContent = unit.name;
+        const meta = document.createElement("div");
+        meta.className = "unit-meta";
+        meta.textContent = `Base ${unit.base_cost} pt, ${unit.min_size}-${unit.max_size} mod.`;
+        left.appendChild(name);
+        left.appendChild(meta);
+
+        const right = document.createElement("div");
+        const badge = document.createElement("span");
+        badge.className = categoryBadgeClass(unit.category);
+        badge.textContent = unit.category;
+        right.appendChild(badge);
+
+        card.appendChild(left);
+        card.appendChild(right);
+        container.appendChild(card);
+      }
+    }
+  }
+
+  function selectUnit(unit) {
+    selectedUnit = unit;
+    renderConfigPanel();
+  }
+
+  function renderConfigPanel(existingEntry = null) {
+    const panel = document.getElementById("configPanel");
+    if (!selectedUnit) {
+      panel.innerHTML = "<p style='font-size:13px; opacity:0.8;'>Seleziona un'unità dalla lista per configurarla.</p>";
+      return;
+    }
+
+    const unit = selectedUnit;
+    const isEdit = !!existingEntry;
+
+    const sizeValue = isEdit ? existingEntry.size : unit.min_size;
+    const selectedOptionIds = new Set(isEdit ? existingEntry.options : []);
+
+    const tempPoints = calcUnitPoints(unit, sizeValue, Array.from(selectedOptionIds));
+
+    panel.innerHTML = "";
+
+    const title = document.createElement("h3");
+    title.textContent = unit.name;
+    title.style.fontSize = "15px";
+    title.style.marginTop = "0";
+    panel.appendChild(title);
+
+    const catBadge = document.createElement("span");
+    catBadge.className = categoryBadgeClass(unit.category);
+    catBadge.textContent = unit.category;
+    panel.appendChild(catBadge);
+
+    const baseInfo = document.createElement("div");
+    baseInfo.style.fontSize = "12px";
+    baseInfo.style.marginTop = "4px";
+    baseInfo.textContent = `Base ${unit.base_cost} pt, ${unit.min_size}-${unit.max_size} modelli.`;
+    panel.appendChild(baseInfo);
+
+    const sizeRow = document.createElement("div");
+    sizeRow.className = "config-row";
+    const sizeLabel = document.createElement("label");
+    sizeLabel.textContent = "Dimensione unità";
+    const sizeInput = document.createElement("input");
+    sizeInput.type = "number";
+    sizeInput.min = unit.min_size;
+    sizeInput.max = unit.max_size;
+    sizeInput.value = sizeValue;
+    sizeInput.oninput = () => {
+      const val = parseInt(sizeInput.value, 10) || unit.min_size;
+      if (val < unit.min_size) sizeInput.value = unit.min_size;
+      if (val > unit.max_size) sizeInput.value = unit.max_size;
+      updatePointsPreview();
+    };
+    sizeRow.appendChild(sizeLabel);
+    sizeRow.appendChild(sizeInput);
+    panel.appendChild(sizeRow);
+
+    const optsRow = document.createElement("div");
+    optsRow.className = "config-row";
+    const optsLabel = document.createElement("label");
+    optsLabel.textContent = "Opzioni";
+    optsRow.appendChild(optsLabel);
+
+    const optsBox = document.createElement("div");
+    optsBox.className = "options-list";
+
+    if (!unit.options || unit.options.length === 0) {
+      const noOpt = document.createElement("div");
+      noOpt.style.opacity = "0.7";
+      noOpt.textContent = "Nessuna opzione disponibile.";
+      optsBox.appendChild(noOpt);
+    } else {
+      for (const opt of unit.options) {
+        const row = document.createElement("label");
+        const left = document.createElement("span");
+        const right = document.createElement("span");
+
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.checked = selectedOptionIds.has(opt.id);
+        cb.onchange = () => {
+          if (cb.checked) selectedOptionIds.add(opt.id);
+          else selectedOptionIds.delete(opt.id);
+          updatePointsPreview();
+        };
+
+        left.appendChild(cb);
+        const text = document.createTextNode(" " + opt.name);
+        left.appendChild(text);
+
+        let costText = "";
+        if (opt.cost) costText += `+${opt.cost} pt`;
+        if (opt.cost_per_model) {
+          if (costText) costText += ", ";
+          costText += `+${opt.cost_per_model} pt/mod.`;
+        }
+        right.textContent = costText;
+
+        row.appendChild(left);
+        row.appendChild(right);
+        optsBox.appendChild(row);
+      }
+    }
+
+    optsRow.appendChild(optsBox);
+    panel.appendChild(optsRow);
+
+    const pointsRow = document.createElement("div");
+    pointsRow.className = "config-row";
+    const pointsSpan = document.createElement("span");
+    pointsSpan.className = "points";
+    pointsSpan.id = "pointsPreview";
+    pointsSpan.textContent = `Punti unità: ${tempPoints}`;
+    pointsRow.appendChild(pointsSpan);
+    panel.appendChild(pointsRow);
+
+    const btnRow = document.createElement("div");
+    btnRow.className = "config-row";
+
+    const mainBtn = document.createElement("button");
+    mainBtn.textContent = isEdit ? "Aggiorna unità" : "Aggiungi all'esercito";
+    mainBtn.onclick = () => {
+      const size = parseInt(sizeInput.value, 10) || unit.min_size;
+      const opts = Array.from(selectedOptionIds);
+      const pts = calcUnitPoints(unit, size, opts);
+
+      if (isEdit) {
+        existingEntry.size = size;
+        existingEntry.options = opts;
+        existingEntry.points = pts;
+      } else {
+        army.entries.push({
+          id: nextEntryId++,
+          unitId: unit.id,
+          name: unit.name,
+          category: unit.category,
+          size,
+          options: opts,
+          points: pts
+        });
+      }
+      renderArmy();
+    };
+    btnRow.appendChild(mainBtn);
+
+    if (isEdit) {
+      const cancelBtn = document.createElement("button");
+      cancelBtn.textContent = "Annulla";
+      cancelBtn.className = "secondary";
+      cancelBtn.style.marginLeft = "4px";
+      cancelBtn.onclick = () => {
+        selectedUnit = null;
+        renderConfigPanel();
+      };
+      btnRow.appendChild(cancelBtn);
+    }
+
+    panel.appendChild(btnRow);
+
+    function updatePointsPreview() {
+      const size = parseInt(sizeInput.value, 10) || unit.min_size;
+      const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds));
+      pointsSpan.textContent = `Punti unità: ${pts}`;
+    }
+  }
+
+  function renderArmy() {
+    const { stats, errors, hasPersonaggio } = validateArmy();
+
+    const top = document.getElementById("armySummaryTop");
+    top.innerHTML = "";
+
+    const totalRow = document.createElement("div");
+    totalRow.className = "summary-row";
+    totalRow.innerHTML = `<strong>Punti totali</strong><span>${stats.total} / ${army.maxPoints}</span>`;
+    top.appendChild(totalRow);
+
+    const cats = ["Personaggi", "Truppe", "Macchine e Mostri"];
+    for (const cat of cats) {
+      const row = document.createElement("div");
+      row.className = "summary-row";
+      const pct = stats.pct[cat] || 0;
+      row.innerHTML = `<span>${cat}</span><span>${pct.toFixed(1)}%</span>`;
+      top.appendChild(row);
+    }
+
+    // const list = document.getElementById("armyUnits");
+    // list.innerHTML = "";
+    // if (army.entries.length === 0) {
+    //   list.innerHTML = "<p style='font-size:13px; opacity:0.8;'>Nessuna unità nell'esercito.</p>";
+    // } else {
+    //   for (const e of army.entries) {
+    //     const div = document.createElement("div");
+    //     div.className = "army-unit";
+    //
+    //     const header = document.createElement("div");
+    //     header.className = "army-unit-header";
+    //
+    //     const left = document.createElement("div");
+    //     left.innerHTML = `<strong>${e.name}</strong> <span style="font-size:11px; opacity:0.8;">(${e.category}, ${e.size} mod.)</span>`;
+    //
+    //     const right = document.createElement("div");
+    //     right.textContent = `${e.points} pt`;
+    //
+    //     header.appendChild(left);
+    //     header.appendChild(right);
+    //     div.appendChild(header);
+    //
+    //     if (e.options && e.options.length > 0) {
+    //       const optsLine = document.createElement("div");
+    //       optsLine.style.fontSize = "11px";
+    //       optsLine.style.opacity = "0.8";
+    //       const unit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
+    //       const names = [];
+    //       for (const optId of e.options) {
+    //         const opt = unit.options.find(o => o.id === optId);
+    //         if (opt) names.push(opt.name);
+    //       }
+    //       optsLine.textContent = "Opzioni: " + names.join(", ");
+    //       div.appendChild(optsLine);
+    //     }
+    //
+    //     const actions = document.createElement("div");
+    //     actions.className = "army-unit-actions";
+    //     actions.style.marginTop = "2px";
+    //
+    //     const editBtn = document.createElement("button");
+    //     editBtn.textContent = "Modifica";
+    //     editBtn.className = "secondary";
+    //     editBtn.onclick = () => {
+    //       selectedUnit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
+    //       renderConfigPanel(e);
+    //     };
+    //
+    //     const delBtn = document.createElement("button");
+    //     delBtn.textContent = "Rimuovi";
+    //     delBtn.className = "danger";
+    //     delBtn.onclick = () => {
+    //       army.entries = army.entries.filter(x => x.id !== e.id);
+    //       renderArmy();
+    //     };
+    //
+    //     actions.appendChild(editBtn);
+    //     actions.appendChild(delBtn);
+    //     div.appendChild(actions);
+    //
+    //     list.appendChild(div);
+    //   }
+    // }
+    const list = document.getElementById("armyUnits");
+    list.innerHTML = "";
+
+    const order = ["Personaggi", "Truppe", "Macchine e Mostri"];
+    for (const cat of order) {
+      const entries = army.entries.filter(e => e.category === cat);
+      if (entries.length === 0) continue;
+
+      // Titolo categoria
+      const title = document.createElement("div");
+      title.textContent = cat;
+      title.style.fontSize = "12px";
+      title.style.marginTop = "6px";
+      title.style.marginBottom = "4px";
+      title.style.textTransform = "uppercase";
+      title.style.opacity = "0.7";
+      list.appendChild(title);
+
+      // Unità della categoria
+      for (const e of entries) {
+        const div = document.createElement("div");
+        div.className = "army-unit";
+
+        const header = document.createElement("div");
+        header.className = "army-unit-header";
+
+        const left = document.createElement("div");
+        left.innerHTML = `<strong>${e.name}</strong> <span style="font-size:11px; opacity:0.8;">(${e.size} mod.)</span>`;
+
+        const right = document.createElement("div");
+        right.textContent = `${e.points} pt`;
+
+        header.appendChild(left);
+        header.appendChild(right);
+        div.appendChild(header);
+
+        // Opzioni
+        if (e.options && e.options.length > 0) {
+          const optsLine = document.createElement("div");
+          optsLine.style.fontSize = "11px";
+          optsLine.style.opacity = "0.8";
+          const unit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
+          const names = e.options.map(id => unit.options.find(o => o.id === id)?.name);
+          optsLine.textContent = "Opzioni: " + names.join(", ");
+          div.appendChild(optsLine);
+        }
+
+        // Pulsanti
+        const actions = document.createElement("div");
+        actions.className = "army-unit-actions";
+        actions.style.marginTop = "2px";
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Modifica";
+        editBtn.className = "secondary";
+        editBtn.onclick = () => {
+          selectedUnit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
+          renderConfigPanel(e);
+        };
+
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "Rimuovi";
+        delBtn.className = "danger";
+        delBtn.onclick = () => {
+          army.entries = army.entries.filter(x => x.id !== e.id);
+          renderArmy();
+        };
+
+        actions.appendChild(editBtn);
+        actions.appendChild(delBtn);
+        div.appendChild(actions);
+
+        list.appendChild(div);
+      }
+    }
+
+    const val = document.getElementById("validationPanel");
+    val.innerHTML = "";
+
+    const pills = document.createElement("div");
+    const truppeOk = stats.pct["Truppe"] >= ARMY_RULES.min_truppe_pct;
+    const personaggiOk = stats.pct["Personaggi"] <= ARMY_RULES.max_personaggi_pct;
+    const macchineOk = stats.pct["Macchine e Mostri"] <= ARMY_RULES.max_macchine_pct;
+    const pointsOk = stats.total <= army.maxPoints;
+
+    function pill(text, ok) {
+      const span = document.createElement("span");
+      span.className = "pill " + (ok ? "pill-ok" : "pill-err");
+      span.textContent = text;
+      return span;
+    }
+
+    pills.appendChild(pill("Truppe min", truppeOk));
+    pills.appendChild(pill("Personaggi max", personaggiOk));
+    pills.appendChild(pill("Macchine/Mostri max", macchineOk));
+    pills.appendChild(pill("Punti", pointsOk));
+    pills.appendChild(pill("Personaggio obbligatorio", hasPersonaggio));
+    val.appendChild(pills);
+
+    const msg = document.createElement("div");
+    msg.className = "validation";
+    if (errors.length === 0) {
+      msg.innerHTML = `<div class="validation-ok">✔ Lista valida secondo le regole base.</div>`;
+    } else {
+      msg.innerHTML = `<div class="validation-error">✘ Problemi nella lista:</div>`;
+      const ul = document.createElement("ul");
+      ul.style.marginTop = "2px";
+      ul.style.paddingLeft = "18px";
+      for (const err of errors) {
+        const li = document.createElement("li");
+        li.textContent = err;
+        ul.appendChild(li);
+      }
+      msg.appendChild(ul);
+    }
+    val.appendChild(msg);
+
+    // document.getElementById("exportText").value = exportArmyText();
+    const txt = document.getElementById("exportText");
+    if (txt) txt.value = exportArmyText();
+  }
+
+  // --- EVENTI GLOBALI -------------------------------------------------------
+
+  document.getElementById("factionSelect").addEventListener("change", (e) => {
+    currentFaction = e.target.value;
+    army.entries = [];
+    selectedUnit = null;
+    renderUnitList();
+    renderConfigPanel();
+    renderArmy();
+  });
+
+  document.getElementById("maxPointsInput").addEventListener("input", (e) => {
+    const val = parseInt(e.target.value, 10) || 500;
+    army.maxPoints = val;
+    renderArmy();
+  });
+
+  // --- ESPORTAZIONE -----------------------------------------------------------
+
+  // Mostra/nasconde il menu
+  document.getElementById("exportBtn").addEventListener("click", () => {
+    const menu = document.getElementById("exportMenu");
+    menu.style.display = menu.style.display === "none" ? "block" : "none";
+  });
+
+  // Scarica file di testo
+  document.getElementById("exportTextBtn").addEventListener("click", () => {
+    const text = exportArmyText();
+    downloadFile(text, "lista.txt", "text/plain");
+  });
+
+  // Scarica file JSON
+  // document.getElementById("exportJsonBtn").addEventListener("click", () => {
+  //   const json = JSON.stringify(army.entries, null, 2);
+  //   downloadFile(json, "lista.json", "application/json");
+  // });
+  document.getElementById("exportJsonBtn").addEventListener("click", () => {
+    const json = exportArmyJson();
+    downloadFile(json, "lista.json", "application/json");
+  });
+
+  // Funzione generica per scaricare file
+  function downloadFile(content, filename, mime) {
+    const blob = new Blob([content], { type: mime });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+
+    URL.revokeObjectURL(url);
+  }
+
+  // --- IMPORTAZIONE -----------------------------------------------------------
+
+  // Apri il selettore file
+  document.getElementById("importBtn").addEventListener("click", () => {
+    document.getElementById("importFile").click();
+  });
+
+  // Gestisci il file selezionato
+  document.getElementById("importFile").addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const data = JSON.parse(e.target.result);
+        importArmyJson(data);
+      } catch (err) {
+        alert("Errore: il file non è un JSON valido.");
+        console.error(err);
+      }
+    };
+    reader.readAsText(file);
+  });
+
+  // Ricostruisce l'esercito dalla struttura JSON esportata
+  function importArmyJson(data) {
+    // Validazione minima
+    if (!data.units || !Array.isArray(data.units)) {
+      alert("JSON non valido: manca la lista delle unità.");
+      return;
+    }
+
+    // Titolo
+    if (data.title) {
+      document.getElementById("listTitleInput").value = data.title;
+    }
+
+    // Fazione
+    if (data.faction && UNITS_BY_FACTION[data.faction]) {
+      currentFaction = data.faction;
+      document.getElementById("factionSelect").value = data.faction;
+    } else {
+      alert("Attenzione: la fazione nel JSON non è riconosciuta.");
+    }
+
+    // Punti massimi
+    if (data.max_points) {
+      army.maxPoints = data.max_points;
+      document.getElementById("maxPointsInput").value = data.max_points;
+    }
+
+    // Ricostruisci unità
+    army.entries = [];
+
+    for (const u of data.units) {
+      army.entries.push({
+        id: nextEntryId++,
+        unitId: u.unitId,
+        name: u.name,
+        category: u.category,
+        size: u.size,
+        options: u.options || [],
+        points: u.points
+      });
+    }
+
+    // Aggiorna UI
+    renderUnitList();
+    renderConfigPanel();
+    renderArmy();
+
+    alert("Lista importata correttamente.");
+  }
+
+  // --- INIT -----------------------------------------------------------------
+
+  renderUnitList();
+  renderConfigPanel();
+  renderArmy();
+</script>
+</body>
+</html>
