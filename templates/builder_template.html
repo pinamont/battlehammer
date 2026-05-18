@@ -203,7 +203,13 @@
       <!-- altre fazioni in futuro -->
     </select>
     Titolo lista:
-    <input type="text" id="listTitleInput" placeholder="Titolo..." style="width:160px;" />
+<!--     <input type="text" id="listTitleInput" placeholder="Titolo..." style="width:160px;" /> -->
+    <input
+      type="text"
+      id="listTitleInput"
+      placeholder="Titolo..."
+      style="width:160px; background:#0d1117; color:#e6edf3; border:1px solid #30363d; border-radius:4px; padding:2px 4px;"
+    />
     Punti massimi:
     <input type="number" id="maxPointsInput" value="2000" min="500" step="100" />
   </div>
@@ -235,11 +241,11 @@
 <!--     <h3 style="font-size:13px; margin-top:8px;">Esporta lista (testo)</h3> -->
 <!--     <textarea id="exportText" class="export-area" readonly></textarea> -->
     <h3 style="font-size:13px; margin-top:8px;">Esporta lista</h3>
-    <button id="exportBtn" class="secondary">Esporta lista</button>
-    <div id="exportMenu" style="display:none; margin-top:6px;">
-      <button id="exportTextBtn" class="secondary">Scarica come testo</button>
-      <button id="exportJsonBtn" class="secondary">Scarica come JSON</button>
-    </div>
+<!--     <button id="exportBtn" class="secondary">Esporta lista</button> -->
+<!--     <div id="exportMenu" style="display:none; margin-top:6px;"> -->
+    <button id="exportTextBtn" class="secondary">Scarica come testo</button>
+    <button id="exportJsonBtn" class="secondary">Scarica come JSON</button>
+<!--     </div> -->
     <h3 style="font-size:13px; margin-top:12px;">Importa lista</h3>
     <button id="importBtn" class="secondary">Importa da JSON</button>
     <input type="file" id="importFile" accept="application/json" style="display:none;">
@@ -288,11 +294,21 @@ __FACTION_JSON__
     }
   }
 
+  // function calcUnitPoints(unit, size, selectedOptionIds) {
+  //   let total = unit.base_cost;
+  //   if (unit.cost_per_model) {
+  //     total += (size - unit.min_size) * unit.cost_per_model;
+  //   }
+  //   for (const opt of unit.options || []) {
+  //     if (!selectedOptionIds.includes(opt.id)) continue;
+  //     if (opt.cost) total += opt.cost;
+  //     if (opt.cost_per_model) total += opt.cost_per_model * size;
+  //   }
+  //   return total;
+  // }
+
   function calcUnitPoints(unit, size, selectedOptionIds) {
-    let total = unit.base_cost;
-    if (unit.cost_per_model) {
-      total += (size - unit.min_size) * unit.cost_per_model;
-    }
+    let total = unit.cost_per_model * size;
     for (const opt of unit.options || []) {
       if (!selectedOptionIds.includes(opt.id)) continue;
       if (opt.cost) total += opt.cost;
@@ -381,7 +397,12 @@ __FACTION_JSON__
 
       lines.push(cat.toUpperCase());
       for (const e of entries) {
-        lines.push(`- ${e.name} – ${e.points} pt (${e.size} modelli)`);
+        // lines.push(`- ${e.name} – ${e.points} pt (${e.size} modelli)`);
+        if (e.size === 1) {
+          lines.push(`- ${e.name} – ${e.points} pt`);
+        } else {
+          lines.push(`- ${e.name} – ${e.points} pt (${e.size} modelli)`);
+        }
       }
       lines.push("");
     }
@@ -416,6 +437,17 @@ __FACTION_JSON__
 
   // --- RENDERING ------------------------------------------------------------
 
+  function renderModelCount(entry) {
+    const unit = UNITS_BY_FACTION[currentFaction].find(u => u.id === entry.unitId);
+
+    // Se min = max = 1 → non mostrare nulla
+    if (unit.min_size === 1 && unit.max_size === 1) {
+      return "";
+    }
+
+    return `<span style="font-size:11px; opacity:0.8;">(${entry.size} mod.)</span>`;
+  }
+
   function renderUnitList() {
     const container = document.getElementById("unitList");
     container.innerHTML = "";
@@ -449,15 +481,33 @@ __FACTION_JSON__
         name.textContent = unit.name;
         const meta = document.createElement("div");
         meta.className = "unit-meta";
-        meta.textContent = `Base ${unit.base_cost} pt, ${unit.min_size}-${unit.max_size} mod.`;
+        // meta.textContent = `Base ${unit.base_cost} pt, ${unit.min_size}-${unit.max_size} mod.`;
+        // if (unit.min_size === 1 && unit.max_size === 1) {
+          // meta.textContent = `Base ${unit.base_cost} pt`;
+        // } else {
+          // meta.textContent = `Base ${unit.base_cost} pt, ${unit.min_size}-${unit.max_size} mod.`;
+        // }
+        if (unit.min_size === 1 && unit.max_size === 1) {
+          meta.textContent = `${unit.cost_per_model} pt`;
+        } else {
+          meta.textContent = `${unit.cost_per_model} pt/mod., ${unit.min_size}-${unit.max_size} mod.`;
+        }
         left.appendChild(name);
         left.appendChild(meta);
 
+        // const right = document.createElement("div");
+        // const badge = document.createElement("span");
+        // badge.className = categoryBadgeClass(unit.category);
+        // badge.textContent = unit.category;
+        // right.appendChild(badge);
+
         const right = document.createElement("div");
-        const badge = document.createElement("span");
-        badge.className = categoryBadgeClass(unit.category);
-        badge.textContent = unit.category;
-        right.appendChild(badge);
+        right.textContent = "";
+
+        // const right = document.createElement("div");
+        // right.textContent = `${unit.base_cost} pt`;
+        // right.style.opacity = "0.7";
+        // right.style.fontSize = "11px";
 
         card.appendChild(left);
         card.appendChild(right);
@@ -494,15 +544,20 @@ __FACTION_JSON__
     title.style.marginTop = "0";
     panel.appendChild(title);
 
-    const catBadge = document.createElement("span");
-    catBadge.className = categoryBadgeClass(unit.category);
-    catBadge.textContent = unit.category;
-    panel.appendChild(catBadge);
+    // const catBadge = document.createElement("span");
+    // catBadge.className = categoryBadgeClass(unit.category);
+    // catBadge.textContent = unit.category;
+    // panel.appendChild(catBadge);
 
     const baseInfo = document.createElement("div");
     baseInfo.style.fontSize = "12px";
     baseInfo.style.marginTop = "4px";
-    baseInfo.textContent = `Base ${unit.base_cost} pt, ${unit.min_size}-${unit.max_size} modelli.`;
+    // baseInfo.textContent = `Base ${unit.base_cost} pt, ${unit.min_size}-${unit.max_size} modelli.`;
+    if (unit.min_size === 1 && unit.max_size === 1) {
+      baseInfo.textContent = `${unit.cost_per_model} pt (modello singolo)`;
+    } else {
+      baseInfo.textContent = `${unit.cost_per_model} pt/mod., ${unit.min_size}-${unit.max_size} modelli`;
+    }
     panel.appendChild(baseInfo);
 
     const sizeRow = document.createElement("div");
@@ -739,14 +794,37 @@ __FACTION_JSON__
         const div = document.createElement("div");
         div.className = "army-unit";
 
+        // const header = document.createElement("div");
+        // header.className = "army-unit-header";
+        //
+        // const left = document.createElement("div");
+        // left.innerHTML = `<strong>${e.name}</strong> <span style="font-size:11px; opacity:0.8;">(${e.size} mod.)</span>`;
+        //
+        // const right = document.createElement("div");
+        // right.textContent = `${e.points} pt`;
+
         const header = document.createElement("div");
         header.className = "army-unit-header";
 
+        // Clic sul nome = modifica
         const left = document.createElement("div");
-        left.innerHTML = `<strong>${e.name}</strong> <span style="font-size:11px; opacity:0.8;">(${e.size} mod.)</span>`;
+        left.innerHTML = `<strong class="editable-unit">${e.name}</strong> ${renderModelCount(e)}`;
+        left.querySelector(".editable-unit").style.cursor = "pointer";
+        left.querySelector(".editable-unit").onclick = () => {
+          selectedUnit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
+          renderConfigPanel(e);
+        };
 
+        // Punti + icona rimozione
         const right = document.createElement("div");
-        right.textContent = `${e.points} pt`;
+        right.innerHTML = `
+          <span>${e.points} pt</span>
+          <span class="remove-unit" style="margin-left:8px; cursor:pointer; color:#f85149; font-weight:bold;">✖</span>
+        `;
+        right.querySelector(".remove-unit").onclick = () => {
+          army.entries = army.entries.filter(x => x.id !== e.id);
+          renderArmy();
+        };
 
         header.appendChild(left);
         header.appendChild(right);
@@ -759,34 +837,34 @@ __FACTION_JSON__
           optsLine.style.opacity = "0.8";
           const unit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
           const names = e.options.map(id => unit.options.find(o => o.id === id)?.name);
-          optsLine.textContent = "Opzioni: " + names.join(", ");
+          optsLine.textContent = names.join(", ");
           div.appendChild(optsLine);
         }
 
-        // Pulsanti
-        const actions = document.createElement("div");
-        actions.className = "army-unit-actions";
-        actions.style.marginTop = "2px";
-
-        const editBtn = document.createElement("button");
-        editBtn.textContent = "Modifica";
-        editBtn.className = "secondary";
-        editBtn.onclick = () => {
-          selectedUnit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
-          renderConfigPanel(e);
-        };
-
-        const delBtn = document.createElement("button");
-        delBtn.textContent = "Rimuovi";
-        delBtn.className = "danger";
-        delBtn.onclick = () => {
-          army.entries = army.entries.filter(x => x.id !== e.id);
-          renderArmy();
-        };
-
-        actions.appendChild(editBtn);
-        actions.appendChild(delBtn);
-        div.appendChild(actions);
+//         // Pulsanti
+//         const actions = document.createElement("div");
+//         actions.className = "army-unit-actions";
+//         actions.style.marginTop = "2px";
+//
+//         const editBtn = document.createElement("button");
+//         editBtn.textContent = "Modifica";
+//         editBtn.className = "secondary";
+//         editBtn.onclick = () => {
+//           selectedUnit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
+//           renderConfigPanel(e);
+//         };
+//
+//         const delBtn = document.createElement("button");
+//         delBtn.textContent = "Rimuovi";
+//         delBtn.className = "danger";
+//         delBtn.onclick = () => {
+//           army.entries = army.entries.filter(x => x.id !== e.id);
+//           renderArmy();
+//         };
+//
+//         actions.appendChild(editBtn);
+//         actions.appendChild(delBtn);
+//         div.appendChild(actions);
 
         list.appendChild(div);
       }
@@ -857,11 +935,11 @@ __FACTION_JSON__
 
   // --- ESPORTAZIONE -----------------------------------------------------------
 
-  // Mostra/nasconde il menu
-  document.getElementById("exportBtn").addEventListener("click", () => {
-    const menu = document.getElementById("exportMenu");
-    menu.style.display = menu.style.display === "none" ? "block" : "none";
-  });
+  // // Mostra/nasconde il menu
+  // document.getElementById("exportBtn").addEventListener("click", () => {
+  //   const menu = document.getElementById("exportMenu");
+  //   menu.style.display = menu.style.display === "none" ? "block" : "none";
+  // });
 
   // Scarica file di testo
   document.getElementById("exportTextBtn").addEventListener("click", () => {

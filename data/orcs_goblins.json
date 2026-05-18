@@ -6,8 +6,7 @@
       "category": "Personaggi",
       "min_size": 1,
       "max_size": 1,
-      "base_cost": 80,
-      "cost_per_model": 0,
+      "cost_per_model": 80,
       "options": [
         { "id": "grande_arma", "name": "arma a 2 mani", "cost": 8 },
         { "id": "armatura", "name": "armatura pesante", "cost": 4 },
@@ -23,7 +22,6 @@
       "category": "Truppe",
       "min_size": 5,
       "max_size": 20,
-      "base_cost": 40,
       "cost_per_model": 8,
       "options": [
         { "id": "lancia", "name": "Lancia", "cost_per_model": 1 },
@@ -37,7 +35,6 @@
       "category": "Truppe",
       "min_size": 5,
       "max_size": 20,
-      "base_cost": 20,
       "cost_per_model": 4,
       "options": [
         { "id": "stendarro", "name": "Stendardo", "cost": 10 },
@@ -50,7 +47,6 @@
       "category": "Macchine e Mostri",
       "min_size": 1,
       "max_size": 1,
-      "base_cost": 45,
       "cost_per_model": 45,
       "options": []
     }
