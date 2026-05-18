@@ -307,12 +307,42 @@ __FACTION_JSON__
   //   return total;
   // }
 
-  function calcUnitPoints(unit, size, selectedOptionIds) {
+  // function calcUnitPoints(unit, size, selectedOptionIds) {
+  //   let total = unit.cost_per_model * size;
+  //   // for (const opt of unit.options || []) {
+  //     // if (!selectedOptionIds.includes(opt.id)) continue;
+  //     // if (opt.cost) total += opt.cost;
+  //     // if (opt.cost_per_model) total += opt.cost_per_model * size;
+  //   // }
+  //   for (const opt of unit.options || []) {
+  //     if (!selectedOptionIds.includes(opt.id)) continue;
+  //
+  //     const count = optionCounts?.[opt.id] || 1;
+  //
+  //     if (opt.max_count) {
+  //       // Opzione con quantità
+  //       if (opt.cost) total += opt.cost * count;
+  //       if (opt.cost_per_model) total += opt.cost_per_model * size * count;
+  //     } else {
+  //       // Opzione normale
+  //       if (opt.cost) total += opt.cost;
+  //       if (opt.cost_per_model) total += opt.cost_per_model * size;
+  //     }
+  //   }
+  //   return total;
+  // }
+  function calcUnitPoints(unit, size, selectedOptionIds, optionCounts = {}) {
     let total = unit.cost_per_model * size;
     for (const opt of unit.options || []) {
       if (!selectedOptionIds.includes(opt.id)) continue;
-      if (opt.cost) total += opt.cost;
-      if (opt.cost_per_model) total += opt.cost_per_model * size;
+      const count = optionCounts[opt.id] ?? 1;
+      if (opt.max_count) {
+        if (opt.cost) total += opt.cost * count;
+        if (opt.cost_per_model) total += opt.cost_per_model * size * count;
+      } else {
+        if (opt.cost) total += opt.cost;
+        if (opt.cost_per_model) total += opt.cost_per_model * size;
+      }
     }
     return total;
   }
@@ -428,6 +458,7 @@ __FACTION_JSON__
         size: e.size,
         // options: e.options,
         options: [...e.options],   // copia sicura
+        optionCounts: e.optionCounts || {},
         points: e.points
       }))
     };
@@ -528,6 +559,8 @@ __FACTION_JSON__
       return;
     }
 
+    let optionCounts = existingEntry ? { ...existingEntry.optionCounts } : {};
+
     const unit = selectedUnit;
     const isEdit = !!existingEntry;
 
@@ -595,30 +628,71 @@ __FACTION_JSON__
       optsBox.appendChild(noOpt);
     } else {
       for (const opt of unit.options) {
-        const row = document.createElement("label");
+        const row = document.createElement("div");   // <-- PRIMA ERA <label>
+        row.className = "option-row";
+        row.style.display = "flex";
+        row.style.justifyContent = "space-between";
+        row.style.alignItems = "center";
+
         const left = document.createElement("span");
         const right = document.createElement("span");
 
-        const cb = document.createElement("input");
-        cb.type = "checkbox";
-        cb.checked = selectedOptionIds.has(opt.id);
-        cb.onchange = () => {
-          if (cb.checked) selectedOptionIds.add(opt.id);
-          else selectedOptionIds.delete(opt.id);
-          updatePointsPreview();
-        };
+        if (opt.max_count) {
+          // Opzione con quantità
+          const qty = document.createElement("input");
+          qty.type = "number";
+          qty.min = 0;
+          qty.max = opt.max_count;
+          qty.value = optionCounts[opt.id] ?? 0;
 
-        left.appendChild(cb);
+          qty.style.width = "32px";
+          qty.style.marginLeft = "8px";
+          qty.style.background = "#0d1117";
+          qty.style.color = "#e6edf3";
+          qty.style.border = "1px solid #30363d";
+          qty.style.borderRadius = "4px";
+          qty.style.padding = "2px 4px";
+
+          qty.oninput = () => {
+            const v = Math.max(0, Math.min(opt.max_count, parseInt(qty.value) || 0));
+            qty.value = v;
+
+            if (v > 0) selectedOptionIds.add(opt.id);
+            else selectedOptionIds.delete(opt.id);
+
+            optionCounts[opt.id] = v;
+            updatePointsPreview();
+          };
+
+          left.appendChild(qty);
+
+        } else {
+          // Opzione normale (checkbox)
+          const cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.checked = selectedOptionIds.has(opt.id);
+
+          cb.onchange = () => {
+            if (cb.checked) selectedOptionIds.add(opt.id);
+            else selectedOptionIds.delete(opt.id);
+            updatePointsPreview();
+          };
+
+          left.appendChild(cb);
+        }
+
+        // Nome dell’opzione
         const text = document.createTextNode(" " + opt.name);
         left.appendChild(text);
 
+        // Costi
         let costText = "";
         if (opt.cost) costText += `+${opt.cost} pt`;
         if (opt.cost_per_model) {
           if (costText) costText += ", ";
           costText += `+${opt.cost_per_model} pt/mod.`;
         }
-        right.textContent = costText;
+        right.appendChild(document.createTextNode(costText));
 
         row.appendChild(left);
         row.appendChild(right);
@@ -646,7 +720,8 @@ __FACTION_JSON__
     mainBtn.onclick = () => {
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
       const opts = Array.from(selectedOptionIds);
-      const pts = calcUnitPoints(unit, size, opts);
+      // const pts = calcUnitPoints(unit, size, opts);
+      const pts = calcUnitPoints(unit, size, opts, optionCounts);
 
       if (isEdit) {
         existingEntry.size = size;
@@ -660,6 +735,7 @@ __FACTION_JSON__
           category: unit.category,
           size,
           options: opts,
+          optionCounts: optionCounts,
           points: pts
         });
       }
@@ -683,7 +759,8 @@ __FACTION_JSON__
 
     function updatePointsPreview() {
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
-      const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds));
+      // const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds));
+      const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds), optionCounts);
       pointsSpan.textContent = `Punti unità: ${pts}`;
     }
   }
@@ -836,8 +913,20 @@ __FACTION_JSON__
           optsLine.style.fontSize = "11px";
           optsLine.style.opacity = "0.8";
           const unit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
-          const names = e.options.map(id => unit.options.find(o => o.id === id)?.name);
-          optsLine.textContent = names.join(", ");
+          // const names = e.options.map(id => unit.options.find(o => o.id === id)?.name);
+          // optsLine.textContent = names.join(", ");
+          const parts = [];
+          for (const optId of e.options) {
+            const opt = unit.options.find(o => o.id === optId);
+            if (!opt) continue;
+            const count = e.optionCounts?.[optId] || 1;
+            if (opt.max_count) {
+              parts.push(`${opt.name} ×${count}`);
+            } else {
+              parts.push(opt.name);
+            }
+          }
+          optsLine.textContent = parts.join(", ");
           div.appendChild(optsLine);
         }
 

@@ -38,7 +38,8 @@
       "cost_per_model": 4,
       "options": [
         { "id": "stendarro", "name": "Stendardo", "cost": 10 },
-        { "id": "campione", "name": "Campione", "cost": 20 }
+        { "id": "campione", "name": "Campione", "cost": 20 },
+        { "id": "fanatici", "name": "Fanatici", "cost": 30, "max_count": 3}
       ]
     },
     {
