@@ -1,0 +1,190 @@
+  <meta charset="UTF-8" />
+  <title>Battle Hammer Army Builder</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #1b1f23;
+      color: #e6edf3;
+    }
+    header {
+      padding: 10px 16px;
+      background: #24292f;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 18px;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr 1fr;
+      gap: 8px;
+      padding: 8px;
+      height: calc(100vh - 50px);
+      box-sizing: border-box;
+    }
+    section {
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 8px;
+      box-sizing: border-box;
+      overflow: auto;
+      background: #0d1117;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 15px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+    }
+    .faction-select select {
+      background: #0d1117;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 4px 6px;
+    }
+    .unit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .unit-card {
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .unit-card:hover {
+      background: #161b22;
+    }
+    .unit-meta {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+    .badge {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 999px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .badge-personaggi { background: #0550ae; }
+    .badge-truppe { background: #116329; }
+    .badge-macchine { background: #5a32a3; }
+
+    .config-row {
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+    .config-row label {
+      display: block;
+      margin-bottom: 2px;
+    }
+    input[type="number"] {
+      width: 80px;
+      background: #0d1117;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+    .options-list {
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 4px;
+      max-height: 140px;
+      overflow: auto;
+      font-size: 13px;
+    }
+    .options-list label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+    button {
+      background: #238636;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    button.secondary {
+      background: #30363d;
+    }
+    button.danger {
+      background: #da3633;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+    .points {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .army-unit {
+      border-bottom: 1px solid #21262d;
+      padding: 4px 0;
+      font-size: 13px;
+    }
+    .army-unit-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .army-unit-actions button {
+      margin-left: 4px;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    .summary-row strong {
+      font-weight: 600;
+    }
+    .validation {
+      margin-top: 6px;
+      font-size: 12px;
+    }
+    .validation-ok {
+      color: #3fb950;
+    }
+    .validation-error {
+      color: #f85149;
+    }
+    .pill {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 999px;
+      font-size: 11px;
+      margin-right: 4px;
+    }
+    .pill-ok { background: rgba(63,185,80,0.15); color: #3fb950; }
+    .pill-err { background: rgba(248,81,73,0.15); color: #f85149; }
+    .export-area {
+      width: 100%;
+      height: 120px;
+      background: #0d1117;
+      color: #e6edf3;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      padding: 4px;
+      font-family: monospace;
+      font-size: 11px;
+      box-sizing: border-box;
+    }
+  </style>

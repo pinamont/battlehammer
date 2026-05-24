@@ -1,0 +1,201 @@
+{
+  "magic_banners": [
+    {
+      "id": "lo_stendardo_della_protezione_arcana",
+      "name": "Lo Stendardo Della Protezione Arcana",
+      "cost": 100,
+      "category": "Stendardi Magici",
+      "description": "L'unità ottiene resistenza alla magia 2+. Se un incantesimo viene lanciato contro l'unità e viene annullato dal tiro, con 4+ su 1D6 viene rediretto su un nuovo bersaglio entro 4 caselle.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardo_della_vittoria",
+      "name": "Lo Stendardo Della Vittoria",
+      "cost": 100,
+      "category": "Stendardi Magici",
+      "description": "Aggiunge 1D3 al risultato del combattimento, sia in attacco che in difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardo_della_tempesta",
+      "name": "Lo Stendardo Della Tempesta",
+      "cost": 100,
+      "category": "Stendardi Magici",
+      "description": "Può essere attivato all'inizio dell'azione dell'unità. Il movimento in volo è impossibile e il raggio delle armi da tiro è dimezzato. L'incantesimo si spezza ottenendo un 6 su 1D6 all'inizio di ogni turno di ogni giocatore.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardo_dell_ira",
+      "name": "Lo Stendardo Dell'Ira",
+      "cost": 75,
+      "category": "Stendardi Magici",
+      "description": "Può lanciare un incantesimo che attacca con 1D6 di DC, ignora la difesa, raggio 4 caselle.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_bandiera_da_guerra_di_mork",
+      "name": "La Bandiera Da Guerra Di Mork",
+      "cost": 65,
+      "category": "Stendardi Magici",
+      "description": "Resistenza alla magia 4+. Ogni mago a che entra in contatto con l'unità perde immediatamente 1D6 PC (senza tiri salvezza o rigenerazione). Questi perde un ulteriore PC all'inizio di ogni turno successivo del giocatore che controlla l'unità, se ancora a contatto.",
+      "only_for_army": [
+        "orchi",
+        "goblin"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardo_della_difesa_arcana",
+      "name": "Lo Stendardo  Della Difesa Arcana",
+      "cost": 50,
+      "category": "Stendardi Magici",
+      "description": "Resistenza alla magia 4+. Ogni unità di nommorti o demoni attaccata in corpo a corpo subisce 1D6 di ferite addizionali.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardo_della_risolutezza",
+      "name": "Lo Stendardo Della Risolutezza",
+      "cost": 50,
+      "category": "Stendardi Magici",
+      "description": "Il bonus di ranghi è raddoppiato. L'unità non può inseguire.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardo_del_valore",
+      "name": "Lo Stendardo Del Valore",
+      "cost": 50,
+      "category": "Stendardi Magici",
+      "description": "L'unità ottiene +1 DC in corpo a corpo.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardo_agghiacciante",
+      "name": "Lo Stendardo Agghiacciante",
+      "cost": 50,
+      "category": "Stendardi Magici",
+      "description": "L'unità incute paura.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardodella_luna_cattiva",
+      "name": "Lo StendardoDella Luna Cattiva",
+      "cost": 35,
+      "category": "Stendardi Magici",
+      "description": "-1 DC a tutti gli attacchi portati verso l'unità (in CaC o a distanza).",
+      "only_for_army": [
+        "goblin_delle_tenebre"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardo_della_stregoneria",
+      "name": "Lo Stendardo Della Stregoneria",
+      "cost": 25,
+      "category": "Stendardi Magici",
+      "description": "Contiene 4 di carte venti della magia, che possono essere usate da maghi amici entro 2 caselle.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_bandiera_da_guerra_di_gork",
+      "name": "La Bandiera Da Guerra Di Gork",
+      "cost": 25,
+      "category": "Stendardi Magici",
+      "description": "L'unità ottiene +1 DC in carica.",
+      "only_for_army": [
+        "orchi",
+        "goblin"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardo_d_acciaio",
+      "name": "Lo Stendardo D'Acciaio",
+      "cost": 25,
+      "category": "Stendardi Magici",
+      "description": "L'unità ottiene +2 DC in difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_bandiera_di_guerra",
+      "name": "La Bandiera Di Guerra",
+      "cost": 25,
+      "category": "Stendardi Magici",
+      "description": "Aggiunge +1 al risultato del combattimento in difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardodel_sole_malvagio",
+      "name": "Lo StendardoDel Sole Malvagio",
+      "cost": 10,
+      "category": "Stendardi Magici",
+      "description": "L'unità può ripetere un tiro di Animosità fallito ogni turno.",
+      "only_for_army": [
+        "goblin"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardodella_disciplina",
+      "name": "Lo StendardoDella Disciplina",
+      "cost": 25,
+      "category": "Stendardi Magici",
+      "description": "Aggiunge +2 al Coraggio dell'unità.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_icona_della_tempesta_di_fuoco",
+      "name": "L'Icona Della Tempesta Di Fuoco",
+      "cost": 40,
+      "category": "Stendardi Magici",
+      "description": "Può lanciare un incantesimo che attacca con 1D3 di DC, ignora la difesa, raggio 4 caselle.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    }
+  ]
+}

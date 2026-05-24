@@ -1,0 +1,31 @@
+  <!-- LISTA UNITÀ -->
+  <section>
+    <h2>Unità disponibili</h2>
+    <div id="unitList" class="unit-list"></div>
+  </section>
+
+  <!-- CONFIGURATORE UNITÀ -->
+  <section>
+    <h2>Configurazione unità</h2>
+    <div id="configPanel">
+      <p style="font-size:13px; opacity:0.8;">Seleziona un'unità dalla lista per configurarla.</p>
+    </div>
+  </section>
+
+  <!-- RIEPILOGO ESERCITO -->
+  <section>
+    <h2>Esercito</h2>
+    <div id="armySummaryTop"></div>
+    <hr style="border-color:#21262d;">
+    <div id="armyUnits"></div>
+    <hr style="border-color:#21262d;">
+    <div id="validationPanel"></div>
+    <h3 style="font-size:13px; margin-top:8px;">Esporta lista</h3>
+    <button id="exportTextBtn" class="secondary">Scarica TXT</button>
+    <button id="exportMarkdownBtn" class="secondary">Scarica MarkDown</button>
+    <button id="exportJsonBtn" class="secondary">Scarica JSON</button>
+    <button id="exportPdfBtn" class="secondary">Scarica PDF</button>
+    <h3 style="font-size:13px; margin-top:12px;">Importa lista</h3>
+    <button id="importBtn" class="secondary">Importa JSON</button>
+    <input type="file" id="importFile" accept="application/json" style="display:none;">
+  </section>

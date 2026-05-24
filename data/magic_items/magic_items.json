@@ -1,0 +1,1897 @@
+{
+  "magic_items": [
+    {
+      "id": "la_lama_nera",
+      "name": "La Lama Nera",
+      "cost": 135,
+      "category": "Armi Magiche",
+      "description": "+3 DC in attacco, ignora la difesa, ogni ferita infligge 1D6 di ferite. Alla fine del turno tira 1 DC, e il portatore subisce una ferita se ottieni scudo.",
+      "only_for_army": [
+        "skaven"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_nera_ascia_di_krell",
+      "name": "La Nera Ascia Di Krell",
+      "cost": 125,
+      "category": "Armi Magiche",
+      "description": "Arma a 2 mani (+1 DC in attacco), ignora la difesa. Un modello ferito subisce una ferita a ogni turno del portatore se ottiene 1 o 2 su 1D6.",
+      "only_for_army": [
+        "nommorti",
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "sventra_draghi",
+      "name": "Sventra Draghi",
+      "cost": 125,
+      "category": "Armi Magiche",
+      "description": "Contro i draghi, +3 DC e ignora la difesa, altrimenti +2 DC. Ogni ferita infligge 1D3 di ferite.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "sventra_demoni",
+      "name": "Sventra Demoni",
+      "cost": 125,
+      "category": "Armi Magiche",
+      "description": "Contro i demoni, +3 DC e ignora la difesa, altrimenti +2 DC. Ogni ferita infligge 1D3 di ferite.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_infernale",
+      "name": "La Spada Infernale",
+      "cost": 125,
+      "category": "Armi Magiche",
+      "description": "+3 DC in attacco, ignora la difesa, attacco da fuoco. Se un modello ucciso era parte di un'unità o su un carro o mostro, questi subiscono un attacco con 1D6 DC che nega la difesa (risolvi l'effetto solo una volta anche se più modelli vengono uccisi).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "morgor_lo_squartatore",
+      "name": "Morgor, Lo Squartatore",
+      "cost": 125,
+      "category": "Armi Magiche",
+      "description": "Arma a 2 mani, +2 DC in attacco (totale +3 DC), ignora la difesa, +2 DC in difesa.",
+      "only_for_army": [
+        "orchi"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_della_morte",
+      "name": "La Spada Della Morte",
+      "cost": 100,
+      "category": "Armi Magiche",
+      "description": "+3 DC in attacco, ignora la difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_del_gelo",
+      "name": "La Lama Del Gelo",
+      "cost": 100,
+      "category": "Armi Magiche",
+      "description": "Ignora la difesa. Un modello ferito è automaticamente ucciso se non ottiene almeno uno scudo tirando 1 DC per ogni suo punto corpo.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_della_distruzione",
+      "name": "La Spada Della Distruzione",
+      "cost": 100,
+      "category": "Armi Magiche",
+      "description": "Il portatore non può avere altri oggetti magici. Nessun oggetto magico funziona nelle caselle a contatto. Per ogni ferita inflitta a un personaggio con oggetti magici, uno di essi (scelto a caso) viene distrutto.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_di_teclis",
+      "name": "La Spada Di Teclis",
+      "cost": 100,
+      "category": "Armi Magiche",
+      "description": "+2 DC in attacco. Una volta per battaglia, un'unità nemica in combattimento viene attaccata con 2D6 DC, ignorando la difesa.",
+      "only_for_army": [
+        "elfi_alti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_martello_di_sigmar",
+      "name": "Il Martello Di Sigmar",
+      "cost": 100,
+      "category": "Armi Magiche",
+      "description": "Arma a 2 mani, +2 DC in attacco (totale +3 DC), ignora la difesa, permette di ritirare un DC.",
+      "only_for_army": [
+        "impero"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_bastone_della_corruzione",
+      "name": "Il Bastone Della Corruzione",
+      "cost": 100,
+      "category": "Armi Magiche",
+      "description": "Per ogni teschio ottenuto attaccando, il bersaglio deve ottenere un numero pari o inferiore al suo punteggio di Corpo, o rimanere ucciso.",
+      "only_for_army": [
+        "sacerdoti",
+        "preti_della_pesta_skaven"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_del_gigante",
+      "name": "La Lama Del Gigante",
+      "cost": 80,
+      "category": "Armi Magiche",
+      "description": "+3 DC in attacco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_sepolcrale_del_caos",
+      "name": "La Lama Sepolcrale Del Caos",
+      "cost": 75,
+      "category": "Armi Magiche",
+      "description": "+2 DC in attacco. Per ogni ferita inflitta dal portatore, il suo controllore può pescare una carta magia.",
+      "only_for_army": [
+        "caos",
+        "nommorti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_dell_idra",
+      "name": "La Spada Dell'Idra",
+      "cost": 75,
+      "category": "Armi Magiche",
+      "description": "Per ogni teschio ottenuto in attacco, aggiungi 2 DC all'attacco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_d_ossidiana",
+      "name": "La Lama D'Ossidiana",
+      "cost": 75,
+      "category": "Armi Magiche",
+      "description": "Ignora la difesa, l'armatura di un bersaglio ferito è distrutta (anche se magica!).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_del_veleno",
+      "name": "La Spada Del Veleno",
+      "cost": 70,
+      "category": "Armi Magiche",
+      "description": "Ogni ferita inflitta sottrae 1D6 punti corpo invece di 1.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_runica_del_caos_di_grungni_cuor_d_acciaio",
+      "name": "La Spada Runica Del Caos Di Grungni Cuor D'Acciaio",
+      "cost": 65,
+      "category": "Armi Magiche",
+      "description": "+2 DC in attacco, ignora la difesa, +1 DC in difesa.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_demoniaca",
+      "name": "La Spada Demoniaca",
+      "cost": 60,
+      "category": "Armi Magiche",
+      "description": "Ogni ferita inflitta sottrae 1D6 punti corpo invece di 1. Se ottieni 1, la ferita è inflitta al portatore. Ignora la difesa.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_degli_eroi",
+      "name": "La Spada Degli Eroi",
+      "cost": 60,
+      "category": "Armi Magiche",
+      "description": "Contro mostri, demoni maggiori o personaggi mostruosi, +3 DC e ogni colpo infligge 1D3 ferite.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lancia_delle_stelle",
+      "name": "La Lancia Delle Stelle",
+      "cost": 60,
+      "category": "Armi Magiche",
+      "description": "+3 DC in attacco e ignora la difesa in carica.",
+      "only_for_army": [
+        "elfi_alti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "mordielfi_l_ascia_di_grom",
+      "name": "Mordielfi, \nL'Ascia Di Grom",
+      "cost": 50,
+      "category": "Armi Magiche",
+      "description": "Arma a 2 mani (+1 DC in attacco), ignora la difesa, raddoppia le ferite inflitte.",
+      "only_for_army": [
+        "orchi",
+        "goblin"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_arco_di_loren",
+      "name": "L'Arco Di Loren",
+      "cost": 50,
+      "category": "Armi Magiche",
+      "description": "E' un arco lungo che attacca con 4 DC (senza il consueto -1 per attacco da tiro da parte di un personaggio), gittata 6.",
+      "only_for_army": [
+        "elfi_alti",
+        "elfi_silvani"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_del_drago",
+      "name": "La Spada Del Drago",
+      "cost": 50,
+      "category": "Armi Magiche",
+      "description": "Per ogni teschio ottenuto in attacco, aggiungi 1 DC all'attacco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "sventranani",
+      "name": "Sventranani",
+      "cost": 50,
+      "category": "Armi Magiche",
+      "description": "Ignora la difesa. Raddoppia le ferite inflitte contro i Nani.",
+      "only_for_army": [
+        "skaven"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_di_gromril",
+      "name": "La Lama Di Gromril",
+      "cost": 50,
+      "category": "Armi Magiche",
+      "description": "Ignora la difesa.",
+      "only_for_army": [],
+      "not_for_army": [
+        "orchi",
+        "goblin"
+      ],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_di_skabsktrath",
+      "name": "La Spada Di Skabsktrath",
+      "cost": 50,
+      "category": "Armi Magiche",
+      "description": "Chi la impugna incute Terrore.",
+      "only_for_army": [
+        "nommorti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_del_mutamento",
+      "name": "La Spada Del Mutamento",
+      "cost": 50,
+      "category": "Armi Magiche",
+      "description": "Quando infligge almeno una ferita a un avversario, senza ucciderlo, tira 1D6: se ottieni un numero pari o inferiore al numero di ferite inflitte, l'avversario si tramuta in un Abominio del Caos.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spaccacuore",
+      "name": "La Spaccacuore",
+      "cost": 50,
+      "category": "Armi Magiche",
+      "description": "Permette di ritirare tutti i dadi in attacco, ma se si decide di farlo va accettato il secondo risultato.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_della_giustizia",
+      "name": "La Spada Della Giustizia",
+      "cost": 50,
+      "category": "Armi Magiche",
+      "description": "Permette di ritirare un dado in attacco, ignora la difesa.",
+      "only_for_army": [
+        "impero"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_sepolcrale_di_arkhan",
+      "name": "La Lama Sepolcrale \nDi Arkhan",
+      "cost": 50,
+      "category": "Armi Magiche",
+      "description": "+2 DC in attacco. Ogni modello ucciso di taglia normale crea uno scheletro al servizio del possessore.",
+      "only_for_army": [
+        "negromanti",
+        "lich",
+        "vampiri"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lama_runica_del_caos",
+      "name": "Lama Runica Del Caos",
+      "cost": 45,
+      "category": "Armi Magiche",
+      "description": "Ignora la difesa, ogni ferita inflitta sottrae 1D3 di punti corpo invece di 1.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lancia_del_drago",
+      "name": "La Lancia Del Drago",
+      "cost": 40,
+      "category": "Armi Magiche",
+      "description": "Lancia da cavaliere. In carica, puoi ritirare tutti i dadi che non hanno ottenuto un teschio.",
+      "only_for_army": [
+        "elfi_alti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_dell_orco",
+      "name": "La Lama Dell'Orco",
+      "cost": 40,
+      "category": "Armi Magiche",
+      "description": "+2 DC in attacco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_ossea",
+      "name": "La Lama Ossea",
+      "cost": 35,
+      "category": "Armi Magiche",
+      "description": "Ogni ferita inflitta sottrae 1D3 di punti corpo invece di 1.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_urlante",
+      "name": "La Lama Urlante",
+      "cost": 35,
+      "category": "Armi Magiche",
+      "description": "Il possessore incute Paura.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_flagello_di_teschi",
+      "name": "Il Flagello Di Teschi",
+      "cost": 30,
+      "category": "Armi Magiche",
+      "description": "Arma a 2 mani (+1 DC in attacco). Raddoppia le ferite inflitte.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_zanna_di_runa",
+      "name": "La Zanna Di Runa",
+      "cost": 30,
+      "category": "Armi Magiche",
+      "description": "Ignora la difesa. Contro i nommorti e i demoni raddoppia le ferite inflitte.",
+      "only_for_army": [
+        "impero_se_ne_puo_avere_piu_di_una_per_esercito"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_dell_esorcismo",
+      "name": "La Spada Dell'Esorcismo",
+      "cost": 25,
+      "category": "Armi Magiche",
+      "description": "Contro i Nommorti ignora la difesa e infligge 1D3 di ferite.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_lacerante",
+      "name": "La Lama Lacerante",
+      "cost": 25,
+      "category": "Armi Magiche",
+      "description": "Raddoppia le ferite inflitte.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_di_difesa",
+      "name": "La Spada Di Difesa",
+      "cost": 20,
+      "category": "Armi Magiche",
+      "description": "-1 DC in attacco agli avversari in CaC.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_della_forza",
+      "name": "La Spada Della Forza",
+      "cost": 20,
+      "category": "Armi Magiche",
+      "description": "+1 DC in attacco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_di_bork",
+      "name": "La Spada Di Bork",
+      "cost": 10,
+      "category": "Armi Magiche",
+      "description": "L'unità del portatore ignora il primo test di animosità fallito.",
+      "only_for_army": [
+        "orchi"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_del_nord",
+      "name": "La Lama Del Nord",
+      "cost": 100,
+      "category": "Armi Magiche",
+      "description": "+3DC in attacco. Raddoppia le ferite inflitte.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_lama_degli_spiriti",
+      "name": "La Lama Degli Spiriti",
+      "cost": 75,
+      "category": "Armi Magiche",
+      "description": "Arma a due mani. Ignora la difesa. Ignora i tiri salvezza e non permette di rigenerarsi. Raddoppia le ferite contro i nommorti.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "le_lame_di_gork_e_mork",
+      "name": "Le Lame Di Gork E Mork",
+      "cost": 75,
+      "category": "Armi Magiche",
+      "description": "Due armi. +1DC in attacco (oltre al +1 per le due armi), +1DC in difesa, permette di ritirare tutti i dadi d'attacco.",
+      "only_for_army": [
+        "orchi"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_di_hoeth",
+      "name": "La Spada Di Hoeth",
+      "cost": 25,
+      "category": "Armi Magiche",
+      "description": "Spada a 2 mani. Conferisce +1 in Attacco (per un totale di +2).",
+      "only_for_army": [
+        "elfi_alti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_scudo_divoratore",
+      "name": "Lo Scudo Divoratore",
+      "cost": 100,
+      "category": "Armature Magiche",
+      "description": "Scudo. Resistenza alla Magia 3+ (anche all'unità del portatore). Un incantesimo annullato è distrutto con 4+ su 1D6.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_abbagliante",
+      "name": "L'Armatura Abbagliante",
+      "cost": 75,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Include uno scudo. -2 DC agli attacchi degli avversari (in CaC o da tiro).",
+      "only_for_army": [
+        "bretonni",
+        "elfi_alti",
+        "impero"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_di_protezione",
+      "name": "L'Armatura Di Protezione",
+      "cost": 50,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Tiro Salvezza di 4+.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "lo_scudo_runico_del_caos",
+      "name": "Lo Scudo Runico Del Caos",
+      "cost": 50,
+      "category": "Armature Magiche",
+      "description": "Scudo. Le armi magiche non funzionano contro il portatore.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_delle_ombre",
+      "name": "L'Armatura Delle Ombre",
+      "cost": 50,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Il portatore può muoversi attraverso boschi, ostacoli e edifici senza penalità. -1 DC agli attacchi degli avversari (in CaC o da tiro).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "lo_scudo_antimagia",
+      "name": "Lo Scudo Antimagia",
+      "cost": 50,
+      "category": "Armature Magiche",
+      "description": "Scudo. Resistenza alla Magia 4+ (anche all'unità del portatore). Un incantesimo annullato causa al lanciatore un attacco con tanti DC quanto era il Potere dell'incantesimo, ignorando la difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_di_mutapietra",
+      "name": "L'Armatura Di Mutapietra",
+      "cost": 50,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Tiro Salvezza di 4+, per ogni ferita salvata chi ha attaccato (in CaC) subisce un attacco con 1DC (somma tutti i dadi in un unico attacco), senza potersi difendere.",
+      "only_for_army": [
+        "skaven",
+        "puo_essere_usata_dai_maghi"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_di_caledor",
+      "name": "L'Armatura Di Caledor",
+      "cost": 40,
+      "category": "Armature Magiche",
+      "description": "% Armatura pesante. % +2 DC in difesa invece di +1, Tiro Salvezza di 5+, immunità a tutti i soffi di drago. % %",
+      "only_for_army": [
+        "elfi_alti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_di_ferro_meteoritico",
+      "name": "L'Armatura Di Ferro Meteoritico",
+      "cost": 25,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Conferisce Difesa 6, non migliorabile.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "lo_scudo_della_tempesta",
+      "name": "Lo Scudo Della Tempesta",
+      "cost": 25,
+      "category": "Armature Magiche",
+      "description": "Scudo. Ogni volta che il portatore para uno o più teschi da un attacco avversario, chi ha portato l'attacco viene attaccato con un numero di DC pari al numero di teschi parati, senza potersi difendere.",
+      "only_for_army": [
+        "elfi_alti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_scarlatta_di_dargan",
+      "name": "L'Armatura Scarlatta Di Dargan",
+      "cost": 25,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. +1 DC in Difesa. Per attaccare il portatore in CaC è necessario passare un test di Coraggio, ottenendo almeno 2 teschi.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_della_fortuna",
+      "name": "L'Armatura Della Fortuna",
+      "cost": 15,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Tiro Salvezza di 5+.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_del_caos",
+      "name": "L'Armatura Del Caos",
+      "cost": 10,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. +2 DC in difesa invece di +1.",
+      "only_for_army": [
+        "caos",
+        "puo_essere_usata_dai_maghi"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_elmo_del_drago",
+      "name": "L'Elmo Del Drago",
+      "cost": 10,
+      "category": "Armature Magiche",
+      "description": "Tiro salvezza di 2+ contro gli attacchi da fuoco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "lo_scudo_di_ptolos",
+      "name": "Lo Scudo Di Ptolos",
+      "cost": 10,
+      "category": "Armature Magiche",
+      "description": "Scudo. +5 DC in difesa invece di +1 contro gli attacchi da tiro.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_di_resistenza",
+      "name": "L'Armatura Di Resistenza",
+      "cost": 5,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Tiro Salvezza di 6+.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "lo_scudo_incantato",
+      "name": "Lo Scudo Incantato",
+      "cost": 5,
+      "category": "Armature Magiche",
+      "description": "Scudo. +2 DC in difesa invece di +1.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "lo_scudo_fatato",
+      "name": "Lo Scudo Fatato",
+      "cost": 5,
+      "category": "Armature Magiche",
+      "description": "Scudo. La prima ferita subita viene ignorata.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "i_colori_magici_di_guerra",
+      "name": "I Colori Magici Di Guerra",
+      "cost": 5,
+      "category": "Armature Magiche",
+      "description": "+2 DC Difesa in CaC o +4 contro attacchi da tiro.",
+      "only_for_army": [
+        "elfi_silvani",
+        "goblin_delle_foreste",
+        "orchi_selvaggi",
+        "skaven"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "la_corazza_di_borin",
+      "name": "La Corazza Di Borin",
+      "cost": 75,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. +2 in difesa invece di +1, permette di difendersi anche contro gli attacchi che negano la difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_dell_alba",
+      "name": "L'Armatura Dell'Alba",
+      "cost": 70,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Permette di ritirare ogni DC in difesa una volta.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_di_adamantio",
+      "name": "L'Armatura Di Adamantio",
+      "cost": 50,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Corazza 1.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "lo_scudo_del_karma",
+      "name": "Lo Scudo Del Karma",
+      "cost": 50,
+      "category": "Armature Magiche",
+      "description": "Scudo. +2DC in difesa invece di +1. In CacC, ogni teschio difeso dal portatore diventa un teschio inflitto a chi a portato l'attacco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "lo_scudo_di_difesa",
+      "name": "Lo Scudo Di Difesa",
+      "cost": 50,
+      "category": "Armature Magiche",
+      "description": "Scudo. Il possessore viene attaccato con 2 DC in meno, sia in CaC che da armi da tiro.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_di_smeraldo",
+      "name": "L'Armatura Di Smeraldo",
+      "cost": 30,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Ignora la prima ferita subita.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "lo_scudo_invalicabile",
+      "name": "Lo Scudo Invalicabile",
+      "cost": 30,
+      "category": "Armature Magiche",
+      "description": "Scudo. +3DC invece di +1.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "lo_scudo_che_morde",
+      "name": "Lo Scudo Che Morde",
+      "cost": 25,
+      "category": "Armature Magiche",
+      "description": "Scudo. +1DC in attacco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_incantata",
+      "name": "L'Armatura Incantata",
+      "cost": 15,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. +2DC in difesa invece di +1.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "il_sigillo_d_argento",
+      "name": "Il Sigillo D'Argento",
+      "cost": 75,
+      "category": "Difese Arcane",
+      "description": "-1 DC a tutti gli attacchi portati verso il portatore o la sua unità. Resistenza alla Magia 4+ (anche all'unità del portatore).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_amuleto_nero",
+      "name": "L'Amuleto Nero",
+      "cost": 50,
+      "category": "Difese Arcane",
+      "description": "Tiro salvezza di 5+. Ogni ferita salvata viene invece inflitta a chi ha attaccato, se in CaC (ignorando la difesa, ma non tiri salvezza o rigenerazione).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_corona_d_orodi_atrazar",
+      "name": "La Corona D'OroDi Atrazar",
+      "cost": 50,
+      "category": "Difese Arcane",
+      "description": "Tiro salvezza di 4+.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_pietra_dell_alba",
+      "name": "La Pietra Dell'Alba",
+      "cost": 25,
+      "category": "Difese Arcane",
+      "description": "Il portatore può ripetere ogni dado di difesa che non ha ottenuto uno scudo.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "i_bracciali_del_fulmine",
+      "name": "I Bracciali Del Fulmine",
+      "cost": 25,
+      "category": "Difese Arcane",
+      "description": "Tiro salvezza di 3+ contro gli attacchi a distanza.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_amuleto_di_fuoco",
+      "name": "L'Amuleto Di Fuoco",
+      "cost": 25,
+      "category": "Difese Arcane",
+      "description": "Il possessore e la sua unità guadagnano resistenza alla magia 4+.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_amuleto_di_giada",
+      "name": "L'Amuleto Di Giada",
+      "cost": 5,
+      "category": "Difese Arcane",
+      "description": "Tiro salvezza di 2+ contro una singola ferita.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_anello_di_protezione",
+      "name": "L'Anello Di Protezione",
+      "cost": 15,
+      "category": "Difese Arcane",
+      "description": "Tiro Salvezza 5+.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_amuleto_d_argento",
+      "name": "L'Amuleto D'Argento",
+      "cost": 15,
+      "category": "Difese Arcane",
+      "description": "Il possessore e la sua unità guadagnano resistenza alla magia 5+.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_amuleto_di_difesa",
+      "name": "L'Amuleto Di Difesa",
+      "cost": 5,
+      "category": "Difese Arcane",
+      "description": "Tiro Salvezza 6+.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_corona_della_stregoneria",
+      "name": "La Corona Della Stregoneria",
+      "cost": 125,
+      "category": "Oggetti Incantati",
+      "description": "Il possessore può lanciare incantesimi come un necromante di livello 3.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_bastone_della_corruzione",
+      "name": "Il Bastone Della Corruzione",
+      "cost": 100,
+      "category": "Oggetti Incantati",
+      "description": "%... % %",
+      "only_for_army": [
+        "monaci_della_peste_skaven"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_talismano_d_ossidiana",
+      "name": "Il Talismano D'Ossidiana",
+      "cost": 100,
+      "category": "Oggetti Incantati",
+      "description": "Nessun mago a contatto può usare incantesimi, disperdere o trattenere carte magia.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_talismano_di_hoeth",
+      "name": "Il Talismano Di Hoeth",
+      "cost": 85,
+      "category": "Oggetti Incantati",
+      "description": "Il possessore può lanciare incantesimi come un mago elfo alto di livello 2.",
+      "only_for_army": [
+        "elfi_alti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_liber_bubonicus",
+      "name": "Il Liber Bubonicus",
+      "cost": 75,
+      "category": "Oggetti Incantati",
+      "description": "% \\add{} %",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_mantello_delle_ombre",
+      "name": "Il Mantello Delle Ombre",
+      "cost": 75,
+      "category": "Oggetti Incantati",
+      "description": "Il possessore non può essere caricato o preso di mira da armi da tiro, a meno che il nemico non ottenga un 6 su 1D6. Gli incantesimi possono essere lanciati contro il possessore solo ottenendo 5 o 6 su 1D6.",
+      "only_for_army": [
+        "skaven"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_calice_di_rubino",
+      "name": "Il Calice Di Rubino",
+      "cost": 60,
+      "category": "Oggetti Incantati",
+      "description": "Attivato quando l'unità subisce una ferita. -2 DC agli attacchi a distanza contro l'unità del portatore, -1 in corpo a corpo.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_boccale_di_bugman",
+      "name": "Il Boccale Di Bugman",
+      "cost": 50,
+      "category": "Oggetti Incantati",
+      "description": "Può essere usato una volta per turno (anche avversario) in qualsiasi momento, per recuperare un PC perso.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_corona_del_comando",
+      "name": "La Corona Del Comando",
+      "cost": 50,
+      "category": "Oggetti Incantati",
+      "description": "Il possessore guadagna Coraggio 8.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_scettro_di_norgrim",
+      "name": "Lo Scettro Di Norgrim",
+      "cost": 50,
+      "category": "Oggetti Incantati",
+      "description": "Ogni turno il possessore e la sua unità possono scegliere se ottenere +1 DC in Attacco (in CaC), +3 DC in Difesa o poter marciare.",
+      "only_for_army": [
+        "nani"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_pozione_di_cura",
+      "name": "La Pozione Di Cura",
+      "cost": 50,
+      "category": "Oggetti Incantati",
+      "description": "Può essere bevuta durante il proprio turno. Ripristina tutti i punti corpo persi.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_anello_dei_carstein",
+      "name": "L'Anello Dei Carstein",
+      "cost": 50,
+      "category": "Oggetti Incantati",
+      "description": "Se il portatore viene ucciso, ritorna in vita con 1D3 PC (fino a un massimo dei suoi PC originari), entro fino a 2 caselle di distanza.",
+      "only_for_army": [
+        "vampiri"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "birra_skaven",
+      "name": "Birra Skaven",
+      "cost": 50,
+      "category": "Oggetti Incantati",
+      "description": "Può essere fatta bere all'unità del portatore (di Clanratti o Ratti d'Assalto) all'inizio della sua azione, e gli effetti durano per tutta la partita. Tira 1D6: 1: nessun effetto; 2,3: l'unità odia tutti i non-Skaven; 4,5: l'unità è soggetta \\textit{furia}; 6: l'unità ha +1 Movimento e +2 Attacco in CaC, ma subisce 1D6 di ferite ottenendo uno scudo su 1DC alla fine di ogni suo turno.",
+      "only_for_army": [
+        "skaven",
+        "un_solo_uso"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_amuleto_d_ambra",
+      "name": "L'Amuleto D'Ambra",
+      "cost": 25,
+      "category": "Oggetti Incantati",
+      "description": "Il possessore riguadagna un punto corpo perso all'inizio di ogni suo turno.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_gemma_nera_di_gnar",
+      "name": "La Gemma Nera Di Gnar",
+      "cost": 25,
+      "category": "Oggetti Incantati",
+      "description": "Può essere usata contro un personaggio in corpo a corpo. Il possessore e il personaggio sono bloccati all'interno della gemma e rimossi temporaneamente dal gioco. All'inizio di ogni turno di ciascun giocatore, l'incantesimo si spezza ottenendo un 6 su 1D6.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_libro_maledetto",
+      "name": "Il Libro Maledetto",
+      "cost": 25,
+      "category": "Oggetti Incantati",
+      "description": "Tutte le creature viventi a distanza di 1 casella o meno subiscono 1 DC di penalità a ogni attacco.",
+      "only_for_army": [
+        "nommorti",
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_cuore_del_dolore",
+      "name": "Il Cuore Del Dolore",
+      "cost": 25,
+      "category": "Oggetti Incantati",
+      "description": "Esplode alla morte del possessore. L'unità del possessore, così come un'unità nemica a scelta del possessore e fino a un personaggio all'interno di questa unità, sono attaccati ciascuno con 1D6 DC, +1 per ogni PC originario del possessore.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_amuleto_di_mutapietra",
+      "name": "L'Amuleto Di Mutapietra",
+      "cost": 25,
+      "category": "Oggetti Incantati",
+      "description": "Per attaccare il portatore in CaC è necessario passare un test di Coraggio, ottenendo almeno 2 teschi.",
+      "only_for_army": [
+        "skaven"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "i_funghi_cappello_matto",
+      "name": "I Funghi Cappello Matto",
+      "cost": 25,
+      "category": "Oggetti Incantati",
+      "description": "Può essere dato a un Goblin Fanatico che esce dall'unità del portatore: questo attaccherà con 1D6 DC in più.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_corona_di_bretonnia",
+      "name": "La Corona Di Bretonnia",
+      "cost": 15,
+      "category": "Oggetti Incantati",
+      "description": "All'inizio della battaglia, scegli tra: +1 in Attacco, +3 in Difesa o +1 PC. Con 5+ su 1D6 il possessore ottiene questo bonus. Altrimenti scegline un altro, che viene ottenuto con 3+ su 1D6. Se anche questo tiro fallisce, il bonus restante è ottenuto automaticamente.",
+      "only_for_army": [
+        "lord_di_bretonnia"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_pozione_di_forza",
+      "name": "La Pozione Di Forza",
+      "cost": 10,
+      "category": "Oggetti Incantati",
+      "description": "Può essere bevuta durante il proprio turno. +3 DC in attacco in corpo a corpo per un turno.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_potion_sacre",
+      "name": "La Potion Sacre'",
+      "cost": 5,
+      "category": "Oggetti Incantati",
+      "description": "Il possessore può berla prima di effettuare un tiro di dado. Può ritirare questo dado se lo vuole.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_anello_nullificatore",
+      "name": "L'Anello Nullificatore",
+      "cost": 30,
+      "category": "Oggetti Incantati",
+      "description": "Nessun modello in un casella a contatto (o nella stessa casella) puà lancirare incantesimi.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_talismano_della_fortuna",
+      "name": "Il Talismano\nDella Fortuna",
+      "cost": 25,
+      "category": "Oggetti Incantati",
+      "description": "Il possessore può ripetere il tiro di un dado durante la partita.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_corno_della_risolutezza",
+      "name": "Il Corno Della Risolutezza",
+      "cost": 50,
+      "category": "Oggetti Incantati",
+      "description": "Può essere suonato una volta per battaglia in qualsiasi momento. Tutte le unità amiche entro 2 caselle raddoppiano il bonus di ranghi al risultato del combattimento.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_amuleto_della_possanza",
+      "name": "L'Amuleto Della Possanza",
+      "cost": 30,
+      "category": "Oggetti Incantati",
+      "description": "Il portatore aggiunge +1 DC al suo Attacco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_pietra_da_battaglia_di_le_marquis",
+      "name": "La Pietra Da Battaglia Di Le Marquis",
+      "cost": 25,
+      "category": "Oggetti Incantati",
+      "description": "Può essere usata durante il turno del possessore. Il possessore e la sua unità ottengono +1 DC in Attacco fino alla fine del turno.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "pozione_della_battaglia",
+      "name": "Pozione Della Battaglia",
+      "cost": 15,
+      "category": "Oggetti Incantati",
+      "description": "Il portatore può berla durante il suo turno, per ottenere +1D6 DC in Attacco fino alla fine del turno. Se questo porta a un valore di Attacco complessivo del portatore di 8 o più (esclusi i bonus dall'utilizzo di armi o armi magiche), il portatore è rimosso come perdita alla fine del suo turno.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_corona_da_guerradi_saphery",
+      "name": "La Corona Da GuerraDi Saphery",
+      "cost": 125,
+      "category": "Arcani",
+      "description": "Aumenta il livello del possessore di 1, fino a un massimo di 5.",
+      "only_for_army": [
+        "maghi_supremi_degli_elfi_alti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_libro_di_nagash",
+      "name": "Il Libro Di Nagash",
+      "cost": 100,
+      "category": "Arcani",
+      "description": "Aumenta il livello del possessore di 1, fino a un massimo di 5, ma può usare solo incantesimi necromantici.",
+      "only_for_army": [
+        "nommorti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_scettro_proibito",
+      "name": "Lo Scettro Proibito",
+      "cost": 75,
+      "category": "Arcani",
+      "description": "Il possessore può lanciare un incantesimo a turno senza usare carte potere e come se usasse Potere Totale. Se lo fa, tira 1DC: se ottieni un teschio il possessore subisce una ferita per ogni punto Potere dell'incantesimo; se ottieni uno scudo, il possessore è rimosso come perdita.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "la_spada_dell_empio_potere",
+      "name": "La Spada Dell'Empio Potere",
+      "cost": 75,
+      "category": "Arcani",
+      "description": "Il possessore può lanciare un incantesimo a turno senza usare carte potere. Tira 1DC quando la spada viene usata: se ottieni uno scudo, il possessore subisce una ferita per ogni punto Potere dell'incantesimo. % Il possessore non può portare altre armi magiche.",
+      "only_for_army": [
+        "maghi_con_magia_oscura",
+        "necromanzia"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_libro_di_ashur",
+      "name": "Il Libro Di Ashur",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Il possessore può scegliere incantesimi da un qualsiasi mazzo, in qualsiasi combinazione.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_libro_dei_segreti",
+      "name": "Il Libro Dei Segreti",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Il possessore può lanciare incantesimi senza usare carte potere. Ogni volta che lo fa, perde 1 punto a piacimento in Movimento, Attacco, Difesa, Corpo o Coraggio.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "famiglio_del_caos",
+      "name": "Famiglio Del Caos",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Famiglio (M1, A1, D2, C1, C4). Una volta a turno, lo stregone può aggiungere o sottrarre 1 a un tiro di D6 (dichiarandolo prima), o aggiungere un teschio o un tiro che prevede il lancio di DC.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "famiglio_del_sapere",
+      "name": "Famiglio Del Sapere",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Famiglio (M1, A1, D2, C1, C4). Il mago può prendere un incantesimo addizionale all'inizio della partita, e può usarlo fintanto che il famiglio è vivo ed è nella sua stessa unità.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_mantello_della_nebbia",
+      "name": "Il Mantello Della Nebbia",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Il possessore diventa etereo: può muovere di 4 caselle oltrepassando ostacoli e altre unità, è immune a tutti gli attacchi non magici, ma non può attaccare.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "la_pozione_della_conoscenza",
+      "name": "La Pozione Della Conoscenza",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Il possessore può berla durante il suo turno, e fino alla fine del turno lancia i suoi incantesimi senza usare carte potere. Per ogni incantesimo lanciato in questo modo tira 1 DC. Se ottiene uno scudo, il possessore diventa affetto da Stupidità per il resto della partita.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_bastone_del_fulmine",
+      "name": "Il Bastone Del Fulmine",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Incantesimo infuso: gittata 4 caselle, attacco 4 DC, ignora la difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_bastone_della_morte_ardente",
+      "name": "Il Bastone Della Morte Ardente",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Incantesimo infuso: gittata 4 caselle, attacco 1D6 DC, ignora la difesa. Un'unità che subisce una o più perdite, deve immediatamente effettuare un test di Panico.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_bastone_di_osiride",
+      "name": "Il Bastone Di Osiride",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Incantesimo infuso: gittata 3 caselle, attacco 3DC, ignora la difesa. Per ogni vittima, attacca ulteriormente con 1DC, e procedi finché fai vittime.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_bastone_di_giaietto",
+      "name": "Il Bastone Di Giaietto",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Può essere usato per ridurre di 1 il numero di carte Potere necessarie a lanciare un incantesimo. Si scarica ottenendo uno scudo su 1 DC a ogni utilizzo.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_bastone_della_dannazione",
+      "name": "Il Bastone Della Dannazione",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Incantesimo infuso: gittata 6 caselle. L'unità bersaglio di scheletri, zombie, mummie o spettri (ma non catapulta) può immediatamente muovere di 1 casella, attaccare in CaC o tirare con armi da tiro.",
+      "only_for_army": [
+        "nommorti"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "pergamenadi_cancellazione",
+      "name": "PergamenaDi Cancellazione",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Disperde automaticamente un incantesimo appena lanciato o uno già in gioco (si applicano le solite restrizioni sulla distanza massima per le dispersioni). La carta incantesimo viene inoltre scartata ottenendo un 4+ su 1D6.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_calice_del_caos",
+      "name": "Il Calice Del Caos",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Può essere usato quando si distribuiscono le carte Venti di Magia. Tira 1D6: 1: lo stregone si trasforma in un Abominio del Caos; 2-3: l'avversario riceve una carta Venti di Magia in meno; 4-5: lo stregone riceve una carta Venti di Magia in più; 6: l'avversario riceve una carta Venti di Magia in meno e lo stregone una in più.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_calicedella_stregoneria",
+      "name": "Il CaliceDella Stregoneria",
+      "cost": 35,
+      "category": "Arcani",
+      "description": "Il possessore può pescare una carta venti di magia in più a turno. Se lo fa, tira 1D6: se ottiene un 1 subisce una ferita.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_teschio_di_katam",
+      "name": "Il Teschio Di Katam",
+      "cost": 35,
+      "category": "Arcani",
+      "description": "Il possessore può lanciare incantesimi usando una carta potere in meno. Ogni volta che lo fa, deve superare un test di Coraggio: se lo fallisce, il mago impazzisce e viene rimosso dalla partita.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_bastone_del_teschio",
+      "name": "Il Bastone Del Teschio",
+      "cost": 35,
+      "category": "Arcani",
+      "description": "Il possessore ottiene +1 per disperdere incantesimi (fino a un massimo di 3+).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "pergamena_del_potere",
+      "name": "Pergamena Del Potere",
+      "cost": 30,
+      "category": "Arcani",
+      "description": "Il possessore può lanciare uno dei suoi incantesimi senza usare carte potere.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "famiglio_del_potere",
+      "name": "Famiglio Del Potere",
+      "cost": 30,
+      "category": "Arcani",
+      "description": "Famiglio (M1, A1, D2, C1, C4). Può accumulare 1 carta Venti di Magia, utilizzabile da un mago nella sua stessa unità. Inizia la partita con 1 carta Venti di Magia pescata a caso.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "pergamena_di_dispersione",
+      "name": "Pergamena Di Dispersione",
+      "cost": 25,
+      "category": "Arcani",
+      "description": "Disperde automaticamente un incantesimo appena lanciata o uno già in gioco (si applicano le solite restrizioni sulla distanza massimo per le dispersioni). Se ne può selezionare più di una per esercito.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_bastone_del_potere",
+      "name": "Il Bastone Del Potere",
+      "cost": 25,
+      "category": "Arcani",
+      "description": "Il possessore può trattenere fino a 3 carte venti di magia in più.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "famiglio_guerriero",
+      "name": "Famiglio Guerriero",
+      "cost": 25,
+      "category": "Arcani",
+      "description": "Famiglio (M1, A4, D3, C1, C6). Se il possessore è attaccato (in CaC o a distanza), il famiglio si frappone e viene attaccato al suo posto.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "la_gemma_di_taranto",
+      "name": "La Gemma Di Taranto",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Può essere usata per disperdere automaticamente un incantesimo lanciato contro il portatore o la sua unità. L'incantesimo viene quindi risucchiato dalla gemma e il portatore può lanciarlo per il resto della partita come se fosse un suo incantesimo (se questo incantesimo viene fatto scartare per qualsiasi motivo, non viene pescata un'altra carta incantesimo).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_specchio_magico",
+      "name": "Lo Specchio Magico",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Può essere usato per disperdere automaticamente un incantesimo ostile diretto verso un'unità nemica entro 4 caselle. L'incantesimo viene quindi respinto e lanciato automaticamente contro il lanciatore o la sua unità.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "la_pergamena_della_maledizione_di_bufo",
+      "name": "La Pergamena Della Maledizione Di Bufo",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Può essere usata per disperdere automaticamente un incantesimo diretto verso il portatore o la sua unità. Il lanciatore viene quindi tramutato in un rospo! Mentre è nella forma di rospo, il mago avversario ha tutte le caratteristiche ridotte a 1, non può lanciare incantesimi e non può disperderli, né usare oggetti magici. All'inizio di ogni turno successivo del mago, questo riprende la sua forma con 4+ su 1D6.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "la_pergamena_delle_fauci_fameliche",
+      "name": "La Pergamena Delle Fauci Fameliche",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Può essere usata per disperdere un incantesimo ostile diretto verso un'unità amica entro 4 caselle. L'incantesimo viene scartato.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "la_pergamena_ipnotica",
+      "name": "La Pergamena Ipnotica",
+      "cost": 50,
+      "category": "Arcani",
+      "description": "Può essere usata per disperdere un incantesimo ostile lanciato da un mago entro 4 caselle, o verso un bersaglio entro 4 caselle. Tira quindi 1D6: con 4+ puoi ridirigere l'incantesimo contro un bersaglio a tua scelta.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "mago"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "l_anello_della_fiamma_ignea",
+      "name": "L'Anello Della Fiamma Ignea",
+      "cost": 100,
+      "category": "Ricettacoli",
+      "description": "Incantesimo infuso: raggio 3, attacco 2D6 DC, nega la difesa. %",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_bastone_di_nurgle",
+      "name": "Il Bastone Di Nurgle",
+      "cost": 100,
+      "category": "Ricettacoli",
+      "description": "Incantesimo infuso: raggio 2, il modello bersaglio è ucciso a meno che non ottenga almeno uno scudo su tanti DC quanti sono i suoi punti corpo. Dopo ogni uso si scarica ottenendo uno scuso su 1DC.",
+      "only_for_army": [
+        "stregoni_del_caos_di_nurgle"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_corno_di_ugork",
+      "name": "Il Corno Di Ugork",
+      "cost": 75,
+      "category": "Ricettacoli",
+      "description": "Incantesimo infuso: tutte le unità nemiche in CaC entro 4 caselle devono effettuare un test di Panico e se lo falliscono fuggire immediatamente. Tutte le unità amiche in fuga entro 4 caselle sono chiamate a raccolta.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "la_cornamusa_del_fato",
+      "name": "La Cornamusa Del Fato",
+      "cost": 75,
+      "category": "Ricettacoli",
+      "description": "Incantesimo infuso: raggio 3, l'unità di cavalleria bersaglio viene attaccata con 1D6 DC e non può caricare nel turno seguente.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "il_pungolo_di_skarsnik",
+      "name": "Il Pungolo Di Skarsnik",
+      "cost": 75,
+      "category": "Ricettacoli",
+      "description": "Incantesimo infuso: raggio 4, attacco pari al doppio del numero di unità di orchi o goblin entro 2 caselle dal portatore (con almeno 5 modelli), ignora la difesa.",
+      "only_for_army": [
+        "goblin_delle_tenebre"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_artiglio_di_nagash",
+      "name": "L'Artiglio Di Nagash",
+      "cost": 50,
+      "category": "Ricettacoli",
+      "description": "Incantesimo infuso: raggio 1, il modello singolo bersaglio (anche all'interno di un'unità) subisce un numero di ferite pari a 2D6 meno il suo valore di Attacco (non modificato da armi). Tiri salvezza e rigenerazione sono concessi normalmente.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_anello_di_corin",
+      "name": "L'Anello Di Corin",
+      "cost": 50,
+      "category": "Ricettacoli",
+      "description": "Incantesimo infuso: raggio 2, un oggetto magico bersaglio viene distrutto se si ottiene un numero pari o superiore al suo costo in punti tirando 2D6 e moltiplicando per 10.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "l_anello_di_volans",
+      "name": "L'Anello Di Volans",
+      "cost": 25,
+      "category": "Ricettacoli",
+      "description": "Scegli un incantesimo di Magia da Battaglia all'inizio della partita. Questo incantesimo può essere usato come Incantesimo infuso.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    }
+  ]
+}

@@ -7,6 +7,8 @@
       "min_size": 1,
       "max_size": 1,
       "cost_per_model": 80,
+      "type": "lord",
+      "magic_item_slots": 3,
       "options": [
         { "id": "grande_arma", "name": "arma a 2 mani", "cost": 8 },
         { "id": "armatura", "name": "armatura pesante", "cost": 4 },
@@ -14,6 +16,38 @@
         { "id": "cinghiale", "name": "cinghiale", "cost": 30 },
         { "id": "viverna", "name": "viverna", "cost": 180 },
         { "id": "carro", "name": "carro", "cost": 80 }
+      ]
+    },
+    {
+      "id": "BH_GRANDE_SCIAMANO_ORCO",
+      "name": "Grande Sciamano Orco",
+      "category": "Personaggi",
+      "min_size": 1,
+      "max_size": 1,
+      "cost_per_model": 120,
+      "type": "mago",
+      "magic_item_slots": 4,
+      "options": [
+        { "id": "livello4", "name": "Livello 4", "cost": 60 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 30 },
+        { "id": "viverna", "name": "viverna", "cost": 180 },
+        { "id": "carro", "name": "carro", "cost": 80 }
+      ]
+    },
+    {
+      "id": "BH_ALFIERE_ORCO",
+      "name": "Alfiere Orco",
+      "category": "Personaggi",
+      "min_size": 1,
+      "max_size": 1,
+      "cost_per_model": 50,
+      "magic_item_slots": 1,
+      "magic_banner_slot": true,
+      "options": [
+        { "id": "grande_arma", "name": "arma a 2 mani", "cost": 4 },
+        { "id": "armatura", "name": "armatura pesante", "cost": 2 },
+        { "id": "scudo", "name": "scudo", "cost": 2 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 15 }
       ]
     },
     {
@@ -25,7 +59,7 @@
       "cost_per_model": 8,
       "options": [
         { "id": "lancia", "name": "Lancia", "cost_per_model": 1 },
-        { "id": "stendarro", "name": "Stendardo", "cost": 10 },
+        { "id": "stendardo", "name": "Stendardo", "cost": 10 },
         { "id": "campione", "name": "Campione", "cost": 20 }
       ]
     },
@@ -37,7 +71,7 @@
       "max_size": 20,
       "cost_per_model": 4,
       "options": [
-        { "id": "stendarro", "name": "Stendardo", "cost": 10 },
+        { "id": "stendardo", "name": "Stendardo", "cost": 10 },
         { "id": "campione", "name": "Campione", "cost": 20 },
         { "id": "fanatici", "name": "Fanatici", "cost": 30, "max_count": 3}
       ]

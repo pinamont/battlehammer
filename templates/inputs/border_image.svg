@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="580" height="820" viewBox="0 0 580 820">
+  <!-- bordo esterno -->
+  <rect x="10" y="10" width="560" height="800"
+        fill="none"
+        stroke="#c4b280"
+        stroke-width="2"/>
+
+  <!-- angolo in alto a sinistra: intreccio semplice -->
+  <path d="M40 40
+        C 40 25, 60 25, 60 40
+        C 60 55, 80 55, 80 40
+        C 80 25, 100 25, 100 40"
+        fill="none"
+        stroke="#c4b280"
+        stroke-width="2"/>
+
+  <path d="M40 60
+        C 55 60, 55 80, 40 80
+        C 25 80, 25 100, 40 100"
+        fill="none"
+        stroke="#c4b280"
+        stroke-width="2"/>
+
+  <!-- angolo in alto a destra -->
+  <g transform="translate(540,40) scale(-1,1)">
+    <path d="M40 0
+          C 40 -15, 60 -15, 60 0
+          C 60 15, 80 15, 80 0
+          C 80 -15, 100 -15, 100 0"
+          fill="none"
+          stroke="#c4b280"
+          stroke-width="2"/>
+    <path d="M40 20
+          C 55 20, 55 40, 40 40
+          C 25 40, 25 60, 40 60"
+          fill="none"
+          stroke="#c4b280"
+          stroke-width="2"/>
+    </g>
+
+    <!-- angolo in basso a sinistra -->
+    <g transform="translate(40,780) scale(1,-1)">
+      <path d="M0 0
+            C 0 -15, 20 -15, 20 0
+            C 20 15, 40 15, 40 0
+            C 40 -15, 60 -15, 60 0"
+            fill="none"
+            stroke="#c4b280"
+            stroke-width="2"/>
+      <path d="M0 20
+            C 15 20, 15 40, 0 40
+            C -15 40, -15 60, 0 60"
+            fill="none"
+            stroke="#c4b280"
+            stroke-width="2"/>
+      </g>
+
+      <!-- angolo in basso a destra -->
+      <g transform="translate(540,780) scale(-1,-1)">
+        <path d="M40 0
+              C 40 -15, 60 -15, 60 0
+              C 60 15, 80 15, 80 0
+              C 80 -15, 100 -15, 100 0"
+              fill="none"
+              stroke="#c4b280"
+              stroke-width="2"/>
+        <path d="M40 20
+              C 55 20, 55 40, 40 40
+              C 25 40, 25 60, 40 60"
+              fill="none"
+              stroke="#c4b280"
+              stroke-width="2"/>
+        </g>
+      </svg>

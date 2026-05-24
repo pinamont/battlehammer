@@ -1,0 +1,36 @@
+{
+  "magic_items": [
+    {
+      "id": "sword_of_frost",
+      "name": "Spada del Gelo",
+      "category": "Armi Magiche",
+      "cost": 100
+    },
+    {
+      "id": "sword_of_might",
+      "name": "Spada del Vigore",
+      "category": "Armi Magiche",
+      "cost": 20
+    },
+    {
+      "id": "enchanted_shield",
+      "name": "Scudo Incantato",
+      "category": "Armature Magiche",
+      "not_for_type": ["Mago"],
+      "cost": 15
+    },
+    {
+      "id": "talisman_protection",
+      "name": "Talismano della Protezione",
+      "category": "Difese Arcane",
+      "cost": 25
+    },
+    {
+      "id": "bastone_del_fulmine",
+      "name": "Bastone del Fulmine",
+      "category": "Arcani",
+      "only_for_type": ["Mago"],
+      "cost": 50
+    }
+  ]
+}
