@@ -2,7 +2,8 @@ import json
 from pathlib import Path
 
 TEMPLATE = Path("templates/builder_template.html")
-OUTPUT = Path("dist/battlehammer_builder.html")
+# OUTPUT = Path("dist/battlehammer_builder.html")
+OUTPUT = Path("index.html")
 DATA_DIR = Path("data")
 TEMPLATE_DIR = Path("templates")
 

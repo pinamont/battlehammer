@@ -182,6 +182,60 @@
       font-size: 11px;
       box-sizing: border-box;
     }
+
+    /* --- CONFIG HEADER --- */
+    .config-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .config-unit-name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .config-points {
+      font-size: 15px;
+      font-weight: bold;
+      color: #e6edf3;
+    }
+
+    /* --- SUB HEADER --- */
+    .config-subtop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .config-unit-meta {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .config-actions button {
+      margin-left: 6px;
+    }
+
+    /* --- MOBILE VERSION --- */
+    @media (max-width: 768px) {
+      .config-top,
+      .config-subtop {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .config-actions {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        gap: 6px;
+      }
+    }
+
     /* --- MOBILE MODE --- */
     .mobile-only {
       display: none;

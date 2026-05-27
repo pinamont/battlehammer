@@ -661,7 +661,6 @@
 
         card.appendChild(left);
         card.appendChild(right);
-        // container.appendChild(card);
         container.appendChild(content);
         content.appendChild(card);
       }
@@ -673,6 +672,7 @@
     if (unit.max_per_army && counts[unit.id] >= unit.max_per_army) {
       alert("Questo unità è già stato selezionata in numero massimo di volte.")
     } else {
+      clearConfigPanel();
       selectedUnit = unit;
       renderConfigPanel();
       if (window.innerWidth < 768) {
@@ -703,23 +703,28 @@
 
     panel.innerHTML = "";
 
-    const title = document.createElement("h3");
-    title.textContent = unit.name;
-    title.style.fontSize = "15px";
-    title.style.marginTop = "0";
-    title.style.marginBottom = "2px";
-    panel.appendChild(title);
 
-    const baseInfo = document.createElement("div");
-    baseInfo.style.fontSize = "12px";
-    baseInfo.style.marginTop = "1px";
-    baseInfo.style.opacity = 0.7;
+    // const title = document.createElement("h3");
+    // title.textContent = unit.name;
+    // title.style.fontSize = "15px";
+    // title.style.marginTop = "0";
+    // title.style.marginBottom = "2px";
+    // panel.appendChild(title);
+    document.getElementById("configUnitName").textContent = unit.name;
+
+    // const baseInfo = document.createElement("div");
+    // baseInfo.style.fontSize = "12px";
+    // baseInfo.style.marginTop = "1px";
+    // baseInfo.style.opacity = 0.7;
+    let textContent = "";
     if (unit.min_size === 1 && unit.max_size === 1) {
-      baseInfo.textContent = `${unit.cost_per_model} pt (modello singolo)`;
+      textContent = `${unit.cost_per_model} pt (modello singolo)`;
     } else {
-      baseInfo.textContent = `${unit.cost_per_model} pt/mod., ${unit.min_size}-${unit.max_size} modelli`;
+      textContent = `${unit.cost_per_model} pt/mod., ${unit.min_size}-${unit.max_size} modelli`;
     }
-    panel.appendChild(baseInfo);
+    // baseInfo.textContent = textContent
+    // panel.appendChild(baseInfo);
+    document.getElementById("configUnitMeta").textContent = textContent;
 
     let sizeInput = 1
     if (unit.min_size != 1 || unit.max_size != 1) {
@@ -734,12 +739,7 @@
       sizeInput.min = unit.min_size;
       sizeInput.max = unit.max_size;
       sizeInput.value = sizeValue;
-      // sizeInput.oninput = () => {
       sizeInput.onchange = () => {
-        // const val = parseInt(sizeInput.value, 10) || unit.min_size;
-        // const val = sizeInput.value;
-        // if (val < unit.min_size) sizeInput.value = unit.min_size;
-        // if (val > unit.max_size) sizeInput.value = unit.max_size;
         checkValue(sizeInput);
         updatePointsPreview();
       };
@@ -806,11 +806,10 @@
         if (opt.max_count) {
           // Opzione con quantità
           const qty = document.createElement("input");
+          qty.id = "qtyInput"
           qty.type = "number";
           qty.min = 0;
           qty.max = opt.max_count;
-          qty.value = optionCounts[opt.id] ?? 0;
-
           qty.style.width = "32px";
           qty.style.marginLeft = "8px";
           qty.style.background = "#0d1117";
@@ -818,19 +817,52 @@
           qty.style.border = "1px solid #30363d";
           qty.style.borderRadius = "4px";
           qty.style.padding = "2px 4px";
-
-          qty.oninput = () => {
-            const v = Math.max(0, Math.min(opt.max_count, parseInt(qty.value) || 0));
-            qty.value = v;
-
-            if (v > 0) selectedOptionIds.add(opt.id);
+          qty.value = optionCounts[opt.id] ?? 0;
+          // qty.oninput = () => {
+          //   const v = Math.max(0, Math.min(opt.max_count, parseInt(qty.value) || 0));
+          //   qty.value = v;
+          //
+          //   if (v > 0) selectedOptionIds.add(opt.id);
+          //   else selectedOptionIds.delete(opt.id);
+          //
+          //   optionCounts[opt.id] = v;
+          //   updatePointsPreview();
+          // };
+          qty.onchange = () => {
+            checkValue(qty);
+            if (qty.value > 0) selectedOptionIds.add(opt.id);
             else selectedOptionIds.delete(opt.id);
-
-            optionCounts[opt.id] = v;
+            optionCounts[opt.id] = qty.value;
             updatePointsPreview();
           };
 
+          qtyMinus = document.createElement("button");
+          qtyMinus.textContent = "–";
+          qtyMinus.style.marginLeft = "1px";
+          qtyMinus.style.marginRight = "1px";
+          qtyMinus.onclick = () => {
+            adjustValueDown('qtyInput');
+            if (qty.value > 0) selectedOptionIds.add(opt.id);
+            else selectedOptionIds.delete(opt.id);
+            optionCounts[opt.id] = qty.value;
+            updatePointsPreview();
+          }
+
+          qtyPlus = document.createElement("button");
+          qtyPlus.textContent = "+";
+          qtyPlus.style.marginLeft = "1px";
+          qtyPlus.style.marginRight = "1px";
+          qtyPlus.onclick = () => {
+            adjustValueUp('qtyInput');
+            if (qty.value > 0) selectedOptionIds.add(opt.id);
+            else selectedOptionIds.delete(opt.id);
+            optionCounts[opt.id] = qty.value;
+            updatePointsPreview();
+          }
+
           left.appendChild(qty);
+          left.appendChild(qtyMinus);
+          left.appendChild(qtyPlus);
 
         } else {
           // Opzione normale (checkbox)
@@ -1115,23 +1147,28 @@
     }
 
     // Costo in punti complessivo
-    const pointsRow = document.createElement("div");
-    pointsRow.className = "config-row";
-    pointsRow.style.marginTop = "12px";
-    const pointsSpan = document.createElement("span");
-    pointsSpan.className = "points";
-    pointsSpan.id = "pointsPreview";
-    pointsSpan.textContent = `Punti unità: ${tempPoints}`;
-    pointsRow.appendChild(pointsSpan);
-    panel.appendChild(pointsRow);
+    // const pointsRow = document.createElement("div");
+    // pointsRow.className = "config-row";
+    // pointsRow.style.marginTop = "12px";
+    // const pointsSpan = document.createElement("span");
+    // pointsSpan.className = "points";
+    // pointsSpan.id = "pointsPreview";
+    {
+      // let textContent = `Punti unità: ${tempPoints}`;
+      let textContent = `${tempPoints} pt`;
+      // pointsSpan.textContent = textContent;
+      // pointsRow.appendChild(pointsSpan);
+      // panel.appendChild(pointsRow);
+      document.getElementById("configPoints").textContent = textContent;
+    }
 
-    const btnRow = document.createElement("div");
-    btnRow.className = "config-row";
+    // const btnRow = document.createElement("div");
+    // btnRow.className = "config-row";
+    const btnRow = document.getElementById("configButtons");
 
     const mainBtn = document.createElement("button");
     mainBtn.textContent = isEdit ? "Aggiorna unità" : "Aggiungi all'esercito";
     mainBtn.onclick = () => {
-      // addUnit(unit.id)
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
       const opts = Array.from(selectedOptionIds);
       const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), selectedMagicBanner);
@@ -1179,23 +1216,33 @@
       cancelBtn.style.marginLeft = "4px";
       cancelBtn.onclick = () => {
         selectedUnit = null;
+        clearConfigPanel();
         renderConfigPanel();
       };
       btnRow.appendChild(cancelBtn);
     }
 
-    panel.appendChild(btnRow);
+    // panel.appendChild(btnRow);
 
     function updatePointsPreview() {
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
       const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), selectedMagicBanner);
-      pointsSpan.textContent = `Punti unità: ${pts}`;
+      configPoints = document.getElementById("configPoints");
+      configPoints.textContent = `${pts} pt`;
     }
   }
 
   function clearConfigPanel() {
     const panel = document.getElementById("configPanel");
     panel.innerHTML = "";
+    const configUnitName = document.getElementById("configUnitName");
+    configUnitName.innerHTML = "";
+    const configPoints = document.getElementById("configPoints");
+    configPoints.innerHTML = "";
+    const configUnitMeta = document.getElementById("configUnitMeta");
+    configUnitMeta.innerHTML = "";
+    const configButtons = document.getElementById("configButtons");
+    configButtons.innerHTML = "";
     const msg = document.createElement("div");
     msg.style.opacity = "0.7";
     msg.style.fontStyle = "italic";
@@ -1256,6 +1303,7 @@
           if (window.innerWidth < 768) {
             moveToTab("config");
           }
+          clearConfigPanel();
           renderConfigPanel(e);
         };
 
