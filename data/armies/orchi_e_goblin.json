@@ -1,5 +1,5 @@
 {
-  "orcs": [
+  "orchi_e_goblin": [
     {
       "id": "orchi_guerrieri",
       "name": "Orchi guerrieri",
@@ -40,9 +40,7 @@
           "name": "campione",
           "cost": 20
         }
-      ],
-      "magic_item_slots": 0,
-      "max_per_army": 0
+      ]
     },
     {
       "id": "orchi_arcieri",
@@ -1775,7 +1773,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio speciale"
+        "personaggio speciale",
+        "goblin_delle_tenebre"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -1783,8 +1782,9 @@
         "Guardia del Corpo (finché Gobbla è in vita, qualsiasi attacco, anche da incantesimo o altro, diretto verso Skarsnik diventa invece diretto verso Gobbla; inoltre, finché Gobbla è in vita, Skarsnik non può lanciare o accettare sfide)"
       ],
       "equipment": [
-        "Pungolo di Skarsnik, Gobbla:"
+        "Gobbla"
       ],
+      "magic_items": ["Il Pungolo Di Skarsnik"],
       "ranged": [],
       "options": [],
       "magic_item_slots": 2,
@@ -1812,8 +1812,9 @@
         "tutte le unità di Orchi o Goblin entro 2 caselle ignorano l'Animosità, mago livello 3 (Necromanzia o magia delle Tenebre)"
       ],
       "equipment": [
-        "La Corona della Stregoneria, Viverna"
+        "viverna"
       ],
+      "magic_items": ["La Corona Della Stregoneria"],
       "ranged": [],
       "options": [
         {
@@ -1848,12 +1849,9 @@
       ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "Stendardo da Battaglia"
-      ],
-      "equipment": [
-        "Ascia di Grom, carro di Grom (che include Niblit, alfiere goblin delle tenebre):"
-      ],
+      "rules": ["Stendardo da Battaglia"],
+      "equipment": ["carro di Grom", "stendardo da battaglia"],
+      "magic_items": ["Mordielfi - L'Ascia Di Grom"],
       "ranged": [],
       "options": [],
       "magic_item_slots": 2,

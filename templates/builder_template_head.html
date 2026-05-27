@@ -1,5 +1,11 @@
   <meta charset="UTF-8" />
   <title>Battle Hammer Army Builder</title>
+  <div id="mobileTabs" class="mobile-only">
+    <button data-tab="settings">Impostazioni</button>
+    <button data-tab="units">Unità</button>
+    <button data-tab="config">Config</button>
+    <button data-tab="army">Esercito</button>
+  </div>
   <style>
     body {
       margin: 0;
@@ -9,7 +15,7 @@
     }
     header {
       padding: 10px 16px;
-      background: #24292f;
+      background: #1b1f23;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -69,17 +75,6 @@
       font-size: 11px;
       opacity: 0.8;
     }
-    .badge {
-      display: inline-block;
-      padding: 1px 6px;
-      border-radius: 999px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-    .badge-personaggi { background: #0550ae; }
-    .badge-truppe { background: #116329; }
-    .badge-macchine { background: #5a32a3; }
 
     .config-row {
       margin-bottom: 6px;
@@ -186,5 +181,65 @@
       font-family: monospace;
       font-size: 11px;
       box-sizing: border-box;
+    }
+    /* --- MOBILE MODE --- */
+    .mobile-only {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      header { display: none; }
+      main {
+        display: block;
+        height: auto;
+      }
+      section {
+        display: none;
+        height: auto;
+        max-height: none;
+      }
+      .mobile-only {
+        display: flex;
+        gap: 6px;
+        margin: 8px;
+      }
+      #mobileTabs button {
+        flex: 1;
+        background: #30363d;
+        padding: 6px;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      /* Tab attiva */
+      #mobileTabs button.active-tab {
+        background: #1b1f23; /* stesso colore delle section */
+        border-color: #1b1f23;
+        font-weight: bold;
+      }
+      #settingsControls {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      #settingsControls select,
+      #settingsControls input {
+        width: 100%;
+      }
+      #titleEsercito {
+        display: none
+      }
+      #titleConfig {
+        display: none
+      }
+      #titleUnit {
+        display: none
+      }
+      body[data-tab="settings"] #settingsSection { display: block; }
+      body[data-tab="units"] #unitListSection { display: block; }
+      body[data-tab="config"] #configSection { display: block; }
+      body[data-tab="army"] #armySection { display: block; }
+    }
+    @media (min-width: 768px) {
+      #settingsSection { display: none; }
+/*       body[data-tab="settings"] #settingsSection { display: none; } */
     }
   </style>

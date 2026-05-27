@@ -256,13 +256,12 @@
     },
     {
       "id": "mordielfi_l_ascia_di_grom",
-      "name": "Mordielfi, \nL'Ascia Di Grom",
+      "name": "Mordielfi - L'Ascia Di Grom",
       "cost": 50,
       "category": "Armi Magiche",
       "description": "Arma a 2 mani (+1 DC in attacco), ignora la difesa, raddoppia le ferite inflitte.",
       "only_for_army": [
-        "orchi",
-        "goblin"
+        "orchi_e_goblin"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -1854,10 +1853,10 @@
       "category": "Ricettacoli",
       "description": "Incantesimo infuso: raggio 4, attacco pari al doppio del numero di unità di orchi o goblin entro 2 caselle dal portatore (con almeno 5 modelli), ignora la difesa.",
       "only_for_army": [
-        "goblin_delle_tenebre"
+        "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": ["goblin_delle_tenebre"],
       "not_for_type": []
     },
     {

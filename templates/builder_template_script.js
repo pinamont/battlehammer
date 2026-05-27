@@ -63,13 +63,16 @@
   // --- UTILITY --------------------------------------------------------------
 
   const ARMY_NAMES = {
-    orcs: "Orchi e Goblin",
-    dwarfs: "Nani",
-    // aggiungi qui le altre
+    orchi_e_goblin: "Orchi e Goblin",
+    // impero: "Impero",
+    // elfi_alti: "Elfi Alti",
+    // elfi_silvani: "Elfi Silvani",
+    // nommorti: "Nommorti",
+    // caos: "Caos"
+    // aggiungi qui le altre fazioni
   };
 
   // Ordine categorie
-  // const categories = ["Personaggi", "Personaggi Speciali", "Truppe", "Macchine e Mostri"];
   const categories = ["Personaggi", "Truppe", "Macchine e Mostri"];
 
   function armyName(army) {
@@ -201,6 +204,41 @@
     return true;
   }
 
+  function adjustValueUp(inputID) {
+    const input = document.getElementById(inputID);
+    input.stepUp();
+  }
+
+  function adjustValueDown(inputID) {
+    const input = document.getElementById(inputID);
+    input.stepDown();
+  }
+
+  function checkValue(sender) {
+    let min = sender.min;
+    let max = sender.max;
+    let value = parseInt(sender.value);
+    if (value>max) {
+      sender.value = max;
+    } else if (value<min) {
+      sender.value = min;
+    }
+  }
+
+  // input[type="number"] {
+    // -webkit-appearance: textfield;
+    // -moz-appearance: textfield;
+    // appearance: textfield;
+  // }
+  // input[type="number"]::-webkit-inner-spin-button,
+  // input[type="number"]::-webkit-outer-spin-button {
+  //   -webkit-appearance: none;
+  // }
+
+  // --- EXPORT ---------------------------------------------------------------
+
+  let counts = {};
+
   function validateArmy() {
     const stats = computeArmyStats();
     const errors = [];
@@ -223,7 +261,6 @@
       errors.push("Devi includere almeno un Personaggio.");
     }
 
-    const counts = {};
     for (const e of army.entries) {
       counts[e.unitId] = (counts[e.unitId] || 0) + 1;
     }
@@ -299,13 +336,12 @@
         }
       }
 
-      lines.push(""); // spazio dopo la categoria
+      lines.push("");
     }
 
     return lines.join("\n");
   }
 
-  // Versione MD
   function exportArmyTextMarkdown() {
     const { stats } = validateArmy();
     const title = document.getElementById("listTitleInput").value || "Lista senza titolo";
@@ -317,9 +353,6 @@
     lines.push(`**Battle Hammer – ${armyName(currentFaction)}**`);
     lines.push(`**Punti totali:** ${stats.total}/${army.maxPoints}`);
     lines.push("");
-
-    // Ordine categorie
-    // const order = ["Personaggi", "Truppe", "Macchine e Mostri"];
 
     for (const cat of categories) {
       const entries = army.entries.filter(e => e.category === cat);
@@ -377,10 +410,10 @@
           }
         }
 
-        lines.push(""); // spazio tra unità
+        lines.push("");
       }
 
-      lines.push(""); // spazio tra categorie
+      lines.push("");
     }
 
     return lines.join("\n");
@@ -531,182 +564,6 @@
     }
   }
 
-  // function exportArmyPDF(armyData) {
-  //   const { jsPDF } = window.jspdf;
-  //   const doc = new jsPDF({ unit: "pt", format: "a4" });
-  //
-  //   const pageWidth = doc.internal.pageSize.getWidth();
-  //   const pageHeight = doc.internal.pageSize.getHeight();
-  //   const margin = 40;
-  //   let y = margin;
-  //
-  //   // --- Header principale ---
-  //   doc.setFont("helvetica", "bold");
-  //   doc.setFontSize(18);
-  //   doc.text("Battle Hammer", pageWidth / 2, y, { align: "center" });
-  //   y += 10;
-  //   doc.line(margin, y, pageWidth - margin, y);
-  //   y += 20;
-  //
-  //   // --- Info lista ---
-  //   doc.setFont("helvetica", "normal");
-  //   doc.setFontSize(12);
-  //   doc.text(`Lista: ${armyData.name}`, margin, y); y += 15;
-  //   doc.text(`Fazione: ${armyData.faction}`, margin, y); y += 15;
-  //   doc.text(`Punti totali: ${armyData.totalPoints}`, margin, y); y += 10;
-  //
-  //   doc.line(margin, y, pageWidth - margin, y);
-  //   y += 20;
-  //
-  //   // --- Sezioni ---
-  //   armyData.sections.forEach(section => {
-  //     // separatore
-  //     doc.line(margin, y, pageWidth - margin, y);
-  //     y += 15;
-  //
-  //     // titolo sezione
-  //     doc.setFont("helvetica", "bold");
-  //     doc.setFontSize(14);
-  //     doc.text(section.name, margin, y);
-  //     y += 15;
-  //
-  //     // unità
-  //     doc.setFont("helvetica", "normal");
-  //     doc.setFontSize(11);
-  //
-  //     section.units.forEach(unit => {
-  //       doc.text(`${unit.name} (${unit.points} pt)`, margin + 20, y);
-  //       y += 12;
-  //
-  //       // opzioni
-  //       unit.options.forEach(opt => {
-  //         doc.text(`• ${opt}`, margin + 40, y);
-  //         y += 12;
-  //       });
-  //
-  //       // oggetti magici
-  //       if (unit.magicItems.length > 0) {
-  //         doc.text(`Oggetti Magici: ${unit.magicItems.join(", ")}`, margin + 40, y);
-  //         y += 12;
-  //       }
-  //
-  //       // stendardo magico
-  //       if (unit.magicBanner) {
-  //         doc.text(`Stendardo Magico: ${unit.magicBanner}`, margin + 40, y);
-  //         y += 12;
-  //       }
-  //
-  //       // salto pagina
-  //       if (y > pageHeight - 60) {
-  //         addFooter(doc, pageWidth, pageHeight);
-  //         doc.addPage();
-  //         y = margin;
-  //       }
-  //     });
-  //   });
-  //
-  //   // footer finale
-  //   addFooter(doc, pageWidth, pageHeight);
-  //
-  //   doc.save(`${armyData.name}_BattleHammer.pdf`);
-  //
-  //   // --- Footer ---
-  //   function addFooter(doc, pageWidth, pageHeight) {
-  //     doc.line(margin, pageHeight - 40, pageWidth - margin, pageHeight - 40);
-  //     doc.setFontSize(10);
-  //     doc.text(
-  //       `Pagina ${doc.internal.getNumberOfPages()}`,
-  //              pageWidth / 2,
-  //              pageHeight - 25,
-  //              { align: "center" }
-  //     );
-  //   }
-  // }
-
-  // async function exportArmyPDF() {
-  //   const { jsPDF } = window.jspdf;
-  //
-  //   const text = exportArmyTextMarkdown();
-  //   const lines = text.split("\n");
-  //
-  //   const doc = new jsPDF({
-  //     unit: "pt",
-  //     format: "a4"
-  //   });
-  //
-  //   registerDeluxeFonts(doc);
-  //
-  //   const margin = 50;
-  //   let y = margin;
-  //
-  //   // --- Pagina 1: copertina ---
-  //   doc.addImage(BORDER_IMAGE, "PNG", 10, 10, 575, 820);
-  //
-  //   doc.setFont("IMFell");
-  //   doc.setFontSize(36);
-  //   doc.text(document.getElementById("listTitleInput").value || "Lista", 300, 150, { align: "center" });
-  //
-  //   doc.setFont("Garamond");
-  //   doc.setFontSize(18);
-  //   doc.text(`Armata: ${currentFaction}`, 300, 190, { align: "center" });
-  //
-  //   doc.setFontSize(14);
-  //   const { stats } = validateArmy();
-  //   doc.text(`Punti totali: ${stats.total}/${army.maxPoints}`, 300, 220, { align: "center" });
-  //
-  //   doc.addPage();
-  //   doc.addImage(BORDER_IMAGE, "PNG", 10, 10, 575, 820);
-  //
-  //   y = margin;
-  //
-  //   // --- Pagine successive ---
-  //   doc.setFont("Garamond");
-  //   doc.setFontSize(12);
-  //
-  //   for (const line of lines) {
-  //     // Titoli categoria
-  //     if (line.startsWith("## ")) {
-  //       const cat = line.replace("## ", "").trim();
-  //
-  //       if (y > 750) {
-  //         doc.addPage();
-  //         doc.addImage(BORDER_IMAGE, "PNG", 10, 10, 575, 820);
-  //         y = margin;
-  //       }
-  //
-  //       doc.setFont("IMFell");
-  //       doc.setFontSize(24);
-  //
-  //       // Icona
-  //       if (ICONS[cat]) {
-  //         const svg = ICONS[cat];
-  //         doc.addSvgAsImage(svg, margin, y - 20, 24, 24);
-  //       }
-  //
-  //       doc.text(cat, margin + 30, y);
-  //       y += 40;
-  //
-  //       doc.setFont("Garamond");
-  //       doc.setFontSize(12);
-  //       continue;
-  //     }
-  //
-  //     // Normale testo
-  //     if (y > 780) {
-  //       doc.addPage();
-  //       doc.addImage(BORDER_IMAGE, "PNG", 10, 10, 575, 820);
-  //       y = margin;
-  //     }
-  //
-  //     doc.text(line, margin, y);
-  //     y += 16;
-  //   }
-  //
-  //   const title = document.getElementById("listTitleInput").value || "lista";
-  //   doc.save(`${title}.pdf`);
-  // }
-
-
   function exportArmyJson() {
     const { stats } = validateArmy();
     const title = document.getElementById("listTitleInput").value || "Lista senza titolo";
@@ -724,6 +581,8 @@
         category: e.category,
         size: e.size,
         options: [...e.options],
+        preselectedEquipment: [...(e.equipment || [])],
+        preselectedMagicItems: [...(e.magic_items || [])],
         optionCounts: e.optionCounts || {},
         magicItems: e.magicItems || [],
         magicBanner: e.magicBanner || null,
@@ -810,8 +669,16 @@
   }
 
   function selectUnit(unit) {
-    selectedUnit = unit;
-    renderConfigPanel();
+    // controllo di unicità
+    if (unit.max_per_army && counts[unit.id] >= unit.max_per_army) {
+      alert("Questo unità è già stato selezionata in numero massimo di volte.")
+    } else {
+      selectedUnit = unit;
+      renderConfigPanel();
+      if (window.innerWidth < 768) {
+        moveToTab("config");
+      }
+    }
   }
 
   function renderConfigPanel(existingEntry = null) {
@@ -862,18 +729,40 @@
       sizeLabel.textContent = "Numero di modelli";
       sizeLabel.style.marginTop = "8px";
       sizeInput = document.createElement("input");
+      sizeInput.id = "unitSizeInput";
       sizeInput.type = "number";
       sizeInput.min = unit.min_size;
       sizeInput.max = unit.max_size;
       sizeInput.value = sizeValue;
-      sizeInput.oninput = () => {
-        const val = parseInt(sizeInput.value, 10) || unit.min_size;
-        if (val < unit.min_size) sizeInput.value = unit.min_size;
-        if (val > unit.max_size) sizeInput.value = unit.max_size;
+      // sizeInput.oninput = () => {
+      sizeInput.onchange = () => {
+        // const val = parseInt(sizeInput.value, 10) || unit.min_size;
+        // const val = sizeInput.value;
+        // if (val < unit.min_size) sizeInput.value = unit.min_size;
+        // if (val > unit.max_size) sizeInput.value = unit.max_size;
+        checkValue(sizeInput);
         updatePointsPreview();
       };
+      sizeMinus = document.createElement("button");
+      sizeMinus.textContent = "–";
+      sizeMinus.style.marginLeft = "2px";
+      sizeMinus.style.marginRight = "2px";
+      sizeMinus.onclick = () => {
+        adjustValueDown('unitSizeInput');
+        updatePointsPreview();
+      }
+      sizePlus = document.createElement("button");
+      sizePlus.textContent = "+";
+      sizePlus.style.marginLeft = "2px";
+      sizePlus.style.marginRight = "2px";
+      sizePlus.onclick = () => {
+        adjustValueUp('unitSizeInput');
+        updatePointsPreview();
+      }
       sizeRow.appendChild(sizeLabel);
       sizeRow.appendChild(sizeInput);
+      sizeRow.appendChild(sizeMinus);
+      sizeRow.appendChild(sizePlus);
       panel.appendChild(sizeRow);
     }
 
@@ -887,6 +776,17 @@
     const optsBox = document.createElement("div");
     optsBox.className = "options-list";
 
+    // --- EQUIPAGGIAMENTO BASE ---
+    for (const eq of unit.equipment) {
+      const div = document.createElement("div");
+      div.className = "option disabled-option";
+      div.innerHTML = `
+        <input type="checkbox" checked disabled>
+        <span class="greyed">${eq}</span>
+      `;
+      optsBox.appendChild(div);
+    }
+
     if (!unit.options || unit.options.length === 0) {
       const noOpt = document.createElement("div");
       noOpt.style.opacity = "0.7";
@@ -894,7 +794,7 @@
       optsBox.appendChild(noOpt);
     } else {
       for (const opt of unit.options) {
-        const row = document.createElement("div");   // <-- PRIMA ERA <label>
+        const row = document.createElement("div");
         row.className = "option-row";
         row.style.display = "flex";
         row.style.justifyContent = "space-between";
@@ -1101,10 +1001,9 @@
     }
 
     // Oggetti Magici
-    if (unit.magic_item_slots && unit.magic_item_slots > 0) {
+    if ((unit.magic_item_slots && unit.magic_item_slots > 0) || (unit.magic_items && unit.magic_items.size > 0)) {
       const title = document.createElement("div");
       title.style.marginTop = "10px";
-      // title.style.fontWeight = "bold";
       title.style.fontSize = "12px";
       title.textContent = "Oggetti Magici";
       title.textContent += ` (fino a ${unit.magic_item_slots})`;
@@ -1152,37 +1051,46 @@
           row.style.margin = "2px 0";
 
           const left = document.createElement("span");
-          // left.textContent = item.name;
-
           const right = document.createElement("span");
 
-          const cb = document.createElement("input");
-          cb.type = "checkbox";
-          cb.checked = selectedMagicItems.has(item.id);
+          // oggetto tra quelli pre-selezionati...
+          if (unit.magic_items && unit.magic_items.includes(item.name)) {
+            const div = document.createElement("div");
+            div.className = "option disabled-option";
+            div.innerHTML = `
+              <input type="checkbox" checked disabled>
+              <span class="greyed">${item.name}</span>
+            `;
+            left.appendChild(div);
+          } else { // ... o selezionabile
+            const cb = document.createElement("input");
+            cb.type = "checkbox";
+            cb.checked = selectedMagicItems.has(item.id);
 
-          cb.onchange = () => {
-            if (cb.checked) {
-              if (selectedMagicItems.size < unit.magic_item_slots) {
-                // Controllo unicità
-                if (!item.allow_multiple && isMagicItemTaken(item.id, existingEntry?.id)) {
-                  alert("Questo oggetto magico è già stato selezionato da un'altra unità.");
+            cb.onchange = () => {
+              if (cb.checked) {
+                if (selectedMagicItems.size < unit.magic_item_slots) {
+                  // Controllo unicità
+                  if (!item.allow_multiple && isMagicItemTaken(item.id, existingEntry?.id)) {
+                    alert("Questo oggetto magico è già stato selezionato da un'altra unità.");
+                    cb.checked = false;
+                    return;
+                  }
+                  if (!selectedMagicItems.has(item.id)) selectedMagicItems.add(item.id);
+                } else {
                   cb.checked = false;
-                  return;
+                  alert("Hai già raggiunto il numero massimo di oggetti magici.");
                 }
-                selectedMagicItems.add(item.id);
               } else {
-                cb.checked = false;
-                alert("Hai già raggiunto il numero massimo di oggetti magici.");
+                if (selectedMagicItems.has(item.id)) selectedMagicItems.delete(item.id);
               }
-            } else {
-              selectedMagicItems.delete(item.id);
-            }
-            updatePointsPreview();
-          };
+              updatePointsPreview();
+            };
 
-          left.appendChild(cb);
-          const text = document.createTextNode(" " + item.name);
-          left.appendChild(text);
+            left.appendChild(cb);
+            const text = document.createTextNode(" " + item.name);
+            left.appendChild(text);
+          }
 
           // Costi
           let costText = `${item.cost} pt`;
@@ -1223,6 +1131,7 @@
     const mainBtn = document.createElement("button");
     mainBtn.textContent = isEdit ? "Aggiorna unità" : "Aggiungi all'esercito";
     mainBtn.onclick = () => {
+      // addUnit(unit.id)
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
       const opts = Array.from(selectedOptionIds);
       const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), selectedMagicBanner);
@@ -1234,6 +1143,10 @@
         existingEntry.magicItems = Array.from(selectedMagicItems);
         existingEntry.magicBanner = selectedMagicBanner;
         clearConfigPanel();
+        // in mobile-mode, torna a lista esercito
+        if (window.innerWidth < 768) {
+          moveToTab("army");
+        }
       } else {
         army.entries.push({
           id: nextEntryId++,
@@ -1242,12 +1155,18 @@
           category: unit.category,
           size,
           options: opts,
+          preselectedEquipment: [...(unit.equipment || [])],
+          preselectedMagicItems: [...(unit.magic_items || [])],
           optionCounts: optionCounts,
           magicItems: Array.from(selectedMagicItems),
-                          magicBanner: selectedMagicBanner,
-                          points: pts
+          magicBanner: selectedMagicBanner,
+          points: pts
         });
         clearConfigPanel();
+        // in mobile-mode, torna a lista unità
+        if (window.innerWidth < 768) {
+          moveToTab("units");
+        }
       }
       renderArmy();
     };
@@ -1295,8 +1214,7 @@
     totalRow.innerHTML = `<strong>Punti totali</strong><span>${stats.total} / ${army.maxPoints}</span>`;
     top.appendChild(totalRow);
 
-    const cats = ["Personaggi", "Truppe", "Macchine e Mostri"];
-    for (const cat of cats) {
+    for (const cat of categories) {
       const row = document.createElement("div");
       row.className = "summary-row";
       const pct = stats.pct[cat] || 0;
@@ -1307,8 +1225,7 @@
     const list = document.getElementById("armyUnits");
     list.innerHTML = "";
 
-    // const order = ["Personaggi", "Truppe", "Macchine e Mostri"];
-    for (const cat of cats) {
+    for (const cat of categories) {
       const entries = army.entries.filter(e => e.category === cat);
       if (entries.length === 0) continue;
 
@@ -1336,6 +1253,9 @@
         left.querySelector(".editable-unit").style.cursor = "pointer";
         left.querySelector(".editable-unit").onclick = () => {
           selectedUnit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
+          if (window.innerWidth < 768) {
+            moveToTab("config");
+          }
           renderConfigPanel(e);
         };
 
@@ -1355,12 +1275,15 @@
         div.appendChild(header);
 
         // Opzioni
-        if (e.options && e.options.length > 0) {
+        if ((e.options && e.options.length > 0) || (e.preselectedEquipment && e.preselectedEquipment.length > 0)) {
           const optsLine = document.createElement("div");
           optsLine.style.fontSize = "11px";
           optsLine.style.opacity = "0.8";
           const unit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
           const parts = [];
+          for (const eq of e.preselectedEquipment) {
+            parts.push(eq);
+          }
           for (const optId of e.options) {
             const opt = unit.options.find(o => o.id === optId);
             if (!opt) continue;
@@ -1376,14 +1299,15 @@
         }
 
         // Oggetti Magici
-        if (e.magicItems && e.magicItems.length > 0) {
-          const itemNames = e.magicItems
-          .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
-          .filter(Boolean);
+        if ((e.magicItems && e.magicItems.length > 0) || (e.preselectedMagicItems && e.preselectedMagicItems.length > 0)) {
+          const itemNames = e.magicItems.map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean);
           const line = document.createElement("div");
           line.style.fontSize = "11px";
           line.style.opacity = "0.8";
-          line.textContent = itemNames.join(", ");
+          let fullList = e.preselectedMagicItems;
+          fullList = fullList.concat(itemNames);
+          // console.log(fullList)
+          line.textContent = fullList.join(", ");
           div.appendChild(line);
         }
 
@@ -1562,6 +1486,8 @@
         size: u.size,
         options: u.options || [],
         optionCounts: u.optionCounts || {},
+        preselectedEquipment: [...(u.equipment || [])],
+        preselectedMagicItems: [...(u.magic_items || [])],
         magicItems: u.magicItems || [],
         magicBanner: u.magicBanner || null,
         points: u.points
@@ -1576,7 +1502,66 @@
     alert("Lista importata correttamente.");
   }
 
+  // --- MOBILE TABS ---
+  document.querySelectorAll("#mobileTabs button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.body.setAttribute("data-tab", btn.dataset.tab);
+    });
+  });
+
+  document.getElementById("armyOkBtn").addEventListener("click", () => {
+    moveToTab("units");
+  });
+
+  function moveControlsForMobile() {
+    const headerControls = document.getElementById("headerControls");
+    const settingsControls = document.getElementById("settingsControls");
+    let settingsSection = document.getElementById("settingsSection");
+
+    if (window.innerWidth < 768) {
+      // Sposta gli input nella scheda Impostazioni
+      if (settingsControls.children.length === 0 && headerControls.children.length > 0) {
+        while (headerControls.firstChild) {
+          settingsControls.appendChild(headerControls.firstChild);
+        }
+      }
+      // if (document.body.getAttribute("data-tab") === "settings") settingsSection.style.display = "block";
+    } else {
+      // Torna alla versione desktop
+      if (headerControls.children.length === 0) {
+        while (settingsControls.firstChild) {
+          headerControls.appendChild(settingsControls.firstChild);
+        }
+      }
+      settingsSection.style.display = "none";
+    }
+  }
+
+  document.querySelectorAll("#mobileTabs button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      moveToTab(btn.dataset.tab);
+    });
+  });
+
+  function moveToTab(name) {
+    // setta la tab attiva
+    document.body.setAttribute("data-tab",name)
+    // aggiorna stile tab attiva
+    document.querySelectorAll("#mobileTabs button")
+    .forEach(b => b.classList.remove("active-tab"));
+    const btn = document.querySelector('#mobileTabs button[data-tab="'+name+'"]');
+    if (btn) btn.classList.add("active-tab");
+  }
+
+  // Imposta tab iniziale
+  if (window.innerWidth < 768) {
+    moveToTab("settings");
+  }
+
   // --- INIT -----------------------------------------------------------------
+
+  moveControlsForMobile();
+  window.addEventListener("resize", moveControlsForMobile);
 
   populateFactionSelect();
   renderUnitList();
