@@ -736,6 +736,7 @@
       sizeInput = document.createElement("input");
       sizeInput.id = "unitSizeInput";
       sizeInput.type = "number";
+      sizeInput.style.width = "32px";
       sizeInput.min = unit.min_size;
       sizeInput.max = unit.max_size;
       sizeInput.value = sizeValue;
@@ -818,16 +819,6 @@
           qty.style.borderRadius = "4px";
           qty.style.padding = "2px 4px";
           qty.value = optionCounts[opt.id] ?? 0;
-          // qty.oninput = () => {
-          //   const v = Math.max(0, Math.min(opt.max_count, parseInt(qty.value) || 0));
-          //   qty.value = v;
-          //
-          //   if (v > 0) selectedOptionIds.add(opt.id);
-          //   else selectedOptionIds.delete(opt.id);
-          //
-          //   optionCounts[opt.id] = v;
-          //   updatePointsPreview();
-          // };
           qty.onchange = () => {
             checkValue(qty);
             if (qty.value > 0) selectedOptionIds.add(opt.id);
@@ -1147,27 +1138,15 @@
     }
 
     // Costo in punti complessivo
-    // const pointsRow = document.createElement("div");
-    // pointsRow.className = "config-row";
-    // pointsRow.style.marginTop = "12px";
-    // const pointsSpan = document.createElement("span");
-    // pointsSpan.className = "points";
-    // pointsSpan.id = "pointsPreview";
     {
-      // let textContent = `Punti unità: ${tempPoints}`;
       let textContent = `${tempPoints} pt`;
-      // pointsSpan.textContent = textContent;
-      // pointsRow.appendChild(pointsSpan);
-      // panel.appendChild(pointsRow);
       document.getElementById("configPoints").textContent = textContent;
     }
 
-    // const btnRow = document.createElement("div");
-    // btnRow.className = "config-row";
     const btnRow = document.getElementById("configButtons");
 
     const mainBtn = document.createElement("button");
-    mainBtn.textContent = isEdit ? "Aggiorna unità" : "Aggiungi all'esercito";
+    mainBtn.textContent = isEdit ? "Aggiorna" : "Aggiungi";
     mainBtn.onclick = () => {
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
       const opts = Array.from(selectedOptionIds);
