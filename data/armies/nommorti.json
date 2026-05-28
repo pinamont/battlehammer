@@ -1,0 +1,1108 @@
+{
+  "nommorti": [
+    {
+      "id": "scheletri_guerrieri",
+      "name": "Scheletri Guerrieri",
+      "category": "Truppe",
+      "cost_per_model": 7,
+      "stats": {
+        "M": "1*",
+        "DC": "2",
+        "D": "2",
+        "F": "1",
+        "R": "0"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "paura", "senza volontà"
+      ],
+      "equipment": [
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost_per_model": 1
+        },
+        {
+          "id": "lancia",
+          "name": "lancia",
+          "cost_per_model": 1
+        },
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "scheletri_arcieri",
+      "name": "Scheletri Arcieri",
+      "category": "Truppe",
+      "cost_per_model": 9,
+      "stats": {
+        "M": "1*",
+        "DC": "2",
+        "D": "2",
+        "F": "1",
+        "R": "0"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "paura", "senza volontà"
+      ],
+      "equipment": [
+        "arco"
+      ],
+      "ranged": [
+        {
+          "name": "Arco",
+          "range": "4",
+          "dc": "2",
+          "special": "-"
+        }
+      ],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "scheletri_balestrieri",
+      "name": "Scheletri Balestrieri",
+      "category": "Truppe",
+      "cost_per_model": 10,
+      "stats": {
+        "M": "1*",
+        "DC": "2",
+        "D": "2",
+        "F": "1",
+        "R": "0"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "paura", "senza volontà"
+      ],
+      "equipment": [
+        "balestra"
+      ],
+      "ranged": [
+        {
+          "name": "Balestra",
+          "range": "5",
+          "dc": "3",
+          "special": "*"
+        }
+      ],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "zombie",
+      "name": "Zombie",
+      "category": "Truppe",
+      "cost_per_model": 7,
+      "stats": {
+        "M": "1*",
+        "DC": "2",
+        "D": "3",
+        "F": "1",
+        "R": "0"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "paura, senza volontà, devono avanzare sempre verso il nemico più vicino in vista"
+      ],
+      "equipment": [
+      ],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "ghoul",
+      "name": "Ghoul",
+      "category": "Truppe",
+      "cost_per_model": 7,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "2",
+        "F": "1",
+        "R": "3"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "paura, non possono inseguire se fanno almeno una vittima"
+      ],
+      "equipment": [
+      ],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "spettri",
+      "name": "Spettri",
+      "category": "Truppe",
+      "cost_per_model": 12,
+      "stats": {
+        "M": "1*",
+        "DC": "3**",
+        "D": "4",
+        "F": "1",
+        "R": "0"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "paura", "senza volontà"
+      ],
+      "equipment": [
+        "armatura pesante"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost_per_model": 1
+        },
+        {
+          "id": "alabarda",
+          "name": "alabarda",
+          "cost_per_model": 1
+        },
+        {
+          "id": "arma_a_due_mani",
+          "name": "arma a due mani",
+          "cost_per_model": 2
+        },
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "mummie",
+      "name": "Mummie",
+      "category": "Truppe",
+      "cost_per_model": 22,
+      "stats": {
+        "M": "1*",
+        "DC": "4",
+        "D": "4",
+        "F": "2",
+        "R": "0"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "paura, senza volontà, infiammabili"
+      ],
+      "equipment": [
+        "arma a due mani"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "fantasmi",
+      "name": "Fantasmi",
+      "category": "Truppe",
+      "cost_per_model": 20,
+      "stats": {
+        "M": "2*",
+        "DC": "0**",
+        "D": "2",
+        "F": "1",
+        "R": "0"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [
+        "paura, senza volontà, immuni agli attacchi non magici o da fuoco, Spaventare (\\textit{invece di attaccare normalmente, un'unità di fantasmi costringe l'unità avversaria in CaC a passare un test di Coraggio o fuggire immediatamente; per questo test, l'unità attaccata deve ottenere almeno 2 teschi, a meno che non incuta paura o terrore, nel qual caso basta 1 teschio; unità immuni alla psicologia o implacabili non devono effettuare alcun test"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "spettri_assassini",
+      "name": "Spettri Assassini",
+      "category": "Truppe",
+      "cost_per_model": 30,
+      "stats": {
+        "M": "2*",
+        "DC": "3**",
+        "D": "2",
+        "F": "1",
+        "R": "0"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [
+        "terrore, senza volontà, immuni agli attacchi non magici o da fuoco"
+      ],
+      "equipment": [
+        "arma a 2 mani"
+      ],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "scheletri_a_cavallo",
+      "name": "Scheletri a cavallo",
+      "category": "Truppe",
+      "cost_per_model": 16,
+      "stats": {
+        "M": "2",
+        "DC": "2",
+        "D": "2",
+        "F": "1",
+        "R": "0"
+      },
+      "type": [
+        "cavalleria leggera"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [
+        "paura", "senza volontà"
+      ],
+      "equipment": [
+        "cavallo scheletrico"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost_per_model": 2
+        },
+        {
+          "id": "arco",
+          "name": "arco",
+          "cost_per_model": 4
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost_per_model": 4
+        },
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 30
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "spettri_a_cavallo",
+      "name": "Spettri a cavallo",
+      "category": "Truppe",
+      "cost_per_model": 26,
+      "stats": {
+        "M": "2*",
+        "DC": "3",
+        "D": "5",
+        "F": "2",
+        "R": "0"
+      },
+      "type": [
+        "cavalleria pesante"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [
+        "paura", "senza volontà"
+      ],
+      "equipment": [
+        "armatura pesante","cavallo scheletrico bardato"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost_per_model": 2
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost_per_model": 4
+        },
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 30
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "vampiri_a_cavallo",
+      "name": "Vampiri a cavallo",
+      "category": "Truppe",
+      "cost_per_model": 52,
+      "stats": {
+        "M": "2",
+        "DC": "4",
+        "D": "5",
+        "F": "2",
+        "R": "5"
+      },
+      "type": [
+        "cavalleria pesante"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [
+        "paura, rigenerazione (5+)"
+      ],
+      "equipment": [
+        "armatura pesante", "cavallo scheletrico bardato"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost_per_model": 2
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost_per_model": 4
+        },
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 30
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "catapulta_scheletrica",
+      "name": "Catapulta scheletrica",
+      "category": "Macchine Da Guerra",
+      "cost_per_model": 85,
+      "stats": {
+        "M": "1*",
+        "DC": "1",
+        "D": "4",
+        "F": "3",
+        "R": "0"
+      },
+      "type": [
+        "macchina da guerra",
+        "catapulta"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura", "senza volontà"
+      ],
+      "equipment": [],
+      "ranged": [
+        {
+          "name": "Catapulta piccola",
+          "range": "7",
+          "dc": "4",
+          "special": "*"
+        }
+      ],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "carro_scheletrico",
+      "name": "Carro scheletrico",
+      "category": "Macchine Da Guerra",
+      "cost_per_model": 80,
+      "stats": {
+        "M": "2*",
+        "DC": "2**",
+        "D": "4",
+        "F": "4",
+        "R": "0"
+      },
+      "type": [
+        "carro leggero"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura", "senza volontà"
+      ],
+      "equipment": [
+        "arco"
+      ],
+      "ranged": [
+        {
+          "name": "Arco",
+          "range": "4",
+          "dc": "1",
+          "special": "-"
+        }
+      ],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "vampiro_lord",
+      "name": "Vampiro Lord",
+      "category": "Personaggi",
+      "cost_per_model": 225,
+      "stats": {
+        "M": "2",
+        "DC": "5",
+        "D": "4",
+        "F": "4",
+        "R": "7"
+      },
+      "type": [
+        "personaggio",
+        "fanteria",
+        "mago"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura, rigenerazione (5+), mago livello 2 (Negromanzia o Magia delle Tenebre)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "arma_a_due_mani_2_armi",
+          "name": "arma a due mani / 2 armi",
+          "cost": 8
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost": 8
+        },
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 4
+        },
+        {
+          "id": "armatura_pesante",
+          "name": "armatura pesante",
+          "cost": 4
+        },
+        {
+          "id": "cavallo_scheletrico",
+          "name": "cavallo scheletrico",
+          "cost": 25
+        },
+        {
+          "id": "cavallo_scheletrico_bardato",
+          "name": "cavallo scheletrico bardato",
+          "cost": 25
+        }
+      ],
+      "magic_item_slots": 3,
+      "max_per_army": 0
+    },
+    {
+      "id": "vampiro_negromante",
+      "name": "Vampiro Negromante",
+      "category": "Personaggi",
+      "cost_per_model": 275,
+      "stats": {
+        "M": "2",
+        "DC": "4",
+        "D": "4",
+        "F": "4",
+        "R": "6"
+      },
+      "type": [
+        "personaggio",
+        "fanteria",
+        "mago"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura, rigenerazione (5+), mago livello 3 (Negromanzia o Magia delle Tenebre)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "livello_4",
+          "name": "livello 4",
+          "cost": 70
+        },
+        {
+          "id": "cavallo_scheletrico",
+          "name": "cavallo scheletrico",
+          "cost": 25
+        },
+        {
+          "id": "cavallo_scheletrico_bardato",
+          "name": "cavallo scheletrico bardato",
+          "cost": 25
+        }
+      ],
+      "magic_item_slots": 4,
+      "max_per_army": 0
+    },
+    {
+      "id": "lich",
+      "name": "Lich",
+      "category": "Personaggi",
+      "cost_per_model": 300,
+      "stats": {
+        "M": "1*",
+        "DC": "4",
+        "D": "4",
+        "F": "4",
+        "R": "0"
+      },
+      "type": [
+        "personaggio",
+        "fanteria",
+        "mago"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura, senza volontà, mago livello 4 (Negromanzia o Magia delle Tenebre)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "cavallo_scheletrico",
+          "name": "cavallo scheletrico",
+          "cost": 25
+        },
+        {
+          "id": "cavallo_scheletrico_bardato",
+          "name": "cavallo scheletrico bardato",
+          "cost": 25
+        }
+      ],
+      "magic_item_slots": 4,
+      "max_per_army": 0
+    },
+    {
+      "id": "negromante_supremo",
+      "name": "Negromante Supremo",
+      "category": "Personaggi",
+      "cost_per_model": 225,
+      "stats": {
+        "M": "1",
+        "DC": "4",
+        "D": "4",
+        "F": "4",
+        "R": "6"
+      },
+      "type": [
+        "personaggio",
+        "fanteria",
+        "mago"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "mago livello 3 (Negromanzia o Magia delle Tenebre)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "livello_4",
+          "name": "livello 4",
+          "cost": 70
+        },
+        {
+          "id": "cavallo_scheletrico",
+          "name": "cavallo scheletrico",
+          "cost": 25
+        },
+        {
+          "id": "cavallo_scheletrico_bardato",
+          "name": "cavallo scheletrico bardato",
+          "cost": 25
+        }
+      ],
+      "magic_item_slots": 4,
+      "max_per_army": 0
+    },
+    {
+      "id": "vampiro_eroe",
+      "name": "Vampiro Eroe",
+      "category": "Personaggi",
+      "cost_per_model": 135,
+      "stats": {
+        "M": "2",
+        "DC": "5",
+        "D": "3",
+        "F": "3",
+        "R": "6"
+      },
+      "type": [
+        "personaggio",
+        "fanteria",
+        "mago"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura, rigenerazione (5+), mago livello 1 (Negromanzia o Magia delle Tenebre)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "arma_a_due_mani_2_armi",
+          "name": "arma a due mani / 2 armi",
+          "cost": 6
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost": 6
+        },
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 3
+        },
+        {
+          "id": "armatura_pesante",
+          "name": "armatura pesante",
+          "cost": 3
+        },
+        {
+          "id": "cavallo_scheletrico",
+          "name": "cavallo scheletrico",
+          "cost": 20
+        },
+        {
+          "id": "cavallo_scheletrico_bardato",
+          "name": "cavallo scheletrico bardato",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 0
+    },
+    {
+      "id": "re_dei_sepolcri",
+      "name": "Re dei Sepolcri",
+      "category": "Personaggi",
+      "cost_per_model": 70,
+      "stats": {
+        "M": "1*",
+        "DC": "4",
+        "D": "4",
+        "F": "4",
+        "R": "0"
+      },
+      "type": [
+        "personaggio",
+        "fanteria"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura, senza volontà, infiammabile"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "arma_a_due_mani_2_armi",
+          "name": "arma a due mani / 2 armi",
+          "cost": 6
+        },
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 3
+        },
+        {
+          "id": "cavallo_scheletrico",
+          "name": "cavallo scheletrico",
+          "cost": 25
+        },
+        {
+          "id": "cavallo_scheletrico_bardato",
+          "name": "cavallo scheletrico bardato",
+          "cost": 25
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 0
+    },
+    {
+      "id": "signore_degli_spettri",
+      "name": "Signore degli Spettri",
+      "category": "Personaggi",
+      "cost_per_model": 55,
+      "stats": {
+        "M": "1*",
+        "DC": "4**",
+        "D": "3",
+        "F": "3",
+        "R": "0"
+      },
+      "type": [
+        "personaggio",
+        "fanteria"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura", "senza volontà"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "arma_a_due_mani_2_armi",
+          "name": "arma a due mani / 2 armi",
+          "cost": 6
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost": 6
+        },
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 3
+        },
+        {
+          "id": "armatura_pesante",
+          "name": "armatura pesante",
+          "cost": 3
+        },
+        {
+          "id": "cavallo_scheletrico",
+          "name": "cavallo scheletrico",
+          "cost": 20
+        },
+        {
+          "id": "cavallo_scheletrico_bardato",
+          "name": "cavallo scheletrico bardato",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 0
+    },
+    {
+      "id": "negromante",
+      "name": "Negromante",
+      "category": "Personaggi",
+      "cost_per_model": 70,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "3",
+        "F": "2",
+        "R": "4"
+      },
+      "type": [
+        "personaggio",
+        "fanteria",
+        "mago"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "mago livello 1 (Negromanzia o Magia delle Tenebre)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "livello_2",
+          "name": "livello 2",
+          "cost": 50
+        },
+        {
+          "id": "cavallo_scheletrico",
+          "name": "cavallo scheletrico",
+          "cost": 15
+        },
+        {
+          "id": "cavallo_scheletrico_bardato",
+          "name": "cavallo scheletrico bardato",
+          "cost": 15
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 0
+    },
+    {
+      "id": "spettro_alfiere",
+      "name": "Spettro Alfiere",
+      "category": "Personaggi",
+      "cost_per_model": 55,
+      "stats": {
+        "M": "1*",
+        "DC": "3**",
+        "D": "3",
+        "F": "2",
+        "R": "0"
+      },
+      "type": [
+        "personaggio",
+        "fanteria"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura, senza volontà, stendardo da battaglia (+1 al combattimento in difesa, unità amiche a 2 caselle o meno ritirano test di coraggio)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "arma_a_due_mani_2_armi",
+          "name": "arma a due mani / 2 armi",
+          "cost": 4
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost": 4
+        },
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 2
+        },
+        {
+          "id": "armatura_pesante",
+          "name": "armatura pesante",
+          "cost": 2
+        },
+        {
+          "id": "cavallo_scheletrico",
+          "name": "cavallo scheletrico",
+          "cost": 15
+        },
+        {
+          "id": "cavallo_scheletrico_bardato",
+          "name": "cavallo scheletrico bardato",
+          "cost": 15
+        }
+      ],
+      "magic_item_slots": 1,
+      "max_per_army": 1,
+      "magic_banner_slot": true
+    },
+    {
+      "id": "nagash_signore_supremo_dei_nommorti",
+      "name": "Nagash, Signore Supremo dei Nommorti",
+      "category": "Personaggi",
+      "cost_per_model": 750,
+      "stats": {
+        "M": "1",
+        "DC": "7*",
+        "D": "7",
+        "F": "7",
+        "R": "7"
+      },
+      "type": [
+        "personaggio speciale",
+        "fanteria mostruosa",
+        "mago"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "implacabile, terrore, tiro salvezza 4+, resistenza alla magia 4+, mago livello 5 (Negromanzia, Magia delle Tenebre), supremo negromante (\\textit{Nagash può scegliere incantesimi dal mazzo Negromanzia e da quello Magia delle Tenebre in qualsiasi combinazione; inoltre può sempre usare carte Dispersione come se fossero carte Potere e può sempre rilanciare lo stesso incantesimo più volte al turno"
+      ],
+      "equipment": [],
+      "magic_items": ["Il Libro Di Nagash", "Lo Scettro Del Potere", "L'Armatura Nera Di Nagash", "Mortis - La Grande Lama Della Morte"],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 1
+    },
+    {
+      "id": "catapulta_scheletrica",
+      "name": "Catapulta scheletrica",
+      "category": "Macchine e Mostri",
+      "cost_per_model": 85,
+      "stats": {
+        "M": "1*",
+        "DC": "1",
+        "D": "4",
+        "F": "3",
+        "R": "0"
+      },
+      "type": [
+        "macchina da guerra",
+        "catapulta"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura, senza volontà"
+      ],
+      "equipment": [],
+      "ranged": [
+        {
+          "name": "Catapulta piccola",
+          "range": "7",
+          "dc": "4",
+          "special": "*"
+        }
+      ],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "carro_scheletrico",
+      "name": "Carro scheletrico",
+      "category": "Macchine e Mostri",
+      "cost_per_model": 80,
+      "stats": {
+        "M": "2*",
+        "DC": "2**",
+        "D": "4",
+        "F": "4",
+        "R": "0"
+      },
+      "type": [
+        "carro leggero"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura, senza volontà"
+      ],
+      "equipment": [
+        "arco"
+      ],
+      "ranged": [
+        {
+          "name": "Arco",
+          "range": "4",
+          "dc": "1",
+          "special": "-"
+        }
+      ],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    }
+  ]
+}

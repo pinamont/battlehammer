@@ -1,0 +1,744 @@
+{
+  "elfi_silvani": [
+    {
+      "id": "elfi_arcieri",
+      "name": "Elfi Arcieri",
+      "category": "Truppe",
+      "cost_per_model": 13,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "2",
+        "F": "1",
+        "R": "5"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [],
+      "equipment": [
+        "arco lungo"
+      ],
+      "ranged": [
+        {
+          "name": "Arco lungo",
+          "range": "5",
+          "dc": "3",
+          "special": "-"
+        }
+      ],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "guardavia",
+      "name": "Guardavia",
+      "category": "Truppe",
+      "cost_per_model": 17,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "2*",
+        "F": "1",
+        "R": "5"
+      },
+      "type": [
+        "fanteria",
+        "schermagliatori"
+      ],
+      "min_size": 5,
+      "max_size": 10,
+      "rules": [
+        "infiltrazione"
+      ],
+      "equipment": [
+        "arco lungo"
+      ],
+      "ranged": [
+        {
+          "name": "Arco lungo",
+          "range": "5",
+          "dc": "3",
+          "special": "-"
+        }
+      ],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "guardia_della_radura",
+      "name": "Guardia della radura",
+      "category": "Truppe",
+      "cost_per_model": 11,
+      "stats": {
+        "M": "1",
+        "DC": "3*",
+        "D": "3",
+        "F": "1",
+        "R": "5"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [],
+      "equipment": [
+        "lancia, scudo"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "danzatori_di_guerra",
+      "name": "Danzatori di Guerra",
+      "category": "Truppe",
+      "cost_per_model": 14,
+      "stats": {
+        "M": "1",
+        "DC": "4*",
+        "D": "2**",
+        "F": "1",
+        "R": "5"
+      },
+      "type": [
+        "fanteria",
+        "schermagliatori"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [],
+      "equipment": [
+        "due armi"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "driadi",
+      "name": "Driadi",
+      "category": "Truppe",
+      "cost_per_model": 18,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "3",
+        "F": "2",
+        "R": "5"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "paura, Infiammabile"
+      ],
+      "equipment": [
+        "-"
+      ],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "spirito_del_legno",
+      "name": "Spirito del legno",
+      "category": "Truppe",
+      "cost_per_model": 85,
+      "stats": {
+        "M": "1",
+        "DC": "5",
+        "D": "3*",
+        "F": "3",
+        "R": "6"
+      },
+      "type": [
+        "creature mostruose"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [
+        "paura, Infiammabile"
+      ],
+      "equipment": [
+        "-"
+      ],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "cavalca_falco",
+      "name": "Cavalca-falco",
+      "category": "Truppe",
+      "cost_per_model": 55,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "2*",
+        "F": "2",
+        "R": "5"
+      },
+      "type": [
+        "cavalleria volante"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [
+        "Volare"
+      ],
+      "equipment": [
+        "arco lungo"
+      ],
+      "ranged": [
+        {
+          "name": "Arco lungo",
+          "range": "5",
+          "dc": "3",
+          "special": "-"
+        }
+      ],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "ninfe",
+      "name": "Ninfe",
+      "category": "Truppe",
+      "cost_per_model": 30,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "2*",
+        "F": "1",
+        "R": "5"
+      },
+      "type": [
+        "fanteria volante"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "Volare"
+      ],
+      "equipment": [
+        "arco lungo"
+      ],
+      "ranged": [
+        {
+          "name": "Arco lungo",
+          "range": "5",
+          "dc": "3",
+          "special": "-"
+        }
+      ],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "cavalcieri_selvaggi",
+      "name": "Cavalcieri selvaggi",
+      "category": "Truppe",
+      "cost_per_model": 28,
+      "stats": {
+        "M": "3",
+        "DC": "3*",
+        "D": "3",
+        "F": "2",
+        "R": "5"
+      },
+      "type": [
+        "cavalleria leggera"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [
+        "Furia"
+      ],
+      "equipment": [
+        "lancia, scudo"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "uomo_albero",
+      "name": "Uomo Albero",
+      "category": "Macchine e Mostri",
+      "cost_per_model": 350,
+      "stats": {
+        "M": "2",
+        "DC": "7",
+        "D": "4*",
+        "F": "7",
+        "R": "7"
+      },
+      "type": [],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Terrore, Infiammabile"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "aquila_gigante",
+      "name": "Aquila gigante",
+      "category": "Macchine e Mostri",
+      "cost_per_model": 95,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "3*",
+        "F": "3",
+        "R": "6"
+      },
+      "type": [],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Volare"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "lord",
+      "name": "Lord",
+      "category": "Personaggi",
+      "cost_per_model": 75,
+      "stats": {
+        "M": "1",
+        "DC": "4",
+        "D": "3",
+        "F": "4",
+        "R": "7"
+      },
+      "type": [],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 4
+        },
+        {
+          "id": "arma_a_due_mani",
+          "name": "arma a due mani",
+          "cost": 8
+        },
+        {
+          "id": "lancia",
+          "name": "lancia",
+          "cost": 4
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost": 8
+        },
+        {
+          "id": "arco_lungo",
+          "name": "arco lungo",
+          "cost": 16
+        },
+        {
+          "id": "cavallo",
+          "name": "cavallo",
+          "cost": 25
+        },
+        {
+          "id": "falco_gigante",
+          "name": "falco gigante",
+          "cost": 50
+        },
+        {
+          "id": "aquila",
+          "name": "aquila",
+          "cost": 95
+        },
+        {
+          "id": "drago",
+          "name": "drago",
+          "cost": 380
+        }
+      ],
+      "magic_item_slots": 3,
+      "max_per_army": 0
+    },
+    {
+      "id": "eroe",
+      "name": "Eroe",
+      "category": "Personaggi",
+      "cost_per_model": 50,
+      "stats": {
+        "M": "1",
+        "DC": "4",
+        "D": "2",
+        "F": "3",
+        "R": "6"
+      },
+      "type": [],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 3
+        },
+        {
+          "id": "arma_a_due_mani",
+          "name": "arma a due mani",
+          "cost": 6
+        },
+        {
+          "id": "lancia",
+          "name": "lancia",
+          "cost": 3
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost": 6
+        },
+        {
+          "id": "arco_lungo",
+          "name": "arco lungo",
+          "cost": 12
+        },
+        {
+          "id": "cavallo",
+          "name": "cavallo",
+          "cost": 20
+        },
+        {
+          "id": "falco_gigante",
+          "name": "falco gigante",
+          "cost": 40
+        },
+        {
+          "id": "aquila",
+          "name": "aquila",
+          "cost": 95
+        },
+        {
+          "id": "drago",
+          "name": "drago",
+          "cost": 380
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 0
+    },
+    {
+      "id": "eroe_centauro",
+      "name": "Eroe Centauro",
+      "category": "Personaggi",
+      "cost_per_model": 75,
+      "stats": {
+        "M": "2*",
+        "DC": "4",
+        "D": "2",
+        "F": "4",
+        "R": "6"
+      },
+      "type": [],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Furia"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 4
+        },
+        {
+          "id": "arma_a_due_mani",
+          "name": "arma a due mani",
+          "cost": 8
+        },
+        {
+          "id": "lancia",
+          "name": "lancia",
+          "cost": 4
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost": 8
+        },
+        {
+          "id": "arco_lungo",
+          "name": "arco lungo",
+          "cost": 16
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 0
+    },
+    {
+      "id": "alfiere",
+      "name": "Alfiere",
+      "category": "Personaggi",
+      "cost_per_model": 50,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "2",
+        "F": "2",
+        "R": "5"
+      },
+      "type": [],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "stendardo da battaglia (+1 al combattimento in difesa, unità amiche a 2 caselle o meno ritirano test di coraggio)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 2
+        },
+        {
+          "id": "arma_a_due_mani",
+          "name": "arma a due mani",
+          "cost": 4
+        },
+        {
+          "id": "lancia",
+          "name": "lancia",
+          "cost": 2
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost": 4
+        },
+        {
+          "id": "arco_lungo",
+          "name": "arco lungo",
+          "cost": 8
+        },
+        {
+          "id": "cavallo",
+          "name": "cavallo",
+          "cost": 15
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0,
+      "magic_banner_slot": true
+    },
+    {
+      "id": "mago_supremo",
+      "name": "Mago Supremo",
+      "category": "Personaggi",
+      "cost_per_model": 165,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "3",
+        "F": "4",
+        "R": "6"
+      },
+      "type": [],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "mago livello 3 (magia da Battaglia o della Natura)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "livello_4",
+          "name": "livello 4",
+          "cost": 60
+        },
+        {
+          "id": "cavallo",
+          "name": "cavallo",
+          "cost": 25
+        },
+        {
+          "id": "falco_gigante",
+          "name": "falco gigante",
+          "cost": 50
+        },
+        {
+          "id": "aquila",
+          "name": "aquila",
+          "cost": 95
+        },
+        {
+          "id": "drago",
+          "name": "drago",
+          "cost": 380
+        }
+      ],
+      "magic_item_slots": 4,
+      "max_per_army": 0
+    },
+    {
+      "id": "mago",
+      "name": "Mago",
+      "category": "Personaggi",
+      "cost_per_model": 55,
+      "stats": {
+        "M": "1",
+        "DC": "2",
+        "D": "2",
+        "F": "2",
+        "R": "5"
+      },
+      "type": [],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "mago livello 1 (magia da Battaglia o della Natura)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "livello_2",
+          "name": "livello 2",
+          "cost": 40
+        },
+        {
+          "id": "cavallo",
+          "name": "cavallo",
+          "cost": 15
+        },
+        {
+          "id": "falco_gigante",
+          "name": "falco gigante",
+          "cost": 30
+        },
+        {
+          "id": "aquila",
+          "name": "aquila",
+          "cost": 95
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 0
+    },
+    {
+      "id": "regina_dei_rampicanti",
+      "name": "Regina dei rampicanti",
+      "category": "Personaggi",
+      "cost_per_model": 365,
+      "stats": {
+        "M": "2",
+        "DC": "5",
+        "D": "5*",
+        "F": "5",
+        "R": "7"
+      },
+      "type": [],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Paura, Infiammabile, Mago livello 3 (magia della Natura"
+      ],
+      "equipment": [
+      ],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 1,
+      "magin_items": [
+        "Lancia sacra Ira di Kurnotheal",
+        "Corona di Verdia"
+      ]
+    }
+  ]
+}

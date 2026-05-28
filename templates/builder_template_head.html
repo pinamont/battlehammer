@@ -219,6 +219,32 @@
       margin-left: 6px;
     }
 
+    .save-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    #savedListContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .saved-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px;
+      border: 1px solid #30363d;
+      border-radius: 4px;
+      background: #161b22;
+    }
+
+    .saved-item button {
+      margin-left: 6px;
+    }
+
     /* --- MOBILE VERSION --- */
     @media (max-width: 768px) {
       .config-top,
@@ -292,8 +318,42 @@
       body[data-tab="config"] #configSection { display: block; }
       body[data-tab="army"] #armySection { display: block; }
     }
+
     @media (min-width: 768px) {
       #settingsSection { display: none; }
-/*       body[data-tab="settings"] #settingsSection { display: none; } */
     }
+
+    @media (max-width: 768px) {
+      body[data-tab="saves"] #savesSection { display: block; }
+    }
+
+    .global-actions {
+/*       display: flex; */
+      gap: 6px;
+      margin-left: 8px;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 16px;
+      width: 280px;
+    }
+
+    .modal button {
+/*       width: 100%; */
+      margin-bottom: 6px;
+    }
+
   </style>

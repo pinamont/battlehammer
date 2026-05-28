@@ -1,0 +1,884 @@
+{
+  "elfi_alti": [
+    {
+      "id": "elfi_lancieri",
+      "name": "Elfi Lancieri",
+      "category": "Truppe",
+      "cost_per_model": 11,
+      "stats": {
+        "M": "1",
+        "DC": "3*",
+        "D": "3",
+        "F": "1",
+        "R": "5"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [],
+      "equipment": [
+        "lancia, scudo"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "elfi_arcieri",
+      "name": "Elfi Arcieri",
+      "category": "Truppe",
+      "cost_per_model": 13,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "2",
+        "F": "1",
+        "R": "5"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [],
+      "equipment": [
+        "arco lungo"
+      ],
+      "ranged": [
+        {
+          "name": "Arco lungo",
+          "range": "5",
+          "dc": "3",
+          "special": "-"
+        }
+      ],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "guardia_del_mare",
+      "name": "Guardia del Mare",
+      "category": "Truppe",
+      "cost_per_model": 15,
+      "stats": {
+        "M": "1",
+        "DC": "3*",
+        "D": "3",
+        "F": "1",
+        "R": "5"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [],
+      "equipment": [
+        "lancia, scudo, arco lungo"
+      ],
+      "ranged": [
+        {
+          "name": "Arco lungo",
+          "range": "5",
+          "dc": "3",
+          "special": "-"
+        }
+      ],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "maestri_di_spada",
+      "name": "Maestri di Spada",
+      "category": "Truppe",
+      "cost_per_model": 16,
+      "stats": {
+        "M": "1",
+        "DC": "5",
+        "D": "3",
+        "F": "1",
+        "R": "6"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "-1 per essere attaccati (in CaC e a distanza)"
+      ],
+      "equipment": [
+        "arma a due mani, armatura pesante"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "leoni_bianchi",
+      "name": "Leoni Bianchi",
+      "category": "Truppe",
+      "cost_per_model": 15,
+      "stats": {
+        "M": "1",
+        "DC": "4*",
+        "D": "4",
+        "F": "1",
+        "R": "6"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "furia"
+      ],
+      "equipment": [
+        "arma a due mani, armatura pesante, pelliccia di leone"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "guardia_della_fenice",
+      "name": "Guardia della Fenice",
+      "category": "Truppe",
+      "cost_per_model": 16,
+      "stats": {
+        "M": "1",
+        "DC": "3*",
+        "D": "4",
+        "F": "1",
+        "R": "6"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "implacabili"
+      ],
+      "equipment": [
+        "alabarda, armatura pesante"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "guerrieri_ombra",
+      "name": "Guerrieri Ombra",
+      "category": "Truppe",
+      "cost_per_model": 17,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "2",
+        "F": "1",
+        "R": "5"
+      },
+      "type": [
+        "fanteria",
+        "schermagliatori"
+      ],
+      "min_size": 5,
+      "max_size": 10,
+      "rules": [
+        "infiltrazione, -1 per essere attaccati a distanza"
+      ],
+      "equipment": [
+        "arco lungo"
+      ],
+      "ranged": [
+        {
+          "name": "Arco lungo",
+          "range": "5",
+          "dc": "3",
+          "special": "-"
+        }
+      ],
+      "options": [
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "sorelle_di_avelor",
+      "name": "Sorelle di Avelor",
+      "category": "Truppe",
+      "cost_per_model": 16,
+      "stats": {
+        "M": "1",
+        "DC": "3*",
+        "D": "2",
+        "F": "1",
+        "R": "5"
+      },
+      "type": [
+        "fanteria"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [],
+      "equipment": [
+        "arco lungo con frecce magiche"
+      ],
+      "ranged": [
+        {
+          "name": "Arco lungo",
+          "range": "5",
+          "dc": "3",
+          "special": "*"
+        }
+      ],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "principi_drago",
+      "name": "Principi Drago",
+      "category": "Truppe",
+      "cost_per_model": 34,
+      "stats": {
+        "M": "2",
+        "DC": "4*",
+        "D": "5",
+        "F": "2",
+        "R": "6"
+      },
+      "type": [
+        "cavalleria pesante"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [],
+      "equipment": [
+        "cavallo bardato, lancia da cavaliere, scudo, armatura pesante"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 30
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "elmi_d_argento",
+      "name": "Elmi d'Argento",
+      "category": "Truppe",
+      "cost_per_model": 28,
+      "stats": {
+        "M": "3",
+        "DC": "3*",
+        "D": "4",
+        "F": "2",
+        "R": "5"
+      },
+      "type": [
+        "cavalleria leggera"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [],
+      "equipment": [
+        "cavallo, lancia da cavaliere, scudo, armatura pesante"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 30
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "cavalieri_predoni",
+      "name": "Cavalieri Predoni",
+      "category": "Truppe",
+      "cost_per_model": 30,
+      "stats": {
+        "M": "3",
+        "DC": "3*",
+        "D": "2",
+        "F": "2",
+        "R": "5"
+      },
+      "type": [
+        "cavalleria leggera"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [],
+      "equipment": [
+        "cavallo, lancia, arco"
+      ],
+      "ranged": [
+        {
+          "name": "Arco",
+          "range": "4",
+          "dc": "3",
+          "special": "-"
+        }
+      ],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "cost": 30
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "multibalista",
+      "name": "Multibalista",
+      "category": "Macchine e Mostri",
+      "cost_per_model": 55,
+      "stats": {
+        "M": "1*",
+        "DC": "2",
+        "D": "4",
+        "F": "3",
+        "R": "5"
+      },
+      "type": [
+        "macchina da guerra"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [],
+      "equipment": [
+        "multibalista"
+      ],
+      "ranged": [
+        {
+          "name": "Multibalista",
+          "range": "8",
+          "dc": "4",
+          "special": "*"
+        }
+      ],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "carro_di_tiranoc",
+      "name": "Carro di Tiranoc",
+      "category": "Macchine e Mostri",
+      "cost_per_model": 95,
+      "stats": {
+        "M": "2",
+        "DC": "3*",
+        "D": "4",
+        "F": "4",
+        "R": "5"
+      },
+      "type": [
+        "carro leggero"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [],
+      "equipment": [
+        "lance, archi lunghi"
+      ],
+      "ranged": [
+        {
+          "name": "Arco lungo",
+          "range": "5",
+          "dc": "2",
+          "special": "-"
+        }
+      ],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "carro_dei_leoni",
+      "name": "Carro dei Leoni",
+      "category": "Macchine e Mostri",
+      "cost_per_model": 120,
+      "stats": {
+        "M": "2*",
+        "DC": "4**",
+        "D": "5",
+        "F": "5",
+        "R": "6"
+      },
+      "type": [
+        "carro pesante"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [],
+      "equipment": [
+        "armi a due mani, pelli di leoni, lance"
+      ],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "lord",
+      "name": "Lord",
+      "category": "Personaggi",
+      "cost_per_model": 75,
+      "stats": {
+        "M": "1",
+        "DC": "4",
+        "D": "3",
+        "F": "4",
+        "R": "7"
+      },
+      "type": [
+        "personaggio"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 4
+        },
+        {
+          "id": "arma_a_due_mani",
+          "name": "arma a due mani",
+          "cost": 8
+        },
+        {
+          "id": "lancia",
+          "name": "lancia",
+          "cost": 4
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost": 8
+        },
+        {
+          "id": "armatura_pesante",
+          "name": "armatura pesante",
+          "cost": 4
+        },
+        {
+          "id": "cavallo",
+          "name": "cavallo",
+          "cost": 25
+        },
+        {
+          "id": "cavallo_bardato",
+          "name": "cavallo bardato",
+          "cost": 25
+        },
+        {
+          "id": "pegaso",
+          "name": "pegaso",
+          "cost": 80
+        },
+        {
+          "id": "grifone",
+          "name": "grifone",
+          "cost": 170
+        },
+        {
+          "id": "drago",
+          "name": "drago",
+          "cost": 380
+        }
+      ],
+      "magic_item_slots": 3,
+      "max_per_army": 0
+    },
+    {
+      "id": "eroe",
+      "name": "Eroe",
+      "category": "Personaggi",
+      "cost_per_model": 50,
+      "stats": {
+        "M": "1",
+        "DC": "4",
+        "D": "2",
+        "F": "3",
+        "R": "6"
+      },
+      "type": [
+        "personaggio"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 3
+        },
+        {
+          "id": "arma_a_due_mani",
+          "name": "arma a due mani",
+          "cost": 6
+        },
+        {
+          "id": "lancia",
+          "name": "lancia",
+          "cost": 3
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost": 6
+        },
+        {
+          "id": "armatura_pesante",
+          "name": "armatura pesante",
+          "cost": 3
+        },
+        {
+          "id": "cavallo",
+          "name": "cavallo",
+          "cost": 20
+        },
+        {
+          "id": "cavallo_bardato",
+          "name": "cavallo bardato",
+          "cost": 20
+        },
+        {
+          "id": "pegaso",
+          "name": "pegaso",
+          "cost": 80
+        },
+        {
+          "id": "grifone",
+          "name": "grifone",
+          "cost": 170
+        },
+        {
+          "id": "drago",
+          "name": "drago",
+          "cost": 380
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 0
+    },
+    {
+      "id": "alfiere",
+      "name": "Alfiere",
+      "category": "Personaggi",
+      "cost_per_model": 50,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "2",
+        "F": "2",
+        "R": "5"
+      },
+      "type": [
+        "personaggio"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "stendardo da battaglia (+1 al combattimento in difesa, unità amiche a 2 caselle o meno ritirano test di coraggio)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "scudo",
+          "cost": 2
+        },
+        {
+          "id": "arma_a_due_mani",
+          "name": "arma a due mani",
+          "cost": 4
+        },
+        {
+          "id": "lancia",
+          "name": "lancia",
+          "cost": 2
+        },
+        {
+          "id": "lancia_da_cavaliere",
+          "name": "lancia da cavaliere",
+          "cost": 4
+        },
+        {
+          "id": "armatura_pesante",
+          "name": "armatura pesante",
+          "cost": 2
+        },
+        {
+          "id": "cavallo",
+          "name": "cavallo",
+          "cost": 15
+        },
+        {
+          "id": "cavallo_bardato",
+          "name": "cavallo bardato",
+          "cost": 15
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0,
+      "magic_banner_slot": true
+    },
+    {
+      "id": "mago_supremo",
+      "name": "Mago Supremo",
+      "category": "Personaggi",
+      "cost_per_model": 200,
+      "stats": {
+        "M": "1",
+        "DC": "3",
+        "D": "3",
+        "F": "4",
+        "R": "6"
+      },
+      "type": [
+        "personaggio",
+        "mago"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "mago livello 3 (magia Suprema o da Battaglia)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "livello_4",
+          "name": "livello 4",
+          "cost": 65
+        },
+        {
+          "id": "cavallo",
+          "name": "cavallo",
+          "cost": 25
+        },
+        {
+          "id": "pegaso",
+          "name": "pegaso",
+          "cost": 80
+        },
+        {
+          "id": "grifone",
+          "name": "grifone",
+          "cost": 170
+        },
+        {
+          "id": "drago",
+          "name": "drago",
+          "cost": 380
+        }
+      ],
+      "magic_item_slots": 4,
+      "max_per_army": 0
+    },
+    {
+      "id": "mago",
+      "name": "Mago",
+      "category": "Personaggi",
+      "cost_per_model": 60,
+      "stats": {
+        "M": "1",
+        "DC": "2",
+        "D": "2",
+        "F": "2",
+        "R": "5"
+      },
+      "type": [
+        "personaggio",
+        "mago"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "mago livello 1 (magia Suprema o da Battaglia)"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "livello_2",
+          "name": "livello 2",
+          "cost": 45
+        },
+        {
+          "id": "cavallo",
+          "name": "cavallo",
+          "cost": 15
+        },
+        {
+          "id": "pegaso",
+          "name": "pegaso",
+          "cost": 80
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 0
+    },
+    {
+      "id": "teclis",
+      "name": "Teclis",
+      "category": "Personaggi",
+      "cost_per_model": 550,
+      "stats": {
+        "M": "1",
+        "DC": "5",
+        "D": "3",
+        "F": "4",
+        "R": "6"
+      },
+      "type": [
+        "personaggio speciale",
+        "mago"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "mago livello 4 (livello 5 con la Corona di da Guerra di Saphery, magia Suprema o da Battaglia, potendo anche scegliere un mix tra i due mazzi), Maestro del Sapere (può scegliere sempre gli incantesimi, anche quando costretto a pescare a caso; può anche scambiare una delle sue carte incantesimo con un'altra a sua scelta all'inizio del suo turno)"
+      ],
+      "equipment": [
+      ],
+      "ranged": [],
+      "options": [],
+      "magic_items": [
+        "La Corona Da Guerra Di Saphery",
+        "La Spada Di Teclis",
+        "Lo Scettro Della Luna"
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 1
+    }
+  ]
+}

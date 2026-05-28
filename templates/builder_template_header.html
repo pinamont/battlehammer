@@ -23,7 +23,11 @@
         step="100"
         style="width:59px; background:#0d1117; color:#e6edf3; border:1px solid #30363d; border-radius:4px; padding:2px 4px;"
       />
-      <button onclick="adjustValueDown('maxPointsInput')" style="width:24px";>–</button>
-      <button onclick="adjustValueUp('maxPointsInput')" style="width:24px">+</button>
+      <button id="maxPointsDownBtn" style="width:24px" class="secondary">–</button>
+      <button id="maxPointsUpBtn" style="width:24px" class="secondary">+</button>
+    </div>
+    <div id="globalActions" style="display: inline" class="global-actions">
+      <button id="openLoadModalBtn" class="primary">Carica</button>
+      <button id="openSaveModalBtn" class="danger">Salva</button>
     </div>
   </div>

@@ -51,8 +51,7 @@
       "category": "Stendardi Magici",
       "description": "Resistenza alla magia 4+. Ogni mago a che entra in contatto con l'unità perde immediatamente 1D6 PC (senza tiri salvezza o rigenerazione). Questi perde un ulteriore PC all'inizio di ogni turno successivo del giocatore che controlla l'unità, se ancora a contatto.",
       "only_for_army": [
-        "orchi",
-        "goblin"
+        "orchi_e_goblin"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -103,13 +102,13 @@
       "not_for_type": []
     },
     {
-      "id": "lo_stendardodella_luna_cattiva",
-      "name": "Lo StendardoDella Luna Cattiva",
+      "id": "lo_stendardo_della_luna_cattiva",
+      "name": "Lo Stendardo Della Luna Cattiva",
       "cost": 35,
       "category": "Stendardi Magici",
       "description": "-1 DC a tutti gli attacchi portati verso l'unità (in CaC o a distanza).",
       "only_for_army": [
-        "goblin_delle_tenebre"
+        "orchi_e_goblin"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -133,8 +132,7 @@
       "category": "Stendardi Magici",
       "description": "L'unità ottiene +1 DC in carica.",
       "only_for_army": [
-        "orchi",
-        "goblin"
+        "orchi_e_goblin"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -163,21 +161,21 @@
       "not_for_type": []
     },
     {
-      "id": "lo_stendardodel_sole_malvagio",
-      "name": "Lo StendardoDel Sole Malvagio",
+      "id": "lo_stendardo_del_sole_malvagio",
+      "name": "Lo Stendardo Del Sole Malvagio",
       "cost": 10,
       "category": "Stendardi Magici",
       "description": "L'unità può ripetere un tiro di Animosità fallito ogni turno.",
       "only_for_army": [
-        "goblin"
+        "orchi_e_goblin"
       ],
       "not_for_army": [],
       "only_for_type": [],
       "not_for_type": []
     },
     {
-      "id": "lo_stendardodella_disciplina",
-      "name": "Lo StendardoDella Disciplina",
+      "id": "lo_stendardo_della_disciplina",
+      "name": "Lo Stendardo Della Disciplina",
       "cost": 25,
       "category": "Stendardi Magici",
       "description": "Aggiunge +2 al Coraggio dell'unità.",

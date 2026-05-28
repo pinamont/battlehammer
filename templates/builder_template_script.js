@@ -703,27 +703,14 @@
 
     panel.innerHTML = "";
 
-
-    // const title = document.createElement("h3");
-    // title.textContent = unit.name;
-    // title.style.fontSize = "15px";
-    // title.style.marginTop = "0";
-    // title.style.marginBottom = "2px";
-    // panel.appendChild(title);
     document.getElementById("configUnitName").textContent = unit.name;
 
-    // const baseInfo = document.createElement("div");
-    // baseInfo.style.fontSize = "12px";
-    // baseInfo.style.marginTop = "1px";
-    // baseInfo.style.opacity = 0.7;
     let textContent = "";
     if (unit.min_size === 1 && unit.max_size === 1) {
       textContent = `${unit.cost_per_model} pt (modello singolo)`;
     } else {
       textContent = `${unit.cost_per_model} pt/mod., ${unit.min_size}-${unit.max_size} modelli`;
     }
-    // baseInfo.textContent = textContent
-    // panel.appendChild(baseInfo);
     document.getElementById("configUnitMeta").textContent = textContent;
 
     let sizeInput = 1
@@ -812,7 +799,7 @@
           qty.min = 0;
           qty.max = opt.max_count;
           qty.style.width = "32px";
-          qty.style.marginLeft = "8px";
+          qty.style.marginLeft = "4px";
           qty.style.background = "#0d1117";
           qty.style.color = "#e6edf3";
           qty.style.border = "1px solid #30363d";
@@ -828,6 +815,7 @@
           };
 
           qtyMinus = document.createElement("button");
+          qtyMinus.style.background= "#30363d";
           qtyMinus.textContent = "–";
           qtyMinus.style.marginLeft = "1px";
           qtyMinus.style.marginRight = "1px";
@@ -840,6 +828,7 @@
           }
 
           qtyPlus = document.createElement("button");
+          qtyPlus.style.background= "#30363d";
           qtyPlus.textContent = "+";
           qtyPlus.style.marginLeft = "1px";
           qtyPlus.style.marginRight = "1px";
@@ -1407,34 +1396,53 @@
     renderArmy();
   });
 
-  document.getElementById("maxPointsInput").addEventListener("input", (e) => {
+  // document.getElementById("maxPointsInput").addEventListener("input", (e) => {
+  document.getElementById("maxPointsInput").addEventListener("change", (e) => {
     const val = parseInt(e.target.value, 10) || 500;
     army.maxPoints = val;
     renderArmy();
   });
 
+  document.getElementById("maxPointsDownBtn").onclick = () => {
+    adjustValueDown('maxPointsInput');
+    army.maxPoints = parseInt(document.getElementById("maxPointsInput").value);
+    renderArmy();
+  }
+
+  document.getElementById("maxPointsUpBtn").onclick = () => {
+    adjustValueUp('maxPointsInput');
+    army.maxPoints = parseInt(document.getElementById("maxPointsInput").value);
+    renderArmy();
+  }
+
+  // document.getElementById("maxPointsInput").onChange = () => {
+  //   const val = document.getElementById("maxPointsInput").value;
+  //   army.maxPoints = val;
+  //   renderArmy();
+  // };
+
   // --- ESPORTAZIONE -----------------------------------------------------------
 
   // Scarica file di testo
-  document.getElementById("exportTextBtn").addEventListener("click", () => {
-    const text = exportArmyText();
-    downloadFile(text, "lista.txt", "text/plain");
-  });
-
-  document.getElementById("exportMarkdownBtn").addEventListener("click", () => {
-    const md = exportArmyTextMarkdown();
-    downloadFile(md, "lista.md", "text/markdown");
-  });
-
-  document.getElementById("exportPdfBtn").addEventListener("click", () => {
-    const pdfData = buildArmyDataForPdf();
-    exportArmyPDF(pdfData);
-  });
-
-  document.getElementById("exportJsonBtn").addEventListener("click", () => {
-    const json = exportArmyJson();
-    downloadFile(json, "lista.json", "application/json");
-  });
+  // document.getElementById("exportTextBtn").addEventListener("click", () => {
+  //   const text = exportArmyText();
+  //   downloadFile(text, "lista.txt", "text/plain");
+  // });
+  //
+  // document.getElementById("exportMarkdownBtn").addEventListener("click", () => {
+  //   const md = exportArmyTextMarkdown();
+  //   downloadFile(md, "lista.md", "text/markdown");
+  // });
+  //
+  // document.getElementById("exportPdfBtn").addEventListener("click", () => {
+  //   const pdfData = buildArmyDataForPdf();
+  //   exportArmyPDF(pdfData);
+  // });
+  //
+  // document.getElementById("exportJsonBtn").addEventListener("click", () => {
+  //   const json = exportArmyJson();
+  //   downloadFile(json, "lista.json", "application/json");
+  // });
 
   // Funzione generica per scaricare file
   function downloadFile(content, filename, mime) {
@@ -1452,27 +1460,28 @@
   // --- IMPORTAZIONE -----------------------------------------------------------
 
   // Apri il selettore file
-  document.getElementById("importBtn").addEventListener("click", () => {
-    document.getElementById("importFile").click();
-  });
+  // document.getElementById("importBtn").addEventListener("click", () => {
+  //   document.getElementById("importFile").click();
+  // });
 
-  // Gestisci il file selezionato
-  document.getElementById("importFile").addEventListener("change", (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      try {
-        const data = JSON.parse(e.target.result);
-        importArmyJson(data);
-      } catch (err) {
-        alert("Errore: il file non è un JSON valido.");
-        console.error(err);
-      }
-    };
-    reader.readAsText(file);
-  });
+  // // Gestisci il file selezionato
+  // document.getElementById("importFile").addEventListener("change", (event) => {
+  //   const file = event.target.files[0];
+  //   if (!file) return;
+  //
+  //   const reader = new FileReader();
+  //   reader.onload = (e) => {
+  //     try {
+  //       const data = JSON.parse(e.target.result);
+  //       console.error(data);
+  //       importArmyJson(data);
+  //     } catch (err) {
+  //       alert("Errore: il file non è un JSON valido.");
+  //       console.error(err);
+  //     }
+  //   };
+  //   reader.readAsText(file);
+  // });
 
   // Ricostruisce l'esercito dalla struttura JSON esportata
   function importArmyJson(data) {
@@ -1528,6 +1537,153 @@
 
     alert("Lista importata correttamente.");
   }
+
+  // --- SALVATAGGI ONLINE ---
+  function saveArmyToLocal(name) {
+    const data = exportArmyJson();
+    localStorage.setItem("army_" + name, data);
+  }
+
+  function loadArmyFromLocal(name) {
+    const raw = localStorage.getItem("army_" + name);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  }
+
+  function deleteArmyFromLocal(name) {
+    localStorage.removeItem("army_" + name);
+  }
+
+  function listSavedArmies() {
+    return Object.keys(localStorage)
+    .filter(k => k.startsWith("army_"))
+    .map(k => k.replace("army_", ""));
+  }
+
+  function refreshSavedListUI() {
+    const container = document.getElementById("savedListContainer");
+    container.innerHTML = "";
+
+    const names = listSavedArmies();
+    if (names.length === 0) {
+      container.innerHTML = "<p style='opacity:0.7;'>Nessuna lista salvata.</p>";
+      return;
+    }
+
+    names.forEach(name => {
+      const div = document.createElement("div");
+      div.className = "saved-item";
+
+      div.innerHTML = `
+      <span>${name}</span>
+      <div>
+      <button class="secondary" data-load="${name}">Carica</button>
+      <button class="danger" data-del="${name}">Elimina</button>
+      </div>
+      `;
+
+      container.appendChild(div);
+    });
+
+    // Listener Carica
+    container.querySelectorAll("[data-load]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const name = btn.dataset.load;
+        const data = loadArmyFromLocal(name);
+        if (data) {
+          importArmyJson(data);
+          moveToTab("army");
+        }
+        else {
+          console.error("Impossibile caricare i dati...");
+        }
+        closeModal();
+      });
+    });
+
+    // Listener Elimina
+    container.querySelectorAll("[data-del]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        deleteArmyFromLocal(btn.dataset.del);
+        refreshSavedListUI();
+      });
+    });
+  }
+
+  // document.getElementById("saveArmyBtn").addEventListener("click", () => {
+  //   const name = document.getElementById("saveNameInput").value.trim();
+  //   if (!name) return;
+  //
+  //   saveArmyToLocal(name);
+  //   refreshSavedListUI();
+  //   document.getElementById("saveNameInput").value = "";
+  // });
+
+  function openModal(title, contentHtml) {
+    document.getElementById("modalTitle").textContent = title;
+    document.getElementById("modalContent").innerHTML = contentHtml;
+    document.getElementById("modalOverlay").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("modalOverlay").style.display = "none";
+  }
+
+  document.getElementById("closeModalBtn").addEventListener("click", closeModal);
+
+  document.getElementById("openLoadModalBtn").addEventListener("click", () => {
+    openModal("Carica lista", `
+    <button id="loadFromBrowserBtn" class="secondary">Carica da salvataggi</button>
+    <button id="loadFromFileBtn" class="secondary">Carica da file JSON</button>
+    `);
+
+    document.getElementById("loadFromBrowserBtn").addEventListener("click", () => {
+      closeModal();
+      // if (window.innerWidth < 768) {
+      //   document.body.setAttribute("data-tab", "saves");
+      // }
+      // else {
+        openModal("Liste disponibili", `
+        <div id="savedListContainer"></div>
+        `);
+        refreshSavedListUI();
+      // }
+    });
+
+    document.getElementById("loadFromFileBtn").addEventListener("click", () => {
+      document.getElementById("importFile").click();
+      closeModal();
+    });
+  });
+
+  document.getElementById("openSaveModalBtn").addEventListener("click", () => {
+    openModal("Salva lista", `
+    <button id="saveToBrowserBtn" class="secondary">Salva nel browser</button>
+    <button id="exportTxtBtn" class="secondary">Esporta TXT</button>
+    <button id="exportJsonBtn" class="secondary">Esporta JSON</button>
+    <button id="exportPdfBtn" class="secondary">Esporta PDF</button>
+    `);
+
+    document.getElementById("saveToBrowserBtn").addEventListener("click", () => {
+      saveArmyToLocal(document.getElementById("listTitleInput").value);
+      closeModal();
+    });
+
+    document.getElementById("exportTxtBtn").addEventListener("click", () => {
+      document.getElementById("exportTextBtn").click();
+      closeModal();
+    });
+
+    document.getElementById("exportJsonBtn").addEventListener("click", () => {
+      document.getElementById("exportJsonBtn").click();
+      closeModal();
+    });
+
+    document.getElementById("exportPdfBtn").addEventListener("click", () => {
+      document.getElementById("exportPdfBtn").click();
+      closeModal();
+    });
+  });
 
   // --- MOBILE TABS ---
   document.querySelectorAll("#mobileTabs button").forEach(btn => {
@@ -1594,3 +1750,4 @@
   renderUnitList();
   renderConfigPanel();
   renderArmy();
+  // refreshSavedListUI();

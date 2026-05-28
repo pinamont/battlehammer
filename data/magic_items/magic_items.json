@@ -62,12 +62,12 @@
     },
     {
       "id": "morgor_lo_squartatore",
-      "name": "Morgor, Lo Squartatore",
+      "name": "Morgor - Lo Squartatore",
       "cost": 125,
       "category": "Armi Magiche",
       "description": "Arma a 2 mani, +2 DC in attacco (totale +3 DC), ignora la difesa, +2 DC in difesa.",
       "only_for_army": [
-        "orchi"
+        "orchi_e_goblin"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -139,8 +139,7 @@
       "category": "Armi Magiche",
       "description": "Per ogni teschio ottenuto attaccando, il bersaglio deve ottenere un numero pari o inferiore al suo punteggio di Corpo, o rimanere ucciso.",
       "only_for_army": [
-        "sacerdoti",
-        "preti_della_pesta_skaven"
+        "skaven"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -313,8 +312,7 @@
       "description": "Ignora la difesa.",
       "only_for_army": [],
       "not_for_army": [
-        "orchi",
-        "goblin"
+        "orchi_e_goblin"
       ],
       "only_for_type": [],
       "not_for_type": []
@@ -376,12 +374,12 @@
       "category": "Armi Magiche",
       "description": "+2 DC in attacco. Ogni modello ucciso di taglia normale crea uno scheletro al servizio del possessore.",
       "only_for_army": [
-        "negromanti",
-        "lich",
-        "vampiri"
+        "nommorti"
       ],
       "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": [
+        "mago"
+      ],
       "not_for_type": []
     },
     {
@@ -461,11 +459,12 @@
       "category": "Armi Magiche",
       "description": "Ignora la difesa. Contro i nommorti e i demoni raddoppia le ferite inflitte.",
       "only_for_army": [
-        "impero_se_ne_puo_avere_piu_di_una_per_esercito"
+        "impero"
       ],
       "not_for_army": [],
       "only_for_type": [],
-      "not_for_type": []
+      "not_for_type": [],
+      "allow_multiple": true
     },
     {
       "id": "la_spada_dell_esorcismo",
@@ -474,7 +473,9 @@
       "category": "Armi Magiche",
       "description": "Contro i Nommorti ignora la difesa e infligge 1D3 di ferite.",
       "only_for_army": [],
-      "not_for_army": [],
+      "not_for_army": [
+        "nommorti"
+      ],
       "only_for_type": [],
       "not_for_type": []
     },
@@ -518,7 +519,7 @@
       "category": "Armi Magiche",
       "description": "L'unità del portatore ignora il primo test di animosità fallito.",
       "only_for_army": [
-        "orchi"
+        "orchi_e_goblin"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -555,7 +556,7 @@
       "category": "Armi Magiche",
       "description": "Due armi. +1DC in attacco (oltre al +1 per le due armi), +1DC in difesa, permette di ritirare tutti i dadi d'attacco.",
       "only_for_army": [
-        "orchi"
+        "orchi_e_goblin"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -594,7 +595,7 @@
       "category": "Armature Magiche",
       "description": "Armatura pesante. Include uno scudo. -2 DC agli attacchi degli avversari (in CaC o da tiro).",
       "only_for_army": [
-        "bretonni",
+        "bretonnia",
         "elfi_alti",
         "impero"
       ],
@@ -665,29 +666,11 @@
       "category": "Armature Magiche",
       "description": "Armatura pesante. Tiro Salvezza di 4+, per ogni ferita salvata chi ha attaccato (in CaC) subisce un attacco con 1DC (somma tutti i dadi in un unico attacco), senza potersi difendere.",
       "only_for_army": [
-        "skaven",
-        "puo_essere_usata_dai_maghi"
+        "skaven"
       ],
       "not_for_army": [],
       "only_for_type": [],
-      "not_for_type": [
-        "mago"
-      ]
-    },
-    {
-      "id": "l_armatura_di_caledor",
-      "name": "L'Armatura Di Caledor",
-      "cost": 40,
-      "category": "Armature Magiche",
-      "description": "% Armatura pesante. % +2 DC in difesa invece di +1, Tiro Salvezza di 5+, immunità a tutti i soffi di drago. % %",
-      "only_for_army": [
-        "elfi_alti"
-      ],
-      "not_for_army": [],
-      "only_for_type": [],
-      "not_for_type": [
-        "mago"
-      ]
+      "not_for_type": []
     },
     {
       "id": "l_armatura_di_ferro_meteoritico",
@@ -750,14 +733,11 @@
       "category": "Armature Magiche",
       "description": "Armatura pesante. +2 DC in difesa invece di +1.",
       "only_for_army": [
-        "caos",
-        "puo_essere_usata_dai_maghi"
+        "caos"
       ],
       "not_for_army": [],
       "only_for_type": [],
-      "not_for_type": [
-        "mago"
-      ]
+      "not_for_type": []
     },
     {
       "id": "l_elmo_del_drago",
@@ -832,15 +812,12 @@
       "description": "+2 DC Difesa in CaC o +4 contro attacchi da tiro.",
       "only_for_army": [
         "elfi_silvani",
-        "goblin_delle_foreste",
-        "orchi_selvaggi",
+        "orchi_e_goblin",
         "skaven"
       ],
       "not_for_army": [],
       "only_for_type": [],
-      "not_for_type": [
-        "mago"
-      ]
+      "not_for_type": []
     },
     {
       "id": "la_corazza_di_borin",
@@ -1087,7 +1064,7 @@
       "category": "Oggetti Incantati",
       "description": "%... % %",
       "only_for_army": [
-        "monaci_della_peste_skaven"
+        "skaven"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -1113,17 +1090,6 @@
       "only_for_army": [
         "elfi_alti"
       ],
-      "not_for_army": [],
-      "only_for_type": [],
-      "not_for_type": []
-    },
-    {
-      "id": "il_liber_bubonicus",
-      "name": "Il Liber Bubonicus",
-      "cost": 75,
-      "category": "Oggetti Incantati",
-      "description": "% \\add{} %",
-      "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
       "not_for_type": []
@@ -1205,7 +1171,7 @@
       "category": "Oggetti Incantati",
       "description": "Se il portatore viene ucciso, ritorna in vita con 1D3 PC (fino a un massimo dei suoi PC originari), entro fino a 2 caselle di distanza.",
       "only_for_army": [
-        "vampiri"
+        "nommorti"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -1218,8 +1184,7 @@
       "category": "Oggetti Incantati",
       "description": "Può essere fatta bere all'unità del portatore (di Clanratti o Ratti d'Assalto) all'inizio della sua azione, e gli effetti durano per tutta la partita. Tira 1D6: 1: nessun effetto; 2,3: l'unità odia tutti i non-Skaven; 4,5: l'unità è soggetta \\textit{furia}; 6: l'unità ha +1 Movimento e +2 Attacco in CaC, ma subisce 1D6 di ferite ottenendo uno scudo su 1DC alla fine di ogni suo turno.",
       "only_for_army": [
-        "skaven",
-        "un_solo_uso"
+        "skaven"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -1303,7 +1268,7 @@
       "category": "Oggetti Incantati",
       "description": "All'inizio della battaglia, scegli tra: +1 in Attacco, +3 in Difesa o +1 PC. Con 5+ su 1D6 il possessore ottiene questo bonus. Altrimenti scegline un altro, che viene ottenuto con 3+ su 1D6. Se anche questo tiro fallisce, il bonus restante è ottenuto automaticamente.",
       "only_for_army": [
-        "lord_di_bretonnia"
+        "bretonnia"
       ],
       "not_for_army": [],
       "only_for_type": [],
@@ -1398,13 +1363,13 @@
       "not_for_type": []
     },
     {
-      "id": "la_corona_da_guerradi_saphery",
-      "name": "La Corona Da GuerraDi Saphery",
+      "id": "la_corona_da_guerra_di_saphery",
+      "name": "La Corona Da Guerra Di Saphery",
       "cost": 125,
       "category": "Arcani",
       "description": "Aumenta il livello del possessore di 1, fino a un massimo di 5.",
       "only_for_army": [
-        "maghi_supremi_degli_elfi_alti"
+        "elfi_alti"
       ],
       "not_for_army": [],
       "only_for_type": [
@@ -1447,7 +1412,8 @@
       "category": "Arcani",
       "description": "Il possessore può lanciare un incantesimo a turno senza usare carte potere. Tira 1DC quando la spada viene usata: se ottieni uno scudo, il possessore subisce una ferita per ogni punto Potere dell'incantesimo. % Il possessore non può portare altre armi magiche.",
       "only_for_army": [
-        "maghi_con_magia_oscura",
+        "caos",
+        "elfi_oscuri",
         "necromanzia"
       ],
       "not_for_army": [],
@@ -1707,7 +1673,8 @@
       "only_for_type": [
         "mago"
       ],
-      "not_for_type": []
+      "not_for_type": [],
+      "allow_multiple": true
     },
     {
       "id": "il_bastone_del_potere",
@@ -1818,7 +1785,7 @@
       "category": "Ricettacoli",
       "description": "Incantesimo infuso: raggio 2, il modello bersaglio è ucciso a meno che non ottenga almeno uno scudo su tanti DC quanti sono i suoi punti corpo. Dopo ogni uso si scarica ottenendo uno scuso su 1DC.",
       "only_for_army": [
-        "stregoni_del_caos_di_nurgle"
+        "caos"
       ],
       "not_for_army": [],
       "only_for_type": [],
