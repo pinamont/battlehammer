@@ -45,6 +45,9 @@ def parse_army_units(tex):
         if (category == "Cavalcature"):
             continue
 
+        if (category == "Regole Speciali"):
+            continue;
+
         # Trova unitblock
         block_pattern = r"\\begin{unitblock}{([^}]+)}{([^}]+)}(.*?)\\end{unitblock}"
         blocks = re.findall(block_pattern, section_body, re.DOTALL)

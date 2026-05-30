@@ -1,0 +1,14 @@
+{
+  "knightly_virtues": [
+    {
+      "id": "virtu_del_graal",
+      "name": "Virtù del Graal",
+      "cost": 15,
+      "category": "Virtù Cavalleresche",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    }
+  ]
+}

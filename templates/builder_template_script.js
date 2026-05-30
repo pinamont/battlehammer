@@ -33,9 +33,12 @@
     document.getElementById("FACTION_DATA").textContent
   );
 
-  const MAGIC_ITEMS = JSON.parse(
-    document.getElementById("ITEM_DATA").textContent
-  ).magic_items;
+  const MAGIC_ITEMS =
+    JSON.parse(document.getElementById("ITEM_DATA").textContent).magic_items.concat(
+      JSON.parse(document.getElementById("ITEM_DATA").textContent).chaos_rewards.concat(
+        JSON.parse(document.getElementById("ITEM_DATA").textContent).knightly_virtues
+      )
+  );
 
   const MAGIC_BANNERS = JSON.parse(
     document.getElementById("ITEM_DATA").textContent
@@ -98,7 +101,7 @@
     }
   }
 
-  function calcUnitPoints(unit, size, selectedOptionIds, optionCounts = {}, magicItems = [], magicBanner = null) {
+  function calcUnitPoints(unit, size, selectedOptionIds, optionCounts = {}, magicItems = [], magicBanner = null, knightlyVirtues = []) {
     let total = unit.cost_per_model * size;
     for (const opt of unit.options || []) {
       if (!selectedOptionIds.includes(opt.id)) continue;
@@ -120,6 +123,12 @@
     if (magicBanner) {
       const banner = MAGIC_BANNERS.find(b => b.id === magicBanner);
       if (banner) total += banner.cost;
+    }
+    if (knightlyVirtues) {
+      for (const id of knightlyVirtues) {
+        const item = MAGIC_ITEMS.find(m => m.id === id);
+        if (item) total += item.cost;
+      }
     }
     return total;
   }
@@ -692,6 +701,7 @@
 
     let optionCounts = existingEntry ? { ...existingEntry.optionCounts } : {};
     let selectedMagicItems = new Set(existingEntry ? existingEntry.magicItems : []);
+    let selectedKnightlyVirtues = new Set(existingEntry ? existingEntry.knightlyVirtues : []);
     let selectedMagicBanner = existingEntry ? existingEntry.magicBanner : null;
     const unit = selectedUnit;
     const isEdit = !!existingEntry;
@@ -953,67 +963,155 @@
     noneRow.appendChild(noneRight);
     content.appendChild(noneRow);
 
-    // Loop sugli stendardi disponibili
-    for (const banner of MAGIC_BANNERS) {
-      if (!isMagicItemAllowedForUnit(banner, unit, currentFaction)) {
-        continue;
-      }
-
-      const row = document.createElement("div");
-      row.className = "option-row";
-      row.style.display = "flex";
-      row.style.justifyContent = "space-between";
-      row.style.alignItems = "center";
-      row.style.margin = "2px 0";
-
-      const left = document.createElement("span");
-      const right = document.createElement("span");
-
-      const rb = document.createElement("input");
-      rb.type = "radio";
-      rb.name = "magic_banner_choice";
-      rb.value = banner.id;
-      rb.checked = selectedMagicBanner === banner.id;
-
-      rb.onchange = () => {
-        if (rb.checked) {
-          if (!banner.allow_multiple && isMagicBannerTaken(banner.id, existingEntry?.id)) {
-            alert("Questo stendardo magico è già stato selezionato da un'altra unità.");
-            rb.checked = false;
-            selectedMagicBanner = null;
-            noneRb.checked = true;
-            updatePointsPreview();
-            return;
-          }
-          selectedMagicBanner = banner.id;
-          updatePointsPreview();
-        }
-      };
-
-      left.appendChild(rb);
-      const text = document.createTextNode(" " + banner.name);
-      left.appendChild(text);
-
-      let costText = `${banner.cost} pt`;
-      right.appendChild(document.createTextNode(costText));
-
-      row.appendChild(left);
-      row.appendChild(right);
-      content.appendChild(row);
-    }
-
-    bannerBox.appendChild(header);
-    bannerBox.appendChild(content);
-    magicBannerSection.appendChild(bannerBox);
-    panel.appendChild(magicBannerSection);
-
-    // A meno di stendardo selezionato, nascondi la sezione
-    if (!unit.magic_banner_slot && !selectedOptionIds.has("stendardo")) {
-      magicBannerSection.style.display = "none";
-    }
+    // Stendardi Magici
+    RenderMagicBanners();
 
     // Oggetti Magici
     if ((unit.magic_item_slots && unit.magic_item_slots > 0) || (unit.magic_items && unit.magic_items.size > 0)) {
+      RenderMagicItems(unit,magicByCategory);
+    }
+
+    // Virtù Cavalleresche
+    if ((unit.knightly_virtue_slots && unit.knightly_virtue_slots > 0) || (unit.knightly_virtues && unit.knightly_virtues > 0)) {
+      RenderKnightlyVirtues();
+    }
+
+    // Costo in punti complessivo
+    {
+      let textContent = `${tempPoints} pt`;
+      document.getElementById("configPoints").textContent = textContent;
+    }
+
+    const btnRow = document.getElementById("configButtons");
+
+    const mainBtn = document.createElement("button");
+    mainBtn.textContent = isEdit ? "Aggiorna" : "Aggiungi";
+    mainBtn.onclick = () => {
+      const size = parseInt(sizeInput.value, 10) || unit.min_size;
+      const opts = Array.from(selectedOptionIds);
+      const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), selectedMagicBanner, Array.from(selectedKnightlyVirtues));
+
+      if (isEdit) {
+        existingEntry.size = size;
+        existingEntry.options = opts;
+        existingEntry.points = pts;
+        existingEntry.magicItems = Array.from(selectedMagicItems);
+        existingEntry.magicBanner = selectedMagicBanner;
+        clearConfigPanel();
+        // in mobile-mode, torna a lista esercito
+        if (window.innerWidth < 768) {
+          moveToTab("army");
+        }
+      } else {
+        army.entries.push({
+          id: nextEntryId++,
+          unitId: unit.id,
+          name: unit.name,
+          category: unit.category,
+          size,
+          options: opts,
+          preselectedEquipment: [...(unit.equipment || [])],
+          preselectedMagicItems: [...(unit.magic_items || [])],
+          optionCounts: optionCounts,
+          magicItems: Array.from(selectedMagicItems),
+          magicBanner: selectedMagicBanner,
+          points: pts
+        });
+        clearConfigPanel();
+        // in mobile-mode, torna a lista unità
+        if (window.innerWidth < 768) {
+          moveToTab("units");
+        }
+      }
+      renderArmy();
+    };
+    btnRow.appendChild(mainBtn);
+
+    if (isEdit) {
+      const cancelBtn = document.createElement("button");
+      cancelBtn.textContent = "Annulla";
+      cancelBtn.className = "secondary";
+      cancelBtn.style.marginLeft = "4px";
+      cancelBtn.onclick = () => {
+        selectedUnit = null;
+        clearConfigPanel();
+        renderConfigPanel();
+      };
+      btnRow.appendChild(cancelBtn);
+    }
+
+    // -------------------------------------------- //
+    // --- FUNZIONI INTERNE A renderConfigPanel --- //
+    // -------------------------------------------- //
+    function updatePointsPreview() {
+      const size = parseInt(sizeInput.value, 10) || unit.min_size;
+      const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), selectedMagicBanner, Array.from(selectedKnightlyVirtues));
+      configPoints = document.getElementById("configPoints");
+      configPoints.textContent = `${pts} pt`;
+    }
+
+    function RenderMagicBanners() {
+      // Loop sugli stendardi disponibili
+      for (const banner of MAGIC_BANNERS) {
+        if (!isMagicItemAllowedForUnit(banner, unit, currentFaction)) {
+          continue;
+        }
+
+        const row = document.createElement("div");
+        row.className = "option-row";
+        row.style.display = "flex";
+        row.style.justifyContent = "space-between";
+        row.style.alignItems = "center";
+        row.style.margin = "2px 0";
+
+        const left = document.createElement("span");
+        const right = document.createElement("span");
+
+        const rb = document.createElement("input");
+        rb.type = "radio";
+        rb.name = "magic_banner_choice";
+        rb.value = banner.id;
+        rb.checked = selectedMagicBanner === banner.id;
+
+        rb.onchange = () => {
+          if (rb.checked) {
+            if (!banner.allow_multiple && isMagicBannerTaken(banner.id, existingEntry?.id)) {
+              alert("Questo stendardo magico è già stato selezionato da un'altra unità.");
+              rb.checked = false;
+              selectedMagicBanner = null;
+              noneRb.checked = true;
+              updatePointsPreview();
+              return;
+            }
+            selectedMagicBanner = banner.id;
+            updatePointsPreview();
+          }
+        };
+
+        left.appendChild(rb);
+        const text = document.createTextNode(" " + banner.name);
+        left.appendChild(text);
+
+        let costText = `${banner.cost} pt`;
+        right.appendChild(document.createTextNode(costText));
+
+        row.appendChild(left);
+        row.appendChild(right);
+        content.appendChild(row);
+      }
+
+      bannerBox.appendChild(header);
+      bannerBox.appendChild(content);
+      magicBannerSection.appendChild(bannerBox);
+      panel.appendChild(magicBannerSection);
+
+      // A meno di stendardo selezionato, nascondi la sezione
+      if (!unit.magic_banner_slot && !selectedOptionIds.has("stendardo")) {
+        magicBannerSection.style.display = "none";
+      }
+    }
+
+    function RenderMagicItems(unit,magicByCategory) {
       const title = document.createElement("div");
       title.style.marginTop = "10px";
       title.style.fontSize = "12px";
@@ -1023,6 +1121,10 @@
 
       // Crea un blocco collapsible per ogni categoria
       for (const [category, items] of Object.entries(magicByCategory)) {
+
+        // salta le virtù Cavalleresche
+        if (category === "Virtù Cavalleresche") continue;
+
         const catBox = document.createElement("div");
         catBox.style.marginTop = "8px";
         catBox.style.border = "1px solid #30363d";
@@ -1070,8 +1172,8 @@
             const div = document.createElement("div");
             div.className = "option disabled-option";
             div.innerHTML = `
-              <input type="checkbox" checked disabled>
-              <span class="greyed">${item.name}</span>
+            <input type="checkbox" checked disabled>
+            <span class="greyed">${item.name}</span>
             `;
             left.appendChild(div);
           } else { // ... o selezionabile
@@ -1126,77 +1228,120 @@
       }
     }
 
-    // Costo in punti complessivo
-    {
-      let textContent = `${tempPoints} pt`;
-      document.getElementById("configPoints").textContent = textContent;
-    }
+    function RenderKnightlyVirtues() {
+      const title = document.createElement("div");
+      title.style.marginTop = "10px";
+      title.style.fontSize = "12px";
+      title.textContent = "Virtù";
+      title.textContent += ` (fino a ${unit.knightly_virtue_slots})`;
+      panel.appendChild(title);
 
-    const btnRow = document.getElementById("configButtons");
+      // // Crea un blocco collapsible per ogni categoria
+      // for (const [category, items] of Object.entries(magicByCategory)) {
 
-    const mainBtn = document.createElement("button");
-    mainBtn.textContent = isEdit ? "Aggiorna" : "Aggiungi";
-    mainBtn.onclick = () => {
-      const size = parseInt(sizeInput.value, 10) || unit.min_size;
-      const opts = Array.from(selectedOptionIds);
-      const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), selectedMagicBanner);
+      const category = "Virtù Cavalleresche";
+      const items = magicByCategory[category];
 
-      if (isEdit) {
-        existingEntry.size = size;
-        existingEntry.options = opts;
-        existingEntry.points = pts;
-        existingEntry.magicItems = Array.from(selectedMagicItems);
-        existingEntry.magicBanner = selectedMagicBanner;
-        clearConfigPanel();
-        // in mobile-mode, torna a lista esercito
-        if (window.innerWidth < 768) {
-          moveToTab("army");
-        }
-      } else {
-        army.entries.push({
-          id: nextEntryId++,
-          unitId: unit.id,
-          name: unit.name,
-          category: unit.category,
-          size,
-          options: opts,
-          preselectedEquipment: [...(unit.equipment || [])],
-          preselectedMagicItems: [...(unit.magic_items || [])],
-          optionCounts: optionCounts,
-          magicItems: Array.from(selectedMagicItems),
-          magicBanner: selectedMagicBanner,
-          points: pts
-        });
-        clearConfigPanel();
-        // in mobile-mode, torna a lista unità
-        if (window.innerWidth < 768) {
-          moveToTab("units");
-        }
-      }
-      renderArmy();
-    };
-    btnRow.appendChild(mainBtn);
+      const catBox = document.createElement("div");
+      catBox.style.marginTop = "8px";
+      catBox.style.border = "1px solid #30363d";
+      catBox.style.borderRadius = "6px";
+      catBox.style.overflow = "hidden";
 
-    if (isEdit) {
-      const cancelBtn = document.createElement("button");
-      cancelBtn.textContent = "Annulla";
-      cancelBtn.className = "secondary";
-      cancelBtn.style.marginLeft = "4px";
-      cancelBtn.onclick = () => {
-        selectedUnit = null;
-        clearConfigPanel();
-        renderConfigPanel();
+      // Header cliccabile
+      const header = document.createElement("div");
+      header.textContent = category;
+      header.style.padding = "6px 8px";
+      header.style.cursor = "pointer";
+      header.style.background = "#161b22";
+      header.style.fontWeight = "bold";
+      header.style.fontSize = "12px";
+
+      // Contenuto nascosto
+      const content = document.createElement("div");
+      content.style.display = "none";
+      content.style.padding = "6px 8px";
+      content.style.fontSize = "12px";
+
+      header.onclick = () => {
+        content.style.display = content.style.display === "none" ? "block" : "none";
       };
-      btnRow.appendChild(cancelBtn);
-    }
 
-    // panel.appendChild(btnRow);
+      // Aggiungi le virtù
+      let n_items = 0;
+      for (const item of items) {
+        if (!isMagicItemAllowedForUnit(item, unit, currentFaction)) {
+          continue; // non mostrare l'oggetto
+        }
 
-    function updatePointsPreview() {
-      const size = parseInt(sizeInput.value, 10) || unit.min_size;
-      const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), selectedMagicBanner);
-      configPoints = document.getElementById("configPoints");
-      configPoints.textContent = `${pts} pt`;
+        const row = document.createElement("div");
+        row.className = "option-row";
+        row.style.display = "flex";
+        row.style.justifyContent = "space-between";
+        row.style.alignItems = "center";
+        row.style.margin = "2px 0";
+
+        const left = document.createElement("span");
+        const right = document.createElement("span");
+
+        // virtù pre-selezionate?
+        if (unit.knightly_virtues && unit.knightly_virtues.includes(item.name)) {
+          const div = document.createElement("div");
+          div.className = "option disabled-option";
+          div.innerHTML = `
+          <input type="checkbox" checked disabled>
+          <span class="greyed">${item.name}</span>
+          `;
+          left.appendChild(div);
+        } else { // ... o selezionabile
+          const cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.checked = selectedKnightlyVirtues.has(item.id);
+
+          cb.onchange = () => {
+            if (cb.checked) {
+              if (selectedKnightlyVirtues.size < unit.knightly_virtue_slots) {
+                // // Controllo unicità
+                // if (!item.allow_multiple && isMagicItemTaken(item.id, existingEntry?.id)) {
+                //   alert("Questa virtù è già stato selezionata da un'altra unità.");
+                //   cb.checked = false;
+                //   return;
+                // }
+                if (!selectedKnightlyVirtues.has(item.id)) selectedKnightlyVirtues.add(item.id);
+              } else {
+                cb.checked = false;
+                alert("Hai già raggiunto il numero massimo di Virtù Cavalleresche.");
+              }
+            } else {
+              if (selectedKnightlyVirtues.has(item.id)) selectedKnightlyVirtues.delete(item.id);
+            }
+            updatePointsPreview();
+          };
+
+          left.appendChild(cb);
+          const text = document.createTextNode(" " + item.name);
+          left.appendChild(text);
+        }
+
+        // Costi
+        let costText = `${item.cost} pt`;
+        right.appendChild(document.createTextNode(costText));
+
+        n_items += 1;
+
+        row.appendChild(left);
+        row.appendChild(right);
+        content.appendChild(row);
+      }
+
+      if (n_items === 0) {
+        header.style.display = "none"
+        catBox.style.display = "none"
+      }
+
+      catBox.appendChild(header);
+      catBox.appendChild(content);
+      panel.appendChild(catBox);
     }
   }
 
@@ -1312,6 +1457,19 @@
           }
           optsLine.textContent = parts.join(", ");
           div.appendChild(optsLine);
+        }
+
+        // Virtù Cavalleresche
+        if ((e.magicItems && e.magicItems.length > 0) || (e.preselectedMagicItems && e.preselectedMagicItems.length > 0)) {
+          const itemNames = e.magicItems.map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean);
+          const line = document.createElement("div");
+          line.style.fontSize = "11px";
+          line.style.opacity = "0.8";
+          let fullList = e.preselectedMagicItems;
+          fullList = fullList.concat(itemNames);
+          // console.log(fullList)
+          line.textContent = fullList.join(", ");
+          div.appendChild(line);
         }
 
         // Oggetti Magici

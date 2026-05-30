@@ -1,0 +1,64 @@
+{
+  "chaos_rewards": [
+    {
+      "id": "rigenerazione",
+      "name": "Rigenerazione",
+      "cost": 50,
+      "category": "Ricompense del Caos",
+      "only_for_army": ["caos"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "aspetto_orribile",
+      "name": "Aspetto orribile",
+      "cost": 35,
+      "category": "Ricompense del Caos",
+      "only_for_army": ["caos"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "coda_dello_scorpione",
+      "name": "Coda dello scorpione",
+      "cost": 35,
+      "category": "Ricompense del Caos",
+      "only_for_army": ["caos"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "soffio_di_fuoco",
+      "name": "Soffio di fuoco",
+      "cost": 50,
+      "category": "Ricompense del Caos",
+      "only_for_army": ["caos"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "ascia_di_khorne",
+      "name": "Ascia di Khorne",
+      "cost": 75,
+      "category": "Ricompense del Caos",
+      "only_for_army": ["caos"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "pelle_dacciaio",
+      "name": "Pelle d'acciaio",
+      "cost": 40,
+      "category": "Ricompense del Caos",
+      "only_for_army": ["caos"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    }
+  ]
+}
