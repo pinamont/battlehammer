@@ -877,7 +877,8 @@
         "R": "5"
       },
       "type": [
-        "personaggio"
+        "personaggio",
+        "mago"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -924,7 +925,8 @@
         "R": "4"
       },
       "type": [
-        "personaggio"
+        "personaggio",
+        "mago"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -1008,7 +1010,8 @@
         }
       ],
       "magic_item_slots": 0,
-      "max_per_army": 0
+      "max_per_army": 0,
+      "magic_banner_slot": true
     },
     {
       "id": "karl_franz_l_imperatore",
@@ -1029,7 +1032,7 @@
       "max_size": 1,
       "rules": [],
       "equipment": [
-        "armatura pesante, Martello di Sigmar, Sigillo d'Argento"
+        "armatura pesante"
       ],
       "ranged": [],
       "options": [
@@ -1044,8 +1047,9 @@
           "cost": 220
         }
       ],
-      "magic_item_slots": 0,
-      "max_per_army": 1
+      "magic_item_slots": 1,
+      "max_per_army": 1,
+      "magic_items": ["Il Martello Di Sigmar", "Il Sigillo d'Argento"]
     },
     {
       "id": "grande_teogonista_volkmar",
@@ -1068,16 +1072,17 @@
         "implacabile, rende implacabili tutte le unità amiche entro 2 caselle"
       ],
       "equipment": [
-        "armatura pesante, Corno di Sigismund (35 pt, causa Terrore quando carica), Il Grifone di Giada (75 pt, all'inizio del suo turno recupera tutte le ferite perse), Scettro del Comando (80 pt, diventa mago livello 2, magia da Battaglia o Suprema), Altare da Guerra (60 pt, carro con le seguenti statistiche)"
+        "armatura pesante", "Altare da Guerra"
       ],
       "ranged": [],
       "options": [],
       "magic_item_slots": 0,
-      "max_per_army": 1
+      "max_per_army": 1,
+      "magic_items": ["Corno di Sigismund", "Il Grifone di Giada", "Scettro del Comando"]
     },
     {
       "id": "il_supremo_patriarca_dei_collegi_di_magia",
-      "name": "Il Supremo Patriarca\\\\ dei Collegi di Magia",
+      "name": "Il Supremo Patriarca dei Collegi di Magia",
       "category": "Personaggi",
       "cost_per_model": 255,
       "stats": {
@@ -1088,16 +1093,15 @@
         "R": "6"
       },
       "type": [
-        "personaggio speciale"
+        "personaggio speciale",
+        "mago"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
         "mago di livello 4 (magia da Battaglia)"
       ],
-      "equipment": [
-        "Il Bastone di Volans (75 pt, se usato, incantesimo lanciato non si può disperdere, come se lanciato con Potere Totale; dopo ogni utilizzo, si scarica ottenendo scudo su 1 DC)"
-      ],
+      "equipment": [],
       "ranged": [],
       "options": [
         {
@@ -1112,11 +1116,12 @@
         }
       ],
       "magic_item_slots": 3,
-      "max_per_army": 1
+      "max_per_army": 1,
+      "magic_items": ["Il Bastone di Volans"]
     },
     {
       "id": "kurt_helborg_maresciallo_della_reiksguard",
-      "name": "Kurt Helborg,\\\\\nMaresciallo della Reiksguard",
+      "name": "Kurt Helborg, Maresciallo della Reiksguard",
       "category": "Personaggi",
       "cost_per_model": 105,
       "stats": {
@@ -1133,7 +1138,7 @@
       "max_size": 1,
       "rules": [],
       "equipment": [
-        "armatura pesante, Zanna di Runa"
+        "armatura pesante"
       ],
       "ranged": [],
       "options": [
@@ -1148,7 +1153,7 @@
     },
     {
       "id": "ludwig_shwartzhelm_campione_dell_imperatore",
-      "name": "Ludwig Shwartzhelm,\\\\\nCampione dell'Imperatore",
+      "name": "Ludwig Shwartzhelm, Campione dell'Imperatore",
       "category": "Personaggi",
       "cost_per_model": 120,
       "stats": {
@@ -1164,10 +1169,10 @@
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "stendardo da battaglia (+1 al combattimento in difesa, unità amiche a 2 caselle o meno ritirano test di coraggio)"
+        "stendardo da battaglia"
       ],
       "equipment": [
-        "armatura pesante, Stendardo da Battaglia, Spada della Giustizia"
+        "armatura pesante", "Stendardo da Battaglia"
       ],
       "ranged": [],
       "options": [
@@ -1178,11 +1183,13 @@
         }
       ],
       "magic_item_slots": 0,
-      "max_per_army": 1
+      "max_per_army": 1,
+      "magic_items": ["La Spada della Giustizia"],
+      "magic_banner_slot": true
     },
     {
       "id": "marius_leitdorf_conte_elettore_di_averland",
-      "name": "Marius Leitdorf,\\\\ Conte Elettore di Averland",
+      "name": "Marius Leitdorf, Conte Elettore di Averland",
       "category": "Personaggi",
       "cost_per_model": 85,
       "stats": {
@@ -1201,7 +1208,7 @@
         "furia"
       ],
       "equipment": [
-        "armatura pesante, Zanna di Runa, 2 armi"
+        "armatura pesante", "2 armi"
       ],
       "ranged": [],
       "options": [
@@ -1211,12 +1218,13 @@
           "cost": 20
         }
       ],
-      "magic_item_slots": 0,
-      "max_per_army": 1
+      "magic_item_slots": 1,
+      "max_per_army": 1,
+      "magic_items": "La Zanna Di Runa"
     },
     {
       "id": "adelbrand_ludenhof_conte_elettore_di_hochland",
-      "name": "Adelbrand Ludenhof,\\\\ Conte Elettore di Hochland",
+      "name": "Adelbrand Ludenhof, Conte Elettore di Hochland",
       "category": "Personaggi",
       "cost_per_model": 80,
       "stats": {
@@ -1233,7 +1241,7 @@
       "max_size": 1,
       "rules": [],
       "equipment": [
-        "armatura pesante, Zanna di Runa, falco"
+        "armatura pesante", "falco"
       ],
       "ranged": [],
       "options": [
@@ -1243,12 +1251,13 @@
           "cost": 20
         }
       ],
-      "magic_item_slots": 0,
-      "max_per_army": 1
+      "magic_item_slots": 1,
+      "max_per_army": 1,
+      "magic_items": ["La Zanna Di Runa"]
     },
     {
       "id": "valmir_von_raukov_conte_elettore_di_ostland",
-      "name": "Valmir von Raukov,\\\\ Conte Elettore di Ostland",
+      "name": "Valmir von Raukov, Conte Elettore di Ostland",
       "category": "Personaggi",
       "cost_per_model": 105,
       "stats": {
@@ -1265,7 +1274,7 @@
       "max_size": 1,
       "rules": [],
       "equipment": [
-        "armatura pesante, Zanna di Runa, Arco del Drago (40 pt, attacco a distanza)"
+        "armatura pesante"
       ],
       "ranged": [
         {
@@ -1283,11 +1292,12 @@
         }
       ],
       "magic_item_slots": 0,
-      "max_per_army": 1
+      "max_per_army": 1,
+      "magic_items": ["La Zanna Di Runa", "L'Arco del Drago"]
     },
     {
       "id": "boris_todbringer_conte_elettore_di_middenland",
-      "name": "Boris Todbringer,\\\\ Conte Elettore di Middenland",
+      "name": "Boris Todbringer, Conte Elettore di Middenland",
       "category": "Personaggi",
       "cost_per_model": 105,
       "stats": {
@@ -1304,7 +1314,7 @@
       "max_size": 1,
       "rules": [],
       "equipment": [
-        "armatura pesante, scudo, Zanna di Runa, Talismano di Ulric (25 pt, cura una ferita all'inizio del turno)"
+        "armatura pesante", "scudo"
       ],
       "ranged": [],
       "options": [
@@ -1315,7 +1325,8 @@
         }
       ],
       "magic_item_slots": 0,
-      "max_per_army": 1
+      "max_per_army": 1,
+      "magic_items": ["La Zanna Di Runa", "Talismano di Ulric"]
     }
   ]
 }

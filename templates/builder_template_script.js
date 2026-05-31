@@ -88,6 +88,10 @@
     .replace(/\b\w/g, c => c.toUpperCase());
   }
 
+  function renderName(name) {
+    return name.replace(/[^a-zA-Z0-9\s]/g, "");
+  }
+
   function populateFactionSelect() {
     const select = document.getElementById("factionSelect");
     select.innerHTML = "";
@@ -558,7 +562,7 @@
     // footer finale
     addFooter(doc, pageWidth, pageHeight);
 
-    doc.save(`${armyData.name}_BattleHammer.pdf`);
+    doc.save(`BattleHammer - ${armyName(currentFaction)} - ${armyData.name}.pdf`);
 
     // --- FOOTER ---
     function addFooter(doc, pageWidth, pageHeight) {
@@ -1459,18 +1463,18 @@
           div.appendChild(optsLine);
         }
 
-        // Virtù Cavalleresche
-        if ((e.magicItems && e.magicItems.length > 0) || (e.preselectedMagicItems && e.preselectedMagicItems.length > 0)) {
-          const itemNames = e.magicItems.map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean);
-          const line = document.createElement("div");
-          line.style.fontSize = "11px";
-          line.style.opacity = "0.8";
-          let fullList = e.preselectedMagicItems;
-          fullList = fullList.concat(itemNames);
-          // console.log(fullList)
-          line.textContent = fullList.join(", ");
-          div.appendChild(line);
-        }
+        // // Virtù Cavalleresche
+        // if ((e.magicItems && e.magicItems.length > 0) || (e.preselectedMagicItems && e.preselectedMagicItems.length > 0)) {
+        //   const itemNames = e.magicItems.map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean);
+        //   const line = document.createElement("div");
+        //   line.style.fontSize = "11px";
+        //   line.style.opacity = "0.8";
+        //   let fullList = e.preselectedMagicItems;
+        //   fullList = fullList.concat(itemNames);
+        //   // console.log(fullList)
+        //   line.textContent = fullList.join(", ");
+        //   div.appendChild(line);
+        // }
 
         // Oggetti Magici
         if ((e.magicItems && e.magicItems.length > 0) || (e.preselectedMagicItems && e.preselectedMagicItems.length > 0)) {
@@ -1620,25 +1624,6 @@
   // Apri il selettore file
   // document.getElementById("importBtn").addEventListener("click", () => {
   //   document.getElementById("importFile").click();
-  // });
-
-  // // Gestisci il file selezionato
-  // document.getElementById("importFile").addEventListener("change", (event) => {
-  //   const file = event.target.files[0];
-  //   if (!file) return;
-  //
-  //   const reader = new FileReader();
-  //   reader.onload = (e) => {
-  //     try {
-  //       const data = JSON.parse(e.target.result);
-  //       console.error(data);
-  //       importArmyJson(data);
-  //     } catch (err) {
-  //       alert("Errore: il file non è un JSON valido.");
-  //       console.error(err);
-  //     }
-  //   };
-  //   reader.readAsText(file);
   // });
 
   // Ricostruisce l'esercito dalla struttura JSON esportata
@@ -1809,15 +1794,50 @@
     });
 
     document.getElementById("loadFromFileBtn").addEventListener("click", () => {
-      document.getElementById("importFile").click();
+      // document.getElementById("importFile").click();
+      // const file = event.target.files[0];
+      // if (!file) return;
+      //
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result);
+          console.error(data);
+          importArmyJson(data);
+        } catch (err) {
+          alert("Errore: il file non è un JSON valido.");
+          console.error(err);
+        }
+      };
+      reader.readAsText(file);
       closeModal();
     });
+
+    // Gestisci il file selezionato
+    document.getElementById("importFile").addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result);
+          console.error(data);
+          importArmyJson(data);
+        } catch (err) {
+          alert("Errore: il file non è un JSON valido.");
+          console.error(err);
+        }
+      };
+      reader.readAsText(file);
+    });
+
   });
 
   document.getElementById("openSaveModalBtn").addEventListener("click", () => {
     openModal("Salva lista", `
     <button id="saveToBrowserBtn" class="secondary">Salva nel browser</button>
     <button id="exportTxtBtn" class="secondary">Esporta TXT</button>
+    <button id="exportMarkDownBtn" class="secondary">Esporta MarkDown</button>
     <button id="exportJsonBtn" class="secondary">Esporta JSON</button>
     <button id="exportPdfBtn" class="secondary">Esporta PDF</button>
     `);
@@ -1828,17 +1848,30 @@
     });
 
     document.getElementById("exportTxtBtn").addEventListener("click", () => {
-      document.getElementById("exportTextBtn").click();
+      const text = exportArmyText();
+      const title = document.getElementById("listTitleInput").value || "Lista senza titolo";
+      downloadFile(text, `BattleHammer - ${armyName(currentFaction)} - ${title}.txt`, "text/plain");
+      closeModal();
+    });
+
+    document.getElementById("exportMarkDownBtn").addEventListener("click", () => {
+      const text = exportArmyTextMarkdown();
+      const title = document.getElementById("listTitleInput").value || "Lista senza titolo";
+      downloadFile(text, `BattleHammer - ${armyName(currentFaction)} - ${title}.md`, "text/markdown");
       closeModal();
     });
 
     document.getElementById("exportJsonBtn").addEventListener("click", () => {
-      document.getElementById("exportJsonBtn").click();
+      const json = exportArmyJson();
+      const title = document.getElementById("listTitleInput").value || "Lista senza titolo";
+      downloadFile(json, `BattleHammer - ${armyName(currentFaction)} - ${title}.json`, "application/json");
       closeModal();
     });
 
     document.getElementById("exportPdfBtn").addEventListener("click", () => {
-      document.getElementById("exportPdfBtn").click();
+      // document.getElementById("exportPdfBtn").click();
+      const pdfData = buildArmyDataForPdf();
+      exportArmyPDF(pdfData);
       closeModal();
     });
   });
