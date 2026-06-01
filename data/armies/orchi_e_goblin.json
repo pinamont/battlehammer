@@ -1494,7 +1494,7 @@
           "cost": 18
         }
       ],
-      "magic_item_slots": 0,
+      "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
     },
@@ -1543,7 +1543,7 @@
           "cost": 18
         }
       ],
-      "magic_item_slots": 0,
+      "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
     },
@@ -1635,7 +1635,7 @@
           "cost": 12
         }
       ],
-      "magic_item_slots": 0,
+      "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
     },
@@ -1850,12 +1850,13 @@
       "min_size": 1,
       "max_size": 1,
       "rules": ["Stendardo da Battaglia"],
-      "equipment": ["carro di Grom", "stendardo da battaglia"],
+      "equipment": ["carro di Grom", "Niblit (alfiere goblin)"],
       "magic_items": ["Mordielfi - L'Ascia Di Grom"],
       "ranged": [],
       "options": [],
       "magic_item_slots": 2,
-      "max_per_army": 1
+      "max_per_army": 1,
+      "magic_banner_slot": true
     }
   ]
 }

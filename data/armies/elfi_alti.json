@@ -747,7 +747,7 @@
           "cost": 15
         }
       ],
-      "magic_item_slots": 0,
+      "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
     },

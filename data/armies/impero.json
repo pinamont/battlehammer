@@ -1009,7 +1009,7 @@
           "cost": 15
         }
       ],
-      "magic_item_slots": 0,
+      "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
     },
@@ -1182,7 +1182,7 @@
           "cost": 20
         }
       ],
-      "magic_item_slots": 0,
+      "magic_item_slots": 1,
       "max_per_army": 1,
       "magic_items": ["La Spada della Giustizia"],
       "magic_banner_slot": true
