@@ -1,10 +1,132 @@
 {
   "knightly_virtues": [
     {
+      "id": "virtu_del_cavaliere",
+      "name": "Virtù del Cavaliere",
+      "cost": 5,
+      "category": "Virtù Cavalleresche",
+      "description": "rende immuni al Panico causato da unità amiche non di cavalieri in fuga o distrutte",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "virtu_della_ricerca",
+      "name": "Virtù della Ricerca",
+      "cost": 10,
+      "category": "Virtù Cavalleresche",
+      "description": "rende immuni al Panico; se assegnata a un personaggio, conferisce +1 in Coraggio",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
       "id": "virtu_del_graal",
       "name": "Virtù del Graal",
+      "cost": 20,
+      "category": "Virtù Cavalleresche",
+      "description": "rende immuni alla Psicologia; se assegnata a un personaggio, conferisce +2 in Coraggio e +1 in Attacco",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "virtu_del_giusto",
+      "name": "Virtù del Giusto",
       "cost": 15,
       "category": "Virtù Cavalleresche",
+      "description": "in carica, se utilizza una lancia, il cavaliere può ripetere ogni tiro di dado che non ha ottenuto un teschio",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "virtu_della_purezza",
+      "name": "Virtù della Purezza",
+      "cost": 15,
+      "category": "Virtù Cavalleresche",
+      "description": "garantisce al cavaliere e alla sua unità Resistenza alla Magia (4+)",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "virtu_della_tempra",
+      "name": "Virtù della Tempra",
+      "cost": 25,
+      "category": "Virtù Cavalleresche",
+      "description": "ogni teschio ottenuto in Attacco in CaC permette di aggiungere 1 DC (i tiri di DC addizionali non possono essere ripetuti in alcun modo)",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "virtu_dell_impeto",
+      "name": "Virtù dell'Impeto",
+      "cost": 25,
+      "category": "Virtù Cavalleresche",
+      "description": "aggiunge 1 DC al movimento di carica",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "virtu_del_valore",
+      "name": "Virtù del Valore",
+      "cost": 25,
+      "category": "Virtù Cavalleresche",
+      "description": "se combatte in CaC contro un modello che ha più PC originali rispetto ai suoi, il cavaliere può ripetere ogni tiro di DC che non ha ottenuto un teschio",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "virtu_della_disciplina",
+      "name": "Virtù della Disciplina",
+      "cost": 15,
+      "category": "Virtù Cavalleresche",
+      "description": "il cavaliere e la sua unità possono ripetere qualsiasi test di Coraggio fallito",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "virtu_della_devozione",
+      "name": "Virtù Della Devozione",
+      "cost": 50,
+      "category": "Virtù Cavalleresche",
+      "description": "il cavaliere è immune alla magia",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "virtu_del_disprezzo",
+      "name": "Virtù del Disprezzo",
+      "cost": 15,
+      "category": "Virtù Cavalleresche",
+      "description": "il cavaliere odia tutte le unità nemiche armate con armi da tiro o macchine da guerra",
+      "only_for_army": ["bretonnia"],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "virtu_dell_ardore",
+      "name": "Virtù dell'Ardore",
+      "cost": 30,
+      "category": "Virtù Cavalleresche",
+      "description": "il cavaliere e la sua unità, se non già impegnati in CaC, possono controcaricare un'unità avversaria che li carica dal fronte, muovendosi di una casella verso l'unità che li sta caricando; l'unità che controcarica non può fuggire a seguito del risultato del combattimento, e durante il suo prossimo turno è considerata in carica",
       "only_for_army": ["bretonnia"],
       "not_for_army": [],
       "only_for_type": [],

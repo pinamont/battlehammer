@@ -670,7 +670,8 @@
         "R": "5"
       },
       "type": [
-        "personaggio"
+        "personaggio",
+        "mago"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -696,8 +697,8 @@
           "cost": 80
         },
         {
-          "id": "grifone",
-          "name": "grifone",
+          "id": "ippogriffo",
+          "name": "ippogriffo",
           "cost": 170
         }
       ],
@@ -717,7 +718,8 @@
         "R": "4"
       },
       "type": [
-        "personaggio"
+        "personaggio",
+        "mago"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -799,7 +801,7 @@
       "options": [],
       "magic_item_slots": 0,
       "magic_items": ["Il Famiglio Del Potere", "Il Bracciale D'Oro", "Il Calice Delle Pozioni"],
-      "max_per_army": 0
+      "max_per_army": 1
     }
   ]
 }

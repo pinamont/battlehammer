@@ -1,38 +1,20 @@
-  // // --- FONT PER PDF --------------------------------------------------------
-  // const FONT_IM_FELL = `__IMFELL__`;
-  // const FONT_GARAMOND = `__EBGARAMOND__`;
-  //
-  // // Registrazione font
-  // function registerDeluxeFonts(doc) {
-  //   doc.addFileToVFS("IMFell.ttf", FONT_IM_FELL);
-  //   doc.addFont("IMFell.ttf", "IMFell", "normal");
-  //   doc.addFileToVFS("Garamond.ttf", FONT_GARAMOND);
-  //   doc.addFont("Garamond.ttf", "Garamond", "normal");
-  // }
-  //
-  // const ICONS = {
-  //   "Personaggi": `<svg width="24" height="24"><path d="M12 2c3 0 5 2 5 5s-2 5-5 5-5-2-5-5 2-5 5-5zm0 12c5 0 9 3 9 6v2H3v-2c0-3 4-6 9-6z"/></svg>`,
-  //   "Truppe": `<svg width="24" height="24"><path d="M4 4h16v4H4zm0 6h16v4H4zm0 6h16v4H4z"/></svg>`,
-  //   "Macchine e Mostri": `<svg width="24" height="24"><path d="M12 2l4 8H8l4-8zm0 20l-4-8h8l-4 8z"/></svg>`
-  // };
-  //
-  // const BORDER_IMAGE = "__BORDER_IMAGE__";
-  // // doc.addImage(BORDER_IMAGE, "PNG", 10, 10, 575, 820);
 
-  // --- REGOLE DI COMPOSIZIONE ----------------------------------------------
+  // --- REGOLE DI COMPOSIZIONE ---
 
-  const ARMY_RULES = {
+  var ARMY_RULES = {
     min_truppe_pct: 25,
     max_personaggi_pct: 50,
     max_macchine_pct: 25
   };
 
-  // --- DATI CARICATI INLINE DAL TAG JSON -----------------------------------
+  // --- DATI CARICATI INLINE DA FILE JSON ---
 
+  // Eserciti e Unità
   const UNITS_BY_FACTION = JSON.parse(
     document.getElementById("FACTION_DATA").textContent
   );
 
+  // Oggetti magici (comprese Ricompense e Virtù)
   const MAGIC_ITEMS =
     JSON.parse(document.getElementById("ITEM_DATA").textContent).magic_items.concat(
       JSON.parse(document.getElementById("ITEM_DATA").textContent).chaos_rewards.concat(
@@ -40,6 +22,7 @@
       )
   );
 
+  // Stendardi Magici
   const MAGIC_BANNERS = JSON.parse(
     document.getElementById("ITEM_DATA").textContent
   ).magic_banners;
@@ -53,7 +36,7 @@
     magicByCategory[item.category].push(item);
   }
 
-  // --- STATO ----------------------------------------------------------------
+  // --- VARIABILI DI STATO ---
 
   let currentFaction = "";
   let army = {
@@ -63,35 +46,37 @@
   let selectedUnit = null;
   let nextEntryId = 1;
 
-  // --- UTILITY --------------------------------------------------------------
-
-  const ARMY_NAMES = {
-    orchi_e_goblin: "Orchi e Goblin",
-    // impero: "Impero",
-    // elfi_alti: "Elfi Alti",
-    // elfi_silvani: "Elfi Silvani",
-    // nommorti: "Nommorti",
-    // caos: "Caos"
-    // aggiungi qui le altre fazioni
-  };
+  // --- UTILITY ---
 
   // Ordine categorie
   const categories = ["Personaggi", "Truppe", "Macchine e Mostri"];
 
+  // Dizionario nome fazione
+  const ARMY_NAMES = {
+    orchi_e_goblin: "Orchi e Goblin",
+    impero: "Impero",
+    elfi_alti: "Elfi Alti",
+    elfi_silvani: "Elfi Silvani",
+    nommorti: "Nommorti",
+    caos: "Caos",
+    bretonia: "Bretonnia"
+    // aggiungi qui le altre fazioni
+  };
   function armyName(army) {
     return ARMY_NAMES[army] || autoArmyName(army);
   }
-
   function autoArmyName(army) {
     return army
     .replace(/_/g, " ")
     .replace(/\b\w/g, c => c.toUpperCase());
   }
 
+  // Nomi senza caratteri speciali
   function renderName(name) {
     return name.replace(/[^a-zA-Z0-9\s]/g, "");
   }
 
+  // Funzione che popola il menu delle fazioni
   function populateFactionSelect() {
     const select = document.getElementById("factionSelect");
     select.innerHTML = "";
@@ -105,6 +90,7 @@
     }
   }
 
+  // Calcola punti unità
   function calcUnitPoints(unit, size, selectedOptionIds, optionCounts = {}, magicItems = [], magicBanner = null, knightlyVirtues = []) {
     let total = unit.cost_per_model * size;
     for (const opt of unit.options || []) {
@@ -130,15 +116,17 @@
     }
     if (knightlyVirtues) {
       for (const id of knightlyVirtues) {
-        const item = MAGIC_ITEMS.find(m => m.id === id);
-        if (item) total += item.cost;
+        const virtue = MAGIC_ITEMS.find(m => m.id === id);
+        if (virtue) total += virtue.cost;
       }
     }
     return total;
   }
 
+  // Statistiche esercito
   function computeArmyStats() {
     let total = 0;
+    const limit = army.maxPoints;
     let byCat = { "Personaggi": 0, "Truppe": 0, "Macchine e Mostri": 0 };
     for (const e of army.entries) {
       total += e.points;
@@ -147,15 +135,24 @@
     }
     const pct = {};
     for (const cat of Object.keys(byCat)) {
-      pct[cat] = total > 0 ? (byCat[cat] / total) * 100 : 0;
+      // pct[cat] = total > 0 ? (byCat[cat] / total) * 100 : 0;
+      pct[cat] = total > 0 ? (byCat[cat] / limit) * 100 : 0; // percentuale del limite massimo (!)
     }
     return { total, byCat, pct };
   }
 
   function isMagicItemTaken(itemId, currentEntryId = null) {
     for (const e of army.entries) {
-      if (e.id === currentEntryId) continue; // permette modifica dell’unità stessa
+      if (e.id === currentEntryId) continue;
       if (e.magicItems && e.magicItems.includes(itemId)) return true;
+    }
+    return false;
+  }
+
+  function isKnightlyVirtueTaken(virtueId, currentEntryId = null) {
+    for (const e of army.entries) {
+      if (e.id === currentEntryId) continue;
+      if (e.knightlyVirtues && e.knightlyVirtues.includes(itemId)) return true;
     }
     return false;
   }
@@ -168,7 +165,8 @@
     return false;
   }
 
-  function isMagicItemAllowedForUnit(item, unit, currentFaction) {
+  // Valido per oggetti magici, stendardi magici e virtù
+  function isItemAllowedForUnit(item, unit, currentFaction) {
     const unitTypes = unit.type || [];
 
     // Normalizza a array
@@ -238,16 +236,6 @@
     }
   }
 
-  // input[type="number"] {
-    // -webkit-appearance: textfield;
-    // -moz-appearance: textfield;
-    // appearance: textfield;
-  // }
-  // input[type="number"]::-webkit-inner-spin-button,
-  // input[type="number"]::-webkit-outer-spin-button {
-  //   -webkit-appearance: none;
-  // }
-
   // --- EXPORT ---------------------------------------------------------------
 
   let counts = {};
@@ -255,6 +243,10 @@
   function validateArmy() {
     const stats = computeArmyStats();
     const errors = [];
+
+    // Eccezione per Bretonnia: alza la frazione di Personaggi concessi (FIXE: sarebbe meglio avere una proprietà di ogni armata che definisce le frazioni)
+    if (currentFaction === "bretonnia") ARMY_RULES.max_personaggi_pct = 75;
+    else ARMY_RULES.max_personaggi_pct = 50;
 
     if (stats.total > army.maxPoints) {
       errors.push("Punti totali oltre il limite.");
@@ -304,15 +296,20 @@
         if (e.size === 1) {
           lines.push(`- ${e.name} – ${e.points} pt`);
         } else {
-          lines.push(`- ${e.name} – ${e.points} pt (${e.size} modelli)`);
+          lines.push(`- ${e.name} (${e.size} modelli) – ${e.points} pt`);
         }
 
         // Opzioni
-        if (e.options?.length) {
+        if (e.options?.length || e.preselectedOptions?.length) {
           const unit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
           const parts = [];
 
+          for (const optName of e.preselectedOptions) {
+            parts.push(optName);
+          }
+
           for (const optId of e.options) {
+            // controlla che le opzioni fossero disponibili per l'unità dell'armata
             const opt = unit.options.find(o => o.id === optId);
             if (!opt) continue;
 
@@ -325,18 +322,31 @@
           }
 
           if (parts.length > 0) {
-            lines.push("    Opzioni: " + parts.join(", "));
+            lines.push("    " + parts.join(", "));
           }
         }
 
         // Oggetti Magici
-        if (e.magicItems?.length) {
-          const names = e.magicItems
+        if (e.magicItems?.length || e.preselectedMagicItems?.length) {
+          let names = []
+          if (e.preselectedMagicItems?.length) names = names.concat(e.preselectedMagicItems);
+          if (e.magicItems?.length) names = names.concat(e.magicItems
           .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
-          .filter(Boolean);
-
+          .filter(Boolean));
           if (names.length > 0) {
-            lines.push("    Oggetti Magici: " + names.join(", "));
+            lines.push("    " + names.join(", "));
+          }
+        }
+
+        // Virtù Cavalleresche
+        if (e.knightlyVirtues?.length || e.preselectedKnightlyVirtues?.length) {
+          let names = []
+          if (e.preselectedKnightlyVirtues?.length) names = names.concat(e.preselectedKnightlyVirtues);
+          if (e.knightlyVirtues?.length) names = names.concat(e.knightlyVirtues
+            .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+            .filter(Boolean));
+          if (names.length > 0) {
+            lines.push("    " + names.join(", "));
           }
         }
 
@@ -344,7 +354,7 @@
         if (e.magicBanner) {
           const banner = MAGIC_BANNERS.find(b => b.id === e.magicBanner);
           if (banner) {
-            lines.push("    Stendardo Magico: " + banner.name);
+            lines.push("    " + banner.name);
           }
         }
       }
@@ -379,13 +389,17 @@
         if (e.size === 1) {
           lines.push(`- **${e.name}** — ${e.points} pt`);
         } else {
-          lines.push(`- **${e.name}** — ${e.points} pt (${e.size} modelli)`);
+          lines.push(`- **${e.name}** (${e.size} modelli) — ${e.points} pt`);
         }
 
         // Opzioni
-        if (e.options?.length) {
+        if (e.options?.length || e.preselectedOptions?.length) {
           const unit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
           const parts = [];
+
+          for (const optName of e.preselectedOptions) {
+            parts.push(optName);
+          }
 
           for (const optId of e.options) {
             const opt = unit.options.find(o => o.id === optId);
@@ -400,18 +414,31 @@
           }
 
           if (parts.length > 0) {
-            lines.push(`  - *Opzioni:* ${parts.join(", ")}`);
+            lines.push(`  - ${parts.join(", ")}`);
           }
         }
 
         // Oggetti Magici
-        if (e.magicItems?.length) {
-          const names = e.magicItems
+        if (e.magicItems?.length || e.preselectedMagicItems?.length) {
+          let names = []
+          if (e.preselectedMagicItems?.length) names = names.concat(e.preselectedMagicItems);
+          if (e.magicItems?.length) names = names.concat(e.magicItems
           .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
-          .filter(Boolean);
-
+          .filter(Boolean));
           if (names.length > 0) {
-            lines.push(`  - *Oggetti Magici:* ${names.join(", ")}`);
+            lines.push(`  - ${names.join(", ")}`);
+          }
+        }
+
+        // Oggetti Magici
+        if (e.knightlyVirtues?.length || e.preselectedKnightlyVirtues?.length) {
+          let names = []
+          if (e.preselectedKnightlyVirtues?.length) names = names.concat(e.preselectedKnightlyVirtues);
+          if (e.knightlyVirtues?.length) names = names.concat(e.knightlyVirtues
+            .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+            .filter(Boolean));
+          if (names.length > 0) {
+            lines.push(`  - ${names.join(", ")}`);
           }
         }
 
@@ -419,7 +446,7 @@
         if (e.magicBanner) {
           const banner = MAGIC_BANNERS.find(b => b.id === e.magicBanner);
           if (banner) {
-            lines.push(`  - *Stendardo Magico:* ${banner.name}`);
+            lines.push(`  - ${banner.name}`);
           }
         }
 
@@ -445,23 +472,43 @@
         units: entries.map(e => {
           const unit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
 
+          let optList = []
+          if (e.preselectedOptions?.length) optList = optList.concat(e.preselectedOptions);
+          if (e.options) optList = optList.concat(
+            (e.options || []).map(optId => {
+              const opt = unit.options.find(o => o.id === optId);
+              if (!opt) return null;
+              const count = e.optionCounts?.[optId] || 1;
+              return opt.max_count ? `${opt.name} ×${count}` : opt.name;
+            }).filter(Boolean)
+          );
+
+          let magicItemList = []
+          if (e.preselectedMagicItems?.length) magicItemList = magicItemList.concat(e.preselectedMagicItems);
+          if (e.magicItems) magicItemList = magicItemList.concat(
+            (e.magicItems || []).map(id =>
+            MAGIC_ITEMS.find(m => m.id === id)?.name
+            ).filter(Boolean)
+          );
+
+          let knightlyVirtueList = []
+          if (e.preselectedKnightlyVirtues?.length) knightlyVirtueList = knightlyVirtueList.concat(e.preselectedKnightlyVirtues);
+          if (e.knightlyVirtues) knightlyVirtueList = knightlyVirtueList.concat(
+            (e.knightlyVirtues || []).map(id =>
+            MAGIC_ITEMS.find(m => m.id === id)?.name
+            ).filter(Boolean)
+          );
+
           return {
             name: e.name,
             points: e.points,
             size: e.size,
-            options: (e.options || []).map(optId => {
-              const opt = unit.options.find(o => o.id === optId);
-              if (!opt) return null;
-
-              const count = e.optionCounts?.[optId] || 1;
-              return opt.max_count ? `${opt.name} ×${count}` : opt.name;
-            }).filter(Boolean),
-                           magicItems: (e.magicItems || []).map(id =>
-                           MAGIC_ITEMS.find(m => m.id === id)?.name
-                           ).filter(Boolean),
-                           magicBanner: e.magicBanner
-                           ? MAGIC_BANNERS.find(b => b.id === e.magicBanner)?.name
-                           : null
+            options: optList,
+            magicItems: magicItemList,
+            knightlyVirtues: knightlyVirtueList,
+            magicBanner: e.magicBanner
+              ? MAGIC_BANNERS.find(b => b.id === e.magicBanner)?.name
+              : null
           };
         })
       };
@@ -469,7 +516,7 @@
 
     return {
       name: title,
-      faction: armyName(currentFaction),
+      faction: currentFaction,
       totalPoints: stats.total,
       sections
     };
@@ -495,7 +542,7 @@
     // --- INFO LISTA ---
     doc.setFont("helvetica", "bolditalic");
     doc.setFontSize(14);
-    const headerLine = `${armyData.name} — ${armyData.faction} — ${armyData.totalPoints} pt`;
+    const headerLine = `${armyData.name} — ${armyName(armyData.faction)} — ${armyData.totalPoints} pt`;
     doc.text(headerLine, pageWidth / 2, y, { align: "center" });
     y += 15;
 
@@ -540,13 +587,19 @@
           optionsLine.push(unit.magicItems.join(", "));
         }
 
+        if (unit.knightlyVirtues.length > 0) {
+          optionsLine.push(unit.knightlyVirtues.join(", "));
+        }
+
         if (unit.magicBanner) {
           optionsLine.push(unit.magicBanner);
         }
 
         if (optionsLine.length > 0) {
           y -= 5;
-          doc.text(optionsLine.join(" — "), margin + 40, y);
+          optionText = optionsLine.join(" — ");
+          splitOptionText = doc.splitTextToSize(optionText, doc.internal.pageSize.width - (margin * 2 + 40));
+          doc.text(splitOptionText, margin + 40, y);
           y += 20;
         }
 
@@ -580,7 +633,6 @@
   function exportArmyJson() {
     const { stats } = validateArmy();
     const title = document.getElementById("listTitleInput").value || "Lista senza titolo";
-
     const data = {
       title: title,
       faction: currentFaction,
@@ -594,15 +646,16 @@
         category: e.category,
         size: e.size,
         options: [...e.options],
-        preselectedEquipment: [...(e.equipment || [])],
-        preselectedMagicItems: [...(e.magic_items || [])],
         optionCounts: e.optionCounts || {},
         magicItems: e.magicItems || [],
+        knightlyVirtues: e.knightlyVirtues || [],
         magicBanner: e.magicBanner || null,
+        preselectedOptions: [...(e.preselectedOptions || [])],
+        preselectedMagicItems: [...(e.preselectedMagicItems || [])],
+        preselectedKnightlyVirtues: [...(e.preselectedKnightlyVirtues || [])],
         points: e.points
       }))
     };
-
     return JSON.stringify(data, null, 2);
   }
 
@@ -713,7 +766,7 @@
     const sizeValue = isEdit ? existingEntry.size : unit.min_size;
     const selectedOptionIds = new Set(isEdit ? existingEntry.options : []);
 
-    const tempPoints = calcUnitPoints(unit, sizeValue, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), selectedMagicBanner);
+    const tempPoints = calcUnitPoints(unit, sizeValue, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), selectedMagicBanner, Array.from(selectedKnightlyVirtues));
 
     panel.innerHTML = "";
 
@@ -1000,6 +1053,7 @@
         existingEntry.options = opts;
         existingEntry.points = pts;
         existingEntry.magicItems = Array.from(selectedMagicItems);
+        existingEntry.knightlyVirtues = Array.from(selectedKnightlyVirtues);
         existingEntry.magicBanner = selectedMagicBanner;
         clearConfigPanel();
         // in mobile-mode, torna a lista esercito
@@ -1012,13 +1066,15 @@
           unitId: unit.id,
           name: unit.name,
           category: unit.category,
-          size,
+          size: size,
           options: opts,
-          preselectedEquipment: [...(unit.equipment || [])],
-          preselectedMagicItems: [...(unit.magic_items || [])],
           optionCounts: optionCounts,
           magicItems: Array.from(selectedMagicItems),
+          knightlyVirtues: Array.from(selectedKnightlyVirtues),
           magicBanner: selectedMagicBanner,
+          preselectedOptions: [...(unit.equipment || [])],
+          preselectedMagicItems: [...(unit.magic_items || [])],
+          preselectedKnightlyVirtues: [...(unit.knightly_virtues || [])],
           points: pts
         });
         clearConfigPanel();
@@ -1057,7 +1113,7 @@
     function RenderMagicBanners() {
       // Loop sugli stendardi disponibili
       for (const banner of MAGIC_BANNERS) {
-        if (!isMagicItemAllowedForUnit(banner, unit, currentFaction)) {
+        if (!isItemAllowedForUnit(banner, unit, currentFaction)) {
           continue;
         }
 
@@ -1157,7 +1213,7 @@
         // Aggiungi gli oggetti della categoria
         let n_items = 0;
         for (const item of items) {
-          if (!isMagicItemAllowedForUnit(item, unit, currentFaction)) {
+          if (!isItemAllowedForUnit(item, unit, currentFaction)) {
             continue; // non mostrare l'oggetto
           }
 
@@ -1240,9 +1296,6 @@
       title.textContent += ` (fino a ${unit.knightly_virtue_slots})`;
       panel.appendChild(title);
 
-      // // Crea un blocco collapsible per ogni categoria
-      // for (const [category, items] of Object.entries(magicByCategory)) {
-
       const category = "Virtù Cavalleresche";
       const items = magicByCategory[category];
 
@@ -1274,7 +1327,7 @@
       // Aggiungi le virtù
       let n_items = 0;
       for (const item of items) {
-        if (!isMagicItemAllowedForUnit(item, unit, currentFaction)) {
+        if (!isItemAllowedForUnit(item, unit, currentFaction)) {
           continue; // non mostrare l'oggetto
         }
 
@@ -1432,6 +1485,7 @@
         `;
         right.querySelector(".remove-unit").onclick = () => {
           army.entries = army.entries.filter(x => x.id !== e.id);
+          counts[e.unitId] -= 1;
           renderArmy();
         };
 
@@ -1440,13 +1494,13 @@
         div.appendChild(header);
 
         // Opzioni
-        if ((e.options && e.options.length > 0) || (e.preselectedEquipment && e.preselectedEquipment.length > 0)) {
+        if ((e.options && e.options.length > 0) || (e.preselectedOptions && e.preselectedOptions.length > 0)) {
           const optsLine = document.createElement("div");
           optsLine.style.fontSize = "11px";
           optsLine.style.opacity = "0.8";
           const unit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
           const parts = [];
-          for (const eq of e.preselectedEquipment) {
+          for (const eq of e.preselectedOptions) {
             parts.push(eq);
           }
           for (const optId of e.options) {
@@ -1463,18 +1517,17 @@
           div.appendChild(optsLine);
         }
 
-        // // Virtù Cavalleresche
-        // if ((e.magicItems && e.magicItems.length > 0) || (e.preselectedMagicItems && e.preselectedMagicItems.length > 0)) {
-        //   const itemNames = e.magicItems.map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean);
-        //   const line = document.createElement("div");
-        //   line.style.fontSize = "11px";
-        //   line.style.opacity = "0.8";
-        //   let fullList = e.preselectedMagicItems;
-        //   fullList = fullList.concat(itemNames);
-        //   // console.log(fullList)
-        //   line.textContent = fullList.join(", ");
-        //   div.appendChild(line);
-        // }
+        // Virtù Cavalleresche
+        if ((e.knightlyVirtues && e.knightlyVirtues.length > 0) || (e.preselectedKnightlyVirtues && e.preselectedKnightlyVirtues.length > 0)) {
+          const itemNames = e.knightlyVirtues.map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean);
+          const line = document.createElement("div");
+          line.style.fontSize = "11px";
+          line.style.opacity = "0.8";
+          let fullList = e.preselectedKnightlyVirtues;
+          fullList = fullList.concat(itemNames);
+          line.textContent = fullList.join(", ");
+          div.appendChild(line);
+        }
 
         // Oggetti Magici
         if ((e.magicItems && e.magicItems.length > 0) || (e.preselectedMagicItems && e.preselectedMagicItems.length > 0)) {
@@ -1484,7 +1537,6 @@
           line.style.opacity = "0.8";
           let fullList = e.preselectedMagicItems;
           fullList = fullList.concat(itemNames);
-          // console.log(fullList)
           line.textContent = fullList.join(", ");
           div.appendChild(line);
         }
@@ -1577,34 +1629,7 @@
     renderArmy();
   }
 
-  // document.getElementById("maxPointsInput").onChange = () => {
-  //   const val = document.getElementById("maxPointsInput").value;
-  //   army.maxPoints = val;
-  //   renderArmy();
-  // };
-
   // --- ESPORTAZIONE -----------------------------------------------------------
-
-  // Scarica file di testo
-  // document.getElementById("exportTextBtn").addEventListener("click", () => {
-  //   const text = exportArmyText();
-  //   downloadFile(text, "lista.txt", "text/plain");
-  // });
-  //
-  // document.getElementById("exportMarkdownBtn").addEventListener("click", () => {
-  //   const md = exportArmyTextMarkdown();
-  //   downloadFile(md, "lista.md", "text/markdown");
-  // });
-  //
-  // document.getElementById("exportPdfBtn").addEventListener("click", () => {
-  //   const pdfData = buildArmyDataForPdf();
-  //   exportArmyPDF(pdfData);
-  // });
-  //
-  // document.getElementById("exportJsonBtn").addEventListener("click", () => {
-  //   const json = exportArmyJson();
-  //   downloadFile(json, "lista.json", "application/json");
-  // });
 
   // Funzione generica per scaricare file
   function downloadFile(content, filename, mime) {
@@ -1620,11 +1645,6 @@
   }
 
   // --- IMPORTAZIONE -----------------------------------------------------------
-
-  // Apri il selettore file
-  // document.getElementById("importBtn").addEventListener("click", () => {
-  //   document.getElementById("importFile").click();
-  // });
 
   // Ricostruisce l'esercito dalla struttura JSON esportata
   function importArmyJson(data) {
@@ -1665,10 +1685,12 @@
         size: u.size,
         options: u.options || [],
         optionCounts: u.optionCounts || {},
-        preselectedEquipment: [...(u.equipment || [])],
-        preselectedMagicItems: [...(u.magic_items || [])],
         magicItems: u.magicItems || [],
+        knightlyVirtues: u.knightlyVirtues || [],
         magicBanner: u.magicBanner || null,
+        preselectedOptions: [...(u.preselectedOptions || [])],
+        preselectedMagicItems: [...(u.preselectedMagicItems || [])],
+        preselectedKnightlyVirtues: [...(u.preselectedKnightlyVirtues || [])],
         points: u.points
       });
     }
@@ -1736,6 +1758,9 @@
         if (data) {
           importArmyJson(data);
           moveToTab("army");
+          clearConfigPanel();
+          selectedUnit = null;
+          renderConfigPanel();
         }
         else {
           console.error("Impossibile caricare i dati...");
@@ -1752,15 +1777,6 @@
       });
     });
   }
-
-  // document.getElementById("saveArmyBtn").addEventListener("click", () => {
-  //   const name = document.getElementById("saveNameInput").value.trim();
-  //   if (!name) return;
-  //
-  //   saveArmyToLocal(name);
-  //   refreshSavedListUI();
-  //   document.getElementById("saveNameInput").value = "";
-  // });
 
   function openModal(title, contentHtml) {
     document.getElementById("modalTitle").textContent = title;
@@ -1782,55 +1798,34 @@
 
     document.getElementById("loadFromBrowserBtn").addEventListener("click", () => {
       closeModal();
-      // if (window.innerWidth < 768) {
-      //   document.body.setAttribute("data-tab", "saves");
-      // }
-      // else {
-        openModal("Liste disponibili", `
+      openModal("Liste disponibili", `
         <div id="savedListContainer"></div>
-        `);
-        refreshSavedListUI();
-      // }
+      `);
+      refreshSavedListUI();
     });
 
     document.getElementById("loadFromFileBtn").addEventListener("click", () => {
-      // document.getElementById("importFile").click();
-      // const file = event.target.files[0];
-      // if (!file) return;
-      //
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          const data = JSON.parse(e.target.result);
-          console.error(data);
-          importArmyJson(data);
-        } catch (err) {
-          alert("Errore: il file non è un JSON valido.");
-          console.error(err);
-        }
-      };
-      reader.readAsText(file);
+      var input = document.createElement("input");
+      input.type = "file";
+      input.onchange = event => {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const data = JSON.parse(e.target.result);
+            console.error(data);
+            importArmyJson(data);
+          } catch (err) {
+            alert("Errore: il file non è un JSON valido.");
+            console.error(err);
+          }
+        };
+        reader.readAsText(file);
+      }
+      input.click();
       closeModal();
     });
-
-    // Gestisci il file selezionato
-    document.getElementById("importFile").addEventListener("change", (event) => {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          const data = JSON.parse(e.target.result);
-          console.error(data);
-          importArmyJson(data);
-        } catch (err) {
-          alert("Errore: il file non è un JSON valido.");
-          console.error(err);
-        }
-      };
-      reader.readAsText(file);
-    });
-
   });
 
   document.getElementById("openSaveModalBtn").addEventListener("click", () => {
