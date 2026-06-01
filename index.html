@@ -333,7 +333,7 @@
     }
 
     .global-actions {
-/*       display: flex; */
+      display: flex;
       gap: 6px;
       margin-left: 8px;
     }
@@ -357,8 +357,9 @@
     }
 
     .modal button {
-/*       width: 100%; */
-      margin-bottom: 6px;
+      width: 100%;
+      margin-top: 3px;
+      margin-bottom: 3px;
     }
 
   </style>
@@ -13512,11 +13513,11 @@
       div.className = "saved-item";
 
       div.innerHTML = `
-      <span>${name}</span>
-      <div>
-      <button class="secondary" data-load="${name}">Carica</button>
-      <button class="danger" data-del="${name}">Elimina</button>
+      <div style="width:60%">
+      <span style="font-size:12px">${name}</span>
       </div>
+      <button class="primary" style="font-size:12px;width:20%" data-load="${name}">Carica</button>
+      <button class="danger" style="font-size:12px;width:20%" data-del="${name}">Elimina</button>
       `;
 
       container.appendChild(div);
@@ -13564,8 +13565,8 @@
 
   document.getElementById("openLoadModalBtn").addEventListener("click", () => {
     openModal("Carica lista", `
-    <button id="loadFromBrowserBtn" class="secondary">Carica da salvataggi</button>
-    <button id="loadFromFileBtn" class="secondary">Carica da file JSON</button>
+    <button id="loadFromBrowserBtn" class="primary">Carica da salvataggi</button>
+    <button id="loadFromFileBtn" class="primary">Carica da file JSON</button>
     `);
 
     document.getElementById("loadFromBrowserBtn").addEventListener("click", () => {
@@ -13602,11 +13603,11 @@
 
   document.getElementById("openSaveModalBtn").addEventListener("click", () => {
     openModal("Salva lista", `
-    <button id="saveToBrowserBtn" class="secondary">Salva nel browser</button>
-    <button id="exportTxtBtn" class="secondary">Esporta TXT</button>
-    <button id="exportMarkDownBtn" class="secondary">Esporta MarkDown</button>
-    <button id="exportJsonBtn" class="secondary">Esporta JSON</button>
-    <button id="exportPdfBtn" class="secondary">Esporta PDF</button>
+    <button id="saveToBrowserBtn" class="primary">Salva nel browser</button>
+    <button id="exportTxtBtn" class="primary">Esporta TXT</button>
+    <button id="exportMarkDownBtn" class="primary">Esporta MarkDown</button>
+    <button id="exportJsonBtn" class="primary">Esporta JSON</button>
+    <button id="exportPdfBtn" class="primary">Esporta PDF</button>
     `);
 
     document.getElementById("saveToBrowserBtn").addEventListener("click", () => {
