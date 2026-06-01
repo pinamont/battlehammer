@@ -7,6 +7,8 @@
     max_macchine_pct: 25
   };
 
+  setInterval(autoSaveArmy, 10000);
+
   // --- DATI CARICATI INLINE DA FILE JSON ---
 
   // Eserciti e Unità
@@ -736,7 +738,7 @@
   function selectUnit(unit) {
     // controllo di unicità
     if (unit.max_per_army && counts[unit.id] >= unit.max_per_army) {
-      alert("Questo unità è già stato selezionata in numero massimo di volte.")
+      showInfoToast("Questa unità è già stata selezionata il numero massimo di volte","alert",3000);
     } else {
       clearConfigPanel();
       selectedUnit = unit;
@@ -1043,6 +1045,7 @@
 
     const mainBtn = document.createElement("button");
     mainBtn.textContent = isEdit ? "Aggiorna" : "Aggiungi";
+    mainBtn.id = "mainBtn";
     mainBtn.onclick = () => {
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
       const opts = Array.from(selectedOptionIds);
@@ -1136,7 +1139,7 @@
         rb.onchange = () => {
           if (rb.checked) {
             if (!banner.allow_multiple && isMagicBannerTaken(banner.id, existingEntry?.id)) {
-              alert("Questo stendardo magico è già stato selezionato da un'altra unità.");
+              showInfoToast("Questo stendardo magico è già stato selezionato da un'altra unità");
               rb.checked = false;
               selectedMagicBanner = null;
               noneRb.checked = true;
@@ -1246,14 +1249,14 @@
                 if (selectedMagicItems.size < unit.magic_item_slots) {
                   // Controllo unicità
                   if (!item.allow_multiple && isMagicItemTaken(item.id, existingEntry?.id)) {
-                    alert("Questo oggetto magico è già stato selezionato da un'altra unità.");
+                    showInfoToast("Questo oggetto magico è già stato selezionato da un'altra unità","alert",3000);
                     cb.checked = false;
                     return;
                   }
                   if (!selectedMagicItems.has(item.id)) selectedMagicItems.add(item.id);
                 } else {
                   cb.checked = false;
-                  alert("Hai già raggiunto il numero massimo di oggetti magici.");
+                  showInfoToast("Hai già raggiunto il numero massimo di oggetti magici","alert",3000);
                 }
               } else {
                 if (selectedMagicItems.has(item.id)) selectedMagicItems.delete(item.id);
@@ -1358,16 +1361,10 @@
           cb.onchange = () => {
             if (cb.checked) {
               if (selectedKnightlyVirtues.size < unit.knightly_virtue_slots) {
-                // // Controllo unicità
-                // if (!item.allow_multiple && isMagicItemTaken(item.id, existingEntry?.id)) {
-                //   alert("Questa virtù è già stato selezionata da un'altra unità.");
-                //   cb.checked = false;
-                //   return;
-                // }
                 if (!selectedKnightlyVirtues.has(item.id)) selectedKnightlyVirtues.add(item.id);
               } else {
                 cb.checked = false;
-                alert("Hai già raggiunto il numero massimo di Virtù Cavalleresche.");
+                showInfoToast("Hai già raggiunto il numero massimo di Virtù Cavalleresche","alert",3000);
               }
             } else {
               if (selectedKnightlyVirtues.has(item.id)) selectedKnightlyVirtues.delete(item.id);
@@ -1650,7 +1647,7 @@
   function importArmyJson(data) {
     // Validazione minima
     if (!data.units || !Array.isArray(data.units)) {
-      alert("JSON non valido: manca la lista delle unità.");
+      showInfoToast("JSON non valido: manca la lista delle unità","alert",3000);
       return;
     }
 
@@ -1664,7 +1661,7 @@
       currentFaction = data.faction;
       document.getElementById("factionSelect").value = data.faction;
     } else {
-      alert("Attenzione: la fazione nel JSON non è riconosciuta.");
+      showInfoToast("Attenzione: la fazione nel JSON non è riconosciuta.","alert",3000);
     }
 
     // Punti massimi
@@ -1700,36 +1697,37 @@
     renderConfigPanel();
     renderArmy();
 
-    alert("Lista importata correttamente.");
+    showInfoToast("Lista importata correttamente");
   }
 
   // --- SALVATAGGI ONLINE ---
   function saveArmyToLocal(name) {
     const data = exportArmyJson();
-    localStorage.setItem("army_" + name, data);
+    localStorage.setItem(name, data);
   }
 
   function loadArmyFromLocal(name) {
-    const raw = localStorage.getItem("army_" + name);
+    const raw = localStorage.getItem(name);
     if (!raw) return null;
     return JSON.parse(raw);
   }
 
   function deleteArmyFromLocal(name) {
-    localStorage.removeItem("army_" + name);
+    localStorage.removeItem(name);
   }
 
-  function listSavedArmies() {
+  function listSavedArmies(autoSave=false) {
+    const prefix = "army_"+ (autoSave ? "autosave_" : "save_");
     return Object.keys(localStorage)
-    .filter(k => k.startsWith("army_"))
-    .map(k => k.replace("army_", ""));
+    .filter(k => k.startsWith(prefix))
+    .map(k => k.replace(prefix, ""));
   }
 
-  function refreshSavedListUI() {
-    const container = document.getElementById("savedListContainer");
+  function refreshSavedListUI(autoSave=false) {
+    const container = document.getElementById(autoSave ? "autoSavedListContainer" : "savedListContainer");
     container.innerHTML = "";
 
-    const names = listSavedArmies();
+    const names = listSavedArmies(autoSave);
     if (names.length === 0) {
       container.innerHTML = "<p style='opacity:0.7;'>Nessuna lista salvata.</p>";
       return;
@@ -1754,7 +1752,7 @@
     container.querySelectorAll("[data-load]").forEach(btn => {
       btn.addEventListener("click", () => {
         const name = btn.dataset.load;
-        const data = loadArmyFromLocal(name);
+        const data = loadArmyFromLocal("army_"+(autoSave ? "autosave_" : "save_")+name);
         if (data) {
           importArmyJson(data);
           moveToTab("army");
@@ -1773,7 +1771,7 @@
     container.querySelectorAll("[data-del]").forEach(btn => {
       btn.addEventListener("click", () => {
         deleteArmyFromLocal(btn.dataset.del);
-        refreshSavedListUI();
+        refreshSavedListUI(autoSave);
       });
     });
   }
@@ -1788,11 +1786,21 @@
     document.getElementById("modalOverlay").style.display = "none";
   }
 
+  document.getElementById("newListBtn").addEventListener("click", () => {
+    populateFactionSelect();
+    renderUnitList();
+    renderConfigPanel();
+    clearConfigPanel();
+    army.entries = [];
+    renderArmy();
+  });
+
   document.getElementById("closeModalBtn").addEventListener("click", closeModal);
 
   document.getElementById("openLoadModalBtn").addEventListener("click", () => {
     openModal("Carica lista", `
     <button id="loadFromBrowserBtn" class="primary">Carica da salvataggi</button>
+    <button id="loadFromAutosaveBtn" class="primary">Carica da autosave</button>
     <button id="loadFromFileBtn" class="primary">Carica da file JSON</button>
     `);
 
@@ -1802,6 +1810,14 @@
         <div id="savedListContainer"></div>
       `);
       refreshSavedListUI();
+    });
+
+    document.getElementById("loadFromAutosaveBtn").addEventListener("click", () => {
+      closeModal();
+      openModal("Auto-save disponibili", `
+      <div id="autoSavedListContainer"></div>
+      `);
+      refreshSavedListUI(true);
     });
 
     document.getElementById("loadFromFileBtn").addEventListener("click", () => {
@@ -1814,10 +1830,9 @@
         reader.onload = (e) => {
           try {
             const data = JSON.parse(e.target.result);
-            console.error(data);
             importArmyJson(data);
           } catch (err) {
-            alert("Errore: il file non è un JSON valido.");
+            showInfoToast("Errore: il file non è un JSON valido","alert",3000);
             console.error(err);
           }
         };
@@ -1838,7 +1853,8 @@
     `);
 
     document.getElementById("saveToBrowserBtn").addEventListener("click", () => {
-      saveArmyToLocal(document.getElementById("listTitleInput").value);
+      saveName = "army_save_"+document.getElementById("listTitleInput").value
+      saveArmyToLocal(saveName);
       closeModal();
     });
 
@@ -1870,6 +1886,86 @@
       closeModal();
     });
   });
+
+  function autoSaveArmy() {
+    try {
+      const data = exportArmyJson(); // JSON string
+      // Se non è cambiato, non salvare
+      if (data === lastAutosaveData) return;
+      // Aggiorna cache
+      lastAutosaveData = data;
+      // Salva
+      localStorage.setItem("army_autosave", data);
+      // Notifica
+      showAutosaveToast();
+      // Backup ogni X minuti
+      const now = Date.now();
+      if (now - lastBackupTime > BACKUP_INTERVAL) {
+        createAutosaveBackup(data);
+        lastBackupTime = now;
+      }
+    } catch (err) {
+      console.error("Autosave fallito:", err);
+    }
+  }
+
+  let autosaveToastTimer = null;
+  let lastAutosaveData = null;
+  let lastBackupTime = 0;
+  const BACKUP_INTERVAL = 5 * 60 * 1000; // ogni 5 minuti
+
+  function showAutosaveToast() {
+    const toast = document.getElementById("autosaveToast");
+    toast.classList.add("show");
+
+    if (autosaveToastTimer) clearTimeout(autosaveToastTimer);
+
+    autosaveToastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 1500); // visibile per 1.5 secondi
+  }
+
+  let infoToastTimer = null;
+
+  function showInfoToast(text="",level="info",visibleTime=1500) {
+    const toast = document.createElement("div");
+    document.body.appendChild(toast);
+    toast.textContent = text;
+    if (level === "info") toast.className = "info-toast";
+    if (level === "alert") toast.className = "alert-toast";
+    toast.classList.add("show");
+    if (infoToastTimer) clearTimeout(infoToastTimer);
+    infoToastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+      toast.remove();
+    },visibleTime);
+  }
+
+  function getTimestamp() {
+    const d = new Date();
+    const pad = n => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}_${pad(d.getHours())}-${pad(d.getMinutes())}-${pad(d.getSeconds())}`;
+  }
+
+  function createAutosaveBackup(data) {
+    const ts = getTimestamp();
+    const key = "army_autosave_" + ts;
+    localStorage.setItem(key, data);
+    rotateAutosaveBackups();
+  }
+
+  const MAX_AUTOSAVE_BACKUPS = 10;
+
+  function rotateAutosaveBackups() {
+    const keys = Object.keys(localStorage)
+    .filter(k => k.startsWith("army_autosave_"))
+    .sort(); // ordinati dal più vecchio al più nuovo
+
+    while (keys.length > MAX_AUTOSAVE_BACKUPS) {
+      const oldest = keys.shift();
+      localStorage.removeItem(oldest);
+    }
+  }
 
   // --- MOBILE TABS ---
   document.querySelectorAll("#mobileTabs button").forEach(btn => {
@@ -1927,6 +2023,19 @@
     moveToTab("settings");
   }
 
+  // Tast ESC
+  document.body.addEventListener('keyup', function(e) {
+    if (e.key == "Escape") {
+      if (document.getElementById("modalOverlay").style.display != "none") closeModal();
+      else clearConfigPanel();
+    }
+    if (e.key == "Enter") {
+      console.log("ENTER");
+      console.log(document.getElementById("mainBtn"));
+      document.getElementById("mainBtn")?.click();
+    }
+  });
+
   // --- INIT -----------------------------------------------------------------
 
   moveControlsForMobile();
@@ -1936,4 +2045,22 @@
   renderUnitList();
   renderConfigPanel();
   renderArmy();
+
+  (function loadAutosaveOnStart() {
+    const raw = localStorage.getItem("army_autosave");
+    if (!raw) return;
+
+    try {
+      const data = JSON.parse(raw);
+      importArmyJson(data);
+
+      // Imposta il delta allo stato caricato
+      lastAutosaveData = JSON.stringify(data);
+
+      console.log("Autosave caricato all'avvio");
+    } catch (err) {
+      console.error("Errore nel caricamento autosave:", err);
+    }
+  })();
+
   // refreshSavedListUI();
