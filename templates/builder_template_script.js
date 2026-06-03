@@ -143,6 +143,11 @@
     return { total, byCat, pct };
   }
 
+  function isOptionEnabled(opt, selectedOptionIds) {
+    if (!opt.required_option) return true;
+    return selectedOptionIds.has(opt.required_option);
+  }
+
   function isMagicItemTaken(itemId, currentEntryId = null) {
     for (const e of army.entries) {
       if (e.id === currentEntryId) continue;
@@ -833,6 +838,112 @@
     const optsBox = document.createElement("div");
     optsBox.className = "options-list";
 
+    // --- Riempi liste di opzioni mutualmente esclusive
+    const categoryOptionIds = new Set();
+    if (unit.option_categories) {
+      for (const arr of Object.values(unit.option_categories)) {
+        arr.forEach(id => categoryOptionIds.add(id));
+      }
+    }
+
+    // --- RENDER CATEGORIE DI OPZIONI (dropdown) ---
+    if (unit.option_categories) {
+      for (const [catName, optionIds] of Object.entries(unit.option_categories)) {
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "option-row";
+        wrapper.id = "optionRow-"+catName;
+        wrapper.style.display = "flex";
+        wrapper.style.justifyContent = "space-between";
+        wrapper.style.alignItems = "center";
+
+        const left = document.createElement("span");
+        const right = document.createElement("span");
+
+        // Etichetta categoria
+        const label = document.createElement("span");
+        label.textContent = catName + ": ";
+        left.appendChild(label);
+
+        // Select
+        const select = document.createElement("select");
+        select.style.background = "#0d1117";
+        select.style.color = "#e6edf3";
+        select.style.border = "1px solid #30363d";
+        select.style.borderRadius = "4px";
+        select.style.padding = "2px 4px";
+        select.style.marginLeft = "4px";
+
+        const hasNone = optionIds.includes("nessuno");
+
+        // Opzione "nessuno" (solo se presente nella categoria)
+        if (hasNone) {
+          const noneOpt = document.createElement("option");
+          noneOpt.value = "";
+          noneOpt.textContent = "Nessuno";
+          select.appendChild(noneOpt);
+        }
+
+        // Opzioni della categoria
+        optionIds.forEach(id => {
+          const opt = unit.options.find(o => o.id === id);
+          if (!opt) return;
+
+          const o = document.createElement("option");
+          o.value = id;
+
+          let label = opt.name;
+          if (opt.cost) label += ` (+${opt.cost} pt)`;
+          if (opt.cost_per_model) label += ` (+${opt.cost_per_model} pt/mod.)`;
+
+          o.textContent = label;
+          select.appendChild(o);
+        });
+
+        // Valore attuale (se una delle opzioni è selezionata)
+        let current = [...selectedOptionIds].find(id => optionIds.includes(id)) || "";
+        if (!hasNone && current === "") {
+          current = optionIds[0]; // prima opzione della categoria
+          selectedOptionIds.add(current);
+        }
+        select.value = current;
+
+        // Listener
+        select.addEventListener("change", () => {
+          // 1) rimuovi tutte le opzioni della categoria
+          optionIds.forEach(id => {
+            selectedOptionIds.delete(id);
+            delete optionCounts[id];
+          });
+
+          // 2) aggiungi quella selezionata (se non è "nessuno")
+          if (select.value) {
+            selectedOptionIds.add(select.value);
+          }
+
+          // 3) rimuovi eventuali opzioni condizionali non più valide
+          unit.options.forEach(o => {
+            if (o.required_option && !selectedOptionIds.has(o.required_option)) {
+              selectedOptionIds.delete(o.id);
+              delete optionCounts[o.id];
+            }
+          });
+
+          // 4) aggiorna visibilità delle opzioni condizionali
+          refreshConditionalOptionsVisibility(unit, selectedOptionIds);
+
+          // 5) punti + riepilogo
+          updatePointsPreview();
+          renderArmy();
+        });
+
+        left.appendChild(select);
+        wrapper.appendChild(left);
+        wrapper.appendChild(right);
+        optsBox.appendChild(wrapper);
+      }
+    }
+
     // --- EQUIPAGGIAMENTO BASE ---
     for (const eq of unit.equipment) {
       const div = document.createElement("div");
@@ -851,9 +962,13 @@
       optsBox.appendChild(noOpt);
     } else {
       for (const opt of unit.options) {
+        if (categoryOptionIds.has(opt.id)) continue;
+
         const row = document.createElement("div");
         row.className = "option-row";
-        row.style.display = "flex";
+        row.id = "optionRow-"+opt.id;
+        if (isOptionEnabled(opt,selectedOptionIds)) row.style.display = "flex";
+        else row.style.display = "none";
         row.style.justifyContent = "space-between";
         row.style.alignItems = "center";
 
@@ -906,6 +1021,7 @@
             if (qty.value > 0) selectedOptionIds.add(opt.id);
             else selectedOptionIds.delete(opt.id);
             optionCounts[opt.id] = qty.value;
+            refreshConditionalOptionsVisibility(unit, selectedOptionIds);
             updatePointsPreview();
           }
 
@@ -932,6 +1048,7 @@
                 });
               }
             }
+            refreshConditionalOptionsVisibility(unit, selectedOptionIds);
             updatePointsPreview();
           };
 
@@ -956,6 +1073,14 @@
         optsBox.appendChild(row);
       }
     }
+
+    // --- Rimuovi opzioni che non sono più valide ---
+    unit.options.forEach(o => {
+      if (o.required_option && !selectedOptionIds.has(o.required_option)) {
+        selectedOptionIds.delete(o.id);
+        delete optionCounts[o.id];
+      }
+    });
 
     optsRow.appendChild(optsBox);
     panel.appendChild(optsRow);
@@ -1054,6 +1179,7 @@
       if (isEdit) {
         existingEntry.size = size;
         existingEntry.options = opts;
+        existingEntry.optionCounts = optionCounts;
         existingEntry.points = pts;
         existingEntry.magicItems = Array.from(selectedMagicItems);
         existingEntry.knightlyVirtues = Array.from(selectedKnightlyVirtues);
@@ -1113,6 +1239,24 @@
       configPoints.textContent = `${pts} pt`;
     }
 
+    function refreshConditionalOptionsVisibility(unit, selectedOptionIds) {
+      const rows = document.querySelectorAll(`[id*="optionRow-"]`);
+      const rowList = Array.prototype.slice.call(rows);
+      rowList.forEach(row => {
+        const optId = row.id ? row.id : "NONE";
+        if (optId === "NONE") return;
+        // retrieve option object
+        const opt = unit.options.find(o => o.id === optId.replace("optionRow-",""));
+        if (!opt) return;
+        if (isOptionEnabled(opt, selectedOptionIds)) {
+          row.style.display = "flex";
+        }
+        else {
+          row.style.display = "none";
+        }
+      });
+    }
+
     function RenderMagicBanners() {
       // Loop sugli stendardi disponibili
       for (const banner of MAGIC_BANNERS) {
@@ -1122,6 +1266,7 @@
 
         const row = document.createElement("div");
         row.className = "option-row";
+        row.id = "optionRow-"+banner.id;
         row.style.display = "flex";
         row.style.justifyContent = "space-between";
         row.style.alignItems = "center";
@@ -1222,6 +1367,7 @@
 
           const row = document.createElement("div");
           row.className = "option-row";
+          row.id = "optionRow-"+item.id;
           row.style.display = "flex";
           row.style.justifyContent = "space-between";
           row.style.alignItems = "center";
@@ -1336,6 +1482,7 @@
 
         const row = document.createElement("div");
         row.className = "option-row";
+        row.id = "optionRow-"+item.id;
         row.style.display = "flex";
         row.style.justifyContent = "space-between";
         row.style.alignItems = "center";
@@ -1770,7 +1917,9 @@
     // Listener Elimina
     container.querySelectorAll("[data-del]").forEach(btn => {
       btn.addEventListener("click", () => {
-        deleteArmyFromLocal(btn.dataset.del);
+        const name = btn.dataset.load;
+        deleteArmyFromLocal("army_"+(autoSave ? "autosave_" : "save_")+name);
+        console.log("army_"+(autoSave ? "autosave_" : "save_")+name);
         refreshSavedListUI(autoSave);
       });
     });

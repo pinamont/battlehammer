@@ -189,7 +189,7 @@
       "min_size": 5,
       "max_size": 20,
       "rules": [
-        "animosità, furia"
+        "animosità", "furia"
       ],
       "equipment": [
         "scudo"
@@ -236,7 +236,7 @@
         "animosità"
       ],
       "equipment": [
-        "cinghiale, lancia, scudo"
+        "cinghiale", "lancia", "scudo"
       ],
       "ranged": [],
       "options": [
@@ -272,10 +272,10 @@
       "min_size": 3,
       "max_size": 10,
       "rules": [
-        "animosità, furia"
+        "animosità", "furia"
       ],
       "equipment": [
-        "cinghiale, lancia, scudo"
+        "cinghiale", "lancia", "scudo"
       ],
       "ranged": [],
       "options": [
@@ -314,7 +314,7 @@
         "animosità"
       ],
       "equipment": [
-        "lancia, scudo"
+        "lancia", "scudo"
       ],
       "ranged": [],
       "options": [
@@ -332,9 +332,16 @@
           "id": "fanatici",
           "name": "fanatici",
           "cost": 30,
-          "max_count": 3
-        }
+          "max_count": 3,
+          "required_option": "goblin_delle_tenebre"
+        },
+        { "id": "goblin_comuni", "name": "Goblin Comuni", "cost": 0 },
+        { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 }
       ],
+      "option_categories": {
+        "tipo": ["goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"]
+      },
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -445,7 +452,7 @@
         "fanteria"
       ],
       "min_size": 5,
-      "max_size": 20,
+      "max_size": 10,
       "rules": [
         "caccia-squig"
       ],
@@ -453,8 +460,9 @@
       "ranged": [],
       "options": [
         {
-          "id": "1_squadre_caccia_squig_almeno_1_per_ogni_3_squig",
-          "name": "1+ squadre caccia-squig, almeno 1 per ogni 3 squig",
+          "id": "squadre_caccia_squig",
+          "name": "squadre caccia-squig",
+          "max_count": 5,
           "cost": 4
         }
       ],
@@ -559,7 +567,7 @@
       "min_size": 3,
       "max_size": 10,
       "rules": [
-        "animosità, superano ostacoli senza penalità (anche edifici, ma non corsi d'acqua)"
+        "animosità", "superano ostacoli senza penalità (anche edifici, ma non corsi d'acqua)"
       ],
       "equipment": [
         "lupo"
@@ -598,7 +606,7 @@
       "min_size": 1,
       "max_size": 6,
       "rules": [
-        "implacabili, \\textit{copioni"
+        "implacabili", "copioni"
       ],
       "equipment": [],
       "ranged": [],
@@ -624,7 +632,7 @@
       "min_size": 2,
       "max_size": 6,
       "rules": [
-        "paura, stupidità, rigenerazione"
+        "paura", "stupidità", "rigenerazione"
       ],
       "equipment": [],
       "ranged": [],
@@ -864,7 +872,7 @@
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "terrore, immune alla psicologia, cade! (quando muore, tira un dado deviazione per determinare la casella in cui cade: un'unità in quella casella viene attaccata con 1D6 DC, senza potersi difendere)"
+        "terrore", "immune alla psicologia", "cade!"
       ],
       "equipment": [],
       "ranged": [],
@@ -1566,7 +1574,7 @@
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "stendardo da battaglia, furia"
+        "stendardo da battaglia", "furia"
       ],
       "equipment": [],
       "ranged": [],
@@ -1809,7 +1817,7 @@
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "tutte le unità di Orchi o Goblin entro 2 caselle ignorano l'Animosità, mago livello 3 (Necromanzia o magia delle Tenebre)"
+        "tutte le unità di Orchi o Goblin entro 2 caselle ignorano l'Animosità", "mago livello 3 (Necromanzia o magia delle Tenebre)"
       ],
       "equipment": [
         "viverna"
