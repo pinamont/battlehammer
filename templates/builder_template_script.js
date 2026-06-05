@@ -82,14 +82,21 @@
   function populateFactionSelect() {
     const select = document.getElementById("factionSelect");
     select.innerHTML = "";
+    const emptyOpt = document.createElement("option");
+    emptyOpt.value = "";
+    emptyOpt.textContent = "Seleziona...";
+    emptyOpt.selected = true;
+    emptyOpt.disabled = true;
+    emptyOpt.hidden = true;
+    select.appendChild(emptyOpt);
     for (const faction of Object.keys(UNITS_BY_FACTION).sort()) {
       const opt = document.createElement("option");
       opt.value = faction;
       opt.textContent = armyName(faction);
       select.appendChild(opt);
-      // assegna la prima fazione come default
-      if (currentFaction === "") currentFaction = faction;
     }
+    select.selectedIndex = 0;
+    currentFaction = "";
   }
 
   // Calcola punti unità
@@ -1426,8 +1433,18 @@
             };
 
             left.appendChild(cb);
-            const text = document.createTextNode(" " + item.name);
-            left.appendChild(text);
+            // const text = document.createTextNode(" " + item.name);
+            // left.appendChild(text);
+            const labelSpan = document.createElement("span");
+            labelSpan.textContent = " " + item.name;
+            // Tooltip solo se esiste la description
+            if (item.description) {
+              labelSpan.addEventListener("mousemove", (e) => {
+                showMagicTooltip(item.description, e.clientX, e.clientY);
+              });
+              labelSpan.addEventListener("mouseleave", hideMagicTooltip);
+            }
+            left.appendChild(labelSpan);
           }
 
           // Costi
@@ -1932,7 +1949,7 @@
     // Listener Elimina
     container.querySelectorAll("[data-del]").forEach(btn => {
       btn.addEventListener("click", () => {
-        const name = btn.dataset.load;
+        const name = btn.dataset.del;
         deleteArmyFromLocal("army_"+(autoSave ? "autosave_" : "save_")+name);
         console.log("army_"+(autoSave ? "autosave_" : "save_")+name);
         refreshSavedListUI(autoSave);
@@ -1944,14 +1961,17 @@
     document.getElementById("modalTitle").textContent = title;
     document.getElementById("modalContent").innerHTML = contentHtml;
     document.getElementById("modalOverlay").style.display = "flex";
+    // document.getElementById("modalOverlay").hidden = false;
   }
 
   function closeModal() {
     document.getElementById("modalOverlay").style.display = "none";
+    // document.getElementById("modalOverlay").hidden = true;
   }
 
   document.getElementById("newListBtn").addEventListener("click", () => {
     populateFactionSelect();
+    document.getElementById("listTitleInput").value = "";
     renderUnitList();
     renderConfigPanel();
     clearConfigPanel();
@@ -2190,7 +2210,8 @@
   // Tast ESC
   document.body.addEventListener('keyup', function(e) {
     if (e.key == "Escape") {
-      if (document.getElementById("modalOverlay").style.display != "none") closeModal();
+      // if (document.getElementById("modalOverlay").style.display != "none") closeModal();
+      if (!document.getElementById("modalOverlay").hidden) closeModal();
       else clearConfigPanel();
     }
     if (e.key == "Enter") {
@@ -2199,6 +2220,21 @@
       document.getElementById("mainBtn")?.click();
     }
   });
+
+
+  // --- MAGIC TOOLTIP ---
+  const magicTooltip = document.getElementById("magicTooltip");
+
+  function showMagicTooltip(text, x, y) {
+    magicTooltip.textContent = text;
+    magicTooltip.style.left = (x + 12) + "px";
+    magicTooltip.style.top = (y + 12) + "px";
+    magicTooltip.style.opacity = 1;
+  }
+
+  function hideMagicTooltip() {
+    magicTooltip.style.opacity = 0;
+  }
 
   // --- INIT -----------------------------------------------------------------
 

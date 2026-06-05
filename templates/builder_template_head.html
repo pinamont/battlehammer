@@ -338,9 +338,15 @@
       inset: 0;
       background: rgba(0,0,0,0.6);
       display: none;
+/*       display: flex; */
+/*       hidden: true; */
       justify-content: center;
       align-items: center;
       z-index: 999;
+    }
+
+    .modal:not([hidden]) {
+      animation-name: popIn;
     }
 
     .modal {
