@@ -5,86 +5,34 @@
       "name": "Orchi guerrieri",
       "category": "Truppe",
       "cost_per_model": 8,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "3",
-        "F": "1",
-        "R": "4"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "M": "1", "DC": "3", "D": "3", "F": "1", "R": "4" },
+      "type": [ "fanteria", "orco" ],
       "min_size": 5,
       "max_size": 20,
-      "rules": [
-        "animosità"
-      ],
-      "equipment": [
-        "scudo"
-      ],
+      "rules": [ "animosità" ],
+      "equipment": [ "scudo" ],
       "ranged": [],
       "options": [
-        {
-          "id": "lancia",
-          "name": "lancia",
-          "cost_per_model": 1
-        },
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ]
+        { "id": "lancia", "name": "lancia", "cost_per_model": 1 },
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 } ]
     },
     {
       "id": "orchi_arcieri",
       "name": "Orchi arcieri",
       "category": "Truppe",
       "cost_per_model": 9,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2",
-        "F": "1",
-        "R": "4"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "M": "1", "DC": "3", "D": "2", "F": "1", "R": "4" },
+      "type": [ "fanteria", "orco" ],
       "min_size": 5,
       "max_size": 20,
-      "rules": [
-        "animosità"
-      ],
-      "equipment": [
-        "arco"
-      ],
+      "rules": [ "animosità" ],
+      "equipment": [ "arco" ],
       "ranged": [
-        {
-          "name": "Arco",
-          "range": "4",
-          "dc": "2",
-          "special": "-"
-        }
-      ],
+        { "name": "Arco", "range": "4", "dc": "2", "special": "-" } ],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -93,44 +41,17 @@
       "name": "Orchi balestrieri",
       "category": "Truppe",
       "cost_per_model": 10,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2",
-        "F": "1",
-        "R": "4"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "M": "1", "DC": "3", "D": "2", "F": "1", "R": "4" },
+      "type": [ "fanteria", "orco" ],
       "min_size": 5,
       "max_size": 20,
-      "rules": [
-        "animosità"
-      ],
-      "equipment": [
-        "balestra"
-      ],
+      "rules": [ "animosità" ],
+      "equipment": [ "balestra" ],
       "ranged": [
-        {
-          "name": "Arco",
-          "range": "5",
-          "dc": "3",
-          "special": "*"
-        }
-      ],
+        { "name": "Arco", "range": "5", "dc": "3", "special": "*" } ],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -139,35 +60,16 @@
       "name": "Orchi neri",
       "category": "Truppe",
       "cost_per_model": 12,
-      "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "3",
-        "F": "1",
-        "R": "5"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "M": "1", "DC": "4", "D": "3", "F": "1", "R": "5" },
+      "type": [ "fanteria", "orco_nero" ],
       "min_size": 5,
       "max_size": 20,
       "rules": [],
-      "equipment": [
-        "due armi / armi a due mani"
-      ],
+      "equipment": [ "due armi / armi a due mani" ],
       "ranged": [],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -176,42 +78,17 @@
       "name": "Orchi selvaggi",
       "category": "Truppe",
       "cost_per_model": 9,
-      "stats": {
-        "M": "1",
-        "DC": "3*",
-        "D": "3",
-        "F": "1",
-        "R": "4"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "M": "1", "DC": "3*", "D": "3", "F": "1", "R": "4" },
+      "type": [ "fanteria", "orco_selvaggio" ],
       "min_size": 5,
       "max_size": 20,
-      "rules": [
-        "animosità", "furia"
-      ],
-      "equipment": [
-        "scudo"
-      ],
+      "rules": [ "animosità", "furia" ],
+      "equipment": [ "scudo" ],
       "ranged": [],
       "options": [
-        {
-          "id": "lancia",
-          "name": "lancia",
-          "cost_per_model": 1
-        },
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "lancia", "name": "lancia", "cost_per_model": 1 },
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -220,37 +97,16 @@
       "name": "Orchi cavalcacinghiale",
       "category": "Truppe",
       "cost_per_model": 22,
-      "stats": {
-        "M": "2",
-        "DC": "3*",
-        "D": "4",
-        "F": "2",
-        "R": "4"
-      },
-      "type": [
-        "cavalleria pesante"
-      ],
+      "stats": { "M": "2", "DC": "3*", "D": "4", "F": "2", "R": "4" },
+      "type": [ "cavalleria pesante", "orco" ],
       "min_size": 3,
       "max_size": 10,
-      "rules": [
-        "animosità"
-      ],
-      "equipment": [
-        "cinghiale", "lancia", "scudo"
-      ],
+      "rules": [ "animosità" ],
+      "equipment": [ "cinghiale", "lancia", "scudo" ],
       "ranged": [],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -259,37 +115,16 @@
       "name": "Orchi selvaggi cavalcacinghiale",
       "category": "Truppe",
       "cost_per_model": 24,
-      "stats": {
-        "M": "2",
-        "DC": "3*",
-        "D": "4",
-        "F": "2",
-        "R": "4"
-      },
-      "type": [
-        "cavalleria pesante"
-      ],
+      "stats": { "M": "2", "DC": "3*", "D": "4", "F": "2", "R": "4" },
+      "type": [ "cavalleria pesante", "orco_selvaggio" ],
       "min_size": 3,
       "max_size": 10,
-      "rules": [
-        "animosità", "furia"
-      ],
-      "equipment": [
-        "cinghiale", "lancia", "scudo"
-      ],
+      "rules": [ "animosità", "furia" ],
+      "equipment": [ "cinghiale", "lancia", "scudo" ],
       "ranged": [],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -298,49 +133,22 @@
       "name": "Goblin lancieri",
       "category": "Truppe",
       "cost_per_model": 4,
-      "stats": {
-        "M": "1",
-        "DC": "2*",
-        "D": "2",
-        "F": "1",
-        "R": "2"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "M": "1", "DC": "2*", "D": "2", "F": "1", "R": "2" },
+      "type": [ "fanteria", "goblin" ],
       "min_size": 5,
       "max_size": 20,
-      "rules": [
-        "animosità"
-      ],
-      "equipment": [
-        "lancia", "scudo"
-      ],
+      "rules": [ "animosità" ],
+      "equipment": [ "lancia", "scudo" ],
       "ranged": [],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        },
-        {
-          "id": "fanatici",
-          "name": "fanatici",
-          "cost": 30,
-          "max_count": 3,
-          "required_option": "goblin_delle_tenebre"
-        },
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 },
+        { "id": "fanatici", "name": "fanatici", "cost": 30, "max_count": 3, "required_option": "goblin_delle_tenebre" },
         { "id": "goblin_comuni", "name": "Goblin Comuni", "cost": 0 },
         { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
-        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 }
-      ],
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
       "option_categories": {
-        "tipo": ["goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"]
+        "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"]
       },
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -350,50 +158,24 @@
       "name": "Goblin arcieri",
       "category": "Truppe",
       "cost_per_model": 3,
-      "stats": {
-        "M": "1",
-        "DC": "2",
-        "D": "1",
-        "F": "1",
-        "R": "2"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "M": "1", "DC": "2", "D": "1", "F": "1", "R": "2" },
+      "type": [ "fanteria", "goblin" ],
       "min_size": 5,
       "max_size": 20,
-      "rules": [
-        "animosità"
-      ],
-      "equipment": [
-        "arco corto"
-      ],
+      "rules": [ "animosità" ],
+      "equipment": [ "arco corto" ],
       "ranged": [
-        {
-          "name": "Arco corto",
-          "range": "3",
-          "dc": "2",
-          "special": "-"
-        }
-      ],
+        { "name": "Arco corto", "range": "3", "dc": "2", "special": "-" } ],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        },
-        {
-          "id": "fanatici",
-          "name": "fanatici",
-          "cost": 30,
-          "max_count": 3
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 },
+        { "id": "fanatici", "name": "fanatici", "cost": 30, "max_count": 3, "required_option": "goblin_delle_tenebre" },
+        { "id": "goblin_comuni", "name": "Goblin Comuni", "cost": 0 },
+        { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
+      "option_categories": {
+        "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"]
+      },
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -402,37 +184,16 @@
       "name": "Goblin gettareti",
       "category": "Truppe",
       "cost_per_model": 4,
-      "stats": {
-        "M": "1",
-        "DC": "2*",
-        "D": "1",
-        "F": "1",
-        "R": "2"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "M": "1", "DC": "2*", "D": "1", "F": "1", "R": "2" },
+      "type": [ "fanteria", "goblin" ],
       "min_size": 5,
       "max_size": 20,
-      "rules": [
-        "animosità"
-      ],
-      "equipment": [
-        "reti e clave"
-      ],
+      "rules": [ "animosità" ],
+      "equipment": [ "reti e clave" ],
       "ranged": [],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -441,31 +202,15 @@
       "name": "Mandria di squig",
       "category": "Truppe",
       "cost_per_model": 10,
-      "stats": {
-        "M": "1",
-        "DC": "5",
-        "D": "2",
-        "F": "1",
-        "R": "2"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "M": "1", "DC": "5", "D": "2", "F": "1", "R": "2" },
+      "type": [ "fanteria", "goblin" ],
       "min_size": 5,
       "max_size": 10,
-      "rules": [
-        "caccia-squig"
-      ],
+      "rules": [ "caccia-squig" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "squadre_caccia_squig",
-          "name": "squadre caccia-squig",
-          "max_count": 5,
-          "cost": 4
-        }
-      ],
+        { "id": "squadre_caccia_squig", "name": "squadre caccia-squig", "max_count": 5, "cost": 4 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -474,21 +219,11 @@
       "name": "Saltasquig",
       "category": "Truppe",
       "cost_per_model": 30,
-      "stats": {
-        "M": "1+2DC*",
-        "DC": "5",
-        "D": "1",
-        "F": "2",
-        "R": "2"
-      },
-      "type": [
-        "cavalleria"
-      ],
+      "stats": { "M": "1+2DC*", "DC": "5", "D": "1", "F": "2", "R": "2" },
+      "type": [ "cavalleria", "goblin" ],
       "min_size": 3,
       "max_size": 10,
-      "rules": [
-        "implacabili"
-      ],
+      "rules": [ "implacabili" ],
       "equipment": [],
       "ranged": [],
       "options": [],
@@ -500,52 +235,19 @@
       "name": "Goblin cavalcalupo",
       "category": "Truppe",
       "cost_per_model": 6,
-      "stats": {
-        "M": "2",
-        "DC": "2",
-        "D": "2",
-        "F": "2",
-        "R": "2"
-      },
-      "type": [
-        "cavalleria leggera"
-      ],
+      "stats": { "M": "2", "DC": "2", "D": "2", "F": "2", "R": "2" },
+      "type": [ "cavalleria leggera", "goblin" ],
       "min_size": 3,
       "max_size": 10,
-      "rules": [
-        "animosità"
-      ],
-      "equipment": [
-        "lupo"
-      ],
+      "rules": [ "animosità" ],
+      "equipment": [ "lupo" ],
       "ranged": [],
       "options": [
-        {
-          "id": "archi_corti",
-          "name": "archi corti",
-          "cost_per_model": 2
-        },
-        {
-          "id": "lancie",
-          "name": "lancie",
-          "cost_per_model": 2
-        },
-        {
-          "id": "scudi",
-          "name": "scudi",
-          "cost_per_model": 2
-        },
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "archi_corti", "name": "archi corti", "cost_per_model": 2 },
+        { "id": "lancie", "name": "lancie", "cost_per_model": 2 },
+        { "id": "scudi", "name": "scudi", "cost_per_model": 2 },
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -554,37 +256,16 @@
       "name": "Goblin cavalcaragno",
       "category": "Truppe",
       "cost_per_model": 10,
-      "stats": {
-        "M": "2",
-        "DC": "2*",
-        "D": "3",
-        "F": "2",
-        "R": "2"
-      },
-      "type": [
-        "cavalleria pesante"
-      ],
+      "stats": { "M": "2", "DC": "2*", "D": "3", "F": "2", "R": "2" },
+      "type": [ "cavalleria pesante", "goblin" ],
       "min_size": 3,
       "max_size": 10,
-      "rules": [
-        "animosità", "superano ostacoli senza penalità (anche edifici, ma non corsi d'acqua)"
-      ],
-      "equipment": [
-        "lupo"
-      ],
+      "rules": [ "animosità", "superano ostacoli senza penalità (anche edifici, ma non corsi d'acqua)" ],
+      "equipment": [ "lupo" ],
       "ranged": [],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -593,21 +274,11 @@
       "name": "Snotling",
       "category": "Truppe",
       "cost_per_model": 15,
-      "stats": {
-        "M": "1",
-        "DC": "1",
-        "D": "1",
-        "F": "5",
-        "R": "2"
-      },
-      "type": [
-        "sciami"
-      ],
+      "stats": { "M": "1", "DC": "1", "D": "1", "F": "5", "R": "2" },
+      "type": [ "sciami" ],
       "min_size": 1,
       "max_size": 6,
-      "rules": [
-        "implacabili", "copioni"
-      ],
+      "rules": [ "implacabili", "copioni" ],
       "equipment": [],
       "ranged": [],
       "options": [],
@@ -619,21 +290,11 @@
       "name": "Troll",
       "category": "Truppe",
       "cost_per_model": 65,
-      "stats": {
-        "M": "1",
-        "DC": "5*",
-        "D": "4**",
-        "F": "3",
-        "R": "2"
-      },
-      "type": [
-        "creature mostruose"
-      ],
+      "stats": { "M": "1", "DC": "5*", "D": "4**", "F": "3", "R": "2" },
+      "type": [ "creature mostruose" ],
       "min_size": 2,
       "max_size": 6,
-      "rules": [
-        "paura", "stupidità", "rigenerazione"
-      ],
+      "rules": [ "paura", "stupidità", "rigenerazione" ],
       "equipment": [],
       "ranged": [],
       "options": [],
@@ -645,37 +306,16 @@
       "name": "Ogre",
       "category": "Truppe",
       "cost_per_model": 50,
-      "stats": {
-        "M": "1",
-        "DC": "5",
-        "D": "3",
-        "F": "4",
-        "R": "4"
-      },
-      "type": [
-        "creature mostruose"
-      ],
+      "stats": { "M": "1", "DC": "5", "D": "3", "F": "4", "R": "4" },
+      "type": [ "creature mostruose" ],
       "min_size": 2,
       "max_size": 6,
-      "rules": [
-        "paura"
-      ],
-      "equipment": [
-        "arma a due mani / due armi"
-      ],
+      "rules": [ "paura" ],
+      "equipment": [ "arma a due mani / due armi" ],
       "ranged": [],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -684,29 +324,14 @@
       "name": "Balista degli Orchi",
       "category": "Macchine e Mostri",
       "cost_per_model": 45,
-      "stats": {
-        "M": "1*",
-        "DC": "2",
-        "D": "4",
-        "F": "3",
-        "R": "4"
-      },
-      "type": [
-        "macchina da guerra",
-        "balista"
-      ],
+      "stats": { "M": "1*", "DC": "2", "D": "4", "F": "3", "R": "4" },
+      "type": [ "macchina da guerra", "balista", "orco" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [
-        {
-          "name": "Balista",
-          "range": "8",
-          "dc": "4",
-          "special": "*"
-        }
-      ],
+        { "name": "Balista", "range": "8", "dc": "4", "special": "*" } ],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -716,29 +341,14 @@
       "name": "Catapulta degli orchi",
       "category": "Macchine e Mostri",
       "cost_per_model": 100,
-      "stats": {
-        "M": "1*",
-        "DC": "2",
-        "D": "4",
-        "F": "3",
-        "R": "4"
-      },
-      "type": [
-        "macchina da guerra",
-        "catapulta"
-      ],
+      "stats": { "M": "1*", "DC": "2", "D": "4", "F": "3", "R": "4" },
+      "type": [ "macchina da guerra", "catapulta", "orco" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [
-        {
-          "name": "Catapulta",
-          "range": "2-10",
-          "dc": "6",
-          "special": "*"
-        }
-      ],
+        { "name": "Catapulta", "range": "2-10", "dc": "6", "special": "*" } ],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -748,29 +358,14 @@
       "name": "Folle fiondato",
       "category": "Macchine e Mostri",
       "cost_per_model": 60,
-      "stats": {
-        "M": "1*",
-        "DC": "1",
-        "D": "2",
-        "F": "3",
-        "R": "2"
-      },
-      "type": [
-        "macchina da guerra",
-        "folle fiondato"
-      ],
+      "stats": { "M": "1*", "DC": "1", "D": "2", "F": "3", "R": "2" },
+      "type": [ "macchina da guerra", "folle fiondato", "goblin" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [
-        {
-          "name": "Folle fiondato",
-          "range": "2-illim.",
-          "dc": "1D6",
-          "special": "*"
-        }
-      ],
+        { "name": "Folle fiondato", "range": "2-illim.", "dc": "1D6", "special": "*" } ],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -780,16 +375,8 @@
       "name": "Carro degli orchi",
       "category": "Macchine e Mostri",
       "cost_per_model": 95,
-      "stats": {
-        "M": "2*",
-        "DC": "3**",
-        "D": "5",
-        "F": "5",
-        "R": "4"
-      },
-      "type": [
-        "carro pesante"
-      ],
+      "stats": { "M": "2*", "DC": "3**", "D": "5", "F": "5", "R": "4" },
+      "type": [ "carro pesante", "orco" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
@@ -804,28 +391,14 @@
       "name": "Carro dei goblin",
       "category": "Macchine e Mostri",
       "cost_per_model": 55,
-      "stats": {
-        "M": "2",
-        "DC": "2*",
-        "D": "3",
-        "F": "4",
-        "R": "2"
-      },
-      "type": [
-        "carro leggero"
-      ],
+      "stats": { "M": "2", "DC": "2*", "D": "3", "F": "4", "R": "2" },
+      "type": [ "carro leggero", "goblin" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [
-        {
-          "name": "Arco corto",
-          "range": "3",
-          "dc": "1",
-          "special": "-"
-        }
-      ],
+        { "name": "Arco corto", "range": "3", "dc": "1", "special": "-" } ],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -835,21 +408,11 @@
       "name": "Carro a pompa degli snotling",
       "category": "Macchine e Mostri",
       "cost_per_model": 45,
-      "stats": {
-        "M": "2DC+1",
-        "DC": "1**",
-        "D": "3",
-        "F": "3",
-        "R": "2"
-      },
-      "type": [
-        "carro leggero"
-      ],
+      "stats": { "M": "2DC+1", "DC": "1**", "D": "3", "F": "3", "R": "2" },
+      "type": [ "carro leggero" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "implacabile"
-      ],
+      "rules": [ "implacabile" ],
       "equipment": [],
       "ranged": [],
       "options": [],
@@ -861,19 +424,11 @@
       "name": "Gigante",
       "category": "Macchine e Mostri",
       "cost_per_model": 250,
-      "stats": {
-        "M": "2",
-        "DC": "2D6*",
-        "D": "4",
-        "F": "10",
-        "R": "5"
-      },
-      "type": [],
+      "stats": { "M": "2", "DC": "2D6*", "D": "4", "F": "10", "R": "5" },
+      "type": [ "mostro" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "terrore", "immune alla psicologia", "cade!"
-      ],
+      "rules": [ "terrore", "immune alla psicologia", "cade!" ],
       "equipment": [],
       "ranged": [],
       "options": [],
@@ -885,54 +440,23 @@
       "name": "Capoguerra Orco Nero",
       "category": "Personaggi",
       "cost_per_model": 80,
-      "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "4",
-        "F": "4",
-        "R": "7"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "4", "D": "4", "F": "4", "R": "7" },
+      "type": [ "fanteria", "personaggio", "orco_nero" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 8
-        },
-        {
-          "id": "armatura_pesante",
-          "name": "armatura pesante",
-          "cost": 4
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 4
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 30
-        },
-        {
-          "id": "viverna",
-          "name": "viverna",
-          "cost": 180
-        },
-        {
-          "id": "carro",
-          "name": "carro",
-          "cost": 100
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 8 },
+        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 4 },
+        { "id": "scudo", "name": "scudo", "cost": 4 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 30 },
+        { "id": "viverna", "name": "viverna", "cost": 180 },
+        { "id": "carro_degli_orchi", "name": "carro degli orchi", "cost": 100 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cinghiale", "viverna", "carro_degli_orchi" ]
+      },
       "magic_item_slots": 3,
       "max_per_army": 0
     },
@@ -941,54 +465,23 @@
       "name": "Capoguerra Orco",
       "category": "Personaggi",
       "cost_per_model": 70,
-      "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "3",
-        "F": "4",
-        "R": "6"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "4", "D": "3", "F": "4", "R": "6" },
+      "type": [ "fanteria", "personaggio", "orco" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 8
-        },
-        {
-          "id": "armatura_pesante",
-          "name": "armatura pesante",
-          "cost": 4
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 4
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 30
-        },
-        {
-          "id": "viverna",
-          "name": "viverna",
-          "cost": 180
-        },
-        {
-          "id": "carro",
-          "name": "carro",
-          "cost": 100
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 8 },
+        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 4 },
+        { "id": "scudo", "name": "scudo", "cost": 4 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 30 },
+        { "id": "viverna", "name": "viverna", "cost": 180 },
+        { "id": "carro_degli_orchi", "name": "carro degli orchi", "cost": 100 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cinghiale", "viverna", "carro_degli_orchi" ]
+      },
       "magic_item_slots": 3,
       "max_per_army": 0
     },
@@ -997,46 +490,21 @@
       "name": "Capoguerra Orco Selvaggio",
       "category": "Personaggi",
       "cost_per_model": 75,
-      "stats": {
-        "M": "1",
-        "DC": "4*",
-        "D": "3",
-        "F": "4",
-        "R": "6"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "4*", "D": "3", "F": "4", "R": "6" },
+      "type": [ "fanteria", "personaggio", "orco_selvaggio" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "furia"
-      ],
+      "rules": [ "furia" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 8
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 4
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 30
-        },
-        {
-          "id": "viverna",
-          "name": "viverna",
-          "cost": 180
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 8 },
+        { "id": "scudo", "name": "scudo", "cost": 4 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 30 },
+        { "id": "viverna", "name": "viverna", "cost": 180 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cinghiale", "viverna" ]
+      },
       "magic_item_slots": 3,
       "max_per_army": 0
     },
@@ -1045,54 +513,27 @@
       "name": "Capoguerra Goblin",
       "category": "Personaggi",
       "cost_per_model": 50,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2",
-        "F": "4",
-        "R": "4"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "3", "D": "2", "F": "4", "R": "4" },
+      "type": [ "fanteria", "personaggio", "goblin" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 8
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 4
-        },
-        {
-          "id": "lupo",
-          "name": "lupo",
-          "cost": 20
-        },
-        {
-          "id": "carro",
-          "name": "carro",
-          "cost": 60
-        },
-        {
-          "id": "ragno_gigante",
-          "name": "ragno gigante",
-          "cost": 20
-        },
-        {
-          "id": "ragno_gigantesco",
-          "name": "ragno gigantesco",
-          "cost": 50
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 8 },
+        { "id": "scudo", "name": "scudo", "cost": 4 },
+        { "id": "lupo", "name": "lupo", "cost": 20, "required_option": "goblin_comuni" },
+        { "id": "carro_dei_goblin", "name": "carro dei goblin", "cost": 60, "required_option": "goblin_comuni" },
+        { "id": "ragno_gigante", "name": "ragno gigante", "cost": 20, "required_option": "goblin_delle_foreste" },
+        { "id": "ragno_gigantesco", "name": "ragno gigantesco", "cost": 50, "required_option": "goblin_delle_foreste" },
+        { "id": "goblin_comuni", "name": "Goblin Comune", "cost": 0 },
+        { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
+      "option_categories": {
+        "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"],
+        "cavalcatura": [ "nessuno", "carro", "lupo", "ragno_gigante", "ragno_gigantesco" ]
+      },
       "magic_item_slots": 3,
       "max_per_army": 0
     },
@@ -1101,46 +542,21 @@
       "name": "Grande Sciamano Orco",
       "category": "Personaggi",
       "cost_per_model": 165,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "3",
-        "F": "4",
-        "R": "5"
-      },
-      "type": [
-        "personaggio",
-        "mago"
-      ],
+      "stats": { "M": "1", "DC": "3", "D": "3", "F": "4", "R": "5" },
+      "type": [ "personaggio", "mago", "orco" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "mago livello 3 (magia Whaaagh!)"
-      ],
+      "rules": [ "mago livello 3 (magia Whaaagh!)" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "livello_4",
-          "name": "livello 4",
-          "cost": 55
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 30
-        },
-        {
-          "id": "viverna",
-          "name": "viverna",
-          "cost": 180
-        },
-        {
-          "id": "carro",
-          "name": "carro",
-          "cost": 100
-        }
-      ],
+        { "id": "livello_4", "name": "livello 4", "cost": 55 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 30 },
+        { "id": "viverna", "name": "viverna", "cost": 180 },
+        { "id": "carro_degli_orchi", "name": "carro degli orchi", "cost": 100 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cinghiale", "viverna", "carro_degli_orchi" ]
+      },
       "magic_item_slots": 4,
       "max_per_army": 0
     },
@@ -1149,42 +565,20 @@
       "name": "Grande Sciamano Orco Selvaggio",
       "category": "Personaggi",
       "cost_per_model": 170,
-      "stats": {
-        "M": "1",
-        "DC": "3*",
-        "D": "3",
-        "F": "4",
-        "R": "5"
-      },
-      "type": [
-        "personaggio",
-        "mago"
-      ],
+      "stats": { "M": "1", "DC": "3*", "D": "3", "F": "4", "R": "5" },
+      "type": [ "personaggio", "mago", "orco_selvaggio" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "furia",
-        "mago livello 3 (magia Whaaagh!)"
-      ],
+      "rules": [ "furia", "mago livello 3 (magia Whaaagh!)" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "livello_4",
-          "name": "livello 4",
-          "cost": 55
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 30
-        },
-        {
-          "id": "viverna",
-          "name": "viverna",
-          "cost": 180
-        }
-      ],
+        { "id": "livello_4", "name": "livello 4", "cost": 55 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 30 },
+        { "id": "viverna", "name": "viverna", "cost": 180 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cinghiale", "viverna" ]
+      },
       "magic_item_slots": 4,
       "max_per_army": 0
     },
@@ -1193,51 +587,26 @@
       "name": "Grande Sciamano Goblin",
       "category": "Personaggi",
       "cost_per_model": 145,
-      "stats": {
-        "M": "1",
-        "DC": "2",
-        "D": "2",
-        "F": "4",
-        "R": "3"
-      },
-      "type": [
-        "personaggio",
-        "mago"
-      ],
+      "stats": { "M": "1", "DC": "2", "D": "2", "F": "4", "R": "3" },
+      "type": [ "personaggio", "mago", "goblin" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "mago livello 3 (magia Whaaagh!)"
-      ],
+      "rules": [ "mago livello 3 (magia Whaaagh!)" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "livello_4",
-          "name": "livello 4",
-          "cost": 55
-        },
-        {
-          "id": "lupo",
-          "name": "lupo",
-          "cost": 20
-        },
-        {
-          "id": "carro",
-          "name": "carro",
-          "cost": 60
-        },
-        {
-          "id": "ragno_gigante",
-          "name": "ragno gigante",
-          "cost": 20
-        },
-        {
-          "id": "ragno_gigantesco",
-          "name": "ragno gigantesco",
-          "cost": 50
-        }
-      ],
+        { "id": "livello_4", "name": "livello 4", "cost": 55 },
+        { "id": "lupo", "name": "lupo", "cost": 20, "required_option": "goblin_comuni" },
+        { "id": "carro_dei_goblin", "name": "carro dei goblin", "cost": 60, "required_option": "goblin_comuni" },
+        { "id": "ragno_gigante", "name": "ragno gigante", "cost": 20, "required_option": "goblin_delle_foreste" },
+        { "id": "ragno_gigantesco", "name": "ragno gigantesco", "cost": 50, "required_option": "goblin_delle_foreste" },
+        { "id": "goblin_comuni", "name": "Goblin Comune", "cost": 0 },
+        { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
+      "option_categories": {
+        "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"],
+        "cavalcatura": [ "nessuno", "carro", "lupo", "ragno_gigante", "ragno_gigantesco" ]
+      },
       "magic_item_slots": 4,
       "max_per_army": 0
     },
@@ -1246,54 +615,23 @@
       "name": "Grande Capo Orco Nero",
       "category": "Personaggi",
       "cost_per_model": 55,
-      "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "3",
-        "F": "3",
-        "R": "6"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "4", "D": "3", "F": "3", "R": "6" },
+      "type": [ "fanteria", "personaggio", "orco_nero" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 6
-        },
-        {
-          "id": "armatura_pesante",
-          "name": "armatura pesante",
-          "cost": 3
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 3
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 24
-        },
-        {
-          "id": "viverna",
-          "name": "viverna",
-          "cost": 180
-        },
-        {
-          "id": "carro",
-          "name": "carro",
-          "cost": 100
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 6 },
+        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 3 },
+        { "id": "scudo", "name": "scudo", "cost": 3 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 24 },
+        { "id": "viverna", "name": "viverna", "cost": 180 },
+        { "id": "carro_degli_orchi", "name": "carro degli orchi", "cost": 100 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cinghiale", "viverna", "carro_degli_orchi" ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -1302,54 +640,23 @@
       "name": "Grande Capo Orco",
       "category": "Personaggi",
       "cost_per_model": 45,
-      "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "2",
-        "F": "3",
-        "R": "5"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "4", "D": "2", "F": "3", "R": "5" },
+      "type": [ "fanteria", "personaggio", "orco" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 6
-        },
-        {
-          "id": "armatura_pesante",
-          "name": "armatura pesante",
-          "cost": 3
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 3
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 24
-        },
-        {
-          "id": "viverna",
-          "name": "viverna",
-          "cost": 180
-        },
-        {
-          "id": "carro",
-          "name": "carro",
-          "cost": 100
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 6 },
+        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 3 },
+        { "id": "scudo", "name": "scudo", "cost": 3 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 24 },
+        { "id": "viverna", "name": "viverna", "cost": 180 },
+        { "id": "carro_degli_orchi", "name": "carro degli orchi", "cost": 100 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cinghiale", "viverna", "carro_degli_orchi" ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -1358,46 +665,21 @@
       "name": "Grande Capo Orco Selvaggio",
       "category": "Personaggi",
       "cost_per_model": 50,
-      "stats": {
-        "M": "1",
-        "DC": "4*",
-        "D": "2",
-        "F": "3",
-        "R": "5"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "4*", "D": "2", "F": "3", "R": "5" },
+      "type": [ "fanteria", "personaggio", "orco_selvaggio" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "furia"
-      ],
+      "rules": [ "furia" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 6
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 3
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 24
-        },
-        {
-          "id": "viverna",
-          "name": "viverna",
-          "cost": 180
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 6 },
+        { "id": "scudo", "name": "scudo", "cost": 3 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 24 },
+        { "id": "viverna", "name": "viverna", "cost": 180 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cinghiale", "viverna" ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -1406,54 +688,27 @@
       "name": "Grande Capo Goblin",
       "category": "Personaggi",
       "cost_per_model": 35,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "1",
-        "F": "3",
-        "R": "3"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "3", "D": "1", "F": "3", "R": "3" },
+      "type": [ "fanteria", "personaggio", "goblin" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 6
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 3
-        },
-        {
-          "id": "lupo",
-          "name": "lupo",
-          "cost": 16
-        },
-        {
-          "id": "carro",
-          "name": "carro",
-          "cost": 60
-        },
-        {
-          "id": "ragno_gigante",
-          "name": "ragno gigante",
-          "cost": 16
-        },
-        {
-          "id": "ragno_gigantesco",
-          "name": "ragno gigantesco",
-          "cost": 50
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 6 },
+        { "id": "scudo", "name": "scudo", "cost": 3 },
+        { "id": "lupo", "name": "lupo", "cost": 16, "required_option": "goblin_comuni" },
+        { "id": "carro_dei_goblin", "name": "carro dei goblin", "cost": 60, "required_option": "goblin_comuni" },
+        { "id": "ragno_gigante", "name": "ragno gigante", "cost": 16, "required_option": "goblin_delle_foreste" },
+        { "id": "ragno_gigantesco", "name": "ragno gigantesco", "cost": 50, "required_option": "goblin_delle_foreste" },
+        { "id": "goblin_comuni", "name": "Goblin Comune", "cost": 0 },
+        { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
+      "option_categories": {
+        "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"],
+        "cavalcatura": [ "nessuno", "carro", "lupo", "ragno_gigante", "ragno_gigantesco" ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -1462,46 +717,18 @@
       "name": "Alfiere Orco Nero",
       "category": "Personaggi",
       "cost_per_model": 55,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "3",
-        "F": "2",
-        "R": "5"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "3", "D": "3", "F": "2", "R": "5" },
+      "type": [ "fanteria", "personaggio", "orco_nero" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "stendardo da battaglia"
-      ],
+      "rules": [ "stendardo da battaglia" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 4
-        },
-        {
-          "id": "armatura_pesante",
-          "name": "armatura pesante",
-          "cost": 2
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 2
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 18
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 4 },
+        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 2 },
+        { "id": "scudo", "name": "scudo", "cost": 2 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 18 } ],
       "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
@@ -1511,46 +738,18 @@
       "name": "Alfiere Orco",
       "category": "Personaggi",
       "cost_per_model": 45,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2",
-        "F": "2",
-        "R": "4"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "3", "D": "2", "F": "2", "R": "4" },
+      "type": [ "fanteria", "personaggio", "orco" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "stendardo da battaglia"
-      ],
+      "rules": [ "stendardo da battaglia" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 4
-        },
-        {
-          "id": "armatura_pesante",
-          "name": "armatura pesante",
-          "cost": 2
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 2
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 18
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 4 },
+        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 2 },
+        { "id": "scudo", "name": "scudo", "cost": 2 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 18 } ],
       "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
@@ -1560,41 +759,17 @@
       "name": "Alfiere Orco Selvaggio",
       "category": "Personaggi",
       "cost_per_model": 50,
-      "stats": {
-        "M": "1",
-        "DC": "3*",
-        "D": "2",
-        "F": "2",
-        "R": "4"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "3*", "D": "2", "F": "2", "R": "4" },
+      "type": [ "fanteria", "personaggio", "orco_selvaggio" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "stendardo da battaglia", "furia"
-      ],
+      "rules": [ "stendardo da battaglia", "furia" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 4
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 2
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 18
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 4 },
+        { "id": "scudo", "name": "scudo", "cost": 2 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 18 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -1603,46 +778,24 @@
       "name": "Alfiere Goblin",
       "category": "Personaggi",
       "cost_per_model": 35,
-      "stats": {
-        "M": "1",
-        "DC": "2",
-        "D": "1",
-        "F": "2",
-        "R": "2"
-      },
-      "type": [
-        "fanteria",
-        "personaggio"
-      ],
+      "stats": { "M": "1", "DC": "2", "D": "1", "F": "2", "R": "2" },
+      "type": [ "fanteria", "personaggio", "goblin" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "stendardo da battaglia"
-      ],
+      "rules": [ "stendardo da battaglia" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 4
-        },
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 2
-        },
-        {
-          "id": "lupo",
-          "name": "lupo",
-          "cost": 12
-        },
-        {
-          "id": "ragno_gigante",
-          "name": "ragno gigante",
-          "cost": 12
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 4 },
+        { "id": "scudo", "name": "scudo", "cost": 2 },
+        { "id": "lupo", "name": "lupo", "cost": 12, "required_option": "goblin_comuni" },
+        { "id": "ragno_gigante", "name": "ragno gigante", "cost": 12, "required_option": "goblin_delle_foreste" },
+        { "id": "goblin_comuni", "name": "Goblin Comune", "cost": 0 },
+        { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
+      "option_categories": {
+        "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"]
+      },
       "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
@@ -1652,36 +805,16 @@
       "name": "Sciamano Orco",
       "category": "Personaggi",
       "cost_per_model": 50,
-      "stats": {
-        "M": "1",
-        "DC": "2",
-        "D": "2",
-        "F": "2",
-        "R": "4"
-      },
-      "type": [
-        "personaggio",
-        "mago"
-      ],
+      "stats": { "M": "1", "DC": "2", "D": "2", "F": "2", "R": "4" },
+      "type": [ "personaggio", "mago", "orco" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "mago livello 1 (magia Whaaagh!)"
-      ],
+      "rules": [ "mago livello 1 (magia Whaaagh!)" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "livello_2",
-          "name": "livello 2",
-          "cost": 35
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 18
-        }
-      ],
+        { "id": "livello_2", "name": "livello 2", "cost": 35 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 18 } ],
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -1690,37 +823,16 @@
       "name": "Sciamano Orco Selvaggio",
       "category": "Personaggi",
       "cost_per_model": 55,
-      "stats": {
-        "M": "1",
-        "DC": "2*",
-        "D": "2",
-        "F": "2",
-        "R": "4"
-      },
-      "type": [
-        "personaggio",
-        "mago"
-      ],
+      "stats": { "M": "1", "DC": "2*", "D": "2", "F": "2", "R": "4" },
+      "type": [ "personaggio", "mago", "orco_selvaggio" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "furia",
-        "mago livello 1 (magia Whaaagh!)"
-      ],
+      "rules": [ "furia", "mago livello 1 (magia Whaaagh!)" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "livello_2",
-          "name": "livello 2",
-          "cost": 35
-        },
-        {
-          "id": "cinghiale",
-          "name": "cinghiale",
-          "cost": 18
-        }
-      ],
+        { "id": "livello_2", "name": "livello 2", "cost": 35 },
+        { "id": "cinghiale", "name": "cinghiale", "cost": 18 } ],
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -1729,41 +841,23 @@
       "name": "Sciamano Goblin",
       "category": "Personaggi",
       "cost_per_model": 40,
-      "stats": {
-        "M": "1",
-        "DC": "1",
-        "D": "1",
-        "F": "2",
-        "R": "2"
-      },
-      "type": [
-        "personaggio",
-        "mago"
-      ],
+      "stats": { "M": "1", "DC": "1", "D": "1", "F": "2", "R": "2" },
+      "type": [ "personaggio", "mago", "goblin" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "mago livello 1 (magia Whaaagh!)"
-      ],
+      "rules": [ "mago livello 1 (magia Whaaagh!)" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "livello_2",
-          "name": "livello 2",
-          "cost": 35
-        },
-        {
-          "id": "lupo",
-          "name": "lupo",
-          "cost": 12
-        },
-        {
-          "id": "ragno_gigante",
-          "name": "ragno gigante",
-          "cost": 12
-        }
-      ],
+        { "id": "livello_2", "name": "livello 2", "cost": 35 },
+        { "id": "lupo", "name": "lupo", "cost": 12, "required_option": "goblin_comuni" },
+        { "id": "ragno_gigante", "name": "ragno gigante", "cost": 12, "required_option": "goblin_delle_foreste" },
+        { "id": "goblin_comuni", "name": "Goblin Comune", "cost": 0 },
+        { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
+      "option_categories": {
+        "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste" ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -1772,27 +866,13 @@
       "name": "Skarsnik e Gobbla",
       "category": "Personaggi",
       "cost_per_model": 195,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2",
-        "F": "4",
-        "R": "6"
-      },
-      "type": [
-        "fanteria",
-        "personaggio speciale",
-        "goblin_delle_tenebre"
-      ],
+      "stats": { "M": "1", "DC": "3", "D": "2", "F": "4", "R": "6" },
+      "type": [ "fanteria", "personaggio speciale", "goblin" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "Guardia del Corpo (finché Gobbla è in vita, qualsiasi attacco, anche da incantesimo o altro, diretto verso Skarsnik diventa invece diretto verso Gobbla; inoltre, finché Gobbla è in vita, Skarsnik non può lanciare o accettare sfide)"
-      ],
-      "equipment": [
-        "Gobbla"
-      ],
-      "magic_items": ["Il Pungolo Di Skarsnik"],
+      "rules": [ "Guardia del Corpo (finché Gobbla è in vita, qualsiasi attacco, anche da incantesimo o altro, diretto verso Skarsnik diventa invece diretto verso Gobbla; inoltre, finché Gobbla è in vita, Skarsnik non può lanciare o accettare sfide)" ],
+      "equipment": [ "Gobbla" ],
+      "magic_items": [ "Il Pungolo Di Skarsnik" ],
       "ranged": [],
       "options": [],
       "magic_item_slots": 2,
@@ -1803,39 +883,17 @@
       "name": "Azhag il Massacratore",
       "category": "Personaggi",
       "cost_per_model": 385,
-      "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "3",
-        "F": "4",
-        "R": "7"
-      },
-      "type": [
-        "fanteria",
-        "personaggio speciale"
-      ],
+      "stats": { "M": "1", "DC": "4", "D": "3", "F": "4", "R": "7" },
+      "type": [ "fanteria", "personaggio speciale" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "tutte le unità di Orchi o Goblin entro 2 caselle ignorano l'Animosità", "mago livello 3 (Necromanzia o magia delle Tenebre)"
-      ],
-      "equipment": [
-        "viverna"
-      ],
-      "magic_items": ["La Corona Della Stregoneria"],
+      "rules": [ "tutte le unità di Orchi o Goblin entro 2 caselle ignorano l'Animosità", "mago livello 3 (Necromanzia o magia delle Tenebre)" ],
+      "equipment": [ "viverna" ],
+      "magic_items": [ "La Corona Della Stregoneria" ],
       "ranged": [],
       "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "arma a due mani / due armi",
-          "cost": 8
-        },
-        {
-          "id": "armatura_pesante",
-          "name": "armatura pesante",
-          "cost": 4
-        }
-      ],
+        { "id": "arma_a_due_mani_due_armi", "name": "arma a due mani / due armi", "cost": 8 },
+        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 4 } ],
       "magic_item_slots": 2,
       "max_per_army": 1
     },
@@ -1844,22 +902,13 @@
       "name": "Grom il Pancione",
       "category": "Personaggi",
       "cost_per_model": 275,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2*",
-        "F": "4",
-        "R": "5"
-      },
-      "type": [
-        "fanteria",
-        "personaggio speciale"
-      ],
+      "stats": { "M": "1", "DC": "3", "D": "2*", "F": "4", "R": "5" },
+      "type": [ "fanteria", "personaggio speciale", "goblin" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": ["Stendardo da Battaglia"],
-      "equipment": ["carro di Grom", "Niblit (alfiere goblin)"],
-      "magic_items": ["Mordielfi - L'Ascia Di Grom"],
+      "rules": [ "Stendardo da Battaglia" ],
+      "equipment": [ "carro di Grom", "Niblit (alfiere goblin)" ],
+      "magic_items": [ "Mordielfi - L'Ascia Di Grom" ],
       "ranged": [],
       "options": [],
       "magic_item_slots": 2,

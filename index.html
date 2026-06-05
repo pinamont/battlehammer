@@ -1257,7 +1257,8 @@
         "R": "4"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "orco"
       ],
       "min_size": 5,
       "max_size": 20,
@@ -1299,7 +1300,8 @@
         "R": "4"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "orco"
       ],
       "min_size": 5,
       "max_size": 20,
@@ -1345,7 +1347,8 @@
         "R": "4"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "orco"
       ],
       "min_size": 5,
       "max_size": 20,
@@ -1391,7 +1394,8 @@
         "R": "5"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "orco_nero"
       ],
       "min_size": 5,
       "max_size": 20,
@@ -1428,7 +1432,8 @@
         "R": "4"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "orco_selvaggio"
       ],
       "min_size": 5,
       "max_size": 20,
@@ -1473,7 +1478,8 @@
         "R": "4"
       },
       "type": [
-        "cavalleria pesante"
+        "cavalleria pesante",
+        "orco"
       ],
       "min_size": 3,
       "max_size": 10,
@@ -1514,7 +1520,8 @@
         "R": "4"
       },
       "type": [
-        "cavalleria pesante"
+        "cavalleria pesante",
+        "orco_selvaggio"
       ],
       "min_size": 3,
       "max_size": 10,
@@ -1556,7 +1563,8 @@
         "R": "2"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "goblin"
       ],
       "min_size": 5,
       "max_size": 20,
@@ -1625,7 +1633,8 @@
         "R": "2"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "goblin"
       ],
       "min_size": 5,
       "max_size": 20,
@@ -1658,9 +1667,32 @@
           "id": "fanatici",
           "name": "fanatici",
           "cost": 30,
-          "max_count": 3
+          "max_count": 3,
+          "required_option": "goblin_delle_tenebre"
+        },
+        {
+          "id": "goblin_comuni",
+          "name": "Goblin Comuni",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_tenebre",
+          "name": "Goblin Delle Tenebre",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_foreste",
+          "name": "Goblin Delle Foreste",
+          "cost": 0
         }
       ],
+      "option_categories": {
+        "tipo": [
+          "goblin_comuni",
+          "goblin_delle_tenebre",
+          "goblin_delle_foreste"
+        ]
+      },
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -1677,7 +1709,8 @@
         "R": "2"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "goblin"
       ],
       "min_size": 5,
       "max_size": 20,
@@ -1716,7 +1749,8 @@
         "R": "2"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "goblin"
       ],
       "min_size": 5,
       "max_size": 10,
@@ -1749,7 +1783,8 @@
         "R": "2"
       },
       "type": [
-        "cavalleria"
+        "cavalleria",
+        "goblin"
       ],
       "min_size": 3,
       "max_size": 10,
@@ -1775,7 +1810,8 @@
         "R": "2"
       },
       "type": [
-        "cavalleria leggera"
+        "cavalleria leggera",
+        "goblin"
       ],
       "min_size": 3,
       "max_size": 10,
@@ -1829,7 +1865,8 @@
         "R": "2"
       },
       "type": [
-        "cavalleria pesante"
+        "cavalleria pesante",
+        "goblin"
       ],
       "min_size": 3,
       "max_size": 10,
@@ -1964,7 +2001,8 @@
       },
       "type": [
         "macchina da guerra",
-        "balista"
+        "balista",
+        "orco"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -1996,7 +2034,8 @@
       },
       "type": [
         "macchina da guerra",
-        "catapulta"
+        "catapulta",
+        "orco"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2028,7 +2067,8 @@
       },
       "type": [
         "macchina da guerra",
-        "folle fiondato"
+        "folle fiondato",
+        "goblin"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2059,7 +2099,8 @@
         "R": "4"
       },
       "type": [
-        "carro pesante"
+        "carro pesante",
+        "orco"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2083,7 +2124,8 @@
         "R": "2"
       },
       "type": [
-        "carro leggero"
+        "carro leggero",
+        "goblin"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2139,7 +2181,9 @@
         "F": "10",
         "R": "5"
       },
-      "type": [],
+      "type": [
+        "mostro"
+      ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
@@ -2167,7 +2211,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "orco_nero"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2201,11 +2246,19 @@
           "cost": 180
         },
         {
-          "id": "carro",
-          "name": "carro",
+          "id": "carro_degli_orchi",
+          "name": "carro degli orchi",
           "cost": 100
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cinghiale",
+          "viverna",
+          "carro_degli_orchi"
+        ]
+      },
       "magic_item_slots": 3,
       "max_per_army": 0
     },
@@ -2223,7 +2276,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "orco"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2257,11 +2311,19 @@
           "cost": 180
         },
         {
-          "id": "carro",
-          "name": "carro",
+          "id": "carro_degli_orchi",
+          "name": "carro degli orchi",
           "cost": 100
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cinghiale",
+          "viverna",
+          "carro_degli_orchi"
+        ]
+      },
       "magic_item_slots": 3,
       "max_per_army": 0
     },
@@ -2279,7 +2341,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "orco_selvaggio"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2310,6 +2373,13 @@
           "cost": 180
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cinghiale",
+          "viverna"
+        ]
+      },
       "magic_item_slots": 3,
       "max_per_army": 0
     },
@@ -2327,7 +2397,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "goblin"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2348,24 +2419,57 @@
         {
           "id": "lupo",
           "name": "lupo",
-          "cost": 20
+          "cost": 20,
+          "required_option": "goblin_comuni"
         },
         {
-          "id": "carro",
-          "name": "carro",
-          "cost": 60
+          "id": "carro_dei_goblin",
+          "name": "carro dei goblin",
+          "cost": 60,
+          "required_option": "goblin_comuni"
         },
         {
           "id": "ragno_gigante",
           "name": "ragno gigante",
-          "cost": 20
+          "cost": 20,
+          "required_option": "goblin_delle_foreste"
         },
         {
           "id": "ragno_gigantesco",
           "name": "ragno gigantesco",
-          "cost": 50
+          "cost": 50,
+          "required_option": "goblin_delle_foreste"
+        },
+        {
+          "id": "goblin_comuni",
+          "name": "Goblin Comune",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_tenebre",
+          "name": "Goblin Delle Tenebre",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_foreste",
+          "name": "Goblin Delle Foreste",
+          "cost": 0
         }
       ],
+      "option_categories": {
+        "tipo": [
+          "goblin_comuni",
+          "goblin_delle_tenebre",
+          "goblin_delle_foreste"
+        ],
+        "cavalcatura": [
+          "nessuno",
+          "carro",
+          "lupo",
+          "ragno_gigante",
+          "ragno_gigantesco"
+        ]
+      },
       "magic_item_slots": 3,
       "max_per_army": 0
     },
@@ -2383,7 +2487,8 @@
       },
       "type": [
         "personaggio",
-        "mago"
+        "mago",
+        "orco"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2409,11 +2514,19 @@
           "cost": 180
         },
         {
-          "id": "carro",
-          "name": "carro",
+          "id": "carro_degli_orchi",
+          "name": "carro degli orchi",
           "cost": 100
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cinghiale",
+          "viverna",
+          "carro_degli_orchi"
+        ]
+      },
       "magic_item_slots": 4,
       "max_per_army": 0
     },
@@ -2431,7 +2544,8 @@
       },
       "type": [
         "personaggio",
-        "mago"
+        "mago",
+        "orco_selvaggio"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2458,6 +2572,13 @@
           "cost": 180
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cinghiale",
+          "viverna"
+        ]
+      },
       "magic_item_slots": 4,
       "max_per_army": 0
     },
@@ -2475,7 +2596,8 @@
       },
       "type": [
         "personaggio",
-        "mago"
+        "mago",
+        "goblin"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2493,24 +2615,57 @@
         {
           "id": "lupo",
           "name": "lupo",
-          "cost": 20
+          "cost": 20,
+          "required_option": "goblin_comuni"
         },
         {
-          "id": "carro",
-          "name": "carro",
-          "cost": 60
+          "id": "carro_dei_goblin",
+          "name": "carro dei goblin",
+          "cost": 60,
+          "required_option": "goblin_comuni"
         },
         {
           "id": "ragno_gigante",
           "name": "ragno gigante",
-          "cost": 20
+          "cost": 20,
+          "required_option": "goblin_delle_foreste"
         },
         {
           "id": "ragno_gigantesco",
           "name": "ragno gigantesco",
-          "cost": 50
+          "cost": 50,
+          "required_option": "goblin_delle_foreste"
+        },
+        {
+          "id": "goblin_comuni",
+          "name": "Goblin Comune",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_tenebre",
+          "name": "Goblin Delle Tenebre",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_foreste",
+          "name": "Goblin Delle Foreste",
+          "cost": 0
         }
       ],
+      "option_categories": {
+        "tipo": [
+          "goblin_comuni",
+          "goblin_delle_tenebre",
+          "goblin_delle_foreste"
+        ],
+        "cavalcatura": [
+          "nessuno",
+          "carro",
+          "lupo",
+          "ragno_gigante",
+          "ragno_gigantesco"
+        ]
+      },
       "magic_item_slots": 4,
       "max_per_army": 0
     },
@@ -2528,7 +2683,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "orco_nero"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2562,11 +2718,19 @@
           "cost": 180
         },
         {
-          "id": "carro",
-          "name": "carro",
+          "id": "carro_degli_orchi",
+          "name": "carro degli orchi",
           "cost": 100
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cinghiale",
+          "viverna",
+          "carro_degli_orchi"
+        ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -2584,7 +2748,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "orco"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2618,11 +2783,19 @@
           "cost": 180
         },
         {
-          "id": "carro",
-          "name": "carro",
+          "id": "carro_degli_orchi",
+          "name": "carro degli orchi",
           "cost": 100
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cinghiale",
+          "viverna",
+          "carro_degli_orchi"
+        ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -2640,7 +2813,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "orco_selvaggio"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2671,6 +2845,13 @@
           "cost": 180
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cinghiale",
+          "viverna"
+        ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -2688,7 +2869,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "goblin"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2709,24 +2891,57 @@
         {
           "id": "lupo",
           "name": "lupo",
-          "cost": 16
+          "cost": 16,
+          "required_option": "goblin_comuni"
         },
         {
-          "id": "carro",
-          "name": "carro",
-          "cost": 60
+          "id": "carro_dei_goblin",
+          "name": "carro dei goblin",
+          "cost": 60,
+          "required_option": "goblin_comuni"
         },
         {
           "id": "ragno_gigante",
           "name": "ragno gigante",
-          "cost": 16
+          "cost": 16,
+          "required_option": "goblin_delle_foreste"
         },
         {
           "id": "ragno_gigantesco",
           "name": "ragno gigantesco",
-          "cost": 50
+          "cost": 50,
+          "required_option": "goblin_delle_foreste"
+        },
+        {
+          "id": "goblin_comuni",
+          "name": "Goblin Comune",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_tenebre",
+          "name": "Goblin Delle Tenebre",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_foreste",
+          "name": "Goblin Delle Foreste",
+          "cost": 0
         }
       ],
+      "option_categories": {
+        "tipo": [
+          "goblin_comuni",
+          "goblin_delle_tenebre",
+          "goblin_delle_foreste"
+        ],
+        "cavalcatura": [
+          "nessuno",
+          "carro",
+          "lupo",
+          "ragno_gigante",
+          "ragno_gigantesco"
+        ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -2744,7 +2959,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "orco_nero"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2793,7 +3009,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "orco"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2842,7 +3059,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "orco_selvaggio"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2886,7 +3104,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio"
+        "personaggio",
+        "goblin"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2909,14 +3128,38 @@
         {
           "id": "lupo",
           "name": "lupo",
-          "cost": 12
+          "cost": 12,
+          "required_option": "goblin_comuni"
         },
         {
           "id": "ragno_gigante",
           "name": "ragno gigante",
-          "cost": 12
+          "cost": 12,
+          "required_option": "goblin_delle_foreste"
+        },
+        {
+          "id": "goblin_comuni",
+          "name": "Goblin Comune",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_tenebre",
+          "name": "Goblin Delle Tenebre",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_foreste",
+          "name": "Goblin Delle Foreste",
+          "cost": 0
         }
       ],
+      "option_categories": {
+        "tipo": [
+          "goblin_comuni",
+          "goblin_delle_tenebre",
+          "goblin_delle_foreste"
+        ]
+      },
       "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
@@ -2935,7 +3178,8 @@
       },
       "type": [
         "personaggio",
-        "mago"
+        "mago",
+        "orco"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -2973,7 +3217,8 @@
       },
       "type": [
         "personaggio",
-        "mago"
+        "mago",
+        "orco_selvaggio"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -3012,7 +3257,8 @@
       },
       "type": [
         "personaggio",
-        "mago"
+        "mago",
+        "goblin"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -3030,14 +3276,38 @@
         {
           "id": "lupo",
           "name": "lupo",
-          "cost": 12
+          "cost": 12,
+          "required_option": "goblin_comuni"
         },
         {
           "id": "ragno_gigante",
           "name": "ragno gigante",
-          "cost": 12
+          "cost": 12,
+          "required_option": "goblin_delle_foreste"
+        },
+        {
+          "id": "goblin_comuni",
+          "name": "Goblin Comune",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_tenebre",
+          "name": "Goblin Delle Tenebre",
+          "cost": 0
+        },
+        {
+          "id": "goblin_delle_foreste",
+          "name": "Goblin Delle Foreste",
+          "cost": 0
         }
       ],
+      "option_categories": {
+        "tipo": [
+          "goblin_comuni",
+          "goblin_delle_tenebre",
+          "goblin_delle_foreste"
+        ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -3056,7 +3326,7 @@
       "type": [
         "fanteria",
         "personaggio speciale",
-        "goblin_delle_tenebre"
+        "goblin"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -3132,7 +3402,8 @@
       },
       "type": [
         "fanteria",
-        "personaggio speciale"
+        "personaggio speciale",
+        "goblin"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -8821,7 +9092,11 @@
         "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": [
+        "orco",
+        "orco_nero",
+        "orco_selvaggio"
+      ],
       "not_for_type": []
     },
     {
@@ -9014,7 +9289,9 @@
         "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": [
+        "goblin"
+      ],
       "not_for_type": []
     },
     {
@@ -9310,7 +9587,11 @@
         "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": [
+        "orco",
+        "orco_nero",
+        "orco_selvaggio"
+      ],
       "not_for_type": []
     },
     {
@@ -11932,37 +12213,12 @@
 
         const hasNone = optionIds.includes("nessuno");
 
-        // Opzione "nessuno" (solo se presente nella categoria)
-        if (hasNone) {
-          const noneOpt = document.createElement("option");
-          noneOpt.value = "";
-          noneOpt.textContent = "Nessuno";
-          select.appendChild(noneOpt);
+        // Aggiorna lista menu in fase di inizializzazione e prima di ogni click sul menu
+        populateOptionCategory(catName,optionIds,unit,select,hasNone);
+        wrapper.onmousedown = () => {
+          console.log("Click!");
+          populateOptionCategory(catName,optionIds,unit,select,hasNone);
         }
-
-        // Opzioni della categoria
-        optionIds.forEach(id => {
-          const opt = unit.options.find(o => o.id === id);
-          if (!opt) return;
-
-          const o = document.createElement("option");
-          o.value = id;
-
-          let label = opt.name;
-          if (opt.cost) label += ` (+${opt.cost} pt)`;
-          if (opt.cost_per_model) label += ` (+${opt.cost_per_model} pt/mod.)`;
-
-          o.textContent = label;
-          select.appendChild(o);
-        });
-
-        // Valore attuale (se una delle opzioni è selezionata)
-        let current = [...selectedOptionIds].find(id => optionIds.includes(id)) || "";
-        if (!hasNone && current === "") {
-          current = optionIds[0]; // prima opzione della categoria
-          selectedOptionIds.add(current);
-        }
-        select.value = current;
 
         // Listener
         select.addEventListener("change", () => {
@@ -12311,6 +12567,46 @@
           row.style.display = "none";
         }
       });
+    }
+
+    function populateOptionCategory(catName,optionIds,unit,select,hasNone){
+      // Ripulisci il menu
+      while (select.lastElementChild) {
+        select.removeChild(select.lastElementChild);
+      }
+
+      // Opzione "nessuno" (solo se presente nella categoria)
+      if (hasNone) {
+        const noneOpt = document.createElement("option");
+        noneOpt.value = "";
+        noneOpt.textContent = "Nessuno";
+        select.appendChild(noneOpt);
+      }
+
+      // Opzioni della categoria
+      optionIds.forEach(id => {
+        const opt = unit.options.find(o => o.id === id);
+        if (!opt) return;
+        if (!isOptionEnabled(opt,selectedOptionIds)) return;
+
+        const o = document.createElement("option");
+        o.value = id;
+
+        let label = opt.name;
+        if (opt.cost) label += ` (+${opt.cost} pt)`;
+        if (opt.cost_per_model) label += ` (+${opt.cost_per_model} pt/mod.)`;
+
+        o.textContent = label;
+        select.appendChild(o);
+      });
+
+      // Valore attuale (se una delle opzioni è selezionata)
+      let current = [...selectedOptionIds].find(id => optionIds.includes(id)) || "";
+      if (!hasNone && current === "") {
+        current = optionIds[0]; // prima opzione della categoria
+        selectedOptionIds.add(current);
+      }
+      select.value = current;
     }
 
     function RenderMagicBanners() {

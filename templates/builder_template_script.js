@@ -876,37 +876,12 @@
 
         const hasNone = optionIds.includes("nessuno");
 
-        // Opzione "nessuno" (solo se presente nella categoria)
-        if (hasNone) {
-          const noneOpt = document.createElement("option");
-          noneOpt.value = "";
-          noneOpt.textContent = "Nessuno";
-          select.appendChild(noneOpt);
+        // Aggiorna lista menu in fase di inizializzazione e prima di ogni click sul menu
+        populateOptionCategory(catName,optionIds,unit,select,hasNone);
+        wrapper.onmousedown = () => {
+          console.log("Click!");
+          populateOptionCategory(catName,optionIds,unit,select,hasNone);
         }
-
-        // Opzioni della categoria
-        optionIds.forEach(id => {
-          const opt = unit.options.find(o => o.id === id);
-          if (!opt) return;
-
-          const o = document.createElement("option");
-          o.value = id;
-
-          let label = opt.name;
-          if (opt.cost) label += ` (+${opt.cost} pt)`;
-          if (opt.cost_per_model) label += ` (+${opt.cost_per_model} pt/mod.)`;
-
-          o.textContent = label;
-          select.appendChild(o);
-        });
-
-        // Valore attuale (se una delle opzioni è selezionata)
-        let current = [...selectedOptionIds].find(id => optionIds.includes(id)) || "";
-        if (!hasNone && current === "") {
-          current = optionIds[0]; // prima opzione della categoria
-          selectedOptionIds.add(current);
-        }
-        select.value = current;
 
         // Listener
         select.addEventListener("change", () => {
@@ -1255,6 +1230,46 @@
           row.style.display = "none";
         }
       });
+    }
+
+    function populateOptionCategory(catName,optionIds,unit,select,hasNone){
+      // Ripulisci il menu
+      while (select.lastElementChild) {
+        select.removeChild(select.lastElementChild);
+      }
+
+      // Opzione "nessuno" (solo se presente nella categoria)
+      if (hasNone) {
+        const noneOpt = document.createElement("option");
+        noneOpt.value = "";
+        noneOpt.textContent = "Nessuno";
+        select.appendChild(noneOpt);
+      }
+
+      // Opzioni della categoria
+      optionIds.forEach(id => {
+        const opt = unit.options.find(o => o.id === id);
+        if (!opt) return;
+        if (!isOptionEnabled(opt,selectedOptionIds)) return;
+
+        const o = document.createElement("option");
+        o.value = id;
+
+        let label = opt.name;
+        if (opt.cost) label += ` (+${opt.cost} pt)`;
+        if (opt.cost_per_model) label += ` (+${opt.cost_per_model} pt/mod.)`;
+
+        o.textContent = label;
+        select.appendChild(o);
+      });
+
+      // Valore attuale (se una delle opzioni è selezionata)
+      let current = [...selectedOptionIds].find(id => optionIds.includes(id)) || "";
+      if (!hasNone && current === "") {
+        current = optionIds[0]; // prima opzione della categoria
+        selectedOptionIds.add(current);
+      }
+      select.value = current;
     }
 
     function RenderMagicBanners() {

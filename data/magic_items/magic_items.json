@@ -70,7 +70,7 @@
         "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": ["orco", "orco_nero", "orco_selvaggio"],
       "not_for_type": []
     },
     {
@@ -263,7 +263,7 @@
         "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": ["goblin"],
       "not_for_type": []
     },
     {
@@ -559,7 +559,7 @@
         "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": ["orco", "orco_nero", "orco_selvaggio"],
       "not_for_type": []
     },
     {
