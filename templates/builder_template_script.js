@@ -200,6 +200,10 @@
     ? item.not_for_army
     : item.not_for_army ? [item.not_for_army] : [];
 
+    const onlyForUnit = Array.isArray(item.only_for_unit)
+    ? item.only_for_unit
+    : item.only_for_unit ? [item.only_for_unit] : [];
+
     // --- Filtri per tipo ---
     if (onlyForType.length > 0) {
       if (!onlyForType.some(t => unitTypes.includes(t))) {
@@ -222,6 +226,13 @@
 
     if (notForArmy.length > 0) {
       if (notForArmy.includes(currentFaction)) {
+        return false;
+      }
+    }
+
+    // --- Filtri per unità ---
+    if (onlyForUnit.length > 0) {
+      if (!onlyForUnit.includes(unit.id)) {
         return false;
       }
     }
@@ -886,7 +897,6 @@
         // Aggiorna lista menu in fase di inizializzazione e prima di ogni click sul menu
         populateOptionCategory(catName,optionIds,unit,select,hasNone);
         wrapper.onmousedown = () => {
-          console.log("Click!");
           populateOptionCategory(catName,optionIds,unit,select,hasNone);
         }
 
@@ -1133,12 +1143,12 @@
     RenderMagicBanners();
 
     // Oggetti Magici
-    if ((unit.magic_item_slots && unit.magic_item_slots > 0) || (unit.magic_items && unit.magic_items.size > 0)) {
+    if ((unit.magic_item_slots && unit.magic_item_slots > 0) || (unit.magic_items && unit.magic_items.length > 0)) {
       RenderMagicItems(unit,magicByCategory);
     }
 
     // Virtù Cavalleresche
-    if ((unit.knightly_virtue_slots && unit.knightly_virtue_slots > 0) || (unit.knightly_virtues && unit.knightly_virtues > 0)) {
+    if ((unit.knightly_virtue_slots && unit.knightly_virtue_slots > 0) || (unit.knightly_virtues && unit.knightly_virtues.length > 0)) {
       RenderKnightlyVirtues();
     }
 
@@ -1402,10 +1412,26 @@
           if (unit.magic_items && unit.magic_items.includes(item.name)) {
             const div = document.createElement("div");
             div.className = "option disabled-option";
-            div.innerHTML = `
-            <input type="checkbox" checked disabled>
-            <span class="greyed">${item.name}</span>
-            `;
+            // div.innerHTML = `
+            // <input type="checkbox" checked disabled>
+            // <span class="greyed">${item.name}</span>
+            // `;
+            const cb_greyed = document.createElement("input");
+            cb_greyed.type = "checkbox";
+            cb_greyed.checked = true;
+            cb_greyed.disabled = true;
+            div.appendChild(cb_greyed);
+            const labelSpan_greyed = document.createElement("span");
+            labelSpan_greyed.textContent = " " + item.name;
+            labelSpan_greyed.class = "greyed";
+            // Tooltip solo se esiste la description FIXME: duplicate code
+            if (item.description) {
+              labelSpan_greyed.addEventListener("mousemove", (e) => {
+                showMagicTooltip(item.description, e.clientX, e.clientY);
+              });
+              labelSpan_greyed.addEventListener("mouseleave", hideMagicTooltip);
+            }
+            div.appendChild(labelSpan_greyed);
             left.appendChild(div);
           } else { // ... o selezionabile
             const cb = document.createElement("input");
@@ -1433,8 +1459,6 @@
             };
 
             left.appendChild(cb);
-            // const text = document.createTextNode(" " + item.name);
-            // left.appendChild(text);
             const labelSpan = document.createElement("span");
             labelSpan.textContent = " " + item.name;
             // Tooltip solo se esiste la description
@@ -1951,7 +1975,6 @@
       btn.addEventListener("click", () => {
         const name = btn.dataset.del;
         deleteArmyFromLocal("army_"+(autoSave ? "autosave_" : "save_")+name);
-        console.log("army_"+(autoSave ? "autosave_" : "save_")+name);
         refreshSavedListUI(autoSave);
       });
     });
@@ -2210,13 +2233,10 @@
   // Tast ESC
   document.body.addEventListener('keyup', function(e) {
     if (e.key == "Escape") {
-      // if (document.getElementById("modalOverlay").style.display != "none") closeModal();
       if (!document.getElementById("modalOverlay").hidden) closeModal();
       else clearConfigPanel();
     }
     if (e.key == "Enter") {
-      console.log("ENTER");
-      console.log(document.getElementById("mainBtn"));
       document.getElementById("mainBtn")?.click();
     }
   });

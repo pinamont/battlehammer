@@ -7,10 +7,10 @@
       "cost_per_model": 8,
       "stats": {
         "M": "1",
-        "DC": "2*",
+        "A": "2*",
         "D": "3",
-        "F": "1",
-        "R": "4"
+        "C": "1",
+        "Coraggio": "4"
       },
       "type": [
         "fanteria"
@@ -44,10 +44,10 @@
       "cost_per_model": 10,
       "stats": {
         "M": "1",
-        "DC": "2*",
+        "A": "2*",
         "D": "2",
-        "F": "1",
-        "R": "4"
+        "C": "1",
+        "Coraggio": "4"
       },
       "type": [
         "fanteria"
@@ -81,10 +81,10 @@
       "cost_per_model": 8,
       "stats": {
         "M": "1",
-        "DC": "2",
+        "A": "2",
         "D": "2",
-        "F": "1",
-        "R": "4"
+        "C": "1",
+        "Coraggio": "4"
       },
       "type": [
         "fanteria"
@@ -125,10 +125,10 @@
       "cost_per_model": 9,
       "stats": {
         "M": "1",
-        "DC": "2",
+        "A": "2",
         "D": "2",
-        "F": "1",
-        "R": "4"
+        "C": "1",
+        "Coraggio": "4"
       },
       "type": [
         "fanteria"
@@ -169,10 +169,10 @@
       "cost_per_model": 9,
       "stats": {
         "M": "1",
-        "DC": "2",
+        "A": "2",
         "D": "2",
-        "F": "1",
-        "R": "4"
+        "C": "1",
+        "Coraggio": "4"
       },
       "type": [
         "fanteria"
@@ -213,10 +213,10 @@
       "cost_per_model": 10,
       "stats": {
         "M": "1",
-        "DC": "4",
+        "A": "4",
         "D": "2",
-        "F": "1",
-        "R": "4"
+        "C": "1",
+        "Coraggio": "4"
       },
       "type": [
         "fanteria"
@@ -250,10 +250,10 @@
       "cost_per_model": 26,
       "stats": {
         "M": "2",
-        "DC": "3*",
+        "A": "3*",
         "D": "5",
-        "F": "2",
-        "R": "4"
+        "C": "2",
+        "Coraggio": "4"
       },
       "type": [
         "cavalleria pesante"
@@ -287,10 +287,10 @@
       "cost_per_model": 24,
       "stats": {
         "M": "2",
-        "DC": "4",
+        "A": "4",
         "D": "4",
-        "F": "2",
-        "R": "4"
+        "C": "2",
+        "Coraggio": "4"
       },
       "type": [
         "cavalleria pesante"
@@ -324,10 +324,10 @@
       "cost_per_model": 24,
       "stats": {
         "M": "2",
-        "DC": "3",
+        "A": "3",
         "D": "3",
-        "F": "2",
-        "R": "4"
+        "C": "2",
+        "Coraggio": "4"
       },
       "type": [
         "cavalleria leggera"
@@ -368,10 +368,10 @@
       "cost_per_model": 18,
       "stats": {
         "M": "2",
-        "DC": "2",
+        "A": "2",
         "D": "2",
-        "F": "2",
-        "R": "4"
+        "C": "2",
+        "Coraggio": "4"
       },
       "type": [
         "cavalleria leggera"
@@ -412,10 +412,10 @@
       "cost_per_model": 18,
       "stats": {
         "M": "2",
-        "DC": "2*",
+        "A": "2*",
         "D": "3",
-        "F": "2",
-        "R": "4"
+        "C": "2",
+        "Coraggio": "4"
       },
       "type": [
         "cavalleria leggera"
@@ -449,10 +449,10 @@
       "cost_per_model": 24,
       "stats": {
         "M": "2",
-        "DC": "2",
+        "A": "2",
         "D": "4",
-        "F": "2",
-        "R": "4"
+        "C": "2",
+        "Coraggio": "4"
       },
       "type": [
         "cavalleria pesante"
@@ -493,10 +493,10 @@
       "cost_per_model": 7,
       "stats": {
         "M": "1",
-        "DC": "1",
+        "A": "1",
         "D": "2",
-        "F": "1",
-        "R": "4"
+        "C": "1",
+        "Coraggio": "4"
       },
       "type": [
         "fanteria"
@@ -537,10 +537,10 @@
       "cost_per_model": 50,
       "stats": {
         "M": "1",
-        "DC": "5",
+        "A": "5",
         "D": "3",
-        "F": "4",
-        "R": "4"
+        "C": "4",
+        "Coraggio": "4"
       },
       "type": [
         "creature mostruose"
@@ -576,10 +576,10 @@
       "cost_per_model": 95,
       "stats": {
         "M": "1*",
-        "DC": "1",
+        "A": "1",
         "D": "4",
-        "F": "3",
-        "R": "4"
+        "C": "3",
+        "Coraggio": "4"
       },
       "type": [
         "macchina da guerra"
@@ -607,10 +607,10 @@
       "cost_per_model": 110,
       "stats": {
         "M": "1*",
-        "DC": "1",
+        "A": "1",
         "D": "4",
-        "F": "3",
-        "R": "4"
+        "C": "3",
+        "Coraggio": "4"
       },
       "type": [
         "macchina da guerra"
@@ -638,10 +638,10 @@
       "cost_per_model": 80,
       "stats": {
         "M": "1*",
-        "DC": "1",
+        "A": "1",
         "D": "4",
-        "F": "3",
-        "R": "4"
+        "C": "3",
+        "Coraggio": "4"
       },
       "type": [
         "macchina da guerra"
@@ -669,10 +669,10 @@
       "cost_per_model": 200,
       "stats": {
         "M": "2*",
-        "DC": "3**",
+        "A": "3**",
         "D": "6",
-        "F": "6",
-        "R": "4"
+        "C": "6",
+        "Coraggio": "4"
       },
       "type": [
         "carro grande"
@@ -702,10 +702,10 @@
       "cost_per_model": 300,
       "stats": {
         "M": "*",
-        "DC": "1",
+        "A": "1",
         "D": "0",
-        "F": "5",
-        "R": "5"
+        "C": "5",
+        "Coraggio": "5"
       },
       "type": [
         "carro (speciale)"
@@ -741,10 +741,10 @@
       "cost_per_model": 65,
       "stats": {
         "M": "1",
-        "DC": "3",
+        "A": "3",
         "D": "3",
-        "F": "4",
-        "R": "6"
+        "C": "4",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio"
@@ -806,10 +806,10 @@
       "cost_per_model": 40,
       "stats": {
         "M": "1",
-        "DC": "3",
+        "A": "3",
         "D": "2",
-        "F": "3",
-        "R": "5"
+        "C": "3",
+        "Coraggio": "5"
       },
       "type": [
         "personaggio"
@@ -871,10 +871,10 @@
       "cost_per_model": 175,
       "stats": {
         "M": "1",
-        "DC": "2",
+        "A": "2",
         "D": "3",
-        "F": "4",
-        "R": "5"
+        "C": "4",
+        "Coraggio": "5"
       },
       "type": [
         "personaggio",
@@ -919,10 +919,10 @@
       "cost_per_model": 50,
       "stats": {
         "M": "1",
-        "DC": "1",
+        "A": "1",
         "D": "2",
-        "F": "2",
-        "R": "4"
+        "C": "2",
+        "Coraggio": "4"
       },
       "type": [
         "personaggio",
@@ -962,10 +962,10 @@
       "cost_per_model": 40,
       "stats": {
         "M": "1",
-        "DC": "2",
+        "A": "2",
         "D": "2",
-        "F": "2",
-        "R": "4"
+        "C": "2",
+        "Coraggio": "4"
       },
       "type": [
         "personaggio"
@@ -1020,10 +1020,10 @@
       "cost_per_model": 245,
       "stats": {
         "M": "1",
-        "DC": "6*",
+        "A": "6*",
         "D": "4**",
-        "F": "4",
-        "R": "7"
+        "C": "4",
+        "Coraggio": "7"
       },
       "type": [
         "personaggio speciale"
@@ -1058,10 +1058,10 @@
       "cost_per_model": 330,
       "stats": {
         "M": "1",
-        "DC": "3",
+        "A": "3",
         "D": "3",
-        "F": "4",
-        "R": "7"
+        "C": "4",
+        "Coraggio": "7"
       },
       "type": [
         "personaggio speciale"
@@ -1078,7 +1078,7 @@
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 1,
-      "magic_items": ["Corno di Sigismund", "Il Grifone di Giada", "Scettro del Comando"]
+      "magic_items": ["Corno Di Sigismund", "Il Grifone Di Giada", "Lo Scettro Del Comando"]
     },
     {
       "id": "il_supremo_patriarca_dei_collegi_di_magia",
@@ -1087,10 +1087,10 @@
       "cost_per_model": 255,
       "stats": {
         "M": "1",
-        "DC": "2",
+        "A": "2",
         "D": "3",
-        "F": "4",
-        "R": "6"
+        "C": "4",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio speciale",
@@ -1117,7 +1117,7 @@
       ],
       "magic_item_slots": 3,
       "max_per_army": 1,
-      "magic_items": ["Il Bastone di Volans"]
+      "magic_items": ["Il Bastone Di Volans"]
     },
     {
       "id": "kurt_helborg_maresciallo_della_reiksguard",
@@ -1126,10 +1126,10 @@
       "cost_per_model": 105,
       "stats": {
         "M": "1",
-        "DC": "4",
+        "A": "4",
         "D": "4",
-        "F": "4",
-        "R": "6"
+        "C": "4",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio speciale"
@@ -1158,10 +1158,10 @@
       "cost_per_model": 120,
       "stats": {
         "M": "1",
-        "DC": "3*",
+        "A": "3*",
         "D": "4",
-        "F": "3",
-        "R": "6"
+        "C": "3",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio speciale"
@@ -1194,10 +1194,10 @@
       "cost_per_model": 85,
       "stats": {
         "M": "1",
-        "DC": "4*",
+        "A": "4*",
         "D": "3",
-        "F": "3",
-        "R": "5"
+        "C": "3",
+        "Coraggio": "5"
       },
       "type": [
         "personaggio speciale"
@@ -1229,10 +1229,10 @@
       "cost_per_model": 80,
       "stats": {
         "M": "1",
-        "DC": "3",
+        "A": "3",
         "D": "3*",
-        "F": "3",
-        "R": "5"
+        "C": "3",
+        "Coraggio": "5"
       },
       "type": [
         "personaggio speciale"
@@ -1262,10 +1262,10 @@
       "cost_per_model": 105,
       "stats": {
         "M": "1",
-        "DC": "3",
+        "A": "3",
         "D": "3",
-        "F": "3",
-        "R": "5"
+        "C": "3",
+        "Coraggio": "5"
       },
       "type": [
         "personaggio speciale"
@@ -1302,10 +1302,10 @@
       "cost_per_model": 105,
       "stats": {
         "M": "1",
-        "DC": "3",
+        "A": "3",
         "D": "3",
-        "F": "3",
-        "R": "5"
+        "C": "3",
+        "Coraggio": "5"
       },
       "type": [
         "personaggio speciale"

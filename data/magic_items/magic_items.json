@@ -1353,10 +1353,10 @@
     },
     {
       "id": "pozione_della_battaglia",
-      "name": "Pozione Della Battaglia",
+      "name": "La Pozione Della Battaglia",
       "cost": 15,
       "category": "Oggetti Incantati",
-      "description": "Il portatore può berla durante il suo turno, per ottenere +1D6 DC in Attacco fino alla fine del turno. Se questo porta a un valore di Attacco complessivo del portatore di 8 o più (esclusi i bonus dall'utilizzo di armi o armi magiche), il portatore è rimosso come perdita alla fine del suo turno.",
+      "description": "Il portatore può berla durante il suo turno, per ottenere +1D6 DC in Attacco fino alla fine del turno.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -1571,7 +1571,7 @@
     },
     {
       "id": "pergamenadi_cancellazione",
-      "name": "PergamenaDi Cancellazione",
+      "name": "Pergamena \\Di Cancellazione",
       "cost": 50,
       "category": "Arcani",
       "description": "Disperde automaticamente un incantesimo appena lanciato o uno già in gioco (si applicano le solite restrizioni sulla distanza massima per le dispersioni). La carta incantesimo viene inoltre scartata ottenendo un 4+ su 1D6.",
@@ -1597,7 +1597,7 @@
     },
     {
       "id": "il_calicedella_stregoneria",
-      "name": "Il CaliceDella Stregoneria",
+      "name": "Il Calice \\Della Stregoneria",
       "cost": 35,
       "category": "Arcani",
       "description": "Il possessore può pescare una carta venti di magia in più a turno. Se lo fa, tira 1D6: se ottiene un 1 subisce una ferita.",
@@ -1674,14 +1674,15 @@
         "mago"
       ],
       "not_for_type": [],
-      "allow_multiple": true
+      "allow_multiple": true,
+      "allow_multiple_per_model": true
     },
     {
       "id": "il_bastone_del_potere",
       "name": "Il Bastone Del Potere",
       "cost": 25,
       "category": "Arcani",
-      "description": "Il possessore può trattenere fino a 3 carte venti di magia in più.",
+      "description": "Il possessore può trattenere fino a 2 carte Venti di Magia in più. Inizia la partita con 1 carta Venti di Magia.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
@@ -1858,6 +1859,30 @@
       "not_for_army": [],
       "only_for_type": [],
       "not_for_type": []
+    },
+    {
+      "id": "lo_scettro_del_comando",
+      "name": "Lo Scettro Del Comando",
+      "cost": 80,
+      "category": "Oggetti Incantati",
+      "description": "Rende il possessore un mago di 2° livello, con Magia Suprema. Inoltre, se l'Altare della Guerra è illeso, il portatore ha +2 DC in Attacco in CaC, se danneggiato +1. Se l'Altare da Guerra è distrutto, lo Scettro perde tutti i suoi poteri.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [],
+      "only_for_unit": ["grande_teogonista_volkmar"]
+    },
+    {
+      "id": "il_bastone_di_volans",
+      "name": "Il Bastone Di Volans",
+      "cost": 75,
+      "category": "Arcani",
+      "description": "Può essere usato una volta a turno per rendere un incantesimo lanciato impossibile da contrastare, come se fosse stato lanciato con Potere Totale. Dopo ogni utilizzo, si scarica ottenendo 1 o 2 su 1D6.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [],
+      "only_for_unit": ["il_supremo_patriarca_dei_collegi_di_magia"]
     }
   ]
 }
