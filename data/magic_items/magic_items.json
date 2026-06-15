@@ -134,7 +134,7 @@
     },
     {
       "id": "il_bastone_della_corruzione",
-      "name": "Il Bastone Della Corruzione",
+      "name": "Il Bastone \\Della Corruzione",
       "cost": 100,
       "category": "Armi Magiche",
       "description": "Per ogni teschio ottenuto attaccando, il bersaglio deve ottenere un numero pari o inferiore al suo punteggio di Corpo, o rimanere ucciso.",
@@ -158,7 +158,7 @@
     },
     {
       "id": "la_lama_sepolcrale_del_caos",
-      "name": "La Lama Sepolcrale Del Caos",
+      "name": "La Lama \\Sepolcrale Del Caos",
       "cost": 75,
       "category": "Armi Magiche",
       "description": "+2 DC in attacco. Per ogni ferita inflitta dal portatore, il suo controllore può pescare una carta magia.",
@@ -205,7 +205,7 @@
     },
     {
       "id": "la_spada_runica_del_caos_di_grungni_cuor_d_acciaio",
-      "name": "La Spada Runica Del Caos Di Grungni Cuor D'Acciaio",
+      "name": "La Spada Runica Del Caos \\Di Grungni Cuor D'Acciaio",
       "cost": 65,
       "category": "Armi Magiche",
       "description": "+2 DC in attacco, ignora la difesa, +1 DC in difesa.",
@@ -369,7 +369,7 @@
     },
     {
       "id": "la_lama_sepolcrale_di_arkhan",
-      "name": "La Lama Sepolcrale \nDi Arkhan",
+      "name": "La Lama Sepolcrale \\Di Arkhan",
       "cost": 50,
       "category": "Armi Magiche",
       "description": "+2 DC in attacco. Ogni modello ucciso di taglia normale crea uno scheletro al servizio del possessore.",
@@ -674,7 +674,7 @@
     },
     {
       "id": "l_armatura_di_ferro_meteoritico",
-      "name": "L'Armatura Di Ferro Meteoritico",
+      "name": "L'Armatura \\Di Ferro Meteoritico",
       "cost": 25,
       "category": "Armature Magiche",
       "description": "Armatura pesante. Conferisce Difesa 6, non migliorabile.",
@@ -702,7 +702,7 @@
     },
     {
       "id": "l_armatura_scarlatta_di_dargan",
-      "name": "L'Armatura Scarlatta Di Dargan",
+      "name": "L'Armatura \\Scarlatta Di Dargan",
       "cost": 25,
       "category": "Armature Magiche",
       "description": "Armatura pesante. +1 DC in Difesa. Per attaccare il portatore in CaC è necessario passare un test di Coraggio, ottenendo almeno 2 teschi.",
@@ -960,7 +960,7 @@
     },
     {
       "id": "la_corona_d_orodi_atrazar",
-      "name": "La Corona D'OroDi Atrazar",
+      "name": "La Corona D'Oro \\Di Atrazar",
       "cost": 50,
       "category": "Difese Arcane",
       "description": "Tiro salvezza di 4+.",
@@ -1048,24 +1048,11 @@
     },
     {
       "id": "la_corona_della_stregoneria",
-      "name": "La Corona Della Stregoneria",
+      "name": "La Corona \\Della Stregoneria",
       "cost": 125,
       "category": "Oggetti Incantati",
       "description": "Il possessore può lanciare incantesimi come un necromante di livello 3.",
       "only_for_army": [],
-      "not_for_army": [],
-      "only_for_type": [],
-      "not_for_type": []
-    },
-    {
-      "id": "il_bastone_della_corruzione",
-      "name": "Il Bastone Della Corruzione",
-      "cost": 100,
-      "category": "Oggetti Incantati",
-      "description": "%... % %",
-      "only_for_army": [
-        "skaven"
-      ],
       "not_for_army": [],
       "only_for_type": [],
       "not_for_type": []
@@ -1182,7 +1169,7 @@
       "name": "Birra Skaven",
       "cost": 50,
       "category": "Oggetti Incantati",
-      "description": "Può essere fatta bere all'unità del portatore (di Clanratti o Ratti d'Assalto) all'inizio della sua azione, e gli effetti durano per tutta la partita. Tira 1D6: 1: nessun effetto; 2,3: l'unità odia tutti i non-Skaven; 4,5: l'unità è soggetta \\textit{furia}; 6: l'unità ha +1 Movimento e +2 Attacco in CaC, ma subisce 1D6 di ferite ottenendo uno scudo su 1DC alla fine di ogni suo turno.",
+      "description": "Può essere fatta bere all'unità del portatore (di Clanratti o Ratti d'Assalto) all'inizio della sua azione, e gli effetti durano per tutta la partita. Tira 1D6: 1: nessun effetto; 2,3: l'unità odia tutti i non-Skaven; 4,5: l'unità è soggetta furia; 6: l'unità ha +1 Movimento e +2 Attacco in CaC, ma subisce 1D6 di ferite ottenendo uno scudo su 1DC alla fine di ogni suo turno.",
       "only_for_army": [
         "skaven"
       ],
@@ -1342,7 +1329,7 @@
     },
     {
       "id": "la_pietra_da_battaglia_di_le_marquis",
-      "name": "La Pietra Da Battaglia Di Le Marquis",
+      "name": "La Pietra Da Battaglia \\Di Le Marquis",
       "cost": 25,
       "category": "Oggetti Incantati",
       "description": "Può essere usata durante il turno del possessore. Il possessore e la sua unità ottengono +1 DC in Attacco fino alla fine del turno.",
@@ -1364,7 +1351,7 @@
     },
     {
       "id": "la_corona_da_guerra_di_saphery",
-      "name": "La Corona Da Guerra Di Saphery",
+      "name": "La Corona Da Guerra \\Di Saphery",
       "cost": 125,
       "category": "Arcani",
       "description": "Aumenta il livello del possessore di 1, fino a un massimo di 5.",
@@ -1414,7 +1401,7 @@
       "only_for_army": [
         "caos",
         "elfi_oscuri",
-        "necromanzia"
+        "nommorti"
       ],
       "not_for_army": [],
       "only_for_type": [
@@ -1491,7 +1478,7 @@
     },
     {
       "id": "la_pozione_della_conoscenza",
-      "name": "La Pozione Della Conoscenza",
+      "name": "La Pozione \\Della Conoscenza",
       "cost": 50,
       "category": "Arcani",
       "description": "Il possessore può berla durante il suo turno, e fino alla fine del turno lancia i suoi incantesimi senza usare carte potere. Per ogni incantesimo lanciato in questo modo tira 1 DC. Se ottiene uno scudo, il possessore diventa affetto da Stupidità per il resto della partita.",
@@ -1517,7 +1504,7 @@
     },
     {
       "id": "il_bastone_della_morte_ardente",
-      "name": "Il Bastone Della Morte Ardente",
+      "name": "Il Bastone \\Della Morte Ardente",
       "cost": 50,
       "category": "Arcani",
       "description": "Incantesimo infuso: gittata 4 caselle, attacco 1D6 DC, ignora la difesa. Un'unità che subisce una o più perdite, deve immediatamente effettuare un test di Panico.",
@@ -1556,7 +1543,7 @@
     },
     {
       "id": "il_bastone_della_dannazione",
-      "name": "Il Bastone Della Dannazione",
+      "name": "Il Bastone \\Della Dannazione",
       "cost": 50,
       "category": "Arcani",
       "description": "Incantesimo infuso: gittata 6 caselle. L'unità bersaglio di scheletri, zombie, mummie o spettri (ma non catapulta) può immediatamente muovere di 1 casella, attaccare in CaC o tirare con armi da tiro.",
@@ -1731,7 +1718,7 @@
     },
     {
       "id": "la_pergamena_della_maledizione_di_bufo",
-      "name": "La Pergamena Della Maledizione Di Bufo",
+      "name": "La Pergamena Della \\Maledizione Di Bufo",
       "cost": 50,
       "category": "Arcani",
       "description": "Può essere usata per disperdere automaticamente un incantesimo diretto verso il portatore o la sua unità. Il lanciatore viene quindi tramutato in un rospo! Mentre è nella forma di rospo, il mago avversario ha tutte le caratteristiche ridotte a 1, non può lanciare incantesimi e non può disperderli, né usare oggetti magici. All'inizio di ogni turno successivo del mago, questo riprende la sua forma con 4+ su 1D6.",
@@ -1744,7 +1731,7 @@
     },
     {
       "id": "la_pergamena_delle_fauci_fameliche",
-      "name": "La Pergamena Delle Fauci Fameliche",
+      "name": "La Pergamena \\Delle Fauci Fameliche",
       "cost": 50,
       "category": "Arcani",
       "description": "Può essere usata per disperdere un incantesimo ostile diretto verso un'unità amica entro 4 caselle. L'incantesimo viene scartato.",
@@ -1770,10 +1757,10 @@
     },
     {
       "id": "l_anello_della_fiamma_ignea",
-      "name": "L'Anello Della Fiamma Ignea",
+      "name": "L'Anello \\Della Fiamma Ignea",
       "cost": 100,
       "category": "Ricettacoli",
-      "description": "Incantesimo infuso: raggio 3, attacco 2D6 DC, nega la difesa. %",
+      "description": "Incantesimo infuso: raggio 3, attacco 2D6 DC, nega la difesa.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -1883,6 +1870,66 @@
       "only_for_type": [],
       "not_for_type": [],
       "only_for_unit": ["il_supremo_patriarca_dei_collegi_di_magia"]
+    },
+    {
+      "id": "il_grifone_di_giada",
+      "name": "Il Grifone Di Giada",
+      "cost": 75,
+      "category": "Difese Arcane",
+      "description": "Se il possessore è ancora in in vita, rigenera tutti PC persi dal possessore alla fine di ogni turno (proprio o dell'avversario).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [],
+      "only_for_unit": ["grande_teogonista_volkmar"]
+    },
+    {
+      "id": "larco_del_drago",
+      "name": "L'Arco Del Drago",
+      "cost": 40,
+      "category": "Armi Magiche",
+      "description": "Arco, raggio 6, Attacco 3 DC.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [],
+      "only_for_unit": ["valmir_von_raukov_conte_elettore_di_ostland"]
+    },
+    {
+      "id": "il_corno_di_sigismund",
+      "name": "Il Corno Di Sigismund",
+      "cost": 35,
+      "category": "Oggetti Incantati",
+      "description": "Il possessore causa Terrore quando carica.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [],
+      "only_for_unit": ["grande_teogonista_volkmar"]
+    },
+    {
+      "id": "il_talismano_di_ulric",
+      "name": "Il Talismano Di Ulric",
+      "cost": 25,
+      "category": "Difese Arcane",
+      "description": "Il possessore riguadagna un punto corpo perso all'inizio di ogni suo turno.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [],
+      "only_for_unit": ["boris_todbringer_conte_elettore_di_middenland"]
+    },
+    {
+      "id": "la_spada_di_ghiaccio",
+      "name": "La Spada Di Ghiaccio",
+      "cost": 100,
+      "category": "Armi Magiche",
+      "description": "Ignora la Difesa. Un avversario ferito subisce altre 1D6 di ferite alla fine dell'attacco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [],
+      "only_for_unit": ["zarina_katarina_di_kislev"]
     }
   ]
 }

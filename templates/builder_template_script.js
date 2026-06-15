@@ -75,7 +75,9 @@
 
   // Nomi senza caratteri speciali
   function renderName(name) {
-    return name.replace(/[^a-zA-Z0-9\s]/g, "");
+    // return name.replace(/[^a-zA-Z0-9\s]/g, "");
+    name = name.replace("\\","");
+    return name;
   }
 
   // Funzione che popola il menu delle fazioni
@@ -100,7 +102,7 @@
   }
 
   // Calcola punti unità
-  function calcUnitPoints(unit, size, selectedOptionIds, optionCounts = {}, magicItems = [], magicBanner = null, knightlyVirtues = []) {
+  function calcUnitPoints(unit, size, selectedOptionIds, optionCounts = {}, magicItems = [], magicItemCounts = {}, magicBanner = null, knightlyVirtues = []) {
     let total = unit.cost_per_model * size;
     for (const opt of unit.options || []) {
       if (!selectedOptionIds.includes(opt.id)) continue;
@@ -116,7 +118,10 @@
     if (magicItems) {
       for (const id of magicItems) {
         const item = MAGIC_ITEMS.find(m => m.id === id);
-        if (item) total += item.cost;
+        if (item) {
+          const count = magicItemCounts[item.id] ?? 1;
+          total += item.cost * count;
+        }
       }
     }
     if (magicBanner) {
@@ -673,6 +678,7 @@
         options: [...e.options],
         optionCounts: e.optionCounts || {},
         magicItems: e.magicItems || [],
+        magicItemCounts: e.magicItemCounts || {},
         knightlyVirtues: e.knightlyVirtues || [],
         magicBanner: e.magicBanner || null,
         preselectedOptions: [...(e.preselectedOptions || [])],
@@ -783,6 +789,7 @@
 
     let optionCounts = existingEntry ? { ...existingEntry.optionCounts } : {};
     let selectedMagicItems = new Set(existingEntry ? existingEntry.magicItems : []);
+    let magicItemCounts = existingEntry ? { ...existingEntry.magicItemCounts } : {};
     let selectedKnightlyVirtues = new Set(existingEntry ? existingEntry.knightlyVirtues : []);
     let selectedMagicBanner = existingEntry ? existingEntry.magicBanner : null;
     const unit = selectedUnit;
@@ -791,7 +798,7 @@
     const sizeValue = isEdit ? existingEntry.size : unit.min_size;
     const selectedOptionIds = new Set(isEdit ? existingEntry.options : []);
 
-    const tempPoints = calcUnitPoints(unit, sizeValue, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), selectedMagicBanner, Array.from(selectedKnightlyVirtues));
+    const tempPoints = calcUnitPoints(unit, sizeValue, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
 
     panel.innerHTML = "";
 
@@ -1166,7 +1173,7 @@
     mainBtn.onclick = () => {
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
       const opts = Array.from(selectedOptionIds);
-      const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), selectedMagicBanner, Array.from(selectedKnightlyVirtues));
+      const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
 
       if (isEdit) {
         existingEntry.size = size;
@@ -1174,8 +1181,12 @@
         existingEntry.optionCounts = optionCounts;
         existingEntry.points = pts;
         existingEntry.magicItems = Array.from(selectedMagicItems);
+        existingEntry.magicItemCounts = magicItemCounts;
         existingEntry.knightlyVirtues = Array.from(selectedKnightlyVirtues);
         existingEntry.magicBanner = selectedMagicBanner;
+        existingEntry.preselectedOptions = [...(unit.equipment || [])];
+        existingEntry.preselectedMagicItems = [...(unit.magic_items || [])];
+        existingEntry.preselectedKnightlyVirtues = [...(unit.knightly_virtues || [])];
         clearConfigPanel();
         // in mobile-mode, torna a lista esercito
         if (window.innerWidth < 768) {
@@ -1191,6 +1202,7 @@
           options: opts,
           optionCounts: optionCounts,
           magicItems: Array.from(selectedMagicItems),
+          magicItemCounts: magicItemCounts,
           knightlyVirtues: Array.from(selectedKnightlyVirtues),
           magicBanner: selectedMagicBanner,
           preselectedOptions: [...(unit.equipment || [])],
@@ -1226,7 +1238,7 @@
     // -------------------------------------------- //
     function updatePointsPreview() {
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
-      const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), selectedMagicBanner, Array.from(selectedKnightlyVirtues));
+      const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
       configPoints = document.getElementById("configPoints");
       configPoints.textContent = `${pts} pt`;
     }
@@ -1327,10 +1339,18 @@
             updatePointsPreview();
           }
         };
-
         left.appendChild(rb);
-        const text = document.createTextNode(" " + banner.name);
-        left.appendChild(text);
+
+        const labelSpan = document.createElement("span");
+        labelSpan.textContent = " " + banner.name;
+        // Tooltip solo se esiste la description
+        if (banner.description) {
+          labelSpan.addEventListener("mousemove", (e) => {
+            showMagicTooltip(banner.description, e.clientX, e.clientY);
+          });
+          labelSpan.addEventListener("mouseleave", hideMagicTooltip);
+        }
+        left.appendChild(labelSpan);
 
         let costText = `${banner.cost} pt`;
         right.appendChild(document.createTextNode(costText));
@@ -1359,7 +1379,7 @@
       title.textContent += ` (fino a ${unit.magic_item_slots})`;
       panel.appendChild(title);
 
-      // Crea un blocco collapsible per ogni categoria
+      // Crea un blocco collassabile per ogni categoria
       for (const [category, items] of Object.entries(magicByCategory)) {
 
         // salta le virtù Cavalleresche
@@ -1394,7 +1414,7 @@
         let n_items = 0;
         for (const item of items) {
           if (!isItemAllowedForUnit(item, unit, currentFaction)) {
-            continue; // non mostrare l'oggetto
+            continue;
           }
 
           const row = document.createElement("div");
@@ -1408,65 +1428,92 @@
           const left = document.createElement("span");
           const right = document.createElement("span");
 
+          const div = document.createElement("div");
+          const cb = document.createElement("input");
+          cb.type = "checkbox";
+          const labelSpan = document.createElement("span");
+          labelSpan.textContent = " " + renderName(item.name);
+          if (item.description) {
+            labelSpan.addEventListener("mousemove", (e) => {
+              showMagicTooltip(item.description, e.clientX, e.clientY);
+            });
+            labelSpan.addEventListener("mouseleave", hideMagicTooltip);
+          }
+
           // oggetto tra quelli pre-selezionati...
           if (unit.magic_items && unit.magic_items.includes(item.name)) {
-            const div = document.createElement("div");
             div.className = "option disabled-option";
-            // div.innerHTML = `
-            // <input type="checkbox" checked disabled>
-            // <span class="greyed">${item.name}</span>
-            // `;
-            const cb_greyed = document.createElement("input");
-            cb_greyed.type = "checkbox";
-            cb_greyed.checked = true;
-            cb_greyed.disabled = true;
-            div.appendChild(cb_greyed);
-            const labelSpan_greyed = document.createElement("span");
-            labelSpan_greyed.textContent = " " + item.name;
-            labelSpan_greyed.class = "greyed";
-            // Tooltip solo se esiste la description FIXME: duplicate code
-            if (item.description) {
-              labelSpan_greyed.addEventListener("mousemove", (e) => {
-                showMagicTooltip(item.description, e.clientX, e.clientY);
-              });
-              labelSpan_greyed.addEventListener("mouseleave", hideMagicTooltip);
-            }
-            div.appendChild(labelSpan_greyed);
+            cb.checked = true;
+            cb.disabled = true;
+            div.appendChild(cb);
+            labelSpan.class = "greyed";
+            div.appendChild(labelSpan);
             left.appendChild(div);
           } else { // ... o selezionabile
-            const cb = document.createElement("input");
-            cb.type = "checkbox";
-            cb.checked = selectedMagicItems.has(item.id);
-
-            cb.onchange = () => {
-              if (cb.checked) {
-                if (selectedMagicItems.size < unit.magic_item_slots) {
-                  // Controllo unicità
-                  if (!item.allow_multiple && isMagicItemTaken(item.id, existingEntry?.id)) {
-                    showInfoToast("Questo oggetto magico è già stato selezionato da un'altra unità","alert",3000);
-                    cb.checked = false;
+            if (item.allow_multiple_per_model) {
+              // --- Oggetto con quantità per modello ---
+              const qty = document.createElement("input");
+              qty.type = "number";
+              qty.min = 0;
+              qty.max = 9; // o quello che vuoi
+              qty.style.width = "25px";
+              qty.style.background = "#0d1117";
+              qty.style.color = "#e6edf3";
+              qty.style.border = "1px solid #30363d";
+              qty.style.borderRadius = "4px";
+              qty.style.padding = "2px 4px";
+              // valore attuale
+              qty.value = magicItemCounts[item.id] ?? 0;
+              qty.onchange = () => {
+                let v = parseInt(qty.value);
+                if (isNaN(v) || v < 0) v = 0;
+                qty.value = v;
+                if (v === 0) {
+                  delete magicItemCounts[item.id];
+                  selectedMagicItems.delete(item.id);
+                } else {
+                  magicItemCounts[item.id] = v;
+                  selectedMagicItems.add(item.id);
+                  // check sul massimo di oggetti magici
+                  if (countMagicItems(selectedMagicItems,magicItemCounts) > unit.magic_item_slots) {
+                    showInfoToast("Hai già raggiunto il numero massimo di oggetti magici","alert",3000);
+                    v = v-1;
+                    qty.value = v;
+                    if (v === 0) {
+                      delete magicItemCounts[item.id];
+                      selectedMagicItems.delete(item.id);
+                    }
+                    else {
+                      magicItemCounts[item.id] = v;
+                    }
                     return;
                   }
-                  if (!selectedMagicItems.has(item.id)) selectedMagicItems.add(item.id);
-                } else {
-                  cb.checked = false;
-                  showInfoToast("Hai già raggiunto il numero massimo di oggetti magici","alert",3000);
                 }
-              } else {
-                if (selectedMagicItems.has(item.id)) selectedMagicItems.delete(item.id);
-              }
-              updatePointsPreview();
-            };
-
-            left.appendChild(cb);
-            const labelSpan = document.createElement("span");
-            labelSpan.textContent = " " + item.name;
-            // Tooltip solo se esiste la description
-            if (item.description) {
-              labelSpan.addEventListener("mousemove", (e) => {
-                showMagicTooltip(item.description, e.clientX, e.clientY);
-              });
-              labelSpan.addEventListener("mouseleave", hideMagicTooltip);
+                updatePointsPreview();
+              };
+              left.appendChild(qty);
+            } else {
+              cb.checked = selectedMagicItems.has(item.id);
+              cb.onchange = () => {
+                if (cb.checked) {
+                  if (countMagicItems(selectedMagicItems,magicItemCounts) < unit.magic_item_slots) {
+                    // Controllo unicità
+                    if (!item.allow_multiple && isMagicItemTaken(item.id, existingEntry?.id)) {
+                      showInfoToast("Questo oggetto magico è già stato selezionato da un'altra unità","alert",3000);
+                      cb.checked = false;
+                      return;
+                    }
+                    if (!selectedMagicItems.has(item.id)) selectedMagicItems.add(item.id);
+                  } else {
+                    cb.checked = false;
+                    showInfoToast("Hai già raggiunto il numero massimo di oggetti magici","alert",3000);
+                  }
+                } else {
+                  if (selectedMagicItems.has(item.id)) selectedMagicItems.delete(item.id);
+                }
+                updatePointsPreview();
+              };
+              left.appendChild(cb);
             }
             left.appendChild(labelSpan);
           }
@@ -1493,6 +1540,18 @@
       }
     }
 
+    function countMagicItems(selectedMagicItems,magicItemCounts) {
+      let n = 0;
+      for (const id of selectedMagicItems) {
+        const item = MAGIC_ITEMS.find(m => m.id === id);
+        if (item) {
+          const count = magicItemCounts[item.id] ?? 1;
+          n += count;
+        }
+      }
+      return n;
+    }
+
     function RenderKnightlyVirtues() {
       const title = document.createElement("div");
       title.style.marginTop = "10px";
@@ -1502,7 +1561,7 @@
       panel.appendChild(title);
 
       const category = "Virtù Cavalleresche";
-      const items = magicByCategory[category];
+      const virtues = magicByCategory[category];
 
       const catBox = document.createElement("div");
       catBox.style.marginTop = "8px";
@@ -1531,14 +1590,14 @@
 
       // Aggiungi le virtù
       let n_items = 0;
-      for (const item of items) {
-        if (!isItemAllowedForUnit(item, unit, currentFaction)) {
+      for (const virtue of virtues) {
+        if (!isItemAllowedForUnit(virtue, unit, currentFaction)) {
           continue; // non mostrare l'oggetto
         }
 
         const row = document.createElement("div");
         row.className = "option-row";
-        row.id = "optionRow-"+item.id;
+        row.id = "optionRow-"+virtue.id;
         row.style.display = "flex";
         row.style.justifyContent = "space-between";
         row.style.alignItems = "center";
@@ -1547,41 +1606,49 @@
         const left = document.createElement("span");
         const right = document.createElement("span");
 
+        const div = document.createElement("div");
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        const labelSpan = document.createElement("span");
+        labelSpan.textContent = " " + virtue.name;
+        if (virtue.description) {
+          labelSpan.addEventListener("mousemove", (e) => {
+            showMagicTooltip(virtue.description, e.clientX, e.clientY);
+          });
+          labelSpan.addEventListener("mouseleave", hideMagicTooltip);
+        }
+
         // virtù pre-selezionate?
-        if (unit.knightly_virtues && unit.knightly_virtues.includes(item.name)) {
-          const div = document.createElement("div");
+        if (unit.knightly_virtues && unit.knightly_virtues.includes(virtue.name)) {
           div.className = "option disabled-option";
-          div.innerHTML = `
-          <input type="checkbox" checked disabled>
-          <span class="greyed">${item.name}</span>
-          `;
+          cb.checked = true;
+          cb.disabled = true;
+          div.appendChild(cb);
+          labelSpan.class = "greyed";
+          div.appendChild(labelSpan);
           left.appendChild(div);
         } else { // ... o selezionabile
-          const cb = document.createElement("input");
-          cb.type = "checkbox";
-          cb.checked = selectedKnightlyVirtues.has(item.id);
-
+          // const cb = document.createElement("input");
+          cb.checked = selectedKnightlyVirtues.has(virtue.id);
           cb.onchange = () => {
             if (cb.checked) {
               if (selectedKnightlyVirtues.size < unit.knightly_virtue_slots) {
-                if (!selectedKnightlyVirtues.has(item.id)) selectedKnightlyVirtues.add(item.id);
+                if (!selectedKnightlyVirtues.has(virtue.id)) selectedKnightlyVirtues.add(virtue.id);
               } else {
                 cb.checked = false;
                 showInfoToast("Hai già raggiunto il numero massimo di Virtù Cavalleresche","alert",3000);
               }
             } else {
-              if (selectedKnightlyVirtues.has(item.id)) selectedKnightlyVirtues.delete(item.id);
+              if (selectedKnightlyVirtues.has(virtue.id)) selectedKnightlyVirtues.delete(virtue.id);
             }
             updatePointsPreview();
           };
-
           left.appendChild(cb);
-          const text = document.createTextNode(" " + item.name);
-          left.appendChild(text);
+          left.appendChild(labelSpan);
         }
 
         // Costi
-        let costText = `${item.cost} pt`;
+        let costText = `${virtue.cost} pt`;
         right.appendChild(document.createTextNode(costText));
 
         n_items += 1;
@@ -1718,25 +1785,46 @@
         }
 
         // Virtù Cavalleresche
-        if ((e.knightlyVirtues && e.knightlyVirtues.length > 0) || (e.preselectedKnightlyVirtues && e.preselectedKnightlyVirtues.length > 0)) {
-          const itemNames = e.knightlyVirtues.map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean);
+        if (e.knightlyVirtues?.length > 0 || e.preselectedKnightlyVirtues?.length > 0) {
           const line = document.createElement("div");
           line.style.fontSize = "11px";
           line.style.opacity = "0.8";
-          let fullList = e.preselectedKnightlyVirtues;
-          fullList = fullList.concat(itemNames);
+          const fullList = [];
+          for (const virtueId of e.preselectedKnightlyVirtues) {
+            const virtue = MAGIC_ITEMS.find(o => o.id === virtueId);
+            if (!virtue) continue;
+            fullList.push(renderName(virtue.name));
+          }
+          for (const virtueId of e.knightlyVirtues) {
+            const virtue = MAGIC_ITEMS.find(o => o.id === virtueId);
+            if (!virtue) continue;
+            fullList.push(renderName(virtue.name));
+          }
           line.textContent = fullList.join(", ");
           div.appendChild(line);
         }
 
         // Oggetti Magici
-        if ((e.magicItems && e.magicItems.length > 0) || (e.preselectedMagicItems && e.preselectedMagicItems.length > 0)) {
-          const itemNames = e.magicItems.map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean);
+        if (e.magicItems?.length > 0 || e.preselectedMagicItems?.length > 0) {
           const line = document.createElement("div");
           line.style.fontSize = "11px";
           line.style.opacity = "0.8";
-          let fullList = e.preselectedMagicItems;
-          fullList = fullList.concat(itemNames);
+          const fullList = [];
+          for (const itemId of e.preselectedMagicItems) {
+            const item = MAGIC_ITEMS.find(o => o.id === itemId);
+            if (!item) continue;
+            fullList.push(renderName(item.name));
+          }
+          for (const itemId of e.magicItems) {
+            const item = MAGIC_ITEMS.find(o => o.id === itemId);
+            if (!item) continue;
+            const count = e.magicItemCounts?.[item.id] || 1;
+            if (item.allow_multiple_per_model) {
+              fullList.push(`${item.name} ×${count}`);
+            } else {
+              fullList.push(renderName(item.name));
+            }
+          }
           line.textContent = fullList.join(", ");
           div.appendChild(line);
         }
@@ -1886,6 +1974,7 @@
         options: u.options || [],
         optionCounts: u.optionCounts || {},
         magicItems: u.magicItems || [],
+        magicItemCounts: u.magicItemCounts || {},
         knightlyVirtues: u.knightlyVirtues || [],
         magicBanner: u.magicBanner || null,
         preselectedOptions: [...(u.preselectedOptions || [])],
@@ -2135,7 +2224,12 @@
   let infoToastTimer = null;
 
   function showInfoToast(text="",level="info",visibleTime=1500) {
+    const old_toast = document.getElementById("toast");
+    if (old_toast) {
+      old_toast.remove();
+    }
     const toast = document.createElement("div");
+    toast.id = "toast";
     document.body.appendChild(toast);
     toast.textContent = text;
     if (level === "info") toast.className = "info-toast";
