@@ -296,6 +296,7 @@
       errors.push("Devi includere almeno un Personaggio.");
     }
 
+    counts = {};
     for (const e of army.entries) {
       counts[e.unitId] = (counts[e.unitId] || 0) + 1;
     }
@@ -342,7 +343,6 @@
             // controlla che le opzioni fossero disponibili per l'unità dell'armata
             const opt = unit.options.find(o => o.id === optId);
             if (!opt) continue;
-
             const count = e.optionCounts?.[optId] || 1;
             if (opt.max_count) {
               parts.push(`${opt.name} ×${count}`);
@@ -359,24 +359,35 @@
         // Oggetti Magici
         if (e.magicItems?.length || e.preselectedMagicItems?.length) {
           let names = []
-          if (e.preselectedMagicItems?.length) names = names.concat(e.preselectedMagicItems);
-          if (e.magicItems?.length) names = names.concat(e.magicItems
-          .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
-          .filter(Boolean));
+          if (e.preselectedMagicItems?.length) names = names.concat(e.preselectedMagicItems
+            .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+            .filter(Boolean));
+          for (const id of e.magicItems) {
+            const item = MAGIC_ITEMS.find(m => m.id === id);
+            if (!id) continue;
+            const count = e.magicItemCounts?.[id] || 1;
+            if (item.allow_multiple_per_model) {
+              names.push(`${item.name} ×${count}`);
+            } else {
+              names.push(item.name);
+            }
+          }
           if (names.length > 0) {
-            lines.push("    " + names.join(", "));
+            lines.push(renderName("    " + names.join(", ")));
           }
         }
 
         // Virtù Cavalleresche
         if (e.knightlyVirtues?.length || e.preselectedKnightlyVirtues?.length) {
           let names = []
-          if (e.preselectedKnightlyVirtues?.length) names = names.concat(e.preselectedKnightlyVirtues);
+          if (e.preselectedKnightlyVirtues?.length) names = names.concat(e.preselectedKnightlyVirtues
+            .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+            .filter(Boolean));
           if (e.knightlyVirtues?.length) names = names.concat(e.knightlyVirtues
             .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
             .filter(Boolean));
           if (names.length > 0) {
-            lines.push("    " + names.join(", "));
+            lines.push(renderName("    " + names.join(", ")));
           }
         }
 
@@ -384,7 +395,7 @@
         if (e.magicBanner) {
           const banner = MAGIC_BANNERS.find(b => b.id === e.magicBanner);
           if (banner) {
-            lines.push("    " + banner.name);
+            lines.push(renderName("    " + banner.name));
           }
         }
       }
@@ -434,7 +445,6 @@
           for (const optId of e.options) {
             const opt = unit.options.find(o => o.id === optId);
             if (!opt) continue;
-
             const count = e.optionCounts?.[optId] || 1;
             if (opt.max_count) {
               parts.push(`${opt.name} ×${count}`);
@@ -442,7 +452,6 @@
               parts.push(opt.name);
             }
           }
-
           if (parts.length > 0) {
             lines.push(`  - ${parts.join(", ")}`);
           }
@@ -451,16 +460,29 @@
         // Oggetti Magici
         if (e.magicItems?.length || e.preselectedMagicItems?.length) {
           let names = []
-          if (e.preselectedMagicItems?.length) names = names.concat(e.preselectedMagicItems);
-          if (e.magicItems?.length) names = names.concat(e.magicItems
-          .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
-          .filter(Boolean));
+          if (e.preselectedMagicItems?.length) names = names.concat(e.preselectedMagicItems
+            .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+            .filter(Boolean));
+          for (const id of e.magicItems) {
+            const item = MAGIC_ITEMS.find(m => m.id === id);
+            if (!id) continue;
+            const count = e.magicItemCounts?.[id] || 1;
+            if (item.allow_multiple_per_model) {
+              names.push(`${item.name} ×${count}`);
+            } else {
+              names.push(item.name);
+            }
+          }
+          // if (e.preselectedMagicItems?.length) names = names.concat(e.preselectedMagicItems);
+          // if (e.magicItems?.length) names = names.concat(e.magicItems
+          // .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+          // .filter(Boolean));
           if (names.length > 0) {
-            lines.push(`  - ${names.join(", ")}`);
+            lines.push(renderName(`  - ${names.join(", ")}`));
           }
         }
 
-        // Oggetti Magici
+        // Virtù
         if (e.knightlyVirtues?.length || e.preselectedKnightlyVirtues?.length) {
           let names = []
           if (e.preselectedKnightlyVirtues?.length) names = names.concat(e.preselectedKnightlyVirtues);
@@ -468,7 +490,7 @@
             .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
             .filter(Boolean));
           if (names.length > 0) {
-            lines.push(`  - ${names.join(", ")}`);
+            lines.push(renderName(`  - ${names.join(", ")}`));
           }
         }
 
@@ -476,7 +498,7 @@
         if (e.magicBanner) {
           const banner = MAGIC_BANNERS.find(b => b.id === e.magicBanner);
           if (banner) {
-            lines.push(`  - ${banner.name}`);
+            lines.push(renderName(`  - ${banner.name}`));
           }
         }
 
@@ -514,7 +536,11 @@
           );
 
           let magicItemList = []
-          if (e.preselectedMagicItems?.length) magicItemList = magicItemList.concat(e.preselectedMagicItems);
+          if (e.preselectedMagicItems?.length) magicItemList = magicItemList.concat(
+            (e.preselectedMagicItems || []).map(id =>
+            MAGIC_ITEMS.find(m => m.id === id)?.name
+            ).filter(Boolean)
+          );
           if (e.magicItems) magicItemList = magicItemList.concat(
             (e.magicItems || []).map(id =>
             MAGIC_ITEMS.find(m => m.id === id)?.name
@@ -522,7 +548,11 @@
           );
 
           let knightlyVirtueList = []
-          if (e.preselectedKnightlyVirtues?.length) knightlyVirtueList = knightlyVirtueList.concat(e.preselectedKnightlyVirtues);
+          if (e.preselectedKnightlyVirtues?.length) knightlyVirtueList = knightlyVirtueList.concat(
+            (e.preselectedKnightlyVirtues || []).map(id =>
+            MAGIC_ITEMS.find(m => m.id === id)?.name
+            ).filter(Boolean)
+          );
           if (e.knightlyVirtues) knightlyVirtueList = knightlyVirtueList.concat(
             (e.knightlyVirtues || []).map(id =>
             MAGIC_ITEMS.find(m => m.id === id)?.name
@@ -614,15 +644,15 @@
         }
 
         if (unit.magicItems.length > 0) {
-          optionsLine.push(unit.magicItems.join(", "));
+          optionsLine.push(renderName(unit.magicItems.join(", ")));
         }
 
         if (unit.knightlyVirtues.length > 0) {
-          optionsLine.push(unit.knightlyVirtues.join(", "));
+          optionsLine.push(rednerName(unit.knightlyVirtues.join(", ")));
         }
 
         if (unit.magicBanner) {
-          optionsLine.push(unit.magicBanner);
+          optionsLine.push(renderName(unit.magicBanner));
         }
 
         if (optionsLine.length > 0) {
@@ -1150,12 +1180,12 @@
     RenderMagicBanners();
 
     // Oggetti Magici
-    if ((unit.magic_item_slots && unit.magic_item_slots > 0) || (unit.magic_items && unit.magic_items.length > 0)) {
+    if ((unit.magic_item_slots && unit.magic_item_slots > 0) || unit.magic_items?.length > 0) {
       RenderMagicItems(unit,magicByCategory);
     }
 
     // Virtù Cavalleresche
-    if ((unit.knightly_virtue_slots && unit.knightly_virtue_slots > 0) || (unit.knightly_virtues && unit.knightly_virtues.length > 0)) {
+    if ((unit.knightly_virtue_slots && unit.knightly_virtue_slots > 0) || unit.knightly_virtues?.length > 0) {
       RenderKnightlyVirtues();
     }
 
@@ -1753,6 +1783,7 @@
         right.querySelector(".remove-unit").onclick = () => {
           army.entries = army.entries.filter(x => x.id !== e.id);
           counts[e.unitId] -= 1;
+          clearConfigPanel();
           renderArmy();
         };
 

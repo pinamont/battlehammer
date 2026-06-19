@@ -18,7 +18,7 @@
       "name": "La Nera Ascia Di Krell",
       "cost": 125,
       "category": "Armi Magiche",
-      "description": "Arma a 2 mani (+1 DC in attacco), ignora la difesa. Un modello ferito subisce una ferita a ogni turno del portatore se ottiene 1 o 2 su 1D6.",
+      "description": "Arma a 2 mani (+1 DC in attacco), ignora la difesa. Un modello ferito subisce una ferita all'inizio di ogni suo turno se ottiene teschio su 1 DC.",
       "only_for_army": [
         "nommorti",
         "caos"
@@ -124,7 +124,7 @@
       "name": "Il Martello Di Sigmar",
       "cost": 100,
       "category": "Armi Magiche",
-      "description": "Arma a 2 mani, +2 DC in attacco (totale +3 DC), ignora la difesa, permette di ritirare un DC.",
+      "description": "Arma a 2 mani, +1 DC in attacco (totale +2 DC), ignora la difesa, permette di ritirare tutti i dadi di attacco che non hanno ottenuto teschio.",
       "only_for_army": [
         "impero"
       ],
@@ -137,7 +137,7 @@
       "name": "Il Bastone \\Della Corruzione",
       "cost": 100,
       "category": "Armi Magiche",
-      "description": "Per ogni teschio ottenuto attaccando, il bersaglio deve ottenere un numero pari o inferiore al suo punteggio di Corpo, o rimanere ucciso.",
+      "description": "Per ogni teschio ottenuto attaccando, il bersaglio deve ottenere un numero pari o inferiore al suo punteggio di Corpo su 1D6, o rimanere ucciso.",
       "only_for_army": [
         "skaven"
       ],
@@ -348,7 +348,7 @@
       "name": "La Spaccacuore",
       "cost": 50,
       "category": "Armi Magiche",
-      "description": "Permette di ritirare tutti i dadi in attacco, ma se si decide di farlo va accettato il secondo risultato.",
+      "description": "Permette di ritirare ogni dado in attacco che non ha ottenuto teschio.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -359,7 +359,7 @@
       "name": "La Spada Della Giustizia",
       "cost": 50,
       "category": "Armi Magiche",
-      "description": "Permette di ritirare un dado in attacco, ignora la difesa.",
+      "description": "Permette di ritirare tutti i dadi in attacco che non hanno ottenuto teschio, ignora la difesa.",
       "only_for_army": [
         "impero"
       ],
@@ -554,7 +554,7 @@
       "name": "Le Lame Di Gork E Mork",
       "cost": 75,
       "category": "Armi Magiche",
-      "description": "Due armi. +1DC in attacco (oltre al +1 per le due armi), +1DC in difesa, permette di ritirare tutti i dadi d'attacco.",
+      "description": "Due armi. +1DC in attacco (oltre al +1 per le due armi), +1DC in difesa, permette di ritirare tutti i dadi d'attacco che non hanno ottenuto teschio.",
       "only_for_army": [
         "orchi_e_goblin"
       ],
@@ -567,7 +567,7 @@
       "name": "La Spada Di Hoeth",
       "cost": 25,
       "category": "Armi Magiche",
-      "description": "Spada a 2 mani. Conferisce +1 in Attacco (per un totale di +2).",
+      "description": "Spada a 2 mani. Conferisce +1 DC in Attacco (per un totale di +2).",
       "only_for_army": [
         "elfi_alti"
       ],
@@ -593,7 +593,7 @@
       "name": "L'Armatura Abbagliante",
       "cost": 75,
       "category": "Armature Magiche",
-      "description": "Armatura pesante. Include uno scudo. -2 DC agli attacchi degli avversari (in CaC o da tiro).",
+      "description": "Armatura pesante. -2 DC agli attacchi degli avversari (in CaC o da tiro).",
       "only_for_army": [
         "bretonnia",
         "elfi_alti",
@@ -809,7 +809,7 @@
       "name": "I Colori Magici Di Guerra",
       "cost": 5,
       "category": "Armature Magiche",
-      "description": "+2 DC Difesa in CaC o +4 contro attacchi da tiro.",
+      "description": "Se il possessore non porta armature, +2 DC Difesa in CaC o +4 contro attacchi da tiro.",
       "only_for_army": [
         "elfi_silvani",
         "orchi_e_goblin",
@@ -822,7 +822,7 @@
     {
       "id": "la_corazza_di_borin",
       "name": "La Corazza Di Borin",
-      "cost": 75,
+      "cost": 50,
       "category": "Armature Magiche",
       "description": "Armatura pesante. +2 in difesa invece di +1, permette di difendersi anche contro gli attacchi che negano la difesa.",
       "only_for_army": [],
@@ -835,7 +835,7 @@
     {
       "id": "l_armatura_dell_alba",
       "name": "L'Armatura Dell'Alba",
-      "cost": 70,
+      "cost": 30,
       "category": "Armature Magiche",
       "description": "Armatura pesante. Permette di ritirare ogni DC in difesa una volta.",
       "only_for_army": [],
@@ -874,9 +874,9 @@
     {
       "id": "lo_scudo_di_difesa",
       "name": "Lo Scudo Di Difesa",
-      "cost": 50,
+      "cost": 40,
       "category": "Armature Magiche",
-      "description": "Scudo. Il possessore viene attaccato con 2 DC in meno, sia in CaC che da armi da tiro.",
+      "description": "Scudo. Il possessore viene attaccato con 1 DC in meno, sia in CaC che da armi da tiro.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -887,7 +887,7 @@
     {
       "id": "l_armatura_di_smeraldo",
       "name": "L'Armatura Di Smeraldo",
-      "cost": 30,
+      "cost": 20,
       "category": "Armature Magiche",
       "description": "Armatura pesante. Ignora la prima ferita subita.",
       "only_for_army": [],
@@ -959,7 +959,7 @@
       "not_for_type": []
     },
     {
-      "id": "la_corona_d_orodi_atrazar",
+      "id": "la_corona_d_oro_di_atrazar",
       "name": "La Corona D'Oro \\Di Atrazar",
       "cost": 50,
       "category": "Difese Arcane",
@@ -1156,7 +1156,7 @@
       "name": "L'Anello Dei Carstein",
       "cost": 50,
       "category": "Oggetti Incantati",
-      "description": "Se il portatore viene ucciso, ritorna in vita con 1D3 PC (fino a un massimo dei suoi PC originari), entro fino a 2 caselle di distanza.",
+      "description": "Se il portatore viene ucciso, ritorna in vita con 1D3 PC (fino a un massimo dei suoi PC originari), fino a 2 caselle di distanza.",
       "only_for_army": [
         "nommorti"
       ],
@@ -1193,7 +1193,7 @@
       "name": "La Gemma Nera Di Gnar",
       "cost": 25,
       "category": "Oggetti Incantati",
-      "description": "Può essere usata contro un personaggio in corpo a corpo. Il possessore e il personaggio sono bloccati all'interno della gemma e rimossi temporaneamente dal gioco. All'inizio di ogni turno di ciascun giocatore, l'incantesimo si spezza ottenendo un 6 su 1D6.",
+      "description": "Può essere usata contro un personaggio in corpo a corpo. Il possessore e il personaggio sono bloccati all'interno della gemma e rimossi temporaneamente dal gioco. All'inizio di ogni turno di ciascun giocatore, l'incantesimo si spezza ottenendo uni scudo su 1 DC.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -1278,7 +1278,9 @@
       "cost": 5,
       "category": "Oggetti Incantati",
       "description": "Il possessore può berla prima di effettuare un tiro di dado. Può ritirare questo dado se lo vuole.",
-      "only_for_army": [],
+      "only_for_army": [
+        "bretonnia"
+      ],
       "not_for_army": [],
       "only_for_type": [],
       "not_for_type": []
@@ -1296,7 +1298,7 @@
     },
     {
       "id": "il_talismano_della_fortuna",
-      "name": "Il Talismano\nDella Fortuna",
+      "name": "Il Talismano \\Della Fortuna",
       "cost": 25,
       "category": "Oggetti Incantati",
       "description": "Il possessore può ripetere il tiro di un dado durante la partita.",
@@ -1369,7 +1371,7 @@
       "name": "Il Libro Di Nagash",
       "cost": 100,
       "category": "Arcani",
-      "description": "Aumenta il livello del possessore di 1, fino a un massimo di 5, ma può usare solo incantesimi necromantici.",
+      "description": "Aumenta il livello del possessore di 1, fino a un massimo di 5.",
       "only_for_army": [
         "nommorti"
       ],
@@ -1397,7 +1399,7 @@
       "name": "La Spada Dell'Empio Potere",
       "cost": 75,
       "category": "Arcani",
-      "description": "Il possessore può lanciare un incantesimo a turno senza usare carte potere. Tira 1DC quando la spada viene usata: se ottieni uno scudo, il possessore subisce una ferita per ogni punto Potere dell'incantesimo. % Il possessore non può portare altre armi magiche.",
+      "description": "Il possessore può lanciare un incantesimo a turno senza usare carte potere. Tira 1DC quando la spada viene usata: se ottieni uno scudo, il possessore subisce una ferita per ogni punto Potere dell'incantesimo.",
       "only_for_army": [
         "caos",
         "elfi_oscuri",
@@ -1440,7 +1442,7 @@
       "name": "Famiglio Del Caos",
       "cost": 50,
       "category": "Arcani",
-      "description": "Famiglio (M1, A1, D2, C1, C4). Una volta a turno, lo stregone può aggiungere o sottrarre 1 a un tiro di D6 (dichiarandolo prima), o aggiungere un teschio o un tiro che prevede il lancio di DC.",
+      "description": "Famiglio (M1, A1, D2, C1, C4). Una volta a turno, lo stregone può aggiungere o sottrarre 1 a un tiro di D6 (dichiarandolo prima), o aggiungere un teschio a un tiro che prevede il lancio di DC.",
       "only_for_army": [
         "caos"
       ],
@@ -1507,7 +1509,7 @@
       "name": "Il Bastone \\Della Morte Ardente",
       "cost": 50,
       "category": "Arcani",
-      "description": "Incantesimo infuso: gittata 4 caselle, attacco 1D6 DC, ignora la difesa. Un'unità che subisce una o più perdite, deve immediatamente effettuare un test di Panico.",
+      "description": "Incantesimo infuso: gittata 4 caselle, attacco 1D6 DC, ignora la difesa, attacco da fuoco. Un'unità che subisce una o più perdite, deve immediatamente effettuare un test di Panico.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
@@ -1546,7 +1548,7 @@
       "name": "Il Bastone \\Della Dannazione",
       "cost": 50,
       "category": "Arcani",
-      "description": "Incantesimo infuso: gittata 6 caselle. L'unità bersaglio di scheletri, zombie, mummie o spettri (ma non catapulta) può immediatamente muovere di 1 casella, attaccare in CaC o tirare con armi da tiro.",
+      "description": "Incantesimo infuso: gittata 6 caselle. L'unità bersaglio di scheletri, zombie, mummie o spettri (ma non catapulte, carri) può immediatamente muovere di 1 casella, attaccare in CaC o tirare con armi da tiro. Se si sceglie l'attacco, i personaggi all'interno dell'unità non attaccano a loro volta.",
       "only_for_army": [
         "nommorti"
       ],
@@ -1587,7 +1589,7 @@
       "name": "Il Calice \\Della Stregoneria",
       "cost": 35,
       "category": "Arcani",
-      "description": "Il possessore può pescare una carta venti di magia in più a turno. Se lo fa, tira 1D6: se ottiene un 1 subisce una ferita.",
+      "description": "Il possessore può pescare una carta venti di magia in più a turno. Se lo fa, tira 1 DC: se ottiene uno scudo, subisce una ferita.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
@@ -1628,7 +1630,7 @@
       "name": "Pergamena Del Potere",
       "cost": 30,
       "category": "Arcani",
-      "description": "Il possessore può lanciare uno dei suoi incantesimi senza usare carte potere.",
+      "description": "Il possessore può lanciare uno dei suoi incantesimi senza usare carte potere. Un solo uso.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
@@ -1654,7 +1656,7 @@
       "name": "Pergamena Di Dispersione",
       "cost": 25,
       "category": "Arcani",
-      "description": "Disperde automaticamente un incantesimo appena lanciata o uno già in gioco (si applicano le solite restrizioni sulla distanza massimo per le dispersioni). Se ne può selezionare più di una per esercito.",
+      "description": "Disperde automaticamente un incantesimo appena lanciata o uno già in gioco (si applicano le solite restrizioni sulla distanza massimo per le dispersioni). Un solo uso. Se ne può selezionare più di una per esercito.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
@@ -1721,7 +1723,7 @@
       "name": "La Pergamena Della \\Maledizione Di Bufo",
       "cost": 50,
       "category": "Arcani",
-      "description": "Può essere usata per disperdere automaticamente un incantesimo diretto verso il portatore o la sua unità. Il lanciatore viene quindi tramutato in un rospo! Mentre è nella forma di rospo, il mago avversario ha tutte le caratteristiche ridotte a 1, non può lanciare incantesimi e non può disperderli, né usare oggetti magici. All'inizio di ogni turno successivo del mago, questo riprende la sua forma con 4+ su 1D6.",
+      "description": "Può essere usata per disperdere automaticamente un incantesimo diretto verso il portatore o la sua unità. Il lanciatore viene quindi tramutato in un rospo! Mentre è nella forma di rospo, il mago avversario ha tutte le caratteristiche ridotte a 1, non può lanciare incantesimi e non può disperderli, né usare oggetti magici. All'inizio di ogni turno successivo del mago, questo riprende la sua forma con 4+ su 1D6. Un solo uso.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
@@ -1734,7 +1736,7 @@
       "name": "La Pergamena \\Delle Fauci Fameliche",
       "cost": 50,
       "category": "Arcani",
-      "description": "Può essere usata per disperdere un incantesimo ostile diretto verso un'unità amica entro 4 caselle. L'incantesimo viene scartato.",
+      "description": "Può essere usata per disperdere un incantesimo ostile diretto verso un'unità amica entro 4 caselle. L'incantesimo viene scartato. Un solo uso.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
@@ -1747,7 +1749,7 @@
       "name": "La Pergamena Ipnotica",
       "cost": 50,
       "category": "Arcani",
-      "description": "Può essere usata per disperdere un incantesimo ostile lanciato da un mago entro 4 caselle, o verso un bersaglio entro 4 caselle. Tira quindi 1D6: con 4+ puoi ridirigere l'incantesimo contro un bersaglio a tua scelta.",
+      "description": "Può essere usata per disperdere un incantesimo ostile lanciato da un mago entro 4 caselle, o verso un bersaglio entro 4 caselle. Tira quindi 1D6: con 4+ puoi ridirigere l'incantesimo contro un bersaglio a tua scelta. Un solo uso.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
@@ -1841,7 +1843,7 @@
       "name": "L'Anello Di Volans",
       "cost": 25,
       "category": "Ricettacoli",
-      "description": "Scegli un incantesimo di Magia da Battaglia all'inizio della partita. Questo incantesimo può essere usato come Incantesimo infuso.",
+      "description": "Scegli un incantesimo di Magia da Battaglia all'inizio della partita. Questo incantesimo può essere usato come Incantesimo infuso. Un solo uso.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
