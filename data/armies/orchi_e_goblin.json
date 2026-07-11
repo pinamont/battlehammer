@@ -874,7 +874,7 @@
       "equipment": [ "Gobbla" ],
       "magic_items": [ "il_pungolo_di_skarsnik" ],
       "ranged": [],
-      "options": [],
+      "options": [      ],
       "magic_item_slots": 2,
       "max_per_army": 1
     },
@@ -908,7 +908,7 @@
       "max_size": 1,
       "rules": [ "Stendardo da Battaglia" ],
       "equipment": [ "Carro di Grom", "Niblit (alfiere goblin)" ],
-      "magic_items": [ "mordielfi_lascia_di_grom" ],
+      "magic_items": [ "mordielfi_l_ascia_di_grom" ],
       "ranged": [],
       "options": [],
       "magic_item_slots": 2,

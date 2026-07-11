@@ -1813,7 +1813,7 @@
         "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": ["goblin_delle_tenebre"],
+      "only_for_type": [],
       "not_for_type": []
     },
     {

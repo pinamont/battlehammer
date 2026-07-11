@@ -1471,7 +1471,7 @@
           }
 
           // oggetto tra quelli pre-selezionati...
-          if (unit.magic_items && unit.magic_items.includes(item.name)) {
+          if (unit.magic_items && unit.magic_items.includes(item.id)) {
             div.className = "option disabled-option";
             cb.checked = true;
             cb.disabled = true;
