@@ -38,6 +38,11 @@
     magicByCategory[item.category].push(item);
   }
 
+  let magicItemsById = {};
+  for (const item of MAGIC_ITEMS) {
+    magicItemsById[item.id] = item;
+  }
+
   // --- VARIABILI DI STATO ---
 
   let currentFaction = "";
@@ -64,18 +69,20 @@
     bretonia: "Bretonnia"
     // aggiungi qui le altre fazioni
   };
+
   function armyName(army) {
-    return ARMY_NAMES[army] || autoArmyName(army);
+    return ARMY_NAMES[army] || autoRenderName(army);
   }
-  function autoArmyName(army) {
-    return army
+
+  function autoRenderName(name) {
+    return name
     .replace(/_/g, " ")
+    .replace("\\","")
     .replace(/\b\w/g, c => c.toUpperCase());
   }
 
   // Nomi senza caratteri speciali
   function renderName(name) {
-    // return name.replace(/[^a-zA-Z0-9\s]/g, "");
     name = name.replace("\\","");
     return name;
   }
@@ -367,9 +374,9 @@
             if (!id) continue;
             const count = e.magicItemCounts?.[id] || 1;
             if (item.allow_multiple_per_model) {
-              names.push(`${item.name} ×${count}`);
+              names.push(`${renderName(item.name)} ×${count}`);
             } else {
-              names.push(item.name);
+              names.push(renderName(item.name));
             }
           }
           if (names.length > 0) {
@@ -468,15 +475,11 @@
             if (!id) continue;
             const count = e.magicItemCounts?.[id] || 1;
             if (item.allow_multiple_per_model) {
-              names.push(`${item.name} ×${count}`);
+              names.push(`${renderName(item.name)} ×${count}`);
             } else {
-              names.push(item.name);
+              names.push(renderName(item.name));
             }
           }
-          // if (e.preselectedMagicItems?.length) names = names.concat(e.preselectedMagicItems);
-          // if (e.magicItems?.length) names = names.concat(e.magicItems
-          // .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
-          // .filter(Boolean));
           if (names.length > 0) {
             lines.push(renderName(`  - ${names.join(", ")}`));
           }
@@ -512,6 +515,111 @@
   }
 
   function buildArmyDataForPdf() {
+
+    // ---
+    // funzioni interne
+    // ---
+
+    function collectEquipment(unit, selectedOptionIds) {
+      const eq = [...(unit.equipment || [])];
+      for (const opt of unit.options || []) {
+        if (selectedOptionIds.has(opt.id) && opt.add_equipment) {
+          eq.push(...opt.add_equipment);
+        }
+      }
+      return eq;
+    }
+
+    function collectUpgrades(unit, selectedOptionIds) {
+      const upgrades = [];
+      for (const opt of unit.options || []) {
+        if (!selectedOptionIds.has(opt.id)) continue;
+        if (opt.add_equipment) continue;
+        if (opt.is_magic_item) continue;
+        upgrades.push(opt.name);
+      }
+      return upgrades;
+    }
+
+    function computeModifiedRules(unit, selectedOptionIds) {
+      let rules = [...(unit.rules || [])];
+      for (const opt of unit.options || []) {
+        if (selectedOptionIds.has(opt.id) && opt.add_rules) {
+          rules.push(...opt.add_rules);
+        }
+      }
+      return rules;
+    }
+
+    function computeModifiedStats(unit, selectedOptionIds) {
+      const stats = {};
+      for (const [k, v] of Object.entries(unit.stats)) {
+        stats[k] = Number(v);
+      }
+      for (const opt of unit.options || []) {
+        if (selectedOptionIds.has(opt.id) && opt.stat_modifiers) {
+          for (const [stat, delta] of Object.entries(opt.stat_modifiers)) {
+            stats[stat] = (stats[stat] ?? 0) + Number(delta);
+          }
+        }
+      }
+      return stats;
+    }
+
+    function collectSpecModifiers(unit, selectedOptionIds) {
+      const grouped = {};
+      if (unit.spec) {
+        for (const [stat, text] of Object.entries(unit.spec)) {
+          if (!grouped[stat]) grouped[stat] = [];
+          grouped[stat].push(text);
+        }
+      }
+      for (const opt of unit.options || []) {
+        if (selectedOptionIds.has(opt.id) && opt.add_spec) {
+          for (const [stat, text] of Object.entries(opt.add_spec)) {
+            if (!grouped[stat]) grouped[stat] = [];
+            grouped[stat].push(text);
+          }
+        }
+      }
+      return grouped;
+    }
+
+    function collectRangedWeapons(unit, selectedOptionIds) {
+      const ranged = [];
+      if (unit.ranged) ranged.push(...unit.ranged);
+      for (const opt of unit.options || []) {
+        if (selectedOptionIds.has(opt.id) && opt.add_ranged) {
+          ranged.push(...opt.add_ranged);
+        }
+      }
+      return ranged;
+    }
+
+    function collectRangedSpecs(rangedWeapons) {
+      const specs = [];
+      if (!rangedWeapons || rangedWeapons.length === 0) return specs;
+      rangedWeapons.forEach((weapon, index) => {
+        if (weapon.spec && weapon.spec !== "-") {
+          specs.push({ index, text: weapon.spec });
+        }
+      });
+      return specs;
+    }
+
+    function collectMountProfile(unit, selectedOptionIds) {
+      for (const opt of unit.options || []) {
+        if (selectedOptionIds.has(opt.id) && opt.mount_profile) {
+          opt.mount_profile.specs = collectSpecModifiers(opt.mount_profile,[]);
+          opt.mount_profile.rangedSpecs = collectRangedSpecs(opt.mount_profile.ranged);
+          return opt.mount_profile;
+        }
+      }
+      return null;
+    }
+
+    // ---
+
     const { stats } = validateArmy();
     const title = document.getElementById("listTitleInput").value || "Lista senza titolo";
 
@@ -524,51 +632,71 @@
         units: entries.map(e => {
           const unit = UNITS_BY_FACTION[currentFaction].find(u => u.id === e.unitId);
 
-          let optList = []
-          if (e.preselectedOptions?.length) optList = optList.concat(e.preselectedOptions);
-          if (e.options) optList = optList.concat(
-            (e.options || []).map(optId => {
-              const opt = unit.options.find(o => o.id === optId);
-              if (!opt) return null;
-              const count = e.optionCounts?.[optId] || 1;
-              return opt.max_count ? `${opt.name} ×${count}` : opt.name;
-            }).filter(Boolean)
-          );
+          // --- OPZIONI SELEZIONATE ---
+          const selectedOptionIds = new Set([
+            ...(e.preselectedOptions || []),
+                                            ...(e.options || [])
+          ]);
 
-          let magicItemList = []
-          if (e.preselectedMagicItems?.length) magicItemList = magicItemList.concat(
-            (e.preselectedMagicItems || []).map(id =>
-            MAGIC_ITEMS.find(m => m.id === id)?.name
-            ).filter(Boolean)
-          );
-          if (e.magicItems) magicItemList = magicItemList.concat(
-            (e.magicItems || []).map(id =>
-            MAGIC_ITEMS.find(m => m.id === id)?.name
-            ).filter(Boolean)
-          );
+          // --- MAGIC ITEMS ---
+          const magicItemList = [
+            ...(e.preselectedMagicItems || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean),
+                           ...(e.magicItems || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean)
+          ];
 
-          let knightlyVirtueList = []
-          if (e.preselectedKnightlyVirtues?.length) knightlyVirtueList = knightlyVirtueList.concat(
-            (e.preselectedKnightlyVirtues || []).map(id =>
-            MAGIC_ITEMS.find(m => m.id === id)?.name
-            ).filter(Boolean)
-          );
-          if (e.knightlyVirtues) knightlyVirtueList = knightlyVirtueList.concat(
-            (e.knightlyVirtues || []).map(id =>
-            MAGIC_ITEMS.find(m => m.id === id)?.name
-            ).filter(Boolean)
-          );
+          // --- KNIGHTLY VIRTUES ---
+          const knightlyVirtueList = [
+            ...(e.preselectedKnightlyVirtues || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean),
+                           ...(e.knightlyVirtues || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean)
+          ];
+
+          // --- EQUIPAGGIAMENTO ---
+          const equipment = collectEquipment(unit, selectedOptionIds);
+
+          // --- UPGRADE ---
+          const upgrades = collectUpgrades(unit, selectedOptionIds);
+
+          // --- REGOLE SPECIALI ---
+          const rules = computeModifiedRules(unit, selectedOptionIds);
+
+          // --- STATISTICHE MODIFICATE ---
+          const modifiedStats = computeModifiedStats(unit, selectedOptionIds);
+
+          // --- SPEC MODIFICATI ---
+          const groupedSpecs = collectSpecModifiers(unit, selectedOptionIds);
+
+          // --- ARMI A DISTANZA ---
+          const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
+          const rangedSpecs = collectRangedSpecs(rangedWeapons);
+
+          // --- TIPO UNITÀ ---
+          const type = unit.type || null;
+
+          // --- CAVALCATURA ---
+          const mountProfile = collectMountProfile(unit, selectedOptionIds);
 
           return {
             name: e.name,
             points: e.points,
             size: e.size,
-            options: optList,
+
+            // Nuovi campi per il PDF
+            stats: modifiedStats,
+            specs: groupedSpecs,
+            type,
+            rules,
+            equipment,
+            upgrades,
             magicItems: magicItemList,
             knightlyVirtues: knightlyVirtueList,
             magicBanner: e.magicBanner
-              ? MAGIC_BANNERS.find(b => b.id === e.magicBanner)?.name
-              : null
+            ? MAGIC_BANNERS.find(b => b.id === e.magicBanner)?.name
+            : null,
+
+            ranged: rangedWeapons,
+            rangedSpecs,
+
+            mount: mountProfile
           };
         })
       };
@@ -582,6 +710,114 @@
     };
   }
 
+  // function exportArmyPDF(armyData) {
+  //   const { jsPDF } = window.jspdf;
+  //   const doc = new jsPDF({ unit: "pt", format: "a4" });
+  //
+  //   const pageWidth = doc.internal.pageSize.getWidth();
+  //   const pageHeight = doc.internal.pageSize.getHeight();
+  //   const margin = 40;
+  //   let y = margin;
+  //
+  //   // --- HEADER PRINCIPALE ---
+  //   doc.setFont("helvetica", "bold");
+  //   doc.setFontSize(18);
+  //   doc.text("Battle Hammer", pageWidth / 2, y, { align: "center" });
+  //   y += 10;
+  //   doc.line(margin, y, pageWidth - margin, y);
+  //   y += 20;
+  //
+  //   // --- INFO LISTA ---
+  //   doc.setFont("helvetica", "bolditalic");
+  //   doc.setFontSize(14);
+  //   const headerLine = `${armyData.name} — ${armyName(armyData.faction)} — ${armyData.totalPoints} pt`;
+  //   doc.text(headerLine, pageWidth / 2, y, { align: "center" });
+  //   y += 15;
+  //
+  //   // doc.line(margin, y, pageWidth - margin, y);
+  //   y += 20;
+  //
+  //   // --- SEZIONI ---
+  //   armyData.sections.forEach(section => {
+  //     // separatore
+  //     doc.line(margin, y, pageWidth - margin, y);
+  //     y += 20;
+  //
+  //     // titolo sezione
+  //     doc.setFont("helvetica", "bold");
+  //     doc.setFontSize(14);
+  //     doc.text(section.name, margin, y);
+  //     y += 20;
+  //
+  //     // unità
+  //     section.units.forEach(unit => {
+  //       // --- UNITÀ ---
+  //       doc.setFont("helvetica", "normal");
+  //       doc.setFontSize(12);
+  //
+  //       const sizeText = unit.size > 1 ? ` (${unit.size} modelli)` : "";
+  //       const unitLine = `• ${unit.name}${sizeText} — ${unit.points} pt`;
+  //
+  //       doc.text(unitLine, margin + 20, y);
+  //       y += 20;
+  //
+  //       // --- OPZIONI (tutte in una riga) ---
+  //       doc.setFont("helvetica", "italic");
+  //       doc.setFontSize(11);
+  //
+  //       const optionsLine = [];
+  //
+  //       if (unit.options.length > 0) {
+  //         optionsLine.push(unit.options.join(", "));
+  //       }
+  //
+  //       if (unit.magicItems.length > 0) {
+  //         optionsLine.push(renderName(unit.magicItems.join(", ")));
+  //       }
+  //
+  //       if (unit.knightlyVirtues.length > 0) {
+  //         optionsLine.push(rednerName(unit.knightlyVirtues.join(", ")));
+  //       }
+  //
+  //       if (unit.magicBanner) {
+  //         optionsLine.push(renderName(unit.magicBanner));
+  //       }
+  //
+  //       if (optionsLine.length > 0) {
+  //         y -= 5;
+  //         optionText = optionsLine.join(" — ");
+  //         splitOptionText = doc.splitTextToSize(optionText, doc.internal.pageSize.width - (margin * 2 + 40));
+  //         doc.text(splitOptionText, margin + 40, y);
+  //         y += 20;
+  //       }
+  //
+  //       // salto pagina
+  //       if (y > pageHeight - 60) {
+  //         addFooter(doc, pageWidth, pageHeight);
+  //         doc.addPage();
+  //         y = margin;
+  //       }
+  //     });
+  //   });
+  //
+  //   // footer finale
+  //   addFooter(doc, pageWidth, pageHeight);
+  //
+  //   doc.save(`BattleHammer - ${armyName(currentFaction)} - ${armyData.name}.pdf`);
+  //
+  //   // --- FOOTER ---
+  //   function addFooter(doc, pageWidth, pageHeight) {
+  //     doc.line(margin, pageHeight - 40, pageWidth - margin, pageHeight - 40);
+  //     doc.setFontSize(10);
+  //     doc.text(
+  //       `${doc.internal.getNumberOfPages()}`,
+  //              pageWidth / 2,
+  //              pageHeight - 25,
+  //              { align: "center" }
+  //     );
+  //   }
+  // }
+
   function exportArmyPDF(armyData) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: "pt", format: "a4" });
@@ -589,9 +825,309 @@
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
     const margin = 40;
+
+    const columnWidth = (pageWidth - margin * 3) / 2;
+    let col = 0; // 0 = sinistra, 1 = destra
     let y = margin;
 
-    // --- HEADER PRINCIPALE ---
+    function colX() {
+      return col === 0
+      ? margin
+      : margin * 2 + columnWidth;
+    }
+
+    function addFooter() {
+      doc.line(margin, pageHeight - 40, pageWidth - margin, pageHeight - 40);
+      doc.setFontSize(10);
+      doc.text(
+        `Pagina ${doc.internal.getNumberOfPages()}`,
+               pageWidth / 2,
+               pageHeight - 25,
+               { align: "center" }
+      );
+    }
+
+    function ensureSpace(lines = 1) {
+      const needed = lines * 14;
+      // Se non c'è spazio nella colonna corrente → passa alla colonna destra
+      if (y + needed > pageHeight - 60) {
+        if (col === 0) {
+          col = 1;
+          y = margin;
+          if (doc.internal.getNumberOfPages() === 1) y += 65;
+        } else {
+          // entrambe le colonne piene → nuova pagina
+          addFooter();
+          doc.addPage();
+          col = 0;
+          y = margin;
+        }
+      }
+    }
+
+    function drawLabelAndWrappedText(doc, label, text, x, y, colWidth) {
+      doc.setFont("helvetica", "bold");
+      doc.text(label, x, y);
+
+      // shift test according to label width
+      const labelWidth = doc.getTextWidth(label + " ");
+      let spaces = "";
+      while (doc.getTextWidth(spaces)<labelWidth) {
+        spaces += " ";
+      }
+      const newText = spaces+text;
+
+      doc.setFont("helvetica", "normal");
+      const lines = doc.splitTextToSize(newText, colWidth);
+      doc.text(lines, x, y);
+
+      return y + lines.length * 13; // nuova Y
+    }
+
+    function printUnit(unit) {
+      // Tabella statistiche
+      const stats = unit.stats;
+      const statKeys = Object.keys(stats);
+      const colWidth = columnWidth / statKeys.length;
+
+      // Aggiunge gli asterischi alle statistiche
+      const statsWithStars = { ...unit.stats };
+      let starIndex = 0;
+      for (const stat of Object.keys(unit.specs || {})) {
+        const stars = "*".repeat(starIndex + 1);
+        // Se la statistica ha già asterischi (caso raro), aggiungi spazio
+        if (String(statsWithStars[stat]).includes("*")) {
+          statsWithStars[stat] += " " + stars;
+        } else {
+          statsWithStars[stat] += stars;
+        }
+        starIndex++;
+      }
+
+      // Aggiunge gli asterischi alle armi a distanza
+      const rangedWeapons = unit.ranged || [];
+      const rangedSpecs = unit.rangedSpecs || [];
+      const rangedWithStars = rangedWeapons.map((weapon, index) => {
+        let specMark = "";
+        if (weapon.spec === "-") {
+          specMark = "-";
+        } else if (weapon.spec) {
+          specMark = "*".repeat(index + 1);
+        }
+        return {
+          ...weapon,
+          specMark
+        };
+      });
+
+      // Header con sfondo grigio
+      doc.setFillColor(120, 120, 120);     // grigio chiaro
+      doc.setTextColor(255, 255, 255);  // testo bianco
+      doc.setFontSize(8);
+      doc.setFont("helvetica", "bold");
+
+      // Disegna rettangolo header
+      doc.rect(colX(), y, columnWidth, 14, "F");
+
+      // Testo header
+      statKeys.forEach((k, i) => {
+        const x = colX() + i * colWidth;
+        doc.rect(x, y, colWidth, 14); // bordo cella
+        const headerX = x + colWidth / 2;
+        doc.text(k, headerX, y + 10, { align: "center" });
+      });
+
+      y += 14;
+
+      // Ripristina testo nero
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "normal");
+
+      // Riga valori con bordi
+      statKeys.forEach((k, i) => {
+        const x = colX() + i * colWidth;
+        doc.rect(x, y, colWidth, 14); // bordo cella
+        const cellX = x + colWidth / 2;
+        doc.text(String(statsWithStars[k]), cellX, y + 10, { align: "center" });
+      });
+
+      y += 26;
+
+      // Legenda spec
+      const specs = unit.specs || {};
+      const specEntries = Object.entries(specs);
+      if (specEntries.length > 0) {
+        let starIndex = 0;
+        specEntries.forEach(([stat, texts]) => {
+          const stars = "*".repeat(starIndex + 1);
+          const line = `${stars}: ${texts.join(", ")}`;
+
+          doc.setFont("helvetica", "italic");
+          // doc.text(line, colX(), y);
+          const lines = doc.splitTextToSize(line, columnWidth);
+          doc.text(lines, colX(), y);
+          y += 2 + lines.length * 12;
+          doc.setFont("helvetica", "normal");
+          starIndex++;
+        });
+      }
+
+      // Tipo unità
+      if (unit.type) {
+        doc.setFontSize(11);
+        const text = unit.type.map(t => {return autoRenderName(t);}).join(", ");
+        y = drawLabelAndWrappedText(doc, "Tipo unità:", text, colX(), y, columnWidth);
+      }
+
+      // Regole speciali
+      if (unit.rules && unit.rules.length > 0) {
+        doc.setFontSize(11);
+        const text = unit.rules.map(t => {return autoRenderName(t);}).join(", ");
+        y = drawLabelAndWrappedText(doc, "Regole speciali:", text, colX(), y, columnWidth);
+      }
+
+      // Equipaggiamento
+      if (unit.equipment && unit.equipment.length > 0) {
+        doc.setFontSize(11);
+        const text = unit.equipment.map(t => {return autoRenderName(t);}).join(", ");
+        y = drawLabelAndWrappedText(doc, "Equipaggiamento:", text, colX(), y, columnWidth);
+      }
+
+      // Upgrade
+      if (unit.upgrades && unit.upgrades.length > 0) {
+        doc.setFontSize(11);
+        const text = unit.upgrades.map(t => {return autoRenderName(t);}).join(", ");
+        y = drawLabelAndWrappedText(doc, "Upgrade:", text, colX(), y, columnWidth);
+      }
+
+      // Tabelle armi a distanza
+      if (rangedWithStars.length > 0) {
+        y -= 6;
+
+        const cols = ["Att. a distanza", "Raggio", "Attacco", "Speciale"];
+        const colWidth = columnWidth / cols.length;
+
+        // Header grigio
+        doc.setFillColor(120, 120, 120);
+        doc.setTextColor(255, 255, 255);
+        doc.rect(colX(), y, columnWidth, 14, "F");
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(8);
+
+        cols.forEach((h, i) => {
+          const x = colX() + i * colWidth;
+          doc.rect(x, y, colWidth, 14);
+          const cellX = x + colWidth / 2;
+          doc.text(h, cellX, y + 10, { align: "center" });
+        });
+
+        y += 14;
+        doc.setTextColor(0, 0, 0);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+
+        // Righe
+        rangedWithStars.forEach(weapon => {
+          // Bordi
+          cols.forEach((_, i) => {
+            const x = colX() + i * colWidth;
+            doc.rect(x, y, colWidth, 14);
+          });
+
+          // Contenuto
+          doc.text(weapon.name, colX() + colWidth/2, y + 10, { align: "center" });
+          doc.text(String(weapon.range), colX() + colWidth + colWidth/2, y + 10, { align: "center" });
+          doc.text(String(weapon.att), colX() + colWidth * 2 + colWidth/2, y + 10, { align: "center" });
+          doc.text(weapon.specMark, colX() + colWidth * 3 + colWidth/2, y + 10, { align: "center" });
+
+          y += 16;
+        });
+        y += 14;
+
+        // Legenda
+        if (rangedSpecs.length > 0) {
+          y -= 2;
+          rangedSpecs.forEach((spec, index) => {
+            const stars = "*".repeat(index + 1);
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(10);
+            // doc.text(`${stars}: ${spec.text}`, colX(), y);
+            const lines = doc.splitTextToSize(`${stars}: ${spec.text}`, columnWidth);
+            doc.text(lines, colX(), y);
+            y += lines.length * 14;
+            doc.setFont("helvetica", "normal");
+          });
+          y += 2;
+        }
+
+      }
+
+      if (unit.magicItems && unit.magicItems.length > 0) {
+        doc.setFontSize(11);
+        const items = unit.magicItems.map(t => {return autoRenderName(t);});
+        const text = items.join(", ");
+        y = drawLabelAndWrappedText(doc, "Oggetti Magici:", text, colX(), y, columnWidth);
+      }
+
+      // Stendardo magico
+      if (unit.magicBanner) {
+        doc.setFontSize(11);
+        const text = autoRenderName(unit.magicBanner);
+        y = drawLabelAndWrappedText(doc, "Stendardo Magico:", text, colX(), y, columnWidth);
+      }
+    }
+
+    function measureMountBlock(doc, mount, columnWidth) {
+      let h = 0;
+
+      // Titolo "Cavalcatura: X"
+      h += 14;
+
+      // Tabella caratteristiche
+      const statKeys = Object.keys(mount.stats || {});
+      if (statKeys.length > 0) {
+        h += 16; // header
+        h += 16; // valori
+        h += 8;  // spazio
+      }
+
+      // Spec
+      if (mount.spec) {
+        const count = Object.keys(mount.spec).length;
+        h += count * 11 + 6;
+      }
+
+      // Regole speciali
+      if (mount.rules && mount.rules.length > 0) {
+        const text = mount.rules.join(", ");
+        const lines = doc.splitTextToSize(text, columnWidth - 100);
+        h += lines.length * 11 + 6;
+      }
+
+      // Equipaggiamento
+      if (mount.equipment && mount.equipment.length > 0) {
+        const text = mount.equipment.join(", ");
+        const lines = doc.splitTextToSize(text, columnWidth - 100);
+        h += lines.length * 11 + 6;
+      }
+
+      // Armi a distanza
+      if (mount.ranged && mount.ranged.length > 0) {
+        const cols = 4;
+        h += 14; // header
+        h += mount.ranged.length * 14; // righe
+        h += 8; // spazio
+
+        if (mount.rangedSpecs && mount.rangedSpecs.length > 0) {
+          h += mount.rangedSpecs.length * 11 + 6;
+        }
+      }
+
+      return h;
+    }
+
+    // HEADER PRINCIPALE
     doc.setFont("helvetica", "bold");
     doc.setFontSize(18);
     doc.text("Battle Hammer", pageWidth / 2, y, { align: "center" });
@@ -599,95 +1135,168 @@
     doc.line(margin, y, pageWidth - margin, y);
     y += 20;
 
-    // --- INFO LISTA ---
+    // INFO LISTA
     doc.setFont("helvetica", "bolditalic");
     doc.setFontSize(14);
     const headerLine = `${armyData.name} — ${armyName(armyData.faction)} — ${armyData.totalPoints} pt`;
     doc.text(headerLine, pageWidth / 2, y, { align: "center" });
     y += 15;
-
-    // doc.line(margin, y, pageWidth - margin, y);
     y += 20;
 
-    // --- SEZIONI ---
+    // Raccoglie tutti gli oggetti magici usati
+    const usedMagicItems = new Map();   // id → oggetto JSON
+    const usedMagicBanners = new Map(); // id → stendardo JSON
+
     armyData.sections.forEach(section => {
-      // separatore
-      doc.line(margin, y, pageWidth - margin, y);
-      y += 20;
-
-      // titolo sezione
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(14);
-      doc.text(section.name, margin, y);
-      y += 20;
-
-      // unità
       section.units.forEach(unit => {
-        // --- UNITÀ ---
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(12);
+        // Oggetti magici
+        (unit.magicItems || []).forEach(name => {
+          const item = MAGIC_ITEMS.find(m => m.name === name);
+          if (item) usedMagicItems.set(item.id, item);
+        });
 
-        const sizeText = unit.size > 1 ? ` (${unit.size} modelli)` : "";
-        const unitLine = `• ${unit.name}${sizeText} — ${unit.points} pt`;
+          // Virtù cavalleresche (se usi lo stesso JSON)
+          (unit.knightlyVirtues || []).forEach(name => {
+            const item = MAGIC_ITEMS.find(m => m.name === name);
+            if (item) usedMagicItems.set(item.id, item);
+          });
 
-        doc.text(unitLine, margin + 20, y);
-        y += 20;
-
-        // --- OPZIONI (tutte in una riga) ---
-        doc.setFont("helvetica", "italic");
-        doc.setFontSize(11);
-
-        const optionsLine = [];
-
-        if (unit.options.length > 0) {
-          optionsLine.push(unit.options.join(", "));
-        }
-
-        if (unit.magicItems.length > 0) {
-          optionsLine.push(renderName(unit.magicItems.join(", ")));
-        }
-
-        if (unit.knightlyVirtues.length > 0) {
-          optionsLine.push(rednerName(unit.knightlyVirtues.join(", ")));
-        }
-
-        if (unit.magicBanner) {
-          optionsLine.push(renderName(unit.magicBanner));
-        }
-
-        if (optionsLine.length > 0) {
-          y -= 5;
-          optionText = optionsLine.join(" — ");
-          splitOptionText = doc.splitTextToSize(optionText, doc.internal.pageSize.width - (margin * 2 + 40));
-          doc.text(splitOptionText, margin + 40, y);
-          y += 20;
-        }
-
-        // salto pagina
-        if (y > pageHeight - 60) {
-          addFooter(doc, pageWidth, pageHeight);
-          doc.addPage();
-          y = margin;
-        }
+            // Stendardi magici
+            if (unit.magicBanner) {
+              const banner = MAGIC_BANNERS.find(b => b.name === unit.magicBanner);
+              if (banner) usedMagicBanners.set(banner.id, banner);
+            }
       });
     });
 
-    // footer finale
-    addFooter(doc, pageWidth, pageHeight);
+    // SEZIONI + UNITÀ
+    armyData.sections.forEach(section => {
+      y += 6;
+      ensureSpace(13);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(14);
+      doc.text(section.name, colX(), y);
+      y += 6;
+      doc.line(colX(), y, colX()+columnWidth, y);
+      y += 24;
 
-    doc.save(`BattleHammer - ${armyName(currentFaction)} - ${armyData.name}.pdf`);
+      section.units.forEach(unit => {
+        ensureSpace(10);
 
-    // --- FOOTER ---
-    function addFooter(doc, pageWidth, pageHeight) {
-      doc.line(margin, pageHeight - 40, pageWidth - margin, pageHeight - 40);
-      doc.setFontSize(10);
-      doc.text(
-        `${doc.internal.getNumberOfPages()}`,
-               pageWidth / 2,
-               pageHeight - 25,
-               { align: "center" }
-      );
+        // Nome unità + punti
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(12);
+        const sizeText = unit.size > 1 ? ` (${unit.size} modelli)` : "";
+        const unitLine = `${unit.name}${sizeText} — ${unit.points} pt`;
+        doc.text(unitLine, colX(), y);
+        y += 4;
+        printUnit(unit);
+
+        // Cavalcatura con profilo
+        if (unit.mount) {
+          y += 4;
+
+          let yy = y;
+
+          const mountHeight = measureMountBlock(doc, unit.mount, columnWidth);
+
+          doc.setFillColor(215, 215, 215);
+          doc.rect(colX()-4, y-12, columnWidth+8, mountHeight, "F");
+          doc.rect(colX()-4, y-12, columnWidth+8, mountHeight);
+
+          ensureSpace(4);
+          doc.setFont("helvetica", "bold");
+          doc.setFontSize(12);
+          doc.text(`${unit.mount.name}:`, colX(), y);
+          y += 4;
+          printUnit(unit.mount);
+
+          y = yy + mountHeight;
+        }
+
+        y += 16;
+      });
+
+      y += 20;
+    });
+
+    if (usedMagicItems.size > 0 || usedMagicBanners.size > 0) {
+      ensureSpace(3);
+      y += 3*14;
     }
+
+    // ----------------------------
+    // APPENDICE: OGGETTI MAGICI
+    // ----------------------------
+    if (usedMagicItems.size > 0) {
+      ensureSpace(10);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(16);
+      doc.text("Oggetti Magici", colX(), y);
+      y += 6;
+      doc.line(colX(), y, colX()+columnWidth, y);
+      y += 24;
+
+      usedMagicItems.forEach(item => {
+        ensureSpace(5);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.text(`${autoRenderName(item.name)} — ${item.cost} pt`, colX(), y);
+        y += 12;
+
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        doc.text(item.category, colX(), y);
+        y += 12;
+
+        doc.setFont("helvetica", "normal");
+        const lines = doc.splitTextToSize(item.description, columnWidth);
+        doc.setFontSize(11);
+        doc.text(lines, colX(), y);
+        y += lines.length * 12 + 10;
+      });
+
+      y += 24;
+    }
+
+    // ----------------------------
+    // APPENDICE: STENDARDI MAGICI
+    // ----------------------------
+    if (usedMagicBanners.size > 0) {
+      ensureSpace(10);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(16);
+      doc.text("Stendardi Magici", colX(), y);
+      y += 6;
+      doc.line(colX(), y, colX()+columnWidth, y);
+      y += 24;
+
+      usedMagicBanners.forEach(banner => {
+        ensureSpace(5);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.text(`${banner.name} — ${banner.cost} pt`, colX(), y);
+        y += 12;
+
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        doc.text(banner.category, colX(), y);
+        y += 12;
+
+        doc.setFont("helvetica", "normal");
+        const lines = doc.splitTextToSize(banner.description, columnWidth);
+        doc.setFontSize(11);
+        doc.text(lines, colX(), y);
+        y += lines.length * 12 + 10;
+      });
+
+      y += 24;
+    }
+
+    addFooter();
+    doc.save(`${armyData.name}_BattleHammer.pdf`);
   }
 
   function exportArmyJson() {
@@ -757,17 +1366,27 @@
 
       // Contenuto nascosto
       const content = document.createElement("div");
-      content.style.display = "none";
-      content.style.padding = "6px 8px";
+      content.className = "unit-category-content";
+      // content.style.display = "none";
+      // content.style.padding = "6px 8px";
       content.style.fontSize = "12px";
 
       header.onclick = () => {
-        content.style.display = content.style.display === "none" ? "block" : "none";
+        // Chiudi tutte le altre categorie
+        const allContents = container.querySelectorAll(".unit-category-content");
+        allContents.forEach(c => {
+          if (c !== content) c.classList.remove("open");
+          // if (c !== content) c.style.display = "none";
+        });
+        // Apri/chiudi questa categoria
+        content.classList.toggle("open");
+        // content.style.display = content.style.display === "none" ? "block" : "none";
       };
 
       for (const unit of byCat[cat]) {
         const card = document.createElement("div");
         card.className = "unit-card";
+        card.style.padding = "6px 8px";
         card.onclick = () => selectUnit(unit);
 
         const left = document.createElement("div");
@@ -808,15 +1427,404 @@
     }
   }
 
+  function computeModifiedStats(unit, selectedOptionIds) {
+    // const stats = { ...unit.stats };
+    const stats = {};
+    for (const [k, v] of Object.entries(unit.stats)) {
+      stats[k] = Number(v);
+    }
+    for (const opt of unit.options || []) {
+      if (selectedOptionIds.has(opt.id) && opt.stat_modifiers) {
+        for (const [stat, delta] of Object.entries(opt.stat_modifiers)) {
+          const numDelta = Number(delta);
+          stats[stat] = (stats[stat] ?? 0) + numDelta;
+        }
+      }
+    }
+    return stats;
+  }
+
+  // function renderUnitStats(unit) {
+  function renderUnitStats(stats) {
+    const box = document.getElementById("unitStatsBox");
+    box.innerHTML = "";
+    if (!stats) return;
+    const table = document.createElement("table");
+    table.style.width = "100%";
+    table.style.borderCollapse = "collapse";
+    table.style.marginBottom = "8px";
+    table.style.tableLayout = "fixed";
+    table.style.fontSize = "12px";
+    const header = document.createElement("tr");
+    header.style.fontWeight = "bold";
+    header.style.background = "#161b22";
+    const valueRow = document.createElement("tr");
+    for (const [stat, val] of Object.entries(stats)) {
+      const th = document.createElement("th");
+      th.textContent = stat;
+      th.style.padding = "4px";
+      th.style.border = "1px solid #30363d";
+      header.appendChild(th);
+      const td = document.createElement("td");
+      td.textContent = val;
+      td.style.padding = "4px";
+      td.style.border = "1px solid #30363d";
+      td.align = "center";
+      valueRow.appendChild(td);
+    }
+    table.appendChild(header);
+    table.appendChild(valueRow);
+    box.appendChild(table);
+  }
+
+  function collectSpecModifiers(unit, selectedOptionIds) {
+    const grouped = {};
+    // 1) Modificatori base dell’unità
+    if (unit.spec) {
+      for (const [stat, text] of Object.entries(unit.spec)) {
+        if (!grouped[stat]) grouped[stat] = [];
+        grouped[stat].push(text);
+      }
+    }
+    // 2) Modificatori aggiunti dalle opzioni
+    for (const opt of unit.options || []) {
+      if (selectedOptionIds.has(opt.id) && opt.add_spec) {
+        for (const [stat, text] of Object.entries(opt.add_spec)) {
+          if (!grouped[stat]) grouped[stat] = [];
+          grouped[stat].push(text);
+        }
+      }
+    }
+    return grouped; // { Att: ["...", "..."], Dif: ["..."], ... }
+  }
+
+  function applySpecAsterisks(stats, groupedSpecs) {
+    const modifiedStats = { ...stats };
+    let index = 0;
+    for (const stat of Object.keys(groupedSpecs)) {
+      const star = "*".repeat(index + 1);
+      // Se ci sono già asterischi, aggiungi uno spazio
+      if (typeof modifiedStats[stat] === "string" && modifiedStats[stat].includes("*")) {
+        modifiedStats[stat] += " " + star;
+      } else {
+        modifiedStats[stat] += star;
+      }
+      index++;
+    }
+    return modifiedStats;
+  }
+
+  function renderUnitSpec(groupedSpecs) {
+    const box = document.getElementById("unitSpecBox");
+    box.innerHTML = "";
+    if (!groupedSpecs || Object.keys(groupedSpecs).length === 0) return;
+    let index = 0;
+    for (const [stat, texts] of Object.entries(groupedSpecs)) {
+      const star = "*".repeat(index + 1);
+      const row = document.createElement("div");
+      row.style.fontSize = "12px";
+      row.style.marginTop = "2px";
+      row.style.fontStyle = "italic";
+      row.textContent = `${star}: ${texts.join(", ")}`;
+      box.appendChild(row);
+      index++;
+    }
+  }
+
+  function computeModifiedType(unit, selectedOptionIds) {
+    // Tipo base: può essere stringa o array
+    let types = [];
+
+    if (Array.isArray(unit.type)) {
+      types = [...unit.type];
+    } else if (typeof unit.type === "string") {
+      types = [unit.type];
+    }
+
+    // Applica le sostituzioni delle opzioni
+    for (const opt of unit.options || []) {
+      if (!selectedOptionIds.has(opt.id)) continue;
+
+      if (opt.change_type) {
+        for (const [from, to] of Object.entries(opt.change_type)) {
+          const idx = types.indexOf(from);
+          if (idx !== -1) {
+            types.splice(idx, 1);   // rimuove il tipo originale
+            types.push(to);         // aggiunge il nuovo tipo
+          }
+        }
+      }
+    }
+
+    // Rimuove duplicati
+    return [...new Set(types)];
+  }
+
+  function renderUnitType(types) {
+    const box = document.getElementById("unitTypeBox");
+    box.innerHTML = "";
+    if (!types || types.length === 0) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Tipo unità: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    let unitTypes = types.map(t => {return autoRenderName(t);});
+    list.textContent = unitTypes.join(", ");
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
+  function computeModifiedRules(unit, selectedOptionIds) {
+    let rules = [...(unit.rules || [])];
+    for (const opt of unit.options || []) {
+      if (selectedOptionIds.has(opt.id) && opt.add_rules) {
+        rules.push(...opt.add_rules);
+      }
+    }
+    return rules;
+  }
+
+  function renderUnitSpecialRules(rules) {
+    const box = document.getElementById("unitSpecialRulesBox");
+    box.innerHTML = "";
+    if (!rules || rules.length === 0) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Regole speciali: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    list.textContent = rules.join(", ");
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
+  function renderUnitEquipment(unit, selectedOptionIds) {
+    const box = document.getElementById("unitEquipmentBox");
+    box.innerHTML = "";
+    // Equipaggiamento base
+    let eq = [...(unit.equipment || [])];
+    // Equipaggiamento aggiunto dalle opzioni
+    for (const opt of unit.options || []) {
+      if (selectedOptionIds.has(opt.id) && opt.add_equipment) {
+        eq.push(...opt.add_equipment);
+      }
+    }
+    if (eq.length === 0) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Equipaggiamento: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    list.textContent = eq.join(", ");
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
+  function renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById) {
+    const box = document.getElementById("unitMagicItemsBox");
+    box.innerHTML = "";
+    if (selectedMagicItems.size === 0) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Oggetti magici: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    const parts = [];
+    for (const id of selectedMagicItems) {
+      const item = magicItemsById[id];
+      const count = magicItemCounts[id] ?? 1;
+      if (count > 1) parts.push(`${renderName(item.name)} ×${count}`);
+      else parts.push(renderName(item.name));
+    }
+    list.textContent = parts.join(", ");
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
+  function collectRangedWeapons(unit, selectedOptionIds) {
+    const ranged = [];
+    // Armi base
+    if (unit.ranged) {
+      ranged.push(...unit.ranged);
+    }
+    // Armi aggiunte da opzioni
+    for (const opt of unit.options || []) {
+      if (selectedOptionIds.has(opt.id) && opt.add_ranged) {
+        ranged.push(...opt.add_ranged);
+      }
+    }
+    return ranged;
+  }
+
+  function collectRangedSpecs(rangedWeapons) {
+    const specs = [];
+    if (!rangedWeapons || rangedWeapons.length === 0) return specs;
+    rangedWeapons.forEach((weapon, index) => {
+      if (weapon.spec && weapon.spec !== "-") {
+        specs.push({ index, text: weapon.spec });
+      }
+    });
+    return specs;
+  }
+
+  function renderUnitRanged(rangedWeapons) {
+    const box = document.getElementById("unitRangedBox");
+    box.innerHTML = "";
+
+    if (!rangedWeapons || rangedWeapons.length === 0) return;
+
+    const table = document.createElement("table");
+    table.style.width = "100%";
+    table.style.fontSize = "12px";
+    table.style.borderCollapse = "collapse";
+    table.style.marginTop = "10px";
+    table.style.tableLayout = "auto";
+
+    // Header
+    const header = document.createElement("tr");
+    ["Att. a distanza", "Raggio", "Att", "Speciale"].forEach(h => {
+      const th = document.createElement("th");
+      th.textContent = h;
+      th.style.padding = "4px";
+      th.style.border = "1px solid #30363d";
+      th.style.fontWeight = "bold";
+      th.style.background = "#161b22";
+      header.appendChild(th);
+    });
+    table.appendChild(header);
+
+    // Rows
+    rangedWeapons.forEach((weapon, index) => {
+      const tr = document.createElement("tr");
+
+      const tdName = document.createElement("td");
+      tdName.textContent = weapon.name;
+      tdName.style.padding = "4px";
+      tdName.style.border = "1px solid #30363d";
+      tdName.align = "center";
+      tr.appendChild(tdName);
+
+      const tdRange = document.createElement("td");
+      tdRange.textContent = weapon.range;
+      tdRange.style.padding = "4px";
+      tdRange.style.border = "1px solid #30363d";
+      tdRange.align = "center";
+      tr.appendChild(tdRange);
+
+      const tdAtt = document.createElement("td");
+      tdAtt.textContent = weapon.att;
+      tdAtt.style.padding = "4px";
+      tdAtt.style.border = "1px solid #30363d";
+      tdAtt.align = "center";
+      tr.appendChild(tdAtt);
+
+      const tdSpec = document.createElement("td");
+      if (weapon.spec === "-") {
+        tdSpec.textContent = "-";
+      } else if (weapon.spec) {
+        tdSpec.textContent = "*".repeat(index + 1);
+      } else {
+        tdSpec.textContent = "";
+      }
+      tdSpec.style.padding = "4px";
+      tdSpec.style.border = "1px solid #30363d";
+      tdSpec.align = "center";
+      tr.appendChild(tdSpec);
+
+      table.appendChild(tr);
+    });
+
+    box.appendChild(table);
+  }
+
+  function renderUnitRangedSpec(rangedSpecs) {
+    const box = document.getElementById("unitRangedSpecBox");
+    box.innerHTML = "";
+
+    if (!rangedSpecs || rangedSpecs.length === 0) return;
+
+    rangedSpecs.forEach((spec, index) => {
+      const star = "*".repeat(index + 1);
+
+      const row = document.createElement("div");
+      row.style.fontSize = "12px";
+      row.style.marginTop = "2px";
+      row.textContent = `${star}: ${spec.text}`;
+
+      box.appendChild(row);
+    });
+  }
+
+  function collectUpgrades(unit, selectedOptionIds) {
+    const upgrades = [];
+    for (const opt of unit.options || []) {
+      if (!selectedOptionIds.has(opt.id)) continue;
+      // Escludi equipaggiamento
+      if (opt.add_equipment) continue;
+      // Escludi oggetti magici
+      if (opt.is_magic_item) continue;
+      // Se vuoi escludere anche add_spec o stat_modifiers, basta aggiungere:
+      // if (opt.stat_modifiers || opt.add_spec) continue;
+      upgrades.push(opt.name);
+    }
+    return upgrades;
+  }
+
+  function renderUnitUpgrades(upgrades) {
+    const box = document.getElementById("unitUpgradeBox");
+    box.innerHTML = "";
+    if (!upgrades || upgrades.length === 0) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Upgrade: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    list.textContent = upgrades.join(", ");
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
+  function renderUnitMagicBanners(magicBanner) {
+    const box = document.getElementById("unitMagicBannersBox");
+    box.innerHTML = "";
+    if (!magicBanner) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Stendardo Magico: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    const banner = MAGIC_BANNERS.find(b => b.id === magicBanner);
+    list.textContent = banner.name;
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
   function renderConfigPanel(existingEntry = null) {
     const panel = document.getElementById("configPanel");
     if (!selectedUnit) {
       panel.innerHTML = "<p style='font-size:13px; opacity:0.8;'>Seleziona un'unità dalla lista per configurarla.</p>";
       return;
     }
-
     let magicBannerSection = null;
-
     let optionCounts = existingEntry ? { ...existingEntry.optionCounts } : {};
     let selectedMagicItems = new Set(existingEntry ? existingEntry.magicItems : []);
     let magicItemCounts = existingEntry ? { ...existingEntry.magicItemCounts } : {};
@@ -824,16 +1832,11 @@
     let selectedMagicBanner = existingEntry ? existingEntry.magicBanner : null;
     const unit = selectedUnit;
     const isEdit = !!existingEntry;
-
     const sizeValue = isEdit ? existingEntry.size : unit.min_size;
     const selectedOptionIds = new Set(isEdit ? existingEntry.options : []);
-
     const tempPoints = calcUnitPoints(unit, sizeValue, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
-
     panel.innerHTML = "";
-
     document.getElementById("configUnitName").textContent = unit.name;
-
     let textContent = "";
     if (unit.min_size === 1 && unit.max_size === 1) {
       textContent = `${unit.cost_per_model} pt (modello singolo)`;
@@ -841,7 +1844,24 @@
       textContent = `${unit.cost_per_model} pt/mod., ${unit.min_size}-${unit.max_size} modelli`;
     }
     document.getElementById("configUnitMeta").textContent = textContent;
-
+    const modifiedStats = computeModifiedStats(unit, selectedOptionIds);
+    const specs = collectSpecModifiers(unit, selectedOptionIds);
+    const statsWithStars = applySpecAsterisks(modifiedStats, specs);
+    renderUnitStats(statsWithStars);
+    renderUnitSpec(specs);
+    const types = computeModifiedType(unit, selectedOptionIds);
+    renderUnitType(types);
+    const modifiedRules = computeModifiedRules(unit, selectedOptionIds);
+    renderUnitSpecialRules(modifiedRules);
+    renderUnitEquipment(unit, selectedOptionIds);
+    renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById);
+    const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
+    renderUnitRanged(rangedWeapons);
+    const rangedSpecs = collectRangedSpecs(rangedWeapons);
+    renderUnitRangedSpec(rangedSpecs);
+    const upgrades = collectUpgrades(unit, selectedOptionIds);
+    renderUnitUpgrades(upgrades);
+    renderUnitMagicBanners(selectedMagicBanner);
     let sizeInput = 1
     if (unit.min_size != 1 || unit.max_size != 1) {
       const sizeRow = document.createElement("div");
@@ -882,14 +1902,12 @@
       sizeRow.appendChild(sizePlus);
       panel.appendChild(sizeRow);
     }
-
     const optsRow = document.createElement("div");
     optsRow.className = "config-row";
     const optsLabel = document.createElement("label");
     optsLabel.style.marginTop = "8px";
     optsLabel.textContent = "Opzioni";
     optsRow.appendChild(optsLabel);
-
     const optsBox = document.createElement("div");
     optsBox.className = "options-list";
 
@@ -904,7 +1922,6 @@
     // --- RENDER CATEGORIE DI OPZIONI (dropdown) ---
     if (unit.option_categories) {
       for (const [catName, optionIds] of Object.entries(unit.option_categories)) {
-
         const wrapper = document.createElement("div");
         wrapper.className = "option-row";
         wrapper.id = "optionRow-"+catName;
@@ -1267,6 +2284,26 @@
     // --- FUNZIONI INTERNE A renderConfigPanel --- //
     // -------------------------------------------- //
     function updatePointsPreview() {
+      // Update all unit stats and extras
+      const modifiedStats = computeModifiedStats(unit, selectedOptionIds);
+      const specs = collectSpecModifiers(unit, selectedOptionIds);
+      const statsWithStars = applySpecAsterisks(modifiedStats, specs);
+      renderUnitStats(statsWithStars);
+      renderUnitSpec(specs);
+      const types = computeModifiedType(unit, selectedOptionIds);
+      renderUnitType(types);
+      const modifiedRules = computeModifiedRules(unit, selectedOptionIds);
+      renderUnitSpecialRules(modifiedRules);
+      renderUnitEquipment(unit, selectedOptionIds);
+      renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById);
+      const upgrades = collectUpgrades(unit, selectedOptionIds);
+      const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
+      renderUnitRanged(rangedWeapons);
+      const rangedSpecs = collectRangedSpecs(rangedWeapons);
+      renderUnitRangedSpec(rangedSpecs);
+      renderUnitUpgrades(upgrades);
+      renderUnitMagicBanners(selectedMagicBanner);
+      // Update actual points
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
       const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
       configPoints = document.getElementById("configPoints");
@@ -1710,6 +2747,24 @@
     configUnitMeta.innerHTML = "";
     const configButtons = document.getElementById("configButtons");
     configButtons.innerHTML = "";
+    const unitStatsBox = document.getElementById("unitStatsBox");
+    unitStatsBox.innerHTML = "";
+    const unitSpecBox = document.getElementById("unitSpecBox");
+    unitSpecBox.innerHTML = "";
+    const unitTypeBox = document.getElementById("unitTypeBox");
+    unitTypeBox.innerHTML = "";
+    const unitSpecialRulesBox = document.getElementById("unitSpecialRulesBox");
+    unitSpecialRulesBox.innerHTML = "";
+    const unitEquipmentBox = document.getElementById("unitEquipmentBox");
+    unitEquipmentBox.innerHTML = "";
+    const unitMagicItemsBox = document.getElementById("unitMagicItemsBox");
+    unitMagicItemsBox.innerHTML = "";
+    document.getElementById("unitRangedBox").innerHTML = "";
+    document.getElementById("unitRangedSpecBox").innerHTML = "";
+    const unitUpgradeBox = document.getElementById("unitUpgradeBox");
+    unitUpgradeBox.innerHTML = "";
+    const unitMagicBannersBox = document.getElementById("unitMagicBannersBox");
+    unitMagicBannersBox.innerHTML = "";
     const msg = document.createElement("div");
     msg.style.opacity = "0.7";
     msg.style.fontStyle = "italic";
@@ -1851,7 +2906,7 @@
             if (!item) continue;
             const count = e.magicItemCounts?.[item.id] || 1;
             if (item.allow_multiple_per_model) {
-              fullList.push(`${item.name} ×${count}`);
+              fullList.push(`${renderName(item.name)} ×${count}`);
             } else {
               fullList.push(renderName(item.name));
             }
@@ -2407,5 +3462,3 @@
       console.error("Errore nel caricamento autosave:", err);
     }
   })();
-
-  // refreshSavedListUI();

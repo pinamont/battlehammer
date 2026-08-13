@@ -402,4 +402,14 @@
       opacity: 1;
     }
 
+    .unit-category-content {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.50s ease-out;
+    }
+
+    .unit-category-content.open {
+      max-height: 1500px; /* abbastanza grande per contenere tutte le unità */
+    }
+
   </style>
