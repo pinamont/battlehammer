@@ -494,6 +494,7 @@
     <div id="unitTypeBox"></div>
     <div id="unitSpecialRulesBox"></div>
     <div id="unitEquipmentBox"></div>
+    <div id="unitMountBox"></div>
     <div id="unitRangedBox"></div>
     <div id="unitRangedSpecBox"></div>
     <div id="unitMagicItemsBox"></div>
@@ -1912,16 +1913,22 @@
       "ranged": [],
       "options": [
         {
-          "id": "lancie",
+          "id": "lancia",
           "name": "Lancia",
+          "add_equipment": [
+            "Lancia"
+          ],
           "cost_per_model": 2,
           "add_spec": {
             "Attacco": "+1 in carica"
           }
         },
         {
-          "id": "scudi",
+          "id": "scudo",
           "name": "Scudo",
+          "add_equipment": [
+            "Scudo"
+          ],
           "cost_per_model": 2,
           "stat_modifiers": {
             "Difesa": 1
@@ -2257,7 +2264,7 @@
       "id": "carro_degli_orchi",
       "name": "Carro degli orchi",
       "category": "Macchine e Mostri",
-      "cost_per_model": 95,
+      "cost_per_model": 100,
       "stats": {
         "Movimento": "2",
         "Attacco": "3",
@@ -2276,8 +2283,18 @@
       "min_size": 1,
       "max_size": 1,
       "rules": [],
-      "equipment": [],
-      "ranged": [],
+      "equipment": [
+        "lancia",
+        "arco"
+      ],
+      "ranged": [
+        {
+          "name": "Arco",
+          "range": "4",
+          "att": "1",
+          "spec": "-"
+        }
+      ],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -2304,7 +2321,10 @@
       "min_size": 1,
       "max_size": 1,
       "rules": [],
-      "equipment": [],
+      "equipment": [
+        "lancia",
+        "arco corto"
+      ],
       "ranged": [
         {
           "name": "Arco corto",
@@ -2404,22 +2424,38 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 8
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 8,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "armatura_pesante",
           "name": "Armatura pesante",
+          "add_equipment": [
+            "Armatura pesante"
+          ],
           "cost": 4
         },
         {
           "id": "scudo",
           "name": "Scudo",
-          "cost": 4
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 30,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -2436,37 +2472,13 @@
           "id": "viverna",
           "name": "Viverna",
           "cost": 180,
-          "mount_profile": {
-            "name": "Viverna",
-            "stats": {
-              "Movimento": "2",
-              "Attacco": "4",
-              "Difesa": "5",
-              "Corpo": "5",
-              "Coraggio": "5"
-            },
-            "spec": {
-              "Movimento": "movimento in volo (4 caselle)",
-              "Attacco": "attacco addizionale da veleno con 1DC, che infligge 1D6 di ferite"
-            },
-            "type": [
-              "mostro"
-            ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [
-              "Volare",
-              "Terrore",
-              "Whaaagh!"
-            ],
-            "equipment": [],
-            "ranged": []
-          }
+          "add_mount": "viverna"
         },
         {
           "id": "carro_degli_orchi",
           "name": "Carro degli Orchi",
-          "cost": 100
+          "cost": 100,
+          "add_mount": "carro_degli_orchi"
         }
       ],
       "option_categories": {
@@ -2506,22 +2518,38 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 8
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 8,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "armatura_pesante",
           "name": "Armatura pesante",
-          "cost": 4
+          "add_equipment": [
+            "Armatura pesante"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "scudo",
           "name": "Scudo",
+          "add_equipment": [
+            "Scudo"
+          ],
           "cost": 4
         },
         {
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 30,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -2534,12 +2562,14 @@
         {
           "id": "viverna",
           "name": "Viverna",
-          "cost": 180
+          "cost": 180,
+          "add_mount": "viverna"
         },
         {
           "id": "carro_degli_orchi",
           "name": "Carro degli Orchi",
-          "cost": 100
+          "cost": 100,
+          "add_mount": "carro_degli_orchi"
         }
       ],
       "option_categories": {
@@ -2581,17 +2611,30 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 8
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 8,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "scudo",
           "name": "Scudo",
-          "cost": 4
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 30,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -2604,7 +2647,8 @@
         {
           "id": "viverna",
           "name": "Viverna",
-          "cost": 180
+          "cost": 180,
+          "add_mount": "viverna"
         }
       ],
       "option_categories": {
@@ -2643,36 +2687,52 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 8
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 8,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "scudo",
           "name": "Scudo",
-          "cost": 4
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "lupo",
           "name": "Lupo",
           "cost": 20,
+          "add_mount": "Lupo",
           "required_option": "goblin_comuni"
         },
         {
           "id": "carro_dei_goblin",
           "name": "Carro dei Goblin",
           "cost": 60,
-          "required_option": "goblin_comuni"
+          "required_option": "goblin_comuni",
+          "mount_profile": "carro_dei_goblin"
         },
         {
           "id": "ragno_gigante",
           "name": "Ragno Gigante",
           "cost": 20,
+          "add_mount": "Ragno Gigante",
           "required_option": "goblin_delle_foreste"
         },
         {
           "id": "ragno_gigantesco",
           "name": "Ragno Gigantesco",
           "cost": 50,
-          "required_option": "goblin_delle_foreste"
+          "required_option": "goblin_delle_foreste",
+          "add_mount": "ragno_gigantesco"
         },
         {
           "id": "goblin_comuni",
@@ -2698,7 +2758,7 @@
         ],
         "cavalcatura": [
           "nessuno",
-          "carro",
+          "carro_dei_goblin",
           "lupo",
           "ragno_gigante",
           "ragno_gigantesco"
@@ -2741,6 +2801,7 @@
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 30,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -2753,12 +2814,14 @@
         {
           "id": "viverna",
           "name": "Viverna",
-          "cost": 180
+          "cost": 180,
+          "add_mount": "viverna"
         },
         {
           "id": "carro_degli_orchi",
           "name": "Carro degli Orchi",
-          "cost": 100
+          "cost": 100,
+          "add_mount": "carro_degli_orchi"
         }
       ],
       "option_categories": {
@@ -2806,6 +2869,7 @@
         {
           "id": "cinghiale",
           "name": "Cinghiale",
+          "add_mount": "Cinghiale",
           "cost": 30,
           "stat_modifiers": {
             "Movimento": 1,
@@ -2819,7 +2883,8 @@
         {
           "id": "viverna",
           "name": "Viverna",
-          "cost": 180
+          "cost": 180,
+          "add_mount": "viverna"
         }
       ],
       "option_categories": {
@@ -2866,25 +2931,29 @@
           "id": "lupo",
           "name": "Lupo",
           "cost": 20,
+          "add_mount": "Lupo",
           "required_option": "goblin_comuni"
         },
         {
           "id": "carro_dei_goblin",
           "name": "Carro dei Goblin",
           "cost": 60,
-          "required_option": "goblin_comuni"
+          "required_option": "goblin_comuni",
+          "mount_profile": "carro_dei_goblin"
         },
         {
           "id": "ragno_gigante",
           "name": "Ragno Gigante",
           "cost": 20,
+          "add_mount": "Ragno Gigante",
           "required_option": "goblin_delle_foreste"
         },
         {
           "id": "ragno_gigantesco",
           "name": "Ragno Gigantesco",
           "cost": 50,
-          "required_option": "goblin_delle_foreste"
+          "required_option": "goblin_delle_foreste",
+          "add_mount": "ragno_gigantesco"
         },
         {
           "id": "goblin_comuni",
@@ -2910,7 +2979,7 @@
         ],
         "cavalcatura": [
           "nessuno",
-          "carro",
+          "carro_dei_goblin",
           "lupo",
           "ragno_gigante",
           "ragno_gigantesco"
@@ -2945,22 +3014,41 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 6
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 6,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "armatura_pesante",
           "name": "Armatura pesante",
-          "cost": 3
+          "add_equipment": [
+            "Armatura pesante"
+          ],
+          "cost": 3,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "scudo",
           "name": "Scudo",
-          "cost": 3
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 3,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 24,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -2973,12 +3061,14 @@
         {
           "id": "viverna",
           "name": "Viverna",
-          "cost": 180
+          "cost": 180,
+          "add_mount": "viverna"
         },
         {
           "id": "carro_degli_orchi",
           "name": "Carro degli Orchi",
-          "cost": 100
+          "cost": 100,
+          "mount_profile": "carro_degli_orchi"
         }
       ],
       "option_categories": {
@@ -3018,22 +3108,41 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 6
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 6,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "armatura_pesante",
           "name": "Armatura pesante",
-          "cost": 3
+          "add_equipment": [
+            "Armatura pesante"
+          ],
+          "cost": 3,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "scudo",
           "name": "Scudo",
-          "cost": 3
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 3,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 24,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -3046,12 +3155,14 @@
         {
           "id": "viverna",
           "name": "Viverna",
-          "cost": 180
+          "cost": 180,
+          "add_mount": "viverna"
         },
         {
           "id": "carro_degli_orchi",
           "name": "Carro degli Orchi",
-          "cost": 100
+          "cost": 100,
+          "mount_profile": "carro_degli_orchi"
         }
       ],
       "option_categories": {
@@ -3093,17 +3204,30 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 6
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 6,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "scudo",
           "name": "Scudo",
-          "cost": 3
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 3,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 24,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -3116,7 +3240,8 @@
         {
           "id": "viverna",
           "name": "Viverna",
-          "cost": 180
+          "cost": 180,
+          "add_mount": "viverna"
         }
       ],
       "option_categories": {
@@ -3155,36 +3280,52 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 6
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 6,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "scudo",
           "name": "Scudo",
-          "cost": 3
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 3,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "lupo",
           "name": "Lupo",
           "cost": 16,
+          "add_mount": "Lupo",
           "required_option": "goblin_comuni"
         },
         {
           "id": "carro_dei_goblin",
           "name": "Carro dei Goblin",
           "cost": 60,
-          "required_option": "goblin_comuni"
+          "required_option": "goblin_comuni",
+          "mount_profile": "carro_dei_goblin"
         },
         {
           "id": "ragno_gigante",
           "name": "Ragno Gigante",
           "cost": 16,
+          "add_mount": "Ragno Gigante",
           "required_option": "goblin_delle_foreste"
         },
         {
           "id": "ragno_gigantesco",
           "name": "Ragno Gigantesco",
           "cost": 50,
-          "required_option": "goblin_delle_foreste"
+          "required_option": "goblin_delle_foreste",
+          "add_mount": "ragno_gigantesco"
         },
         {
           "id": "goblin_comuni",
@@ -3210,7 +3351,7 @@
         ],
         "cavalcatura": [
           "nessuno",
-          "carro",
+          "carro_dei_goblin",
           "lupo",
           "ragno_gigante",
           "ragno_gigantesco"
@@ -3247,22 +3388,41 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 4
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "armatura_pesante",
           "name": "Armatura pesante",
-          "cost": 2
+          "add_equipment": [
+            "Armatura pesante"
+          ],
+          "cost": 2,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "scudo",
           "name": "Scudo",
-          "cost": 2
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 2,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 18,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -3305,22 +3465,41 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 4
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "armatura_pesante",
           "name": "Armatura pesante",
-          "cost": 2
+          "add_equipment": [
+            "Armatura pesante"
+          ],
+          "cost": 2,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "scudo",
           "name": "Scudo",
-          "cost": 2
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 2,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 18,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -3364,17 +3543,30 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 4
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "scudo",
           "name": "Scudo",
-          "cost": 2
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 2,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 18,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -3416,23 +3608,37 @@
         {
           "id": "arma_a_due_mani_due_armi",
           "name": "Arma a due mani / due armi",
-          "cost": 4
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
         },
         {
           "id": "scudo",
           "name": "Scudo",
-          "cost": 2
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 2,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
         },
         {
           "id": "lupo",
           "name": "Lupo",
           "cost": 12,
+          "add_mount": "Lupo",
           "required_option": "goblin_comuni"
         },
         {
           "id": "ragno_gigante",
           "name": "Ragno Gigante",
           "cost": 12,
+          "add_mount": "Ragno Gigante",
           "required_option": "goblin_delle_foreste"
         },
         {
@@ -3496,6 +3702,7 @@
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 18,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -3544,6 +3751,7 @@
           "id": "cinghiale",
           "name": "Cinghiale",
           "cost": 18,
+          "add_mount": "Cinghiale",
           "stat_modifiers": {
             "Movimento": 1,
             "Difesa": 1,
@@ -3591,12 +3799,14 @@
           "id": "lupo",
           "name": "Lupo",
           "cost": 12,
+          "add_mount": "Lupo",
           "required_option": "goblin_comuni"
         },
         {
           "id": "ragno_gigante",
           "name": "Ragno Gigante",
           "cost": 12,
+          "add_mount": "Ragno Gigante",
           "required_option": "goblin_delle_foreste"
         },
         {
@@ -3626,6 +3836,298 @@
       "max_per_army": 0
     },
     {
+      "id": "gorbard_artiglio_di_ferro",
+      "name": "Gorbard Artiglio di Ferro",
+      "category": "Personaggi",
+      "cost_per_model": 135,
+      "stats": {
+        "Movimento": "2",
+        "Attacco": "4",
+        "Difesa": "4",
+        "Corpo": "5",
+        "Coraggio": "7"
+      },
+      "spec": {
+        "Attacco": "+1 in carica"
+      },
+      "type": [
+        "cavalleria_pesante",
+        "personaggio_speciale",
+        "orco"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Tutte le unit\u00e0 di Orchi o Goblin entro 2 caselle ignorano l'Animosit\u00e0"
+      ],
+      "equipment": [],
+      "mount": "Cinghiale",
+      "magic_items": [
+        "morgor_lo_squartatore"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "armatura_pesante",
+          "name": "Armatura pesante",
+          "add_equipment": [
+            "Armatura pesante"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 1
+    },
+    {
+      "id": "azhag_il_massacratore",
+      "name": "Azhag il Massacratore",
+      "category": "Personaggi",
+      "cost_per_model": 385,
+      "stats": {
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "3",
+        "Corpo": "4",
+        "Coraggio": "7"
+      },
+      "type": [
+        "fanteria",
+        "personaggio_speciale",
+        "orco"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Tutte le unit\u00e0 di Orchi o Goblin entro 2 caselle ignorano l'Animosit\u00e0"
+      ],
+      "equipment": [],
+      "mount": {
+        "name": "Viverna",
+        "stats": {
+          "Movimento": 2,
+          "Attacco": 4,
+          "Difesa": 5,
+          "Corpo": 5,
+          "Coraggio": 5
+        },
+        "spec": {
+          "Movimento": "movimento in volo (4 caselle)",
+          "Attacco": "attacco addizionale da veleno con 1DC, che infligge 1D6 di ferite"
+        },
+        "type": [
+          "mostro"
+        ],
+        "min_size": 1,
+        "max_size": 1,
+        "rules": [
+          "Volare",
+          "Terrore",
+          "Whaaagh!"
+        ],
+        "equipment": [],
+        "ranged": []
+      },
+      "magic_items": [
+        "la_corona_della_stregoneria"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "arma_a_due_mani_due_armi",
+          "name": "Arma a due mani / due armi",
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 8,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
+        },
+        {
+          "id": "armatura_pesante",
+          "name": "Armatura pesante",
+          "add_equipment": [
+            "Armatura pesante"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 1
+    },
+    {
+      "id": "morglum_spaccacolli",
+      "name": "Morglum Spaccacolli",
+      "category": "Personaggi",
+      "cost_per_model": 115,
+      "stats": {
+        "Movimento": "2",
+        "Attacco": "4",
+        "Difesa": "5",
+        "Corpo": "5",
+        "Coraggio": "7"
+      },
+      "spec": {
+        "Attacco": "+1 in carica"
+      },
+      "type": [
+        "cavalleria_pesante",
+        "personaggio_speciale",
+        "orco_nero"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Immune alla psicologia",
+        "Rende Immume alla Psicologia la sua unit\u00e0"
+      ],
+      "equipment": [],
+      "mount": "Cinghiale",
+      "magic_items": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "arma_a_due_mani_due_armi",
+          "name": "Arma a due mani / due armi",
+          "add_equipment": [
+            "Arma a due mani / due armi"
+          ],
+          "cost": 8,
+          "stat_modifiers": {
+            "Attacco": 1
+          }
+        },
+        {
+          "id": "armatura_pesante",
+          "name": "Armatura pesante",
+          "add_equipment": [
+            "Armatura pesante"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
+        }
+      ],
+      "magic_item_slots": 3,
+      "max_per_army": 1
+    },
+    {
+      "id": "gorfang_sanguemarcio",
+      "name": "Gorfang Sanguemarcio",
+      "category": "Personaggi",
+      "cost_per_model": 60,
+      "stats": {
+        "Movimento": "1",
+        "Attacco": "5",
+        "Difesa": "3",
+        "Corpo": "3",
+        "Coraggio": "5"
+      },
+      "type": [
+        "fantria",
+        "personaggio_speciale",
+        "orco"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Odia i Nani"
+      ],
+      "equipment": [],
+      "magic_items": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "scudo",
+          "name": "Scudo",
+          "add_equipment": [
+            "Scudo"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
+        },
+        {
+          "id": "armatura_pesante",
+          "name": "Armatura pesante",
+          "add_equipment": [
+            "Armatura pesante"
+          ],
+          "cost": 4,
+          "stat_modifiers": {
+            "Difesa": 1
+          }
+        }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 1
+    },
+    {
+      "id": "grom_il_pancione",
+      "name": "Grom il Pancione",
+      "category": "Personaggi",
+      "cost_per_model": 275,
+      "stats": {
+        "Movimento": "1",
+        "Attacco": "3",
+        "Difesa": "2",
+        "Corpo": "4",
+        "Coraggio": "5"
+      },
+      "spec": {
+        "Difesa": "rigenerazione 4+"
+      },
+      "type": [
+        "fanteria",
+        "personaggio_speciale",
+        "goblin"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Stendardo da Battaglia"
+      ],
+      "equipment": [],
+      "mount": {
+        "name": "Carro di Grom (con Niblit)",
+        "stats": {
+          "Movimento": 2,
+          "Attacco": 3,
+          "Difesa": 4,
+          "Corpo": 5,
+          "Coraggio": 2
+        },
+        "spec": {
+          "Attacco": "+1D6+1 in carica"
+        },
+        "type": [
+          "carro_leggero"
+        ],
+        "min_size": 1,
+        "max_size": 1,
+        "rules": [],
+        "equipment": [],
+        "ranged": []
+      },
+      "magic_items": [
+        "mordielfi_l_ascia_di_grom"
+      ],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 2,
+      "max_per_army": 1,
+      "magic_banner_slot": true
+    },
+    {
       "id": "skarsnik_e_gobbla",
       "name": "Skarsnik e Gobbla",
       "category": "Personaggi",
@@ -3645,11 +4147,30 @@
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "Guardia del Corpo (finch\u00e9 Gobbla \u00e8 in vita, qualsiasi attacco, anche da incantesimo o altro, diretto verso Skarsnik diventa invece diretto verso Gobbla; inoltre, finch\u00e9 Gobbla \u00e8 in vita, Skarsnik non pu\u00f2 lanciare o accettare sfide)"
+        "Guardia del Corpo"
       ],
-      "equipment": [
-        "Gobbla"
-      ],
+      "equipment": [],
+      "mount": {
+        "name": "Gobbla",
+        "stats": {
+          "Movimento": 1,
+          "Attacco": 5,
+          "Difesa": 3,
+          "Corpo": 4,
+          "Coraggio": 2
+        },
+        "spec": {},
+        "type": [
+          "fanteria"
+        ],
+        "min_size": 1,
+        "max_size": 1,
+        "rules": [
+          "Guardia del Corpo"
+        ],
+        "equipment": [],
+        "ranged": []
+      },
       "magic_items": [
         "il_pungolo_di_skarsnik"
       ],
@@ -3659,83 +4180,57 @@
       "max_per_army": 1
     },
     {
-      "id": "azhag_il_massacratore",
-      "name": "Azhag il Massacratore",
-      "category": "Personaggi",
-      "cost_per_model": 385,
+      "id": "viverna",
+      "name": "Viverna",
+      "category": "none",
+      "cost_per_model": 180,
       "stats": {
-        "Movimento": "1",
+        "Movimento": "2",
         "Attacco": "4",
-        "Difesa": "3",
-        "Corpo": "4",
-        "Coraggio": "7"
-      },
-      "type": [
-        "fanteria",
-        "personaggio_speciale"
-      ],
-      "min_size": 1,
-      "max_size": 1,
-      "rules": [
-        "Tutte le unit\u00e0 di Orchi o Goblin entro 2 caselle ignorano l'Animosit\u00e0",
-        "Mago livello 3 (Necromanzia o magia delle Tenebre)"
-      ],
-      "equipment": [
-        "Viverna"
-      ],
-      "magic_items": [
-        "la_corona_della_stregoneria"
-      ],
-      "ranged": [],
-      "options": [
-        {
-          "id": "arma_a_due_mani_due_armi",
-          "name": "Arma a due mani / due armi",
-          "cost": 8
-        },
-        {
-          "id": "armatura_pesante",
-          "name": "Armatura pesante",
-          "cost": 4
-        }
-      ],
-      "magic_item_slots": 2,
-      "max_per_army": 1
-    },
-    {
-      "id": "grom_il_pancione",
-      "name": "Grom il Pancione",
-      "category": "Personaggi",
-      "cost_per_model": 275,
-      "stats": {
-        "Movimento": "1",
-        "Attacco": "3",
-        "Difesa": "2*",
-        "Corpo": "4",
+        "Difesa": "5",
+        "Corpo": "5",
         "Coraggio": "5"
       },
+      "spec": {
+        "Movimento": "movimento in volo (4 caselle)",
+        "Attacco": "attacco addizionale da veleno con 1DC, che infligge 1D6 di ferite"
+      },
       "type": [
-        "fanteria",
-        "personaggio_speciale",
-        "goblin"
+        "mostro"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "Stendardo da Battaglia"
+        "Volare",
+        "Terrore",
+        "Whaaagh!"
       ],
-      "equipment": [
-        "Carro di Grom",
-        "Niblit (alfiere goblin)"
+      "equipment": [],
+      "ranged": []
+    },
+    {
+      "id": "ragno_gigantesco",
+      "name": "Ragno Gigantesco",
+      "category": "none",
+      "cost_per_model": 50,
+      "stats": {
+        "Movimento": "2",
+        "Attacco": "3",
+        "Difesa": "4",
+        "Corpo": "3",
+        "Coraggio": "3"
+      },
+      "type": [
+        "mostro"
       ],
-      "magic_items": [
-        "mordielfi_l_ascia_di_grom"
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Paura",
+        "Supera Ostacoli"
       ],
-      "ranged": [],
-      "options": [],
-      "magic_item_slots": 2,
-      "max_per_army": 1,
-      "magic_banner_slot": true
+      "equipment": [],
+      "ranged": []
     }
   ],
   "bretonnia": [
@@ -5149,6 +5644,38 @@
       "options": []
     },
     {
+      "id": "fenice",
+      "name": "Fenice",
+      "category": "Macchine e Mostri",
+      "cost_per_model": 250,
+      "stats": {
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "4",
+        "Corpo": "5",
+        "Coraggio": "6"
+      },
+      "spec": {
+        "Movimento": "movimento in volo (4 caselle)",
+        "Attacco": "attacchi magici (fuoco)"
+      },
+      "type": [
+        "mostro"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Volare",
+        "Terrore",
+        "Immune al fuoco",
+        "Scia di fuoco (unit\u00e0 sorvolate 1D3 DC no difesa)",
+        "Risorgere dalle ceneri"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": []
+    },
+    {
       "id": "lord",
       "name": "Lord",
       "category": "Personaggi",
@@ -5171,6 +5698,9 @@
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": [
+            "scudo"
+          ],
           "cost": 4,
           "stat_modifiers": {
             "Difesa": 1
@@ -5179,6 +5709,9 @@
         {
           "id": "arma_a_due_mani",
           "name": "arma a due mani",
+          "add_equipment": [
+            "arma a due mani"
+          ],
           "cost": 8,
           "stat_modifiers": {
             "Attacco": 1
@@ -5187,6 +5720,9 @@
         {
           "id": "lancia",
           "name": "lancia",
+          "add_equipment": [
+            "lancia"
+          ],
           "cost": 4,
           "add_spec": {
             "Attacco": "+1 in carica (se a cavallo)"
@@ -5195,6 +5731,9 @@
         {
           "id": "lancia_da_cavaliere",
           "name": "lancia da cavaliere",
+          "add_equipment": [
+            "lancia da cavaliere"
+          ],
           "cost": 8,
           "add_spec": {
             "Attacco": "+2 in carica (se a cavallo)"
@@ -5203,6 +5742,9 @@
         {
           "id": "armatura_pesante",
           "name": "armatura pesante",
+          "add_equipment": [
+            "armatura pesante"
+          ],
           "cost": 4,
           "stat_modifiers": {
             "Difesa": 1
@@ -5237,89 +5779,25 @@
           "id": "pegaso",
           "name": "pegaso",
           "cost": 80,
-          "mount_profile": {
-            "name": "Pegaso",
-            "stats": {
-              "Movimento": "2",
-              "Attacco": "2",
-              "Difesa": "3",
-              "Corpo": "3",
-              "Coraggio": "4"
-            },
-            "spec": {
-              "Movimento": "movimento in volo (4 caselle)"
-            },
-            "type": [
-              "mostro"
-            ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [
-              "Volare"
-            ]
-          }
+          "add_mount": "pegaso"
         },
         {
           "id": "grifone",
           "name": "grifone",
           "cost": 170,
-          "mount_profile": {
-            "name": "Grifone",
-            "stats": {
-              "Movimento": "2",
-              "Attacco": "4",
-              "Difesa": "4",
-              "Corpo": "5",
-              "Coraggio": "5"
-            },
-            "spec": {
-              "Movimento": "movimento in volo (4 caselle)"
-            },
-            "type": [
-              "mostro"
-            ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [
-              "Volare",
-              "Terrore"
-            ]
-          }
+          "add_mount": "grifone"
+        },
+        {
+          "id": "fenice",
+          "name": "fenice",
+          "cost": 250,
+          "add_mount": "fenice"
         },
         {
           "id": "drago",
           "name": "drago",
           "cost": 380,
-          "mount_profile": {
-            "name": "Drago",
-            "stats": {
-              "Movimento": "2",
-              "Attacco": "6",
-              "Difesa": "6",
-              "Corpo": "8",
-              "Coraggio": "7"
-            },
-            "spec": {
-              "Movimento": "movimento in volo (4 caselle)"
-            },
-            "type": [
-              "mostro"
-            ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [
-              "Volare",
-              "Terrore"
-            ],
-            "ranged": [
-              {
-                "name": "Soffio",
-                "range": "1",
-                "att": "5",
-                "spec": "ignora la difesa, anche in CaC"
-              }
-            ]
-          }
+          "add_mount": "drago"
         }
       ],
       "option_categories": {
@@ -5329,6 +5807,7 @@
           "cavallo_bardato",
           "pegaso",
           "grifone",
+          "fenice",
           "drago"
         ]
       },
@@ -5360,6 +5839,9 @@
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": [
+            "scudo"
+          ],
           "cost": 3,
           "stat_modifiers": {
             "Difesa": 1
@@ -5368,6 +5850,9 @@
         {
           "id": "arma_a_due_mani",
           "name": "arma a due mani",
+          "add_equipment": [
+            "arma a due mani"
+          ],
           "cost": 6,
           "stat_modifiers": {
             "Attacco": 1
@@ -5376,6 +5861,9 @@
         {
           "id": "lancia",
           "name": "lancia",
+          "add_equipment": [
+            "lancia"
+          ],
           "cost": 3,
           "spec": {
             "Attacco": "+1 in carica (se a cavallo)"
@@ -5384,14 +5872,20 @@
         {
           "id": "lancia_da_cavaliere",
           "name": "lancia da cavaliere",
+          "add_equipment": [
+            "lancia da cavaliere"
+          ],
           "cost": 6,
-          "spec": {
+          "add_spec": {
             "Attacco": "+2 in carica (se a cavallo)"
           }
         },
         {
           "id": "armatura_pesante",
           "name": "armatura pesante",
+          "add_equipment": [
+            "armatura pesante"
+          ],
           "cost": 3,
           "stat_modifiers": {
             "Difesa": 1
@@ -5426,89 +5920,25 @@
           "id": "pegaso",
           "name": "pegaso",
           "cost": 80,
-          "mount_profile": {
-            "name": "Pegaso",
-            "stats": {
-              "Movimento": "2",
-              "Attacco": "2",
-              "Difesa": "3",
-              "Corpo": "3",
-              "Coraggio": "4"
-            },
-            "spec": {
-              "Movimento": "movimento in volo (4 caselle)"
-            },
-            "type": [
-              "mostro"
-            ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [
-              "Volare"
-            ]
-          }
+          "add_mount": "pegaso"
         },
         {
           "id": "grifone",
           "name": "grifone",
           "cost": 170,
-          "mount_profile": {
-            "name": "Grifone",
-            "stats": {
-              "Movimento": "2",
-              "Attacco": "4",
-              "Difesa": "4",
-              "Corpo": "5",
-              "Coraggio": "5"
-            },
-            "spec": {
-              "Movimento": "movimento in volo (4 caselle)"
-            },
-            "type": [
-              "mostro"
-            ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [
-              "Volare",
-              "Terrore"
-            ]
-          }
+          "add_mount": "grifone"
+        },
+        {
+          "id": "fenice",
+          "name": "fenice",
+          "cost": 250,
+          "add_mount": "fenice"
         },
         {
           "id": "drago",
           "name": "drago",
           "cost": 380,
-          "mount_profile": {
-            "name": "Drago",
-            "stats": {
-              "Movimento": "2",
-              "Attacco": "6",
-              "Difesa": "6",
-              "Corpo": "8",
-              "Coraggio": "7"
-            },
-            "spec": {
-              "Movimento": "movimento in volo (4 caselle)"
-            },
-            "type": [
-              "mostro"
-            ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [
-              "Volare",
-              "Terrore"
-            ],
-            "ranged": [
-              {
-                "name": "Soffio",
-                "range": "1",
-                "att": "5",
-                "spec": "ignora la difesa, anche in CaC"
-              }
-            ]
-          }
+          "add_mount": "drago"
         }
       ],
       "option_categories": {
@@ -5518,6 +5948,7 @@
           "cavallo_bardato",
           "pegaso",
           "grifone",
+          "fenice",
           "drago"
         ]
       },
@@ -5551,6 +5982,9 @@
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": [
+            "scudo"
+          ],
           "cost": 2,
           "stat_modifiers": {
             "Difesa": 1
@@ -5559,6 +5993,9 @@
         {
           "id": "arma_a_due_mani",
           "name": "arma a due mani",
+          "add_equipment": [
+            "arma a due mani"
+          ],
           "cost": 4,
           "stat_modifiers": {
             "Attacco": 1
@@ -5567,6 +6004,9 @@
         {
           "id": "lancia",
           "name": "lancia",
+          "add_equipment": [
+            "lancia"
+          ],
           "cost": 2,
           "add_spec": {
             "Attacco": "+1 in carica (se a cavallo)"
@@ -5575,6 +6015,9 @@
         {
           "id": "lancia_da_cavaliere",
           "name": "lancia da cavaliere",
+          "add_equipment": [
+            "lancia da cavaliere"
+          ],
           "cost": 4,
           "add_spec": {
             "Attacco": "+2 in carica (se a cavallo)"
@@ -5583,6 +6026,9 @@
         {
           "id": "armatura_pesante",
           "name": "armatura pesante",
+          "add_equipment": [
+            "armatura pesante"
+          ],
           "cost": 2,
           "stat_modifiers": {
             "Difesa": 1
@@ -5671,89 +6117,25 @@
           "id": "pegaso",
           "name": "pegaso",
           "cost": 80,
-          "mount_profile": {
-            "name": "Pegaso",
-            "stats": {
-              "Movimento": "2",
-              "Attacco": "2",
-              "Difesa": "3",
-              "Corpo": "3",
-              "Coraggio": "4"
-            },
-            "spec": {
-              "Movimento": "movimento in volo (4 caselle)"
-            },
-            "type": [
-              "mostro"
-            ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [
-              "Volare"
-            ]
-          }
+          "add_mount": "pegaso"
         },
         {
           "id": "grifone",
           "name": "grifone",
           "cost": 170,
-          "mount_profile": {
-            "name": "Grifone",
-            "stats": {
-              "Movimento": "2",
-              "Attacco": "4",
-              "Difesa": "4",
-              "Corpo": "5",
-              "Coraggio": "5"
-            },
-            "spec": {
-              "Movimento": "movimento in volo (4 caselle)"
-            },
-            "type": [
-              "mostro"
-            ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [
-              "Volare",
-              "Terrore"
-            ]
-          }
+          "add_mount": "grifone"
+        },
+        {
+          "id": "fenice",
+          "name": "fenice",
+          "cost": 250,
+          "add_mount": "fenice"
         },
         {
           "id": "drago",
           "name": "drago",
           "cost": 380,
-          "mount_profile": {
-            "name": "Drago",
-            "stats": {
-              "Movimento": "2",
-              "Attacco": "6",
-              "Difesa": "6",
-              "Corpo": "8",
-              "Coraggio": "7"
-            },
-            "spec": {
-              "Movimento": "movimento in volo (4 caselle)"
-            },
-            "type": [
-              "mostro"
-            ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [
-              "Volare",
-              "Terrore"
-            ],
-            "ranged": [
-              {
-                "name": "Soffio",
-                "range": "1",
-                "att": "5",
-                "spec": "ignora la difesa, anche in CaC"
-              }
-            ]
-          }
+          "add_mount": "drago"
         }
       ],
       "option_categories": {
@@ -5762,6 +6144,7 @@
           "cavallo",
           "pegaso",
           "grifone",
+          "fenice",
           "drago"
         ]
       },
@@ -5814,27 +6197,7 @@
           "id": "pegaso",
           "name": "pegaso",
           "cost": 80,
-          "mount_profile": {
-            "name": "Pegaso",
-            "stats": {
-              "Movimento": "2",
-              "Attacco": "2",
-              "Difesa": "3",
-              "Corpo": "3",
-              "Coraggio": "4"
-            },
-            "spec": {
-              "Movimento": "movimento in volo (4 caselle)"
-            },
-            "type": [
-              "mostro"
-            ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [
-              "Volare"
-            ]
-          }
+          "add_mount": "pegaso"
         }
       ],
       "option_categories": {
@@ -5878,6 +6241,89 @@
       ],
       "magic_item_slots": 2,
       "max_per_army": 1
+    },
+    {
+      "id": "pegaso",
+      "name": "Pegaso",
+      "category": "none",
+      "cost_per_model": 80,
+      "stats": {
+        "Movimento": "2",
+        "Attacco": "2",
+        "Difesa": "3",
+        "Corpo": "3",
+        "Coraggio": "4"
+      },
+      "spec": {
+        "Movimento": "movimento in volo (4 caselle)"
+      },
+      "type": [
+        "mostro"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Volare"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": []
+    },
+    {
+      "id": "drago",
+      "name": "Drago",
+      "category": "none",
+      "cost_per_model": 380,
+      "stats": {
+        "Movimento": "2",
+        "Attacco": "6",
+        "Difesa": "6",
+        "Corpo": "8",
+        "Coraggio": "7"
+      },
+      "spec": {
+        "Movimento": "movimento in volo (4 caselle)"
+      },
+      "type": [
+        "mostro"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Volare",
+        "Terrore"
+      ],
+      "ranged": [],
+      "equipment": [],
+      "options": []
+    },
+    {
+      "id": "grifone",
+      "name": "Grifone",
+      "category": "none",
+      "cost_per_model": 170,
+      "stats": {
+        "Movimento": "2",
+        "Attacco": "4",
+        "Difesa": "4",
+        "Corpo": "5",
+        "Coraggio": "5"
+      },
+      "spec": {
+        "Movimento": "movimento in volo (4 caselle)"
+      },
+      "type": [
+        "mostro"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "Volare",
+        "Terrore"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": []
     }
   ],
   "nommorti": [
@@ -10664,19 +11110,6 @@
       ]
     },
     {
-      "id": "l_armatura_di_smeraldo",
-      "name": "L'Armatura Di Smeraldo",
-      "cost": 20,
-      "category": "Armature Magiche",
-      "description": "Armatura pesante. Ignora la prima ferita subita.",
-      "only_for_army": [],
-      "not_for_army": [],
-      "only_for_type": [],
-      "not_for_type": [
-        "mago"
-      ]
-    },
-    {
       "id": "lo_scudo_invalicabile",
       "name": "Lo Scudo Invalicabile",
       "cost": 30,
@@ -10708,6 +11141,19 @@
       "cost": 15,
       "category": "Armature Magiche",
       "description": "Armatura pesante. +2DC in difesa invece di +1.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_di_smeraldo",
+      "name": "L'Armatura Di Smeraldo",
+      "cost": 10,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Ignora la prima ferita subita.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -11195,7 +11641,7 @@
       "name": "Il Libro Di Ashur",
       "cost": 50,
       "category": "Arcani",
-      "description": "Il possessore pu\u00f2 scegliere incantesimi da un qualsiasi mazzo, in qualsiasi combinazione.",
+      "description": "Il possessore pu\u00f2 scegliere incantesimi da un qualsiasi mazzo, in qualsiasi combinazione. Inoltre, il possessore si considera sempre di livello superiore a chi cerca di disperdergli un incantesimo.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
@@ -11327,7 +11773,7 @@
       "name": "Il Bastone \\Della Dannazione",
       "cost": 50,
       "category": "Arcani",
-      "description": "Incantesimo infuso: gittata 6 caselle. L'unit\u00e0 bersaglio di scheletri, zombie, mummie o spettri (ma non catapulte, carri) pu\u00f2 immediatamente muovere di 1 casella, attaccare in CaC o tirare con armi da tiro. Se si sceglie l'attacco, i personaggi all'interno dell'unit\u00e0 non attaccano a loro volta.",
+      "description": "Incantesimo infuso: gittata 6 caselle. L'unit\u00e0 bersaglio di scheletri, zombie, mummie o spettri pu\u00f2 immediatamente muovere di 1 casella, attaccare in CaC o tirare con armi da tiro. Se si sceglie l'attacco, i personaggi all'interno dell'unit\u00e0 non attaccano a loro volta.",
       "only_for_army": [
         "nommorti"
       ],
@@ -11396,7 +11842,7 @@
       "name": "Il Bastone Del Teschio",
       "cost": 35,
       "category": "Arcani",
-      "description": "Il possessore ottiene +1 per disperdere incantesimi (fino a un massimo di 3+).",
+      "description": "Quando tenta di disperdere un incantesimo, il possessore si considera sempre di livello pi\u00f9 alto del lanciatore.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
@@ -11744,7 +12190,7 @@
       "name": "Lo Stendardo Della Vittoria",
       "cost": 100,
       "category": "Stendardi Magici",
-      "description": "Aggiunge 1D3 al risultato del combattimento, sia in attacco che in difesa.",
+      "description": "Aggiunge 1D6 al risultato del combattimento in attacco.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -11839,7 +12285,9 @@
         "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": [
+        "goblin"
+      ],
       "not_for_type": []
     },
     {
@@ -11871,7 +12319,7 @@
       "name": "Lo Stendardo D'Acciaio",
       "cost": 25,
       "category": "Stendardi Magici",
-      "description": "L'unit\u00e0 ottiene +2 DC in difesa.",
+      "description": "L'unit\u00e0 ottiene +1 DC in difesa.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -11882,7 +12330,7 @@
       "name": "La Bandiera Di Guerra",
       "cost": 25,
       "category": "Stendardi Magici",
-      "description": "Aggiunge +1 al risultato del combattimento in difesa.",
+      "description": "Aggiunge +1 al risultato del combattimento in attacco.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -11898,18 +12346,9 @@
         "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": [],
-      "not_for_type": []
-    },
-    {
-      "id": "lo_stendardo_della_disciplina",
-      "name": "Lo Stendardo Della Disciplina",
-      "cost": 25,
-      "category": "Stendardi Magici",
-      "description": "Aggiunge +2 al Coraggio dell'unit\u00e0.",
-      "only_for_army": [],
-      "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": [
+        "goblin"
+      ],
       "not_for_type": []
     },
     {
@@ -11918,6 +12357,17 @@
       "cost": 40,
       "category": "Stendardi Magici",
       "description": "Pu\u00f2 lanciare un incantesimo che attacca con 1D3 di DC, ignora la difesa, raggio 4 caselle.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardo_della_disciplina",
+      "name": "Lo Stendardo Della Disciplina",
+      "cost": 25,
+      "category": "Stendardi Magici",
+      "description": "Aggiunge +1 al Coraggio dell'unit\u00e0.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -12715,93 +13165,156 @@
       return eq;
     }
 
-    function collectUpgrades(unit, selectedOptionIds) {
-      const upgrades = [];
-      for (const opt of unit.options || []) {
-        if (!selectedOptionIds.has(opt.id)) continue;
-        if (opt.add_equipment) continue;
-        if (opt.is_magic_item) continue;
-        upgrades.push(opt.name);
-      }
-      return upgrades;
-    }
+    // function collectMount(unit, selectedOptionIds) {
+    //   // try with optional first
+    //   for (const opt of unit.options || []) {
+    //     // caso 1: mount profile definito
+    //     if (selectedOptionIds.has(opt.id)){
+    //       if (opt.mount_profile) {
+    //         opt.mount_profile.specs = collectSpecModifiers(opt.mount_profile,[]);
+    //         opt.mount_profile.rangedSpecs = collectRangedSpecs(opt.mount_profile.ranged);
+    //         return opt.mount_profile;
+    //       }
+    //       else if (opt.add_mount) {
+    //         const mountUnit = findMountById(opt.add_mount);
+    //         // caso 2: nome corrispondente a un'unità della lista
+    //         if (mountUnit) {
+    //           return {
+    //             name: mountUnit.name,
+    //             stats: mountUnit.stats,
+    //             spec: mountUnit.spec,
+    //             specs: collectSpecModifiers(mountUnit,[]),
+    //             type: mountUnit.type,
+    //             min_size: mountUnit.min_size,
+    //             max_size: mountUnit.max_size,
+    //             rules: mountUnit.rules,
+    //             equipment: mountUnit.equipment,
+    //             ranged: mountUnit.ranged,
+    //             rangedSpecs: collectRangedSpecs(mountUnit.ranged)
+    //           };
+    //         }
+    //         // caso 3: nessuna delle precedenti (cavalcatura senza profilo)
+    //         else {
+    //           let mount = {};
+    //           mount.name = opt.add_mount;
+    //           return mount;
+    //         }
+    //       }
+    //     }
+    //   }
+    //   // then default ones
+    //   if (unit.mount) {
+    //     // caso 1: mount profile definito
+    //     if (unit.mount.stats){
+    //       unit.mount.specs = collectSpecModifiers(unit.mount,[]);
+    //       unit.mount.rangedSpecs = collectRangedSpecs(unit.mount.ranged);
+    //       return unit.mount;
+    //     }
+    //     else {
+    //       const mountUnit = findMountById(opt.add_mount);
+    //       // caso 2: nome corrispondente a un'unità della lista
+    //       if (mountUnit) {
+    //         return {
+    //           name: mountUnit.name,
+    //           stats: mountUnit.stats,
+    //           spec: mountUnit.spec,
+    //           specs: collectSpecModifiers(mountUnit,[]),
+    //           type: mountUnit.type,
+    //           min_size: mountUnit.min_size,
+    //           max_size: mountUnit.max_size,
+    //           rules: mountUnit.rules,
+    //           equipment: mountUnit.equipment,
+    //           ranged: mountUnit.ranged,
+    //           rangedSpecs: collectRangedSpecs(mountUnit.ranged)
+    //         };
+    //       }
+    //       else {
+    //         let mount = {};
+    //         mount.name = unit.mount;
+    //         return mount;
+    //       }
+    //     }
+    //   }
+    //   return null;
+    // }
 
-    function computeModifiedRules(unit, selectedOptionIds) {
-      let rules = [...(unit.rules || [])];
-      for (const opt of unit.options || []) {
-        if (selectedOptionIds.has(opt.id) && opt.add_rules) {
-          rules.push(...opt.add_rules);
-        }
-      }
-      return rules;
-    }
+    // function collectUpgrades(unit, selectedOptionIds) {
+    //   const upgrades = [];
+    //   for (const opt of unit.options || []) {
+    //     if (!selectedOptionIds.has(opt.id)) continue;
+    //     if (opt.add_equipment) continue;
+    //     if (opt.add_mount) continue;
+    //     if (opt.is_magic_item) continue;
+    //     upgrades.push(opt.name);
+    //   }
+    //   return upgrades;
+    // }
 
-    function computeModifiedStats(unit, selectedOptionIds) {
-      const stats = {};
-      for (const [k, v] of Object.entries(unit.stats)) {
-        stats[k] = Number(v);
-      }
-      for (const opt of unit.options || []) {
-        if (selectedOptionIds.has(opt.id) && opt.stat_modifiers) {
-          for (const [stat, delta] of Object.entries(opt.stat_modifiers)) {
-            stats[stat] = (stats[stat] ?? 0) + Number(delta);
-          }
-        }
-      }
-      return stats;
-    }
+    // function computeModifiedRules(unit, selectedOptionIds) {
+    //   let rules = [...(unit.rules || [])];
+    //   for (const opt of unit.options || []) {
+    //     if (selectedOptionIds.has(opt.id) && opt.add_rules) {
+    //       rules.push(...opt.add_rules);
+    //     }
+    //   }
+    //   return rules;
+    // }
 
-    function collectSpecModifiers(unit, selectedOptionIds) {
-      const grouped = {};
-      if (unit.spec) {
-        for (const [stat, text] of Object.entries(unit.spec)) {
-          if (!grouped[stat]) grouped[stat] = [];
-          grouped[stat].push(text);
-        }
-      }
-      for (const opt of unit.options || []) {
-        if (selectedOptionIds.has(opt.id) && opt.add_spec) {
-          for (const [stat, text] of Object.entries(opt.add_spec)) {
-            if (!grouped[stat]) grouped[stat] = [];
-            grouped[stat].push(text);
-          }
-        }
-      }
-      return grouped;
-    }
+    // function computeModifiedStats(unit, selectedOptionIds) {
+    //   const stats = {};
+    //   for (const [k, v] of Object.entries(unit.stats)) {
+    //     stats[k] = Number(v);
+    //   }
+    //   for (const opt of unit.options || []) {
+    //     if (selectedOptionIds.has(opt.id) && opt.stat_modifiers) {
+    //       for (const [stat, delta] of Object.entries(opt.stat_modifiers)) {
+    //         stats[stat] = (stats[stat] ?? 0) + Number(delta);
+    //       }
+    //     }
+    //   }
+    //   return stats;
+    // }
 
-    function collectRangedWeapons(unit, selectedOptionIds) {
-      const ranged = [];
-      if (unit.ranged) ranged.push(...unit.ranged);
-      for (const opt of unit.options || []) {
-        if (selectedOptionIds.has(opt.id) && opt.add_ranged) {
-          ranged.push(...opt.add_ranged);
-        }
-      }
-      return ranged;
-    }
+    // function collectSpecModifiers(unit, selectedOptionIds) {
+    //   const grouped = {};
+    //   if (unit.spec) {
+    //     for (const [stat, text] of Object.entries(unit.spec)) {
+    //       if (!grouped[stat]) grouped[stat] = [];
+    //       grouped[stat].push(text);
+    //     }
+    //   }
+    //   for (const opt of unit.options || []) {
+    //     if (selectedOptionIds.has(opt.id) && opt.add_spec) {
+    //       for (const [stat, text] of Object.entries(opt.add_spec)) {
+    //         if (!grouped[stat]) grouped[stat] = [];
+    //         grouped[stat].push(text);
+    //       }
+    //     }
+    //   }
+    //   return grouped;
+    // }
 
-    function collectRangedSpecs(rangedWeapons) {
-      const specs = [];
-      if (!rangedWeapons || rangedWeapons.length === 0) return specs;
-      rangedWeapons.forEach((weapon, index) => {
-        if (weapon.spec && weapon.spec !== "-") {
-          specs.push({ index, text: weapon.spec });
-        }
-      });
-      return specs;
-    }
+    // function collectRangedWeapons(unit, selectedOptionIds) {
+    //   const ranged = [];
+    //   if (unit.ranged) ranged.push(...unit.ranged);
+    //   for (const opt of unit.options || []) {
+    //     if (selectedOptionIds.has(opt.id) && opt.add_ranged) {
+    //       ranged.push(...opt.add_ranged);
+    //     }
+    //   }
+    //   return ranged;
+    // }
 
-    function collectMountProfile(unit, selectedOptionIds) {
-      for (const opt of unit.options || []) {
-        if (selectedOptionIds.has(opt.id) && opt.mount_profile) {
-          opt.mount_profile.specs = collectSpecModifiers(opt.mount_profile,[]);
-          opt.mount_profile.rangedSpecs = collectRangedSpecs(opt.mount_profile.ranged);
-          return opt.mount_profile;
-        }
-      }
-      return null;
-    }
+    // function collectRangedSpecs(rangedWeapons) {
+    //   const specs = [];
+    //   if (!rangedWeapons || rangedWeapons.length === 0) return specs;
+    //   rangedWeapons.forEach((weapon, index) => {
+    //     if (weapon.spec && weapon.spec !== "-") {
+    //       specs.push({ index, text: weapon.spec });
+    //     }
+    //   });
+    //   return specs;
+    // }
 
     // ---
 
@@ -12857,8 +13370,8 @@
           // --- TIPO UNITÀ ---
           const type = unit.type || null;
 
-          // --- CAVALCATURA ---
-          const mountProfile = collectMountProfile(unit, selectedOptionIds);
+          // --- CAVALCATURE ---
+          const mount = collectMount(unit, selectedOptionIds) || null;
 
           return {
             name: e.name,
@@ -12881,7 +13394,9 @@
             ranged: rangedWeapons,
             rangedSpecs,
 
-            mount: mountProfile
+            mount
+            // ,
+            // mountProfile
           };
         })
       };
@@ -13125,6 +13640,8 @@
       y += 14;
 
       // Ripristina testo nero
+      doc.setFillColor(255, 255, 255);   // bianco
+      doc.rect(colX(), y, columnWidth, 14, "F"); // sfondo
       doc.setTextColor(0, 0, 0);
       doc.setFontSize(10);
       doc.setFont("helvetica", "normal");
@@ -13179,6 +13696,16 @@
         y = drawLabelAndWrappedText(doc, "Equipaggiamento:", text, colX(), y, columnWidth);
       }
 
+      // Cavalcatura
+      if (unit.mount) {
+        doc.setFontSize(11);
+        let text = null;
+        console.log(unit.mount.name);
+        if (unit.mount.name) text = autoRenderName(unit.mount.name);
+        else text = autoRenderName(unit.mount);
+        y = drawLabelAndWrappedText(doc, "Cavalcatura:", text, colX(), y, columnWidth);
+      }
+
       // Upgrade
       if (unit.upgrades && unit.upgrades.length > 0) {
         doc.setFontSize(11);
@@ -13214,6 +13741,8 @@
 
         // Righe
         rangedWithStars.forEach(weapon => {
+          doc.rect(colX(), y, columnWidth, 14, "F"); // sfondo
+
           // Bordi
           cols.forEach((_, i) => {
             const x = colX() + i * colWidth;
@@ -13272,29 +13801,38 @@
       // Tabella caratteristiche
       const statKeys = Object.keys(mount.stats || {});
       if (statKeys.length > 0) {
-        h += 16; // header
-        h += 16; // valori
-        h += 8;  // spazio
+        h += 14; // header
+        h += 14; // valori
+        h += 4;  // spazio
       }
 
       // Spec
       if (mount.spec) {
-        const count = Object.keys(mount.spec).length;
-        h += count * 11 + 6;
+        for (const [stat, text] of Object.entries(mount.spec)) {
+          const lines = doc.splitTextToSize(text, columnWidth);
+          h += lines.length * 10 + 4;
+        }
+      }
+
+      // Tipo
+      if (mount.type && mount.type.length > 0) {
+        const text = mount.type.join(", ");
+        const lines = doc.splitTextToSize(text, columnWidth);
+        h += lines.length * 11 + 5;
       }
 
       // Regole speciali
       if (mount.rules && mount.rules.length > 0) {
         const text = mount.rules.join(", ");
-        const lines = doc.splitTextToSize(text, columnWidth - 100);
-        h += lines.length * 11 + 6;
+        const lines = doc.splitTextToSize(text, columnWidth);
+        h += lines.length * 11 + 5;
       }
 
       // Equipaggiamento
       if (mount.equipment && mount.equipment.length > 0) {
         const text = mount.equipment.join(", ");
-        const lines = doc.splitTextToSize(text, columnWidth - 100);
-        h += lines.length * 11 + 6;
+        const lines = doc.splitTextToSize(text, columnWidth);
+        h += lines.length * 11 + 5;
       }
 
       // Armi a distanza
@@ -13302,12 +13840,13 @@
         const cols = 4;
         h += 14; // header
         h += mount.ranged.length * 14; // righe
-        h += 8; // spazio
+        h += 4; // spazio
 
         if (mount.rangedSpecs && mount.rangedSpecs.length > 0) {
-          h += mount.rangedSpecs.length * 11 + 6;
+          h += mount.rangedSpecs.length * 11 + 4;
         }
       }
+      h += 6
 
       return h;
     }
@@ -13378,18 +13917,17 @@
         printUnit(unit);
 
         // Cavalcatura con profilo
-        if (unit.mount) {
+        if (unit.mount && unit.mount.stats) {
           y += 4;
-
           let yy = y;
 
           const mountHeight = measureMountBlock(doc, unit.mount, columnWidth);
+          ensureSpace(mountHeight/12);
 
           doc.setFillColor(215, 215, 215);
           doc.rect(colX()-4, y-12, columnWidth+8, mountHeight, "F");
           doc.rect(colX()-4, y-12, columnWidth+8, mountHeight);
 
-          ensureSpace(4);
           doc.setFont("helvetica", "bold");
           doc.setFontSize(12);
           doc.text(`${unit.mount.name}:`, colX(), y);
@@ -13613,7 +14151,6 @@
   }
 
   function computeModifiedStats(unit, selectedOptionIds) {
-    // const stats = { ...unit.stats };
     const stats = {};
     for (const [k, v] of Object.entries(unit.stats)) {
       stats[k] = Number(v);
@@ -13621,8 +14158,7 @@
     for (const opt of unit.options || []) {
       if (selectedOptionIds.has(opt.id) && opt.stat_modifiers) {
         for (const [stat, delta] of Object.entries(opt.stat_modifiers)) {
-          const numDelta = Number(delta);
-          stats[stat] = (stats[stat] ?? 0) + numDelta;
+          stats[stat] = (stats[stat] ?? 0) + Number(delta);
         }
       }
     }
@@ -13815,6 +14351,102 @@
     box.appendChild(wrapper);
   }
 
+  function findMountById(id) {
+    const units = UNITS_BY_FACTION[currentFaction];
+    return units.find(u => u.id === id) || null;
+  }
+
+  function collectMount(unit, selectedOptionIds) {
+    // try with optional first
+    for (const opt of unit.options || []) {
+      // caso 1: mount profile definito
+      if (selectedOptionIds.has(opt.id)){
+        if (opt.mount_profile) {
+          opt.mount_profile.specs = collectSpecModifiers(opt.mount_profile,[]);
+          opt.mount_profile.rangedSpecs = collectRangedSpecs(opt.mount_profile.ranged);
+          return opt.mount_profile;
+        }
+        else if (opt.add_mount) {
+          const mountUnit = findMountById(opt.add_mount);
+          // caso 2: nome corrispondente a un'unità della lista
+          if (mountUnit) {
+            return {
+              name: mountUnit.name,
+              stats: mountUnit.stats,
+              spec: mountUnit.spec,
+              specs: collectSpecModifiers(mountUnit,[]),
+              type: mountUnit.type,
+              min_size: mountUnit.min_size,
+              max_size: mountUnit.max_size,
+              rules: mountUnit.rules,
+              equipment: mountUnit.equipment,
+              ranged: mountUnit.ranged,
+              rangedSpecs: collectRangedSpecs(mountUnit.ranged)
+            };
+          }
+          // caso 3: nessuna delle precedenti (cavalcatura senza profilo)
+          else {
+            let mount = {};
+            mount.name = opt.add_mount;
+            return mount;
+          }
+        }
+      }
+    }
+    // then default ones
+    if (unit.mount) {
+      // caso 1: mount profile definito
+      if (unit.mount.stats){
+        unit.mount.specs = collectSpecModifiers(unit.mount,[]);
+        unit.mount.rangedSpecs = collectRangedSpecs(unit.mount.ranged);
+        return unit.mount;
+      }
+      else {
+        const mountUnit = findMountById(unit.add_mount);
+        // caso 2: nome corrispondente a un'unità della lista
+        if (mountUnit) {
+          return {
+            name: mountUnit.name,
+            stats: mountUnit.stats,
+            spec: mountUnit.spec,
+            specs: collectSpecModifiers(mountUnit,[]),
+            type: mountUnit.type,
+            min_size: mountUnit.min_size,
+            max_size: mountUnit.max_size,
+            rules: mountUnit.rules,
+            equipment: mountUnit.equipment,
+            ranged: mountUnit.ranged,
+            rangedSpecs: collectRangedSpecs(mountUnit.ranged)
+          };
+        }
+        else {
+          let mount = {};
+          mount.name = unit.mount;
+          return mount;
+        }
+      }
+    }
+    return null;
+  }
+
+  function renderUnitMount(unit, selectedOptionIds) {
+    const box = document.getElementById("unitMountBox");
+    box.innerHTML = "";
+    const mount = collectMount(unit, selectedOptionIds) || null;
+    if (!mount) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Cavalcatura: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    list.textContent = mount.name;
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
   function renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById) {
     const box = document.getElementById("unitMagicItemsBox");
     box.innerHTML = "";
@@ -13959,10 +14591,10 @@
       if (!selectedOptionIds.has(opt.id)) continue;
       // Escludi equipaggiamento
       if (opt.add_equipment) continue;
+      // Escludi Cavalcatura
+      if (opt.add_mount || opt.mount_profile) continue;
       // Escludi oggetti magici
       if (opt.is_magic_item) continue;
-      // Se vuoi escludere anche add_spec o stat_modifiers, basta aggiungere:
-      // if (opt.stat_modifiers || opt.add_spec) continue;
       upgrades.push(opt.name);
     }
     return upgrades;
@@ -14039,6 +14671,7 @@
     const modifiedRules = computeModifiedRules(unit, selectedOptionIds);
     renderUnitSpecialRules(modifiedRules);
     renderUnitEquipment(unit, selectedOptionIds);
+    renderUnitMount(unit, selectedOptionIds);
     renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById);
     const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
     renderUnitRanged(rangedWeapons);
@@ -14175,13 +14808,19 @@
       }
     }
 
-    // --- EQUIPAGGIAMENTO BASE ---
-    for (const eq of unit.equipment) {
+    // --- EQUIPAGGIAMENTO E CAVALCATURE BASE ---
+    let defOpts = [];
+    if (unit.equipment) defOpts.concat(unit.equipment);
+    if (unit.mount) {
+      if (unit.mount.name) defOpts.push(unit.mount.name);
+      else defOpts.push(unit.mount);
+    }
+    for (const opt of defOpts) {
       const div = document.createElement("div");
       div.className = "option disabled-option";
       div.innerHTML = `
         <input type="checkbox" checked disabled>
-        <span class="greyed">${eq}</span>
+        <span class="greyed">${opt}</span>
       `;
       optsBox.appendChild(div);
     }
@@ -14407,6 +15046,13 @@
       const opts = Array.from(selectedOptionIds);
       const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
 
+      let preselectedOptions = [];
+      if (unit.mount) {
+        if (unit.mount.name) preselectedOptions.push( unit.mount.name );
+        else preselectedOptions.push( unit.mount );
+      }
+      if (unit.equipment) preselectedOptions.concat( unit.equipment );
+
       if (isEdit) {
         existingEntry.size = size;
         existingEntry.options = opts;
@@ -14416,7 +15062,7 @@
         existingEntry.magicItemCounts = magicItemCounts;
         existingEntry.knightlyVirtues = Array.from(selectedKnightlyVirtues);
         existingEntry.magicBanner = selectedMagicBanner;
-        existingEntry.preselectedOptions = [...(unit.equipment || [])];
+        existingEntry.preselectedOptions = preselectedOptions;
         existingEntry.preselectedMagicItems = [...(unit.magic_items || [])];
         existingEntry.preselectedKnightlyVirtues = [...(unit.knightly_virtues || [])];
         clearConfigPanel();
@@ -14437,7 +15083,7 @@
           magicItemCounts: magicItemCounts,
           knightlyVirtues: Array.from(selectedKnightlyVirtues),
           magicBanner: selectedMagicBanner,
-          preselectedOptions: [...(unit.equipment || [])],
+          preselectedOptions: preselectedOptions,
           preselectedMagicItems: [...(unit.magic_items || [])],
           preselectedKnightlyVirtues: [...(unit.knightly_virtues || [])],
           points: pts
@@ -14480,6 +15126,7 @@
       const modifiedRules = computeModifiedRules(unit, selectedOptionIds);
       renderUnitSpecialRules(modifiedRules);
       renderUnitEquipment(unit, selectedOptionIds);
+      renderUnitMount(unit, selectedOptionIds);
       renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById);
       const upgrades = collectUpgrades(unit, selectedOptionIds);
       const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
@@ -14942,6 +15589,8 @@
     unitSpecialRulesBox.innerHTML = "";
     const unitEquipmentBox = document.getElementById("unitEquipmentBox");
     unitEquipmentBox.innerHTML = "";
+    const unitMountBox = document.getElementById("unitMountBox");
+    unitMountBox.innerHTML = "";
     const unitMagicItemsBox = document.getElementById("unitMagicItemsBox");
     unitMagicItemsBox.innerHTML = "";
     document.getElementById("unitRangedBox").innerHTML = "";

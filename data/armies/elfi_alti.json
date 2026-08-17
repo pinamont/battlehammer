@@ -223,6 +223,21 @@
       "options": []
     },
     {
+      "id": "fenice",
+      "name": "Fenice",
+      "category": "Macchine e Mostri",
+      "cost_per_model": 250,
+      "stats": {"Movimento": "1", "Attacco": "4", "Difesa": "4", "Corpo": "5", "Coraggio": "6"},
+      "spec": { "Movimento": "movimento in volo (4 caselle)", "Attacco": "attacchi magici (fuoco)" },
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Volare", "Terrore", "Immune al fuoco", "Scia di fuoco (unità sorvolate 1D3 DC no difesa)", "Risorgere dalle ceneri" ],
+      "equipment": [],
+      "ranged": [],
+      "options": []
+    },
+    {
       "id": "lord",
       "name": "Lord",
       "category": "Personaggi",
@@ -233,50 +248,20 @@
       "max_size": 1,
       "equipment": [],
       "options": [
-        { "id": "scudo", "name": "scudo", "cost": 4, "stat_modifiers": { "Difesa": 1 } },
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost": 8, "stat_modifiers": { "Attacco": 1 } },
-        { "id": "lancia", "name": "lancia", "cost": 4, "add_spec": { "Attacco": "+1 in carica (se a cavallo)" } },
-        { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "cost": 8, "add_spec": { "Attacco": "+2 in carica (se a cavallo)" } },
-        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 4, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "cost": 4, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "cost": 8, "stat_modifiers": { "Attacco": 1 } },
+        { "id": "lancia", "name": "lancia", "add_equipment": ["lancia"], "cost": 4, "add_spec": { "Attacco": "+1 in carica (se a cavallo)" } },
+        { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "add_equipment": ["lancia da cavaliere"], "cost": 8, "add_spec": { "Attacco": "+2 in carica (se a cavallo)" } },
+        { "id": "armatura_pesante", "name": "armatura pesante", "add_equipment": ["armatura pesante"], "cost": 4, "stat_modifiers": { "Difesa": 1 } },
         { "id": "cavallo", "name": "cavallo", "cost": 25, "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"} },
         { "id": "cavallo_bardato", "name": "cavallo bardato", "cost": 25, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_pesante"} },
-        { "id": "pegaso", "name": "pegaso", "cost": 80,
-          "mount_profile": {
-            "name": "Pegaso",
-            "stats": {"Movimento": "2", "Attacco": "2", "Difesa": "3", "Corpo": "3", "Coraggio": "4"},
-            "spec": { "Movimento": "movimento in volo (4 caselle)" },
-            "type": [ "mostro" ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [ "Volare" ]
-          }
-         },
-        { "id": "grifone", "name": "grifone", "cost": 170,
-          "mount_profile": {
-            "name": "Grifone",
-            "stats": {"Movimento": "2", "Attacco": "4", "Difesa": "4", "Corpo": "5", "Coraggio": "5"},
-            "spec": { "Movimento": "movimento in volo (4 caselle)" },
-            "type": [ "mostro" ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [ "Volare", "Terrore" ]
-          }
-         },
-        { "id": "drago", "name": "drago", "cost": 380,
-          "mount_profile": {
-            "name": "Drago",
-            "stats": {"Movimento": "2", "Attacco": "6", "Difesa": "6", "Corpo": "8", "Coraggio": "7"},
-            "spec": { "Movimento": "movimento in volo (4 caselle)" },
-            "type": [ "mostro" ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [ "Volare", "Terrore" ],
-            "ranged": [
-              { "name": "Soffio", "range": "1", "att": "5", "spec": "ignora la difesa, anche in CaC" } ]
-          }
-         } ],
+        { "id": "pegaso", "name": "pegaso", "cost": 80, "add_mount": "pegaso" },
+        { "id": "grifone", "name": "grifone", "cost": 170, "add_mount": "grifone" },
+        { "id": "fenice", "name": "fenice", "cost": 250, "add_mount": "fenice" },
+        { "id": "drago", "name": "drago", "cost": 380, "add_mount": "drago" }
+        ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo", "cavallo_bardato", "pegaso", "grifone", "drago" ]
+        "cavalcatura": [ "nessuno", "cavallo", "cavallo_bardato", "pegaso", "grifone", "fenice", "drago" ]
       },
       "magic_item_slots": 3,
       "max_per_army": 0
@@ -294,50 +279,20 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "scudo", "name": "scudo", "cost": 3, "stat_modifiers": { "Difesa": 1 } },
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost": 6, "stat_modifiers": { "Attacco": 1 } },
-        { "id": "lancia", "name": "lancia", "cost": 3, "spec": { "Attacco": "+1 in carica (se a cavallo)" } },
-        { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "cost": 6, "spec": { "Attacco": "+2 in carica (se a cavallo)" } },
-        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 3, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "cost": 3, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "cost": 6, "stat_modifiers": { "Attacco": 1 } },
+        { "id": "lancia", "name": "lancia", "add_equipment": ["lancia"], "cost": 3, "spec": { "Attacco": "+1 in carica (se a cavallo)" } },
+        { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "add_equipment": ["lancia da cavaliere"], "cost": 6, "add_spec": { "Attacco": "+2 in carica (se a cavallo)" } },
+        { "id": "armatura_pesante", "name": "armatura pesante", "add_equipment": ["armatura pesante"], "cost": 3, "stat_modifiers": { "Difesa": 1 } },
         { "id": "cavallo", "name": "cavallo", "cost": 20, "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"} },
         { "id": "cavallo_bardato", "name": "cavallo bardato", "cost": 20, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_pesante"} },
-        { "id": "pegaso", "name": "pegaso", "cost": 80,
-          "mount_profile": {
-            "name": "Pegaso",
-            "stats": {"Movimento": "2", "Attacco": "2", "Difesa": "3", "Corpo": "3", "Coraggio": "4"},
-            "spec": { "Movimento": "movimento in volo (4 caselle)" },
-            "type": [ "mostro" ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [ "Volare" ]
-          }
-         },
-        { "id": "grifone", "name": "grifone", "cost": 170,
-          "mount_profile": {
-            "name": "Grifone",
-            "stats": {"Movimento": "2", "Attacco": "4", "Difesa": "4", "Corpo": "5", "Coraggio": "5"},
-            "spec": { "Movimento": "movimento in volo (4 caselle)" },
-            "type": [ "mostro" ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [ "Volare", "Terrore" ]
-          }
-         },
-        { "id": "drago", "name": "drago", "cost": 380,
-          "mount_profile": {
-            "name": "Drago",
-            "stats": {"Movimento": "2", "Attacco": "6", "Difesa": "6", "Corpo": "8", "Coraggio": "7"},
-            "spec": { "Movimento": "movimento in volo (4 caselle)" },
-            "type": [ "mostro" ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [ "Volare", "Terrore" ],
-            "ranged": [
-              { "name": "Soffio", "range": "1", "att": "5", "spec": "ignora la difesa, anche in CaC" } ]
-          }
-         } ],
+        { "id": "pegaso", "name": "pegaso", "cost": 80, "add_mount": "pegaso" },
+        { "id": "grifone", "name": "grifone", "cost": 170, "add_mount": "grifone" },
+        { "id": "fenice", "name": "fenice", "cost": 250, "add_mount": "fenice" },
+        { "id": "drago", "name": "drago", "cost": 380, "add_mount": "drago" }
+      ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo", "cavallo_bardato", "pegaso", "grifone", "drago" ]
+        "cavalcatura": [ "nessuno", "cavallo", "cavallo_bardato", "pegaso", "grifone", "fenice", "drago" ]
       },
       "magic_item_slots": 2,
       "max_per_army": 0
@@ -355,11 +310,11 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "scudo", "name": "scudo", "cost": 2, "stat_modifiers": { "Difesa": 1 } },
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost": 4, "stat_modifiers": { "Attacco": 1 } },
-        { "id": "lancia", "name": "lancia", "cost": 2, "add_spec": { "Attacco": "+1 in carica (se a cavallo)" } },
-        { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "cost": 4, "add_spec": { "Attacco": "+2 in carica (se a cavallo)" } },
-        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 2, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "cost": 2, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "cost": 4, "stat_modifiers": { "Attacco": 1 } },
+        { "id": "lancia", "name": "lancia", "add_equipment": ["lancia"], "cost": 2, "add_spec": { "Attacco": "+1 in carica (se a cavallo)" } },
+        { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "add_equipment": ["lancia da cavaliere"], "cost": 4, "add_spec": { "Attacco": "+2 in carica (se a cavallo)" } },
+        { "id": "armatura_pesante", "name": "armatura pesante", "add_equipment": ["armatura pesante"], "cost": 2, "stat_modifiers": { "Difesa": 1 } },
         { "id": "cavallo", "name": "cavallo", "cost": 15, "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"} },
         { "id": "cavallo_bardato", "name": "cavallo bardato", "cost": 15, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_pesante"} } ],
       "option_categories": {
@@ -384,43 +339,13 @@
       "options": [
         { "id": "livello_4", "name": "livello 4", "cost": 65 },
         { "id": "cavallo", "name": "cavallo", "cost": 25, "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"} },
-        { "id": "pegaso", "name": "pegaso", "cost": 80,
-          "mount_profile": {
-            "name": "Pegaso",
-            "stats": {"Movimento": "2", "Attacco": "2", "Difesa": "3", "Corpo": "3", "Coraggio": "4"},
-            "spec": { "Movimento": "movimento in volo (4 caselle)" },
-            "type": [ "mostro" ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [ "Volare" ]
-          }
-         },
-        { "id": "grifone", "name": "grifone", "cost": 170,
-          "mount_profile": {
-            "name": "Grifone",
-            "stats": {"Movimento": "2", "Attacco": "4", "Difesa": "4", "Corpo": "5", "Coraggio": "5"},
-            "spec": { "Movimento": "movimento in volo (4 caselle)" },
-            "type": [ "mostro" ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [ "Volare", "Terrore" ]
-          }
-         },
-        { "id": "drago", "name": "drago", "cost": 380,
-          "mount_profile": {
-            "name": "Drago",
-            "stats": {"Movimento": "2", "Attacco": "6", "Difesa": "6", "Corpo": "8", "Coraggio": "7"},
-            "spec": { "Movimento": "movimento in volo (4 caselle)" },
-            "type": [ "mostro" ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [ "Volare", "Terrore" ],
-            "ranged": [
-              { "name": "Soffio", "range": "1", "att": "5", "spec": "ignora la difesa, anche in CaC" } ]
-          }
-         } ],
+        { "id": "pegaso", "name": "pegaso", "cost": 80, "add_mount": "pegaso" },
+        { "id": "grifone", "name": "grifone", "cost": 170, "add_mount": "grifone" },
+        { "id": "fenice", "name": "fenice", "cost": 250, "add_mount": "fenice" },
+        { "id": "drago", "name": "drago", "cost": 380, "add_mount": "drago" }
+      ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo", "pegaso", "grifone", "drago" ]
+        "cavalcatura": [ "nessuno", "cavallo", "pegaso", "grifone", "fenice", "drago" ]
       },
       "magic_item_slots": 4,
       "max_per_army": 0
@@ -440,17 +365,8 @@
       "options": [
         { "id": "livello_2", "name": "livello 2", "cost": 45 },
         { "id": "cavallo", "name": "cavallo", "cost": 15, "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"} },
-        { "id": "pegaso", "name": "pegaso", "cost": 80,
-          "mount_profile": {
-            "name": "Pegaso",
-            "stats": {"Movimento": "2", "Attacco": "2", "Difesa": "3", "Corpo": "3", "Coraggio": "4"},
-            "spec": { "Movimento": "movimento in volo (4 caselle)" },
-            "type": [ "mostro" ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [ "Volare" ]
-          }
-         } ],
+        { "id": "pegaso", "name": "pegaso", "cost": 80, "add_mount": "pegaso" }
+      ],
       "option_categories": {
         "cavalcatura": [ "nessuno", "cavallo", "pegaso" ]
       },
@@ -473,6 +389,54 @@
       "magic_items": [ "La Corona Da Guerra Di Saphery", "La Spada Di Teclis", "Lo Scettro Della Luna" ],
       "magic_item_slots": 2,
       "max_per_army": 1
+    },
+    {
+      "id": "pegaso",
+      "name": "Pegaso",
+      "category": "none",
+      "cost_per_model": 80,
+      "stats": {"Movimento": "2", "Attacco": "2", "Difesa": "3", "Corpo": "3", "Coraggio": "4"},
+      "spec": { "Movimento": "movimento in volo (4 caselle)" },
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Volare" ],
+      "equipment": [],
+      "ranged": [],
+      "options": []
+    },
+    {
+      "id": "drago",
+      "name": "Drago",
+      "category": "none",
+      "cost_per_model": 380,
+      "stats": {"Movimento": "2", "Attacco": "6", "Difesa": "6", "Corpo": "8", "Coraggio": "7"},
+      "spec": { "Movimento": "movimento in volo (4 caselle)" },
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Volare", "Terrore" ],
+      "ranged": [
+        { "name": "Soffio", "range": "1", "att": "5", "spec": "ignora la difesa, anche in CaC" }
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": []
+    },
+    {
+      "id": "grifone",
+      "name": "Grifone",
+      "category": "none",
+      "cost_per_model": 170,
+      "stats": {"Movimento": "2", "Attacco": "4", "Difesa": "4", "Corpo": "5", "Coraggio": "5"},
+      "spec": { "Movimento": "movimento in volo (4 caselle)" },
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Volare", "Terrore" ],
+      "equipment": [],
+      "ranged": [],
+      "options": []
     }
   ]
 }

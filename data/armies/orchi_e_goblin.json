@@ -249,8 +249,8 @@
       "equipment": [ "Lupo" ],
       "ranged": [],
       "options": [
-        { "id": "lancie", "name": "Lancia", "cost_per_model": 2, "add_spec": {"Attacco": "+1 in carica"} },
-        { "id": "scudi", "name": "Scudo", "cost_per_model": 2 , "stat_modifiers": {"Difesa": 1} },
+        { "id": "lancia", "name": "Lancia", "add_equipment": ["Lancia"], "cost_per_model": 2, "add_spec": {"Attacco": "+1 in carica"} },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost_per_model": 2 , "stat_modifiers": {"Difesa": 1} },
         { "id": "stendardo", "name": "Stendardo", "cost": 10 },
         { "id": "campione", "name": "Campione", "cost": 30, "stat_modifiers": {"Attacco": 1} } ],
       "magic_item_slots": 0,
@@ -403,15 +403,16 @@
       "id": "carro_degli_orchi",
       "name": "Carro degli orchi",
       "category": "Macchine e Mostri",
-      "cost_per_model": 95,
+      "cost_per_model": 100,
       "stats": { "Movimento": "2", "Attacco": "3", "Difesa": "5", "Corpo": "5", "Coraggio": "4" },
       "spec": {"Movimento": "non può marciare", "Attacco": "+1D6+2 in carica"},
       "type": [ "carro_pesante", "orco" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
-      "equipment": [],
-      "ranged": [],
+      "equipment": [ "lancia", "arco" ],
+      "ranged": [
+        { "name": "Arco", "range": "4", "att": "1", "spec": "-" } ],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -427,9 +428,10 @@
       "min_size": 1,
       "max_size": 1,
       "rules": [],
-      "equipment": [],
+      "equipment": [ "lancia", "arco corto" ],
       "ranged": [
-        { "name": "Arco corto", "range": "3", "att": "1", "spec": "-" } ],
+        { "name": "Arco corto", "range": "3", "att": "1", "spec": "-" }
+      ],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -481,24 +483,13 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 8 },
-        { "id": "armatura_pesante", "name": "Armatura pesante", "cost": 4 },
-        { "id": "scudo", "name": "Scudo", "cost": 4 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 30, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_pesante"} },
-        { "id": "viverna", "name": "Viverna", "cost": 180,
-          "mount_profile": {
-            "name": "Viverna",
-            "stats": {"Movimento": "2", "Attacco": "4", "Difesa": "5", "Corpo": "5", "Coraggio": "5"},
-            "spec": { "Movimento": "movimento in volo (4 caselle)", "Attacco": "attacco addizionale da veleno con 1DC, che infligge 1D6 di ferite"},
-            "type": [ "mostro" ],
-            "min_size": 1,
-            "max_size": 1,
-            "rules": [ "Volare", "Terrore", "Whaaagh!" ],
-            "equipment": [],
-            "ranged": []
-          }
-        },
-        { "id": "carro_degli_orchi", "name": "Carro degli Orchi", "cost": 100 } ],
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 8, "stat_modifiers": {"Attacco": 1} },
+        { "id": "armatura_pesante", "name": "Armatura pesante", "add_equipment": ["Armatura pesante"], "cost": 4 },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 4, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 30, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_pesante"} },
+        { "id": "viverna", "name": "Viverna", "cost": 180, "add_mount": "viverna" },
+        { "id": "carro_degli_orchi", "name": "Carro degli Orchi", "cost": 100, "add_mount": "carro_degli_orchi" }
+      ],
       "option_categories": {
         "cavalcatura": [ "nessuno", "cinghiale", "viverna", "carro_degli_orchi" ]
       },
@@ -518,12 +509,13 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 8 },
-        { "id": "armatura_pesante", "name": "Armatura pesante", "cost": 4 },
-        { "id": "scudo", "name": "Scudo", "cost": 4 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 30, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
-        { "id": "viverna", "name": "Viverna", "cost": 180 },
-        { "id": "carro_degli_orchi", "name": "Carro degli Orchi", "cost": 100 } ],
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 8, "stat_modifiers": {"Attacco": 1} },
+        { "id": "armatura_pesante", "name": "Armatura pesante", "add_equipment": ["Armatura pesante"], "cost": 4, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 4 },
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 30, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
+        { "id": "viverna", "name": "Viverna", "cost": 180, "add_mount": "viverna" },
+        { "id": "carro_degli_orchi", "name": "Carro degli Orchi", "cost": 100, "add_mount": "carro_degli_orchi" }
+      ],
       "option_categories": {
         "cavalcatura": [ "nessuno", "cinghiale", "viverna", "carro_degli_orchi" ]
       },
@@ -543,10 +535,11 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 8 },
-        { "id": "scudo", "name": "Scudo", "cost": 4 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 30, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
-        { "id": "viverna", "name": "Viverna", "cost": 180 } ],
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 8, "stat_modifiers": {"Attacco": 1} },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 4, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 30, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
+        { "id": "viverna", "name": "Viverna", "cost": 180, "add_mount": "viverna" }
+      ],
       "option_categories": {
         "cavalcatura": [ "nessuno", "cinghiale", "viverna" ]
       },
@@ -566,18 +559,19 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 8 },
-        { "id": "scudo", "name": "Scudo", "cost": 4 },
-        { "id": "lupo", "name": "Lupo", "cost": 20, "required_option": "goblin_comuni" },
-        { "id": "carro_dei_goblin", "name": "Carro dei Goblin", "cost": 60, "required_option": "goblin_comuni" },
-        { "id": "ragno_gigante", "name": "Ragno Gigante", "cost": 20, "required_option": "goblin_delle_foreste" },
-        { "id": "ragno_gigantesco", "name": "Ragno Gigantesco", "cost": 50, "required_option": "goblin_delle_foreste" },
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 8, "stat_modifiers": {"Attacco": 1} },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 4, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "lupo", "name": "Lupo", "cost": 20, "add_mount": "Lupo", "required_option": "goblin_comuni" },
+        { "id": "carro_dei_goblin", "name": "Carro dei Goblin", "cost": 60, "required_option": "goblin_comuni", "mount_profile": "carro_dei_goblin" },
+        { "id": "ragno_gigante", "name": "Ragno Gigante", "cost": 20, "add_mount": "Ragno Gigante", "required_option": "goblin_delle_foreste" },
+        { "id": "ragno_gigantesco", "name": "Ragno Gigantesco", "cost": 50, "required_option": "goblin_delle_foreste", "add_mount": "ragno_gigantesco" },
         { "id": "goblin_comuni", "name": "Goblin Comune", "cost": 0 },
         { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
-        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 }
+      ],
       "option_categories": {
         "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"],
-        "cavalcatura": [ "nessuno", "carro", "lupo", "ragno_gigante", "ragno_gigantesco" ]
+        "cavalcatura": [ "nessuno", "carro_dei_goblin", "lupo", "ragno_gigante", "ragno_gigantesco" ]
       },
       "magic_item_slots": 3,
       "max_per_army": 0
@@ -596,9 +590,10 @@
       "ranged": [],
       "options": [
         { "id": "livello_4", "name": "Livello 4", "cost": 55 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 30, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
-        { "id": "viverna", "name": "Viverna", "cost": 180 },
-        { "id": "carro_degli_orchi", "name": "Carro degli Orchi", "cost": 100 } ],
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 30, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
+        { "id": "viverna", "name": "Viverna", "cost": 180, "add_mount": "viverna" },
+        { "id": "carro_degli_orchi", "name": "Carro degli Orchi", "cost": 100, "add_mount": "carro_degli_orchi" }
+      ],
       "option_categories": {
         "cavalcatura": [ "nessuno", "cinghiale", "viverna", "carro_degli_orchi" ]
       },
@@ -619,8 +614,9 @@
       "ranged": [],
       "options": [
         { "id": "livello_4", "name": "Livello 4", "cost": 55 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 30, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
-        { "id": "viverna", "name": "Viverna", "cost": 180 } ],
+        { "id": "cinghiale", "name": "Cinghiale", "add_mount": "Cinghiale", "cost": 30, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
+        { "id": "viverna", "name": "Viverna", "cost": 180, "add_mount": "viverna" }
+      ],
       "option_categories": {
         "cavalcatura": [ "nessuno", "cinghiale", "viverna" ]
       },
@@ -641,16 +637,17 @@
       "ranged": [],
       "options": [
         { "id": "livello_4", "name": "Livello 4", "cost": 55 },
-        { "id": "lupo", "name": "Lupo", "cost": 20, "required_option": "goblin_comuni" },
-        { "id": "carro_dei_goblin", "name": "Carro dei Goblin", "cost": 60, "required_option": "goblin_comuni" },
-        { "id": "ragno_gigante", "name": "Ragno Gigante", "cost": 20, "required_option": "goblin_delle_foreste" },
-        { "id": "ragno_gigantesco", "name": "Ragno Gigantesco", "cost": 50, "required_option": "goblin_delle_foreste" },
+        { "id": "lupo", "name": "Lupo", "cost": 20, "add_mount": "Lupo", "required_option": "goblin_comuni" },
+        { "id": "carro_dei_goblin", "name": "Carro dei Goblin", "cost": 60, "required_option": "goblin_comuni", "mount_profile": "carro_dei_goblin" },
+        { "id": "ragno_gigante", "name": "Ragno Gigante", "cost": 20, "add_mount": "Ragno Gigante", "required_option": "goblin_delle_foreste" },
+        { "id": "ragno_gigantesco", "name": "Ragno Gigantesco", "cost": 50, "required_option": "goblin_delle_foreste", "add_mount": "ragno_gigantesco" },
         { "id": "goblin_comuni", "name": "Goblin Comune", "cost": 0 },
         { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
-        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 }
+      ],
       "option_categories": {
         "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"],
-        "cavalcatura": [ "nessuno", "carro", "lupo", "ragno_gigante", "ragno_gigantesco" ]
+        "cavalcatura": [ "nessuno", "carro_dei_goblin", "lupo", "ragno_gigante", "ragno_gigantesco" ]
       },
       "magic_item_slots": 4,
       "max_per_army": 0
@@ -668,12 +665,13 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 6 },
-        { "id": "armatura_pesante", "name": "Armatura pesante", "cost": 3 },
-        { "id": "scudo", "name": "Scudo", "cost": 3 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 24, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
-        { "id": "viverna", "name": "Viverna", "cost": 180 },
-        { "id": "carro_degli_orchi", "name": "Carro degli Orchi", "cost": 100 } ],
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 6, "stat_modifiers": {"Attacco": 1} },
+        { "id": "armatura_pesante", "name": "Armatura pesante", "add_equipment": ["Armatura pesante"], "cost": 3, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 3, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 24, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
+        { "id": "viverna", "name": "Viverna", "cost": 180, "add_mount": "viverna" },
+        { "id": "carro_degli_orchi", "name": "Carro degli Orchi", "cost": 100, "mount_profile": "carro_degli_orchi" }
+      ],
       "option_categories": {
         "cavalcatura": [ "nessuno", "cinghiale", "viverna", "carro_degli_orchi" ]
       },
@@ -693,12 +691,13 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 6 },
-        { "id": "armatura_pesante", "name": "Armatura pesante", "cost": 3 },
-        { "id": "scudo", "name": "Scudo", "cost": 3 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 24, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
-        { "id": "viverna", "name": "Viverna", "cost": 180 },
-        { "id": "carro_degli_orchi", "name": "Carro degli Orchi", "cost": 100 } ],
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 6, "stat_modifiers": {"Attacco": 1} },
+        { "id": "armatura_pesante", "name": "Armatura pesante", "add_equipment": ["Armatura pesante"], "cost": 3, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 3, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 24, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
+        { "id": "viverna", "name": "Viverna", "cost": 180, "add_mount": "viverna" },
+        { "id": "carro_degli_orchi", "name": "Carro degli Orchi", "cost": 100, "mount_profile": "carro_degli_orchi" }
+      ],
       "option_categories": {
         "cavalcatura": [ "nessuno", "cinghiale", "viverna", "carro_degli_orchi" ]
       },
@@ -718,10 +717,11 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 6 },
-        { "id": "scudo", "name": "Scudo", "cost": 3 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 24, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
-        { "id": "viverna", "name": "Viverna", "cost": 180 } ],
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 6, "stat_modifiers": {"Attacco": 1} },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 3, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 24, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} },
+        { "id": "viverna", "name": "Viverna", "cost": 180, "add_mount": "viverna" }
+      ],
       "option_categories": {
         "cavalcatura": [ "nessuno", "cinghiale", "viverna" ]
       },
@@ -741,18 +741,19 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 6 },
-        { "id": "scudo", "name": "Scudo", "cost": 3 },
-        { "id": "lupo", "name": "Lupo", "cost": 16, "required_option": "goblin_comuni" },
-        { "id": "carro_dei_goblin", "name": "Carro dei Goblin", "cost": 60, "required_option": "goblin_comuni" },
-        { "id": "ragno_gigante", "name": "Ragno Gigante", "cost": 16, "required_option": "goblin_delle_foreste" },
-        { "id": "ragno_gigantesco", "name": "Ragno Gigantesco", "cost": 50, "required_option": "goblin_delle_foreste" },
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 6, "stat_modifiers": {"Attacco": 1} },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 3, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "lupo", "name": "Lupo", "cost": 16, "add_mount": "Lupo", "required_option": "goblin_comuni" },
+        { "id": "carro_dei_goblin", "name": "Carro dei Goblin", "cost": 60, "required_option": "goblin_comuni", "mount_profile": "carro_dei_goblin" },
+        { "id": "ragno_gigante", "name": "Ragno Gigante", "cost": 16, "add_mount": "Ragno Gigante", "required_option": "goblin_delle_foreste" },
+        { "id": "ragno_gigantesco", "name": "Ragno Gigantesco", "cost": 50, "required_option": "goblin_delle_foreste", "add_mount": "ragno_gigantesco" },
         { "id": "goblin_comuni", "name": "Goblin Comune", "cost": 0 },
         { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
-        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 }
+      ],
       "option_categories": {
         "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"],
-        "cavalcatura": [ "nessuno", "carro", "lupo", "ragno_gigante", "ragno_gigantesco" ]
+        "cavalcatura": [ "nessuno", "carro_dei_goblin", "lupo", "ragno_gigante", "ragno_gigantesco" ]
       },
       "magic_item_slots": 2,
       "max_per_army": 0
@@ -770,10 +771,11 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 4 },
-        { "id": "armatura_pesante", "name": "Armatura pesante", "cost": 2 },
-        { "id": "scudo", "name": "Scudo", "cost": 2 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 18, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} } ],
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 4, "stat_modifiers": {"Attacco": 1} },
+        { "id": "armatura_pesante", "name": "Armatura pesante", "add_equipment": ["Armatura pesante"], "cost": 2, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 2, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 18, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} }
+      ],
       "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
@@ -791,10 +793,11 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 4 },
-        { "id": "armatura_pesante", "name": "Armatura pesante", "cost": 2 },
-        { "id": "scudo", "name": "Scudo", "cost": 2 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 18, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} } ],
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 4, "stat_modifiers": {"Attacco": 1} },
+        { "id": "armatura_pesante", "name": "Armatura pesante", "add_equipment": ["Armatura pesante"], "cost": 2, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 2, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 18, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} }
+      ],
       "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
@@ -812,9 +815,10 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 4 },
-        { "id": "scudo", "name": "Scudo", "cost": 2 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 18, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} } ],
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 4, "stat_modifiers": {"Attacco": 1} },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 2, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 18, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} }
+      ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -831,13 +835,14 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 4 },
-        { "id": "scudo", "name": "Scudo", "cost": 2 },
-        { "id": "lupo", "name": "Lupo", "cost": 12, "required_option": "goblin_comuni" },
-        { "id": "ragno_gigante", "name": "Ragno Gigante", "cost": 12, "required_option": "goblin_delle_foreste" },
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 4, "stat_modifiers": {"Attacco": 1} },
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 2, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "lupo", "name": "Lupo", "cost": 12, "add_mount": "Lupo", "required_option": "goblin_comuni" },
+        { "id": "ragno_gigante", "name": "Ragno Gigante", "cost": 12, "add_mount": "Ragno Gigante", "required_option": "goblin_delle_foreste" },
         { "id": "goblin_comuni", "name": "Goblin Comune", "cost": 0 },
         { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
-        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 }
+      ],
       "option_categories": {
         "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste"]
       },
@@ -859,7 +864,8 @@
       "ranged": [],
       "options": [
         { "id": "livello_2", "name": "Livello 2", "cost": 35 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 18, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} } ],
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 18, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} }
+      ],
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -877,7 +883,8 @@
       "ranged": [],
       "options": [
         { "id": "livello_2", "name": "Livello 2", "cost": 35 },
-        { "id": "cinghiale", "name": "Cinghiale", "cost": 18, "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} } ],
+        { "id": "cinghiale", "name": "Cinghiale", "cost": 18, "add_mount": "Cinghiale", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"} }
+      ],
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -895,16 +902,146 @@
       "ranged": [],
       "options": [
         { "id": "livello_2", "name": "Livello 2", "cost": 35 },
-        { "id": "lupo", "name": "Lupo", "cost": 12, "required_option": "goblin_comuni" },
-        { "id": "ragno_gigante", "name": "Ragno Gigante", "cost": 12, "required_option": "goblin_delle_foreste" },
+        { "id": "lupo", "name": "Lupo", "cost": 12, "add_mount": "Lupo", "required_option": "goblin_comuni" },
+        { "id": "ragno_gigante", "name": "Ragno Gigante", "cost": 12, "add_mount": "Ragno Gigante", "required_option": "goblin_delle_foreste" },
         { "id": "goblin_comuni", "name": "Goblin Comune", "cost": 0 },
         { "id": "goblin_delle_tenebre", "name": "Goblin Delle Tenebre", "cost": 0 },
-        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 } ],
+        { "id": "goblin_delle_foreste", "name": "Goblin Delle Foreste", "cost": 0 }
+      ],
       "option_categories": {
         "tipo": [ "goblin_comuni", "goblin_delle_tenebre", "goblin_delle_foreste" ]
       },
       "magic_item_slots": 2,
       "max_per_army": 0
+    },
+    {
+      "id": "gorbard_artiglio_di_ferro",
+      "name": "Gorbard Artiglio di Ferro",
+      "category": "Personaggi",
+      "cost_per_model": 135,
+      "stats": { "Movimento": "2", "Attacco": "4", "Difesa": "4", "Corpo": "5", "Coraggio": "7" },
+      "spec": { "Attacco": "+1 in carica" },
+      "type": [ "cavalleria_pesante", "personaggio_speciale", "orco" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Tutte le unità di Orchi o Goblin entro 2 caselle ignorano l'Animosità" ],
+      "equipment": [],
+      "mount": "Cinghiale",
+      "magic_items": [ "morgor_lo_squartatore" ],
+      "ranged": [],
+      "options": [
+        { "id": "armatura_pesante", "name": "Armatura pesante", "add_equipment": ["Armatura pesante"], "cost": 4, "stat_modifiers": { "Difesa": 1 } }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 1
+    },
+    {
+      "id": "azhag_il_massacratore",
+      "name": "Azhag il Massacratore",
+      "category": "Personaggi",
+      "cost_per_model": 385,
+      "stats": { "Movimento": "1", "Attacco": "4", "Difesa": "3", "Corpo": "4", "Coraggio": "7" },
+      "type": [ "fanteria", "personaggio_speciale", "orco" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Tutte le unità di Orchi o Goblin entro 2 caselle ignorano l'Animosità" ],
+      "equipment": [],
+      "mount": {
+        "name": "Viverna",
+        "stats": {"Movimento": 2, "Attacco": 4, "Difesa": 5, "Corpo": 5, "Coraggio": 5},
+        "spec": {
+          "Movimento": "movimento in volo (4 caselle)",
+          "Attacco": "attacco addizionale da veleno con 1DC, che infligge 1D6 di ferite"
+        },
+        "type": ["mostro"],
+        "min_size": 1,
+        "max_size": 1,
+        "rules": ["Volare", "Terrore", "Whaaagh!"],
+        "equipment": [],
+        "ranged": []
+      },
+      "magic_items": [ "la_corona_della_stregoneria" ],
+      "ranged": [],
+      "options": [
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 8, "stat_modifiers": {"Attacco": 1} },
+        { "id": "armatura_pesante", "name": "Armatura pesante", "add_equipment": ["Armatura pesante"], "cost": 4, "stat_modifiers": { "Difesa": 1 } }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 1
+    },
+    {
+      "id": "morglum_spaccacolli",
+      "name": "Morglum Spaccacolli",
+      "category": "Personaggi",
+      "cost_per_model": 115,
+      "stats": { "Movimento": "2", "Attacco": "4", "Difesa": "5", "Corpo": "5", "Coraggio": "7" },
+      "spec": { "Attacco": "+1 in carica" },
+      "type": [ "cavalleria_pesante", "personaggio_speciale", "orco_nero" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Immune alla psicologia", "Rende Immume alla Psicologia la sua unità" ],
+      "equipment": [],
+      "mount": "Cinghiale",
+      "magic_items": [],
+      "ranged": [],
+      "options": [
+        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "add_equipment": ["Arma a due mani / due armi"], "cost": 8, "stat_modifiers": {"Attacco": 1} },
+        { "id": "armatura_pesante", "name": "Armatura pesante", "add_equipment": ["Armatura pesante"], "cost": 4, "stat_modifiers": { "Difesa": 1 } }
+      ],
+      "magic_item_slots": 3,
+      "max_per_army": 1
+    },
+    {
+      "id": "gorfang_sanguemarcio",
+      "name": "Gorfang Sanguemarcio",
+      "category": "Personaggi",
+      "cost_per_model": 60,
+      "stats": { "Movimento": "1", "Attacco": "5", "Difesa": "3", "Corpo": "3", "Coraggio": "5" },
+      "type": [ "fantria", "personaggio_speciale", "orco" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Odia i Nani" ],
+      "equipment": [],
+      "magic_items": [],
+      "ranged": [],
+      "options": [
+        { "id": "scudo", "name": "Scudo", "add_equipment": ["Scudo"], "cost": 4, "stat_modifiers": { "Difesa": 1 } },
+        { "id": "armatura_pesante", "name": "Armatura pesante", "add_equipment": ["Armatura pesante"], "cost": 4, "stat_modifiers": { "Difesa": 1 } }
+      ],
+      "magic_item_slots": 2,
+      "max_per_army": 1
+    },
+    {
+      "id": "grom_il_pancione",
+      "name": "Grom il Pancione",
+      "category": "Personaggi",
+      "cost_per_model": 275,
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "2", "Corpo": "4", "Coraggio": "5" },
+      "spec": { "Difesa": "rigenerazione 4+" },
+      "type": [ "fanteria", "personaggio_speciale", "goblin" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Stendardo da Battaglia" ],
+      "equipment": [ ],
+      "mount": {
+        "name": "Carro di Grom (con Niblit)",
+        "stats": {"Movimento": 2, "Attacco": 3, "Difesa": 4, "Corpo": 5, "Coraggio": 2},
+        "spec": {
+          "Attacco": "+1D6+1 in carica"
+        },
+        "type": ["carro_leggero"],
+        "min_size": 1,
+        "max_size": 1,
+        "rules": [ ],
+        "equipment": [],
+        "ranged": []
+      },
+      "magic_items": [ "mordielfi_l_ascia_di_grom" ],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 2,
+      "max_per_army": 1,
+      "magic_banner_slot": true
     },
     {
       "id": "skarsnik_e_gobbla",
@@ -915,50 +1052,51 @@
       "type": [ "fanteria", "personaggio_speciale", "goblin" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [ "Guardia del Corpo (finché Gobbla è in vita, qualsiasi attacco, anche da incantesimo o altro, diretto verso Skarsnik diventa invece diretto verso Gobbla; inoltre, finché Gobbla è in vita, Skarsnik non può lanciare o accettare sfide)" ],
-      "equipment": [ "Gobbla" ],
+      "rules": [ "Guardia del Corpo" ],
+      "equipment": [],
+      "mount": {
+        "name": "Gobbla",
+        "stats": {"Movimento": 1, "Attacco": 5, "Difesa": 3, "Corpo": 4, "Coraggio": 2},
+        "spec": {},
+        "type": ["fanteria"],
+        "min_size": 1,
+        "max_size": 1,
+        "rules": [ "Guardia del Corpo" ],
+        "equipment": [],
+        "ranged": []
+      },
       "magic_items": [ "il_pungolo_di_skarsnik" ],
-      "ranged": [],
-      "options": [      ],
-      "magic_item_slots": 2,
-      "max_per_army": 1
-    },
-    {
-      "id": "azhag_il_massacratore",
-      "name": "Azhag il Massacratore",
-      "category": "Personaggi",
-      "cost_per_model": 385,
-      "stats": { "Movimento": "1", "Attacco": "4", "Difesa": "3", "Corpo": "4", "Coraggio": "7" },
-      "type": [ "fanteria", "personaggio_speciale" ],
-      "min_size": 1,
-      "max_size": 1,
-      "rules": [ "Tutte le unità di Orchi o Goblin entro 2 caselle ignorano l'Animosità", "Mago livello 3 (Necromanzia o magia delle Tenebre)" ],
-      "equipment": [ "Viverna" ],
-      "magic_items": [ "la_corona_della_stregoneria" ],
-      "ranged": [],
-      "options": [
-        { "id": "arma_a_due_mani_due_armi", "name": "Arma a due mani / due armi", "cost": 8 },
-        { "id": "armatura_pesante", "name": "Armatura pesante", "cost": 4 } ],
-      "magic_item_slots": 2,
-      "max_per_army": 1
-    },
-    {
-      "id": "grom_il_pancione",
-      "name": "Grom il Pancione",
-      "category": "Personaggi",
-      "cost_per_model": 275,
-      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "2*", "Corpo": "4", "Coraggio": "5" },
-      "type": [ "fanteria", "personaggio_speciale", "goblin" ],
-      "min_size": 1,
-      "max_size": 1,
-      "rules": [ "Stendardo da Battaglia" ],
-      "equipment": [ "Carro di Grom", "Niblit (alfiere goblin)" ],
-      "magic_items": [ "mordielfi_l_ascia_di_grom" ],
       "ranged": [],
       "options": [],
       "magic_item_slots": 2,
-      "max_per_army": 1,
-      "magic_banner_slot": true
+      "max_per_army": 1
+    },
+    {
+      "id": "viverna",
+      "name": "Viverna",
+      "category": "none",
+      "cost_per_model": 180,
+      "stats": {"Movimento": "2", "Attacco": "4", "Difesa": "5", "Corpo": "5", "Coraggio": "5"},
+      "spec": { "Movimento": "movimento in volo (4 caselle)", "Attacco": "attacco addizionale da veleno con 1DC, che infligge 1D6 di ferite"},
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Volare", "Terrore", "Whaaagh!" ],
+      "equipment": [],
+      "ranged": []
+    },
+    {
+      "id": "ragno_gigantesco",
+      "name": "Ragno Gigantesco",
+      "category": "none",
+      "cost_per_model": 50,
+      "stats": { "Movimento": "2", "Attacco": "3", "Difesa": "4", "Corpo": "3", "Coraggio": "3" },
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": ["Paura", "Supera Ostacoli"],
+      "equipment": [],
+      "ranged": []
     }
   ]
 }

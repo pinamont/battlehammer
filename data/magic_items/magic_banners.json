@@ -16,7 +16,7 @@
       "name": "Lo Stendardo Della Vittoria",
       "cost": 100,
       "category": "Stendardi Magici",
-      "description": "Aggiunge 1D3 al risultato del combattimento, sia in attacco che in difesa.",
+      "description": "Aggiunge 1D6 al risultato del combattimento in attacco.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -111,7 +111,9 @@
         "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": [
+        "goblin"
+      ],
       "not_for_type": []
     },
     {
@@ -143,7 +145,7 @@
       "name": "Lo Stendardo D'Acciaio",
       "cost": 25,
       "category": "Stendardi Magici",
-      "description": "L'unità ottiene +2 DC in difesa.",
+      "description": "L'unità ottiene +1 DC in difesa.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -154,7 +156,7 @@
       "name": "La Bandiera Di Guerra",
       "cost": 25,
       "category": "Stendardi Magici",
-      "description": "Aggiunge +1 al risultato del combattimento in difesa.",
+      "description": "Aggiunge +1 al risultato del combattimento in attacco.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -170,18 +172,9 @@
         "orchi_e_goblin"
       ],
       "not_for_army": [],
-      "only_for_type": [],
-      "not_for_type": []
-    },
-    {
-      "id": "lo_stendardo_della_disciplina",
-      "name": "Lo Stendardo Della Disciplina",
-      "cost": 25,
-      "category": "Stendardi Magici",
-      "description": "Aggiunge +2 al Coraggio dell'unità.",
-      "only_for_army": [],
-      "not_for_army": [],
-      "only_for_type": [],
+      "only_for_type": [
+        "goblin"
+      ],
       "not_for_type": []
     },
     {
@@ -190,6 +183,17 @@
       "cost": 40,
       "category": "Stendardi Magici",
       "description": "Può lanciare un incantesimo che attacca con 1D3 di DC, ignora la difesa, raggio 4 caselle.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_stendardo_della_disciplina",
+      "name": "Lo Stendardo Della Disciplina",
+      "cost": 25,
+      "category": "Stendardi Magici",
+      "description": "Aggiunge +1 al Coraggio dell'unità.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],

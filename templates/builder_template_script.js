@@ -530,93 +530,156 @@
       return eq;
     }
 
-    function collectUpgrades(unit, selectedOptionIds) {
-      const upgrades = [];
-      for (const opt of unit.options || []) {
-        if (!selectedOptionIds.has(opt.id)) continue;
-        if (opt.add_equipment) continue;
-        if (opt.is_magic_item) continue;
-        upgrades.push(opt.name);
-      }
-      return upgrades;
-    }
+    // function collectMount(unit, selectedOptionIds) {
+    //   // try with optional first
+    //   for (const opt of unit.options || []) {
+    //     // caso 1: mount profile definito
+    //     if (selectedOptionIds.has(opt.id)){
+    //       if (opt.mount_profile) {
+    //         opt.mount_profile.specs = collectSpecModifiers(opt.mount_profile,[]);
+    //         opt.mount_profile.rangedSpecs = collectRangedSpecs(opt.mount_profile.ranged);
+    //         return opt.mount_profile;
+    //       }
+    //       else if (opt.add_mount) {
+    //         const mountUnit = findMountById(opt.add_mount);
+    //         // caso 2: nome corrispondente a un'unità della lista
+    //         if (mountUnit) {
+    //           return {
+    //             name: mountUnit.name,
+    //             stats: mountUnit.stats,
+    //             spec: mountUnit.spec,
+    //             specs: collectSpecModifiers(mountUnit,[]),
+    //             type: mountUnit.type,
+    //             min_size: mountUnit.min_size,
+    //             max_size: mountUnit.max_size,
+    //             rules: mountUnit.rules,
+    //             equipment: mountUnit.equipment,
+    //             ranged: mountUnit.ranged,
+    //             rangedSpecs: collectRangedSpecs(mountUnit.ranged)
+    //           };
+    //         }
+    //         // caso 3: nessuna delle precedenti (cavalcatura senza profilo)
+    //         else {
+    //           let mount = {};
+    //           mount.name = opt.add_mount;
+    //           return mount;
+    //         }
+    //       }
+    //     }
+    //   }
+    //   // then default ones
+    //   if (unit.mount) {
+    //     // caso 1: mount profile definito
+    //     if (unit.mount.stats){
+    //       unit.mount.specs = collectSpecModifiers(unit.mount,[]);
+    //       unit.mount.rangedSpecs = collectRangedSpecs(unit.mount.ranged);
+    //       return unit.mount;
+    //     }
+    //     else {
+    //       const mountUnit = findMountById(opt.add_mount);
+    //       // caso 2: nome corrispondente a un'unità della lista
+    //       if (mountUnit) {
+    //         return {
+    //           name: mountUnit.name,
+    //           stats: mountUnit.stats,
+    //           spec: mountUnit.spec,
+    //           specs: collectSpecModifiers(mountUnit,[]),
+    //           type: mountUnit.type,
+    //           min_size: mountUnit.min_size,
+    //           max_size: mountUnit.max_size,
+    //           rules: mountUnit.rules,
+    //           equipment: mountUnit.equipment,
+    //           ranged: mountUnit.ranged,
+    //           rangedSpecs: collectRangedSpecs(mountUnit.ranged)
+    //         };
+    //       }
+    //       else {
+    //         let mount = {};
+    //         mount.name = unit.mount;
+    //         return mount;
+    //       }
+    //     }
+    //   }
+    //   return null;
+    // }
 
-    function computeModifiedRules(unit, selectedOptionIds) {
-      let rules = [...(unit.rules || [])];
-      for (const opt of unit.options || []) {
-        if (selectedOptionIds.has(opt.id) && opt.add_rules) {
-          rules.push(...opt.add_rules);
-        }
-      }
-      return rules;
-    }
+    // function collectUpgrades(unit, selectedOptionIds) {
+    //   const upgrades = [];
+    //   for (const opt of unit.options || []) {
+    //     if (!selectedOptionIds.has(opt.id)) continue;
+    //     if (opt.add_equipment) continue;
+    //     if (opt.add_mount) continue;
+    //     if (opt.is_magic_item) continue;
+    //     upgrades.push(opt.name);
+    //   }
+    //   return upgrades;
+    // }
 
-    function computeModifiedStats(unit, selectedOptionIds) {
-      const stats = {};
-      for (const [k, v] of Object.entries(unit.stats)) {
-        stats[k] = Number(v);
-      }
-      for (const opt of unit.options || []) {
-        if (selectedOptionIds.has(opt.id) && opt.stat_modifiers) {
-          for (const [stat, delta] of Object.entries(opt.stat_modifiers)) {
-            stats[stat] = (stats[stat] ?? 0) + Number(delta);
-          }
-        }
-      }
-      return stats;
-    }
+    // function computeModifiedRules(unit, selectedOptionIds) {
+    //   let rules = [...(unit.rules || [])];
+    //   for (const opt of unit.options || []) {
+    //     if (selectedOptionIds.has(opt.id) && opt.add_rules) {
+    //       rules.push(...opt.add_rules);
+    //     }
+    //   }
+    //   return rules;
+    // }
 
-    function collectSpecModifiers(unit, selectedOptionIds) {
-      const grouped = {};
-      if (unit.spec) {
-        for (const [stat, text] of Object.entries(unit.spec)) {
-          if (!grouped[stat]) grouped[stat] = [];
-          grouped[stat].push(text);
-        }
-      }
-      for (const opt of unit.options || []) {
-        if (selectedOptionIds.has(opt.id) && opt.add_spec) {
-          for (const [stat, text] of Object.entries(opt.add_spec)) {
-            if (!grouped[stat]) grouped[stat] = [];
-            grouped[stat].push(text);
-          }
-        }
-      }
-      return grouped;
-    }
+    // function computeModifiedStats(unit, selectedOptionIds) {
+    //   const stats = {};
+    //   for (const [k, v] of Object.entries(unit.stats)) {
+    //     stats[k] = Number(v);
+    //   }
+    //   for (const opt of unit.options || []) {
+    //     if (selectedOptionIds.has(opt.id) && opt.stat_modifiers) {
+    //       for (const [stat, delta] of Object.entries(opt.stat_modifiers)) {
+    //         stats[stat] = (stats[stat] ?? 0) + Number(delta);
+    //       }
+    //     }
+    //   }
+    //   return stats;
+    // }
 
-    function collectRangedWeapons(unit, selectedOptionIds) {
-      const ranged = [];
-      if (unit.ranged) ranged.push(...unit.ranged);
-      for (const opt of unit.options || []) {
-        if (selectedOptionIds.has(opt.id) && opt.add_ranged) {
-          ranged.push(...opt.add_ranged);
-        }
-      }
-      return ranged;
-    }
+    // function collectSpecModifiers(unit, selectedOptionIds) {
+    //   const grouped = {};
+    //   if (unit.spec) {
+    //     for (const [stat, text] of Object.entries(unit.spec)) {
+    //       if (!grouped[stat]) grouped[stat] = [];
+    //       grouped[stat].push(text);
+    //     }
+    //   }
+    //   for (const opt of unit.options || []) {
+    //     if (selectedOptionIds.has(opt.id) && opt.add_spec) {
+    //       for (const [stat, text] of Object.entries(opt.add_spec)) {
+    //         if (!grouped[stat]) grouped[stat] = [];
+    //         grouped[stat].push(text);
+    //       }
+    //     }
+    //   }
+    //   return grouped;
+    // }
 
-    function collectRangedSpecs(rangedWeapons) {
-      const specs = [];
-      if (!rangedWeapons || rangedWeapons.length === 0) return specs;
-      rangedWeapons.forEach((weapon, index) => {
-        if (weapon.spec && weapon.spec !== "-") {
-          specs.push({ index, text: weapon.spec });
-        }
-      });
-      return specs;
-    }
+    // function collectRangedWeapons(unit, selectedOptionIds) {
+    //   const ranged = [];
+    //   if (unit.ranged) ranged.push(...unit.ranged);
+    //   for (const opt of unit.options || []) {
+    //     if (selectedOptionIds.has(opt.id) && opt.add_ranged) {
+    //       ranged.push(...opt.add_ranged);
+    //     }
+    //   }
+    //   return ranged;
+    // }
 
-    function collectMountProfile(unit, selectedOptionIds) {
-      for (const opt of unit.options || []) {
-        if (selectedOptionIds.has(opt.id) && opt.mount_profile) {
-          opt.mount_profile.specs = collectSpecModifiers(opt.mount_profile,[]);
-          opt.mount_profile.rangedSpecs = collectRangedSpecs(opt.mount_profile.ranged);
-          return opt.mount_profile;
-        }
-      }
-      return null;
-    }
+    // function collectRangedSpecs(rangedWeapons) {
+    //   const specs = [];
+    //   if (!rangedWeapons || rangedWeapons.length === 0) return specs;
+    //   rangedWeapons.forEach((weapon, index) => {
+    //     if (weapon.spec && weapon.spec !== "-") {
+    //       specs.push({ index, text: weapon.spec });
+    //     }
+    //   });
+    //   return specs;
+    // }
 
     // ---
 
@@ -672,8 +735,8 @@
           // --- TIPO UNITÀ ---
           const type = unit.type || null;
 
-          // --- CAVALCATURA ---
-          const mountProfile = collectMountProfile(unit, selectedOptionIds);
+          // --- CAVALCATURE ---
+          const mount = collectMount(unit, selectedOptionIds) || null;
 
           return {
             name: e.name,
@@ -696,7 +759,9 @@
             ranged: rangedWeapons,
             rangedSpecs,
 
-            mount: mountProfile
+            mount
+            // ,
+            // mountProfile
           };
         })
       };
@@ -940,6 +1005,8 @@
       y += 14;
 
       // Ripristina testo nero
+      doc.setFillColor(255, 255, 255);   // bianco
+      doc.rect(colX(), y, columnWidth, 14, "F"); // sfondo
       doc.setTextColor(0, 0, 0);
       doc.setFontSize(10);
       doc.setFont("helvetica", "normal");
@@ -994,6 +1061,16 @@
         y = drawLabelAndWrappedText(doc, "Equipaggiamento:", text, colX(), y, columnWidth);
       }
 
+      // Cavalcatura
+      if (unit.mount) {
+        doc.setFontSize(11);
+        let text = null;
+        console.log(unit.mount.name);
+        if (unit.mount.name) text = autoRenderName(unit.mount.name);
+        else text = autoRenderName(unit.mount);
+        y = drawLabelAndWrappedText(doc, "Cavalcatura:", text, colX(), y, columnWidth);
+      }
+
       // Upgrade
       if (unit.upgrades && unit.upgrades.length > 0) {
         doc.setFontSize(11);
@@ -1029,6 +1106,8 @@
 
         // Righe
         rangedWithStars.forEach(weapon => {
+          doc.rect(colX(), y, columnWidth, 14, "F"); // sfondo
+
           // Bordi
           cols.forEach((_, i) => {
             const x = colX() + i * colWidth;
@@ -1087,29 +1166,38 @@
       // Tabella caratteristiche
       const statKeys = Object.keys(mount.stats || {});
       if (statKeys.length > 0) {
-        h += 16; // header
-        h += 16; // valori
-        h += 8;  // spazio
+        h += 14; // header
+        h += 14; // valori
+        h += 4;  // spazio
       }
 
       // Spec
       if (mount.spec) {
-        const count = Object.keys(mount.spec).length;
-        h += count * 11 + 6;
+        for (const [stat, text] of Object.entries(mount.spec)) {
+          const lines = doc.splitTextToSize(text, columnWidth);
+          h += lines.length * 10 + 4;
+        }
+      }
+
+      // Tipo
+      if (mount.type && mount.type.length > 0) {
+        const text = mount.type.join(", ");
+        const lines = doc.splitTextToSize(text, columnWidth);
+        h += lines.length * 11 + 5;
       }
 
       // Regole speciali
       if (mount.rules && mount.rules.length > 0) {
         const text = mount.rules.join(", ");
-        const lines = doc.splitTextToSize(text, columnWidth - 100);
-        h += lines.length * 11 + 6;
+        const lines = doc.splitTextToSize(text, columnWidth);
+        h += lines.length * 11 + 5;
       }
 
       // Equipaggiamento
       if (mount.equipment && mount.equipment.length > 0) {
         const text = mount.equipment.join(", ");
-        const lines = doc.splitTextToSize(text, columnWidth - 100);
-        h += lines.length * 11 + 6;
+        const lines = doc.splitTextToSize(text, columnWidth);
+        h += lines.length * 11 + 5;
       }
 
       // Armi a distanza
@@ -1117,12 +1205,13 @@
         const cols = 4;
         h += 14; // header
         h += mount.ranged.length * 14; // righe
-        h += 8; // spazio
+        h += 4; // spazio
 
         if (mount.rangedSpecs && mount.rangedSpecs.length > 0) {
-          h += mount.rangedSpecs.length * 11 + 6;
+          h += mount.rangedSpecs.length * 11 + 4;
         }
       }
+      h += 6
 
       return h;
     }
@@ -1193,18 +1282,17 @@
         printUnit(unit);
 
         // Cavalcatura con profilo
-        if (unit.mount) {
+        if (unit.mount && unit.mount.stats) {
           y += 4;
-
           let yy = y;
 
           const mountHeight = measureMountBlock(doc, unit.mount, columnWidth);
+          ensureSpace(mountHeight/12);
 
           doc.setFillColor(215, 215, 215);
           doc.rect(colX()-4, y-12, columnWidth+8, mountHeight, "F");
           doc.rect(colX()-4, y-12, columnWidth+8, mountHeight);
 
-          ensureSpace(4);
           doc.setFont("helvetica", "bold");
           doc.setFontSize(12);
           doc.text(`${unit.mount.name}:`, colX(), y);
@@ -1428,7 +1516,6 @@
   }
 
   function computeModifiedStats(unit, selectedOptionIds) {
-    // const stats = { ...unit.stats };
     const stats = {};
     for (const [k, v] of Object.entries(unit.stats)) {
       stats[k] = Number(v);
@@ -1436,8 +1523,7 @@
     for (const opt of unit.options || []) {
       if (selectedOptionIds.has(opt.id) && opt.stat_modifiers) {
         for (const [stat, delta] of Object.entries(opt.stat_modifiers)) {
-          const numDelta = Number(delta);
-          stats[stat] = (stats[stat] ?? 0) + numDelta;
+          stats[stat] = (stats[stat] ?? 0) + Number(delta);
         }
       }
     }
@@ -1630,6 +1716,102 @@
     box.appendChild(wrapper);
   }
 
+  function findMountById(id) {
+    const units = UNITS_BY_FACTION[currentFaction];
+    return units.find(u => u.id === id) || null;
+  }
+
+  function collectMount(unit, selectedOptionIds) {
+    // try with optional first
+    for (const opt of unit.options || []) {
+      // caso 1: mount profile definito
+      if (selectedOptionIds.has(opt.id)){
+        if (opt.mount_profile) {
+          opt.mount_profile.specs = collectSpecModifiers(opt.mount_profile,[]);
+          opt.mount_profile.rangedSpecs = collectRangedSpecs(opt.mount_profile.ranged);
+          return opt.mount_profile;
+        }
+        else if (opt.add_mount) {
+          const mountUnit = findMountById(opt.add_mount);
+          // caso 2: nome corrispondente a un'unità della lista
+          if (mountUnit) {
+            return {
+              name: mountUnit.name,
+              stats: mountUnit.stats,
+              spec: mountUnit.spec,
+              specs: collectSpecModifiers(mountUnit,[]),
+              type: mountUnit.type,
+              min_size: mountUnit.min_size,
+              max_size: mountUnit.max_size,
+              rules: mountUnit.rules,
+              equipment: mountUnit.equipment,
+              ranged: mountUnit.ranged,
+              rangedSpecs: collectRangedSpecs(mountUnit.ranged)
+            };
+          }
+          // caso 3: nessuna delle precedenti (cavalcatura senza profilo)
+          else {
+            let mount = {};
+            mount.name = opt.add_mount;
+            return mount;
+          }
+        }
+      }
+    }
+    // then default ones
+    if (unit.mount) {
+      // caso 1: mount profile definito
+      if (unit.mount.stats){
+        unit.mount.specs = collectSpecModifiers(unit.mount,[]);
+        unit.mount.rangedSpecs = collectRangedSpecs(unit.mount.ranged);
+        return unit.mount;
+      }
+      else {
+        const mountUnit = findMountById(unit.add_mount);
+        // caso 2: nome corrispondente a un'unità della lista
+        if (mountUnit) {
+          return {
+            name: mountUnit.name,
+            stats: mountUnit.stats,
+            spec: mountUnit.spec,
+            specs: collectSpecModifiers(mountUnit,[]),
+            type: mountUnit.type,
+            min_size: mountUnit.min_size,
+            max_size: mountUnit.max_size,
+            rules: mountUnit.rules,
+            equipment: mountUnit.equipment,
+            ranged: mountUnit.ranged,
+            rangedSpecs: collectRangedSpecs(mountUnit.ranged)
+          };
+        }
+        else {
+          let mount = {};
+          mount.name = unit.mount;
+          return mount;
+        }
+      }
+    }
+    return null;
+  }
+
+  function renderUnitMount(unit, selectedOptionIds) {
+    const box = document.getElementById("unitMountBox");
+    box.innerHTML = "";
+    const mount = collectMount(unit, selectedOptionIds) || null;
+    if (!mount) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Cavalcatura: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    list.textContent = mount.name;
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
   function renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById) {
     const box = document.getElementById("unitMagicItemsBox");
     box.innerHTML = "";
@@ -1774,10 +1956,10 @@
       if (!selectedOptionIds.has(opt.id)) continue;
       // Escludi equipaggiamento
       if (opt.add_equipment) continue;
+      // Escludi Cavalcatura
+      if (opt.add_mount || opt.mount_profile) continue;
       // Escludi oggetti magici
       if (opt.is_magic_item) continue;
-      // Se vuoi escludere anche add_spec o stat_modifiers, basta aggiungere:
-      // if (opt.stat_modifiers || opt.add_spec) continue;
       upgrades.push(opt.name);
     }
     return upgrades;
@@ -1854,6 +2036,7 @@
     const modifiedRules = computeModifiedRules(unit, selectedOptionIds);
     renderUnitSpecialRules(modifiedRules);
     renderUnitEquipment(unit, selectedOptionIds);
+    renderUnitMount(unit, selectedOptionIds);
     renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById);
     const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
     renderUnitRanged(rangedWeapons);
@@ -1990,13 +2173,19 @@
       }
     }
 
-    // --- EQUIPAGGIAMENTO BASE ---
-    for (const eq of unit.equipment) {
+    // --- EQUIPAGGIAMENTO E CAVALCATURE BASE ---
+    let defOpts = [];
+    if (unit.equipment) defOpts.concat(unit.equipment);
+    if (unit.mount) {
+      if (unit.mount.name) defOpts.push(unit.mount.name);
+      else defOpts.push(unit.mount);
+    }
+    for (const opt of defOpts) {
       const div = document.createElement("div");
       div.className = "option disabled-option";
       div.innerHTML = `
         <input type="checkbox" checked disabled>
-        <span class="greyed">${eq}</span>
+        <span class="greyed">${opt}</span>
       `;
       optsBox.appendChild(div);
     }
@@ -2222,6 +2411,13 @@
       const opts = Array.from(selectedOptionIds);
       const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
 
+      let preselectedOptions = [];
+      if (unit.mount) {
+        if (unit.mount.name) preselectedOptions.push( unit.mount.name );
+        else preselectedOptions.push( unit.mount );
+      }
+      if (unit.equipment) preselectedOptions.concat( unit.equipment );
+
       if (isEdit) {
         existingEntry.size = size;
         existingEntry.options = opts;
@@ -2231,7 +2427,7 @@
         existingEntry.magicItemCounts = magicItemCounts;
         existingEntry.knightlyVirtues = Array.from(selectedKnightlyVirtues);
         existingEntry.magicBanner = selectedMagicBanner;
-        existingEntry.preselectedOptions = [...(unit.equipment || [])];
+        existingEntry.preselectedOptions = preselectedOptions;
         existingEntry.preselectedMagicItems = [...(unit.magic_items || [])];
         existingEntry.preselectedKnightlyVirtues = [...(unit.knightly_virtues || [])];
         clearConfigPanel();
@@ -2252,7 +2448,7 @@
           magicItemCounts: magicItemCounts,
           knightlyVirtues: Array.from(selectedKnightlyVirtues),
           magicBanner: selectedMagicBanner,
-          preselectedOptions: [...(unit.equipment || [])],
+          preselectedOptions: preselectedOptions,
           preselectedMagicItems: [...(unit.magic_items || [])],
           preselectedKnightlyVirtues: [...(unit.knightly_virtues || [])],
           points: pts
@@ -2295,6 +2491,7 @@
       const modifiedRules = computeModifiedRules(unit, selectedOptionIds);
       renderUnitSpecialRules(modifiedRules);
       renderUnitEquipment(unit, selectedOptionIds);
+      renderUnitMount(unit, selectedOptionIds);
       renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById);
       const upgrades = collectUpgrades(unit, selectedOptionIds);
       const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
@@ -2757,6 +2954,8 @@
     unitSpecialRulesBox.innerHTML = "";
     const unitEquipmentBox = document.getElementById("unitEquipmentBox");
     unitEquipmentBox.innerHTML = "";
+    const unitMountBox = document.getElementById("unitMountBox");
+    unitMountBox.innerHTML = "";
     const unitMagicItemsBox = document.getElementById("unitMagicItemsBox");
     unitMagicItemsBox.innerHTML = "";
     document.getElementById("unitRangedBox").innerHTML = "";

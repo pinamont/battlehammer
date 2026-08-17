@@ -885,19 +885,6 @@
       ]
     },
     {
-      "id": "l_armatura_di_smeraldo",
-      "name": "L'Armatura Di Smeraldo",
-      "cost": 20,
-      "category": "Armature Magiche",
-      "description": "Armatura pesante. Ignora la prima ferita subita.",
-      "only_for_army": [],
-      "not_for_army": [],
-      "only_for_type": [],
-      "not_for_type": [
-        "mago"
-      ]
-    },
-    {
       "id": "lo_scudo_invalicabile",
       "name": "Lo Scudo Invalicabile",
       "cost": 30,
@@ -929,6 +916,19 @@
       "cost": 15,
       "category": "Armature Magiche",
       "description": "Armatura pesante. +2DC in difesa invece di +1.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "mago"
+      ]
+    },
+    {
+      "id": "l_armatura_di_smeraldo",
+      "name": "L'Armatura Di Smeraldo",
+      "cost": 10,
+      "category": "Armature Magiche",
+      "description": "Armatura pesante. Ignora la prima ferita subita.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -1416,7 +1416,7 @@
       "name": "Il Libro Di Ashur",
       "cost": 50,
       "category": "Arcani",
-      "description": "Il possessore può scegliere incantesimi da un qualsiasi mazzo, in qualsiasi combinazione.",
+      "description": "Il possessore può scegliere incantesimi da un qualsiasi mazzo, in qualsiasi combinazione. Inoltre, il possessore si considera sempre di livello superiore a chi cerca di disperdergli un incantesimo.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
@@ -1548,7 +1548,7 @@
       "name": "Il Bastone \\Della Dannazione",
       "cost": 50,
       "category": "Arcani",
-      "description": "Incantesimo infuso: gittata 6 caselle. L'unità bersaglio di scheletri, zombie, mummie o spettri (ma non catapulte, carri) può immediatamente muovere di 1 casella, attaccare in CaC o tirare con armi da tiro. Se si sceglie l'attacco, i personaggi all'interno dell'unità non attaccano a loro volta.",
+      "description": "Incantesimo infuso: gittata 6 caselle. L'unità bersaglio di scheletri, zombie, mummie o spettri può immediatamente muovere di 1 casella, attaccare in CaC o tirare con armi da tiro. Se si sceglie l'attacco, i personaggi all'interno dell'unità non attaccano a loro volta.",
       "only_for_army": [
         "nommorti"
       ],
@@ -1617,7 +1617,7 @@
       "name": "Il Bastone Del Teschio",
       "cost": 35,
       "category": "Arcani",
-      "description": "Il possessore ottiene +1 per disperdere incantesimi (fino a un massimo di 3+).",
+      "description": "Quando tenta di disperdere un incantesimo, il possessore si considera sempre di livello più alto del lanciatore.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [
