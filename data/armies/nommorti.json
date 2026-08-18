@@ -286,9 +286,10 @@
         { "id": "cavallo_scheletrico", "name": "cavallo scheletrico", "cost": 25, "add_mount": "cavallo scheletrico", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria leggera"}},
         { "id": "cavallo_scheletrico_bardato", "name": "cavallo scheletrico bardato", "cost": 25, "add_mount": "cavallo scheletrico bardato", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria pesante"}},
         { "id": "incubo_alato", "name": "Incubo Alato", "cost": 125, "add_mount": "incubo_alato" },
+        { "id": "manticora", "name": "Manticora", "cost": 220, "add_mount": "manticora" },
         { "id": "drago_zombie", "name": "Drago Zombie", "cost": 325, "add_mount": "drago_zombie" } ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo_scheletrico", "cavallo_scheletrico_bardato", "incubo_alato", "drago_zombie" ]
+        "cavalcatura": [ "nessuno", "cavallo_scheletrico", "cavallo_scheletrico_bardato", "incubo_alato", "manticora", "drago_zombie" ]
       },
       "magic_item_slots": 3,
       "max_per_army": 0
@@ -310,9 +311,10 @@
         { "id": "cavallo_scheletrico", "name": "cavallo scheletrico", "cost": 25, "add_mount": "cavallo scheletrico", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria leggera"}},
         { "id": "cavallo_scheletrico_bardato", "name": "cavallo scheletrico bardato", "cost": 25, "add_mount": "cavallo scheletrico bardato", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria pesante"}},
         { "id": "incubo_alato", "name": "Incubo Alato", "cost": 125, "add_mount": "incubo_alato" },
+        { "id": "manticora", "name": "Manticora", "cost": 220, "add_mount": "manticora" },
         { "id": "drago_zombie", "name": "Drago Zombie", "cost": 325, "add_mount": "drago_zombie" } ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo_scheletrico", "cavallo_scheletrico_bardato", "incubo_alato", "drago_zombie" ]
+        "cavalcatura": [ "nessuno", "cavallo_scheletrico", "cavallo_scheletrico_bardato", "incubo_alato", "manticora", "drago_zombie" ]
       },
       "magic_item_slots": 4,
       "max_per_army": 0
@@ -334,9 +336,10 @@
         { "id": "cavallo_scheletrico", "name": "cavallo scheletrico", "cost": 25, "add_mount": "cavallo scheletrico", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria leggera"}},
         { "id": "cavallo_scheletrico_bardato", "name": "cavallo scheletrico bardato", "cost": 25, "add_mount": "cavallo scheletrico bardato", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria pesante"}},
         { "id": "incubo_alato", "name": "Incubo Alato", "cost": 125, "add_mount": "incubo_alato" },
+        { "id": "manticora", "name": "Manticora", "cost": 220, "add_mount": "manticora" },
         { "id": "drago_zombie", "name": "Drago Zombie", "cost": 325, "add_mount": "drago_zombie" } ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo_scheletrico", "cavallo_scheletrico_bardato", "incubo_alato", "drago_zombie" ]
+        "cavalcatura": [ "nessuno", "cavallo_scheletrico", "cavallo_scheletrico_bardato", "incubo_alato", "manticora", "drago_zombie" ]
       },
       "magic_item_slots": 4,
       "max_per_army": 0
@@ -358,9 +361,10 @@
         { "id": "cavallo_scheletrico", "name": "cavallo scheletrico", "cost": 25, "add_mount": "cavallo scheletrico", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria leggera"}},
         { "id": "cavallo_scheletrico_bardato", "name": "cavallo scheletrico bardato", "cost": 25, "add_mount": "cavallo scheletrico bardato", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria pesante"}},
         { "id": "incubo_alato", "name": "Incubo Alato", "cost": 125, "add_mount": "incubo_alato" },
+        { "id": "manticora", "name": "Manticora", "cost": 220, "add_mount": "manticora" },
         { "id": "drago_zombie", "name": "Drago Zombie", "cost": 325, "add_mount": "drago_zombie" } ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo_scheletrico", "cavallo_scheletrico_bardato", "incubo_alato", "drago_zombie" ]
+        "cavalcatura": [ "nessuno", "cavallo_scheletrico", "cavallo_scheletrico_bardato", "incubo_alato", "manticora", "drago_zombie" ]
       },
       "magic_item_slots": 4,
       "max_per_army": 0
@@ -385,9 +389,10 @@
         { "id": "cavallo_scheletrico", "name": "cavallo scheletrico", "cost": 20, "add_mount": "cavallo scheletrico", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria leggera"}},
         { "id": "cavallo_scheletrico_bardato", "name": "cavallo scheletrico bardato", "cost": 20, "add_mount": "cavallo scheletrico bardato", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria pesante"}},
         { "id": "incubo_alato", "name": "Incubo Alato", "cost": 125, "add_mount": "incubo_alato" },
+        { "id": "manticora", "name": "Manticora", "cost": 220, "add_mount": "manticora" },
         { "id": "drago_zombie", "name": "Drago Zombie", "cost": 325, "add_mount": "drago_zombie" } ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo_scheletrico", "cavallo_scheletrico_bardato", "incubo_alato", "drago_zombie" ]
+        "cavalcatura": [ "nessuno", "cavallo_scheletrico", "cavallo_scheletrico_bardato", "incubo_alato", "manticora", "drago_zombie" ]
       },
       "magic_item_slots": 2,
       "max_per_army": 0
@@ -525,6 +530,21 @@
       "ranged": [
         { "name": "Soffio", "range": "1", "att": "4", "spec": "ignora la difesa, anche in CaC" }
       ],
+      "options": []
+    },
+    {
+      "id": "manticora",
+      "name": "Manticora",
+      "category": "none",
+      "cost_per_model": 220,
+      "stats": { "Movimento": "2", "Attacco": "5", "Difesa": "4", "Corpo": "6", "Coraggio": "4" },
+      "spec": {"Movimento": "movimento in volo 4 caselle"},
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Volare", "Terrore" ],
+      "equipment": [],
+      "ranged": [],
       "options": []
     },
     {
