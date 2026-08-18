@@ -74,6 +74,7 @@
     return ARMY_NAMES[army] || autoRenderName(army);
   }
 
+  // Nomi senza caratteri speciali
   function autoRenderName(name) {
     return name
     .replace(/_/g, " ")
@@ -81,10 +82,22 @@
     .replace(/\b\w/g, c => c.toUpperCase());
   }
 
-  // Nomi senza caratteri speciali
   function renderName(name) {
     name = name.replace("\\","");
     return name;
+  }
+
+  function ensureArray(a) {
+    if (Array.isArray(a)) return a;
+    let arr = [];
+    arr.push(a);
+    return arr;
+    // let arr = [];
+    // if (a) {
+    //   if (Array.isArray(a)) arr.concat(a);
+    //   else arr.push(a);
+    // }
+    // return arr;
   }
 
   // Funzione che popola il menu delle fazioni
@@ -521,10 +534,10 @@
     // ---
 
     function collectEquipment(unit, selectedOptionIds) {
-      const eq = [...(unit.equipment || [])];
+      const eq = ensureArray(unit.equipment);
       for (const opt of unit.options || []) {
         if (selectedOptionIds.has(opt.id) && opt.add_equipment) {
-          eq.push(...opt.add_equipment);
+          eq.push(opt.add_equipment);
         }
       }
       return eq;
@@ -733,7 +746,7 @@
           const rangedSpecs = collectRangedSpecs(rangedWeapons);
 
           // --- TIPO UNITÀ ---
-          const type = unit.type || null;
+          const type = computeModifiedType(unit, selectedOptionIds);
 
           // --- CAVALCATURE ---
           const mount = collectMount(unit, selectedOptionIds) || null;
@@ -1031,7 +1044,6 @@
           const line = `${stars}: ${texts.join(", ")}`;
 
           doc.setFont("helvetica", "italic");
-          // doc.text(line, colX(), y);
           const lines = doc.splitTextToSize(line, columnWidth);
           doc.text(lines, colX(), y);
           y += 2 + lines.length * 12;
@@ -1050,14 +1062,14 @@
       // Regole speciali
       if (unit.rules && unit.rules.length > 0) {
         doc.setFontSize(11);
-        const text = unit.rules.map(t => {return autoRenderName(t);}).join(", ");
+        const text = unit.rules.map(t => {return renderName(t);}).join(", ");
         y = drawLabelAndWrappedText(doc, "Regole speciali:", text, colX(), y, columnWidth);
       }
 
       // Equipaggiamento
       if (unit.equipment && unit.equipment.length > 0) {
         doc.setFontSize(11);
-        const text = unit.equipment.map(t => {return autoRenderName(t);}).join(", ");
+        const text = unit.equipment.map(t => {return renderName(t);}).join(", ");
         y = drawLabelAndWrappedText(doc, "Equipaggiamento:", text, colX(), y, columnWidth);
       }
 
@@ -1065,16 +1077,15 @@
       if (unit.mount) {
         doc.setFontSize(11);
         let text = null;
-        console.log(unit.mount.name);
-        if (unit.mount.name) text = autoRenderName(unit.mount.name);
-        else text = autoRenderName(unit.mount);
+        if (unit.mount.name) text = renderName(unit.mount.name);
+        else text = renderName(unit.mount);
         y = drawLabelAndWrappedText(doc, "Cavalcatura:", text, colX(), y, columnWidth);
       }
 
       // Upgrade
       if (unit.upgrades && unit.upgrades.length > 0) {
         doc.setFontSize(11);
-        const text = unit.upgrades.map(t => {return autoRenderName(t);}).join(", ");
+        const text = unit.upgrades.map(t => {return renderName(t);}).join(", ");
         y = drawLabelAndWrappedText(doc, "Upgrade:", text, colX(), y, columnWidth);
       }
 
@@ -1144,7 +1155,7 @@
 
       if (unit.magicItems && unit.magicItems.length > 0) {
         doc.setFontSize(11);
-        const items = unit.magicItems.map(t => {return autoRenderName(t);});
+        const items = unit.magicItems.map(t => {return renderName(t);});
         const text = items.join(", ");
         y = drawLabelAndWrappedText(doc, "Oggetti Magici:", text, colX(), y, columnWidth);
       }
@@ -1152,7 +1163,7 @@
       // Stendardo magico
       if (unit.magicBanner) {
         doc.setFontSize(11);
-        const text = autoRenderName(unit.magicBanner);
+        const text = renderName(unit.magicBanner);
         y = drawLabelAndWrappedText(doc, "Stendardo Magico:", text, colX(), y, columnWidth);
       }
     }
@@ -1195,7 +1206,7 @@
 
       // Equipaggiamento
       if (mount.equipment && mount.equipment.length > 0) {
-        const text = mount.equipment.join(", ");
+        const text = ensureArray(mount.equipment).join(", ");
         const lines = doc.splitTextToSize(text, columnWidth);
         h += lines.length * 11 + 5;
       }
@@ -1330,7 +1341,7 @@
         ensureSpace(5);
         doc.setFont("helvetica", "bold");
         doc.setFontSize(11);
-        doc.text(`${autoRenderName(item.name)} — ${item.cost} pt`, colX(), y);
+        doc.text(`${renderName(item.name)} — ${item.cost} pt`, colX(), y);
         y += 12;
 
         doc.setFont("helvetica", "italic");
@@ -1695,11 +1706,12 @@
     const box = document.getElementById("unitEquipmentBox");
     box.innerHTML = "";
     // Equipaggiamento base
-    let eq = [...(unit.equipment || [])];
+    let eq = [];
+    eq.concat(ensureArray(unit.equipment));
     // Equipaggiamento aggiunto dalle opzioni
     for (const opt of unit.options || []) {
       if (selectedOptionIds.has(opt.id) && opt.add_equipment) {
-        eq.push(...opt.add_equipment);
+        eq.push(ensureArray(opt.add_equipment));
       }
     }
     if (eq.length === 0) return;
@@ -1826,6 +1838,7 @@
     const parts = [];
     for (const id of selectedMagicItems) {
       const item = magicItemsById[id];
+      if (!item) continue;
       const count = magicItemCounts[id] ?? 1;
       if (count > 1) parts.push(`${renderName(item.name)} ×${count}`);
       else parts.push(renderName(item.name));
@@ -2037,7 +2050,8 @@
     renderUnitSpecialRules(modifiedRules);
     renderUnitEquipment(unit, selectedOptionIds);
     renderUnitMount(unit, selectedOptionIds);
-    renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById);
+    const preselectedMagicItems = new Set(existingEntry ? existingEntry.preselectedMagicItems : selectedUnit.magic_items);
+    renderUnitMagicItems(selectedMagicItems.union(preselectedMagicItems), magicItemCounts, magicItemsById);
     const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
     renderUnitRanged(rangedWeapons);
     const rangedSpecs = collectRangedSpecs(rangedWeapons);
@@ -2045,7 +2059,7 @@
     const upgrades = collectUpgrades(unit, selectedOptionIds);
     renderUnitUpgrades(upgrades);
     renderUnitMagicBanners(selectedMagicBanner);
-    let sizeInput = 1
+    let sizeInput = 1;
     if (unit.min_size != 1 || unit.max_size != 1) {
       const sizeRow = document.createElement("div");
       sizeRow.className = "config-row";
@@ -3461,7 +3475,6 @@
     });
 
     document.getElementById("exportPdfBtn").addEventListener("click", () => {
-      // document.getElementById("exportPdfBtn").click();
       const pdfData = buildArmyDataForPdf();
       exportArmyPDF(pdfData);
       closeModal();

@@ -1932,6 +1932,42 @@
       "only_for_type": [],
       "not_for_type": [],
       "only_for_unit": ["zarina_katarina_di_kislev"]
+    },
+    {
+      "id": "mortis_la_grande_lama_della_morte",
+      "name": "Mortis - La Grande Lama della Morte",
+      "cost": 70,
+      "category": "Armi Magiche",
+      "description": "+1 in Attacco, ogni ferita inflitta cura una ferita del possessore.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "only_for_unit": ["nagash"],
+      "not_for_type": []
+    },
+    {
+      "id": "larmatura_nera_di_nagash",
+      "name": "L'Armatura Nera di Nagash",
+      "cost": 80,
+      "category": "Armature Magiche",
+      "description": "+1 in Difesa, Tiro Salvezza 4+, Resistenza alla Magia 4+.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "only_for_unit": ["nagash"],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_scettro_del_potere",
+      "name": "Lo Scettro Del Potere",
+      "cost": 60,
+      "category": "Arcani",
+      "description": "Il possessore può trattenere fino a 4 carte Venti di Magia in più. Inizia la partita con 2 carta Venti di Magia.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "only_for_unit": ["nagash"],
+      "not_for_type": []
     }
   ]
 }

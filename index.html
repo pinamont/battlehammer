@@ -6333,20 +6333,24 @@
       "category": "Truppe",
       "cost_per_model": 7,
       "stats": {
-        "M": "1*",
-        "DC": "2",
-        "D": "2",
-        "F": "1",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "2",
+        "Difesa": "2",
+        "Corpo": "1",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 5,
       "max_size": 20,
       "rules": [
-        "paura",
-        "senza volont\u00e0"
+        "Paura",
+        "Senza Volont\u00e0"
       ],
       "equipment": [],
       "ranged": [],
@@ -6354,11 +6358,19 @@
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": "scudo",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost_per_model": 1
         },
         {
           "id": "lancia",
           "name": "lancia",
+          "add_equipment": "lancia",
+          "add_spec": {
+            "Attacco": "+1 se non carica e l'unit\u00e0 \u00e8 8+"
+          },
           "cost_per_model": 1
         },
         {
@@ -6369,6 +6381,9 @@
         {
           "id": "campione",
           "name": "campione",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
           "cost": 20
         }
       ],
@@ -6381,20 +6396,24 @@
       "category": "Truppe",
       "cost_per_model": 9,
       "stats": {
-        "M": "1*",
-        "DC": "2",
-        "D": "2",
-        "F": "1",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "2",
+        "Difesa": "2",
+        "Corpo": "1",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 5,
       "max_size": 20,
       "rules": [
-        "paura",
-        "senza volont\u00e0"
+        "Paura",
+        "Senza Volont\u00e0"
       ],
       "equipment": [
         "arco"
@@ -6403,8 +6422,8 @@
         {
           "name": "Arco",
           "range": "4",
-          "dc": "2",
-          "special": "-"
+          "att": "2",
+          "spec": "-"
         }
       ],
       "options": [
@@ -6423,20 +6442,24 @@
       "category": "Truppe",
       "cost_per_model": 10,
       "stats": {
-        "M": "1*",
-        "DC": "2",
-        "D": "2",
-        "F": "1",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "2",
+        "Difesa": "2",
+        "Corpo": "1",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 5,
       "max_size": 20,
       "rules": [
-        "paura",
-        "senza volont\u00e0"
+        "Paura",
+        "Senza Volont\u00e0"
       ],
       "equipment": [
         "balestra"
@@ -6445,8 +6468,8 @@
         {
           "name": "Balestra",
           "range": "5",
-          "dc": "3",
-          "special": "*"
+          "att": "3",
+          "spec": "muove o tira"
         }
       ],
       "options": [
@@ -6465,19 +6488,25 @@
       "category": "Truppe",
       "cost_per_model": 7,
       "stats": {
-        "M": "1*",
-        "DC": "2",
-        "D": "3",
-        "F": "1",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "2",
+        "Difesa": "3",
+        "Corpo": "1",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 5,
       "max_size": 20,
       "rules": [
-        "paura, senza volont\u00e0, devono avanzare sempre verso il nemico pi\u00f9 vicino in vista"
+        "Paura",
+        "Senza Volont\u00e0",
+        "devono avanzare sempre verso il nemico pi\u00f9 vicino in vista"
       ],
       "equipment": [],
       "ranged": [],
@@ -6491,19 +6520,21 @@
       "category": "Truppe",
       "cost_per_model": 7,
       "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2",
-        "F": "1",
-        "R": "3"
+        "Movimento": "1",
+        "Attacco": "3",
+        "Difesa": "2",
+        "Corpo": "1",
+        "Coraggio": "3"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 5,
       "max_size": 20,
       "rules": [
-        "paura, non possono inseguire se fanno almeno una vittima"
+        "Paura",
+        "non possono inseguire se fanno almeno una vittima"
       ],
       "equipment": [],
       "ranged": [],
@@ -6517,20 +6548,25 @@
       "category": "Truppe",
       "cost_per_model": 12,
       "stats": {
-        "M": "1*",
-        "DC": "3**",
-        "D": "4",
-        "F": "1",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "3",
+        "Difesa": "4",
+        "Corpo": "1",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare",
+        "Attacco": "-1 alla Difesa"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 5,
       "max_size": 20,
       "rules": [
-        "paura",
-        "senza volont\u00e0"
+        "Paura",
+        "Senza Volont\u00e0"
       ],
       "equipment": [
         "armatura pesante"
@@ -6540,6 +6576,10 @@
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": "scudo",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost_per_model": 1
         },
         {
@@ -6560,6 +6600,9 @@
         {
           "id": "campione",
           "name": "campione",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
           "cost": 20
         }
       ],
@@ -6572,19 +6615,23 @@
       "category": "Truppe",
       "cost_per_model": 22,
       "stats": {
-        "M": "1*",
-        "DC": "4",
-        "D": "4",
-        "F": "2",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "4",
+        "Corpo": "2",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 5,
       "max_size": 20,
       "rules": [
-        "paura, senza volont\u00e0, infiammabili"
+        "Paura, Senza Volont\u00e0, Infiammabili"
       ],
       "equipment": [
         "arma a due mani"
@@ -6599,6 +6646,9 @@
         {
           "id": "campione",
           "name": "campione",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
           "cost": 20
         }
       ],
@@ -6611,19 +6661,24 @@
       "category": "Truppe",
       "cost_per_model": 20,
       "stats": {
-        "M": "2*",
-        "DC": "0**",
-        "D": "2",
-        "F": "1",
-        "R": "0"
+        "Movimento": "2",
+        "Attacco": "0",
+        "Difesa": "2",
+        "Corpo": "1",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare",
+        "Attacco": "Spaventare"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 3,
       "max_size": 10,
       "rules": [
-        "paura, senza volont\u00e0, immuni agli attacchi non magici o da fuoco, Spaventare (\\textit{invece di attaccare normalmente, un'unit\u00e0 di fantasmi costringe l'unit\u00e0 avversaria in CaC a passare un test di Coraggio o fuggire immediatamente; per questo test, l'unit\u00e0 attaccata deve ottenere almeno 2 teschi, a meno che non incuta paura o terrore, nel qual caso basta 1 teschio; unit\u00e0 immuni alla psicologia o implacabili non devono effettuare alcun test"
+        "Paura, Senza Volont\u00e0, immuni agli attacchi non magici o da fuoco, Spaventare (invece di attaccare normalmente, un'unit\u00e0 di fantasmi costringe l'unit\u00e0 avversaria in CaC a passare un test di Coraggio o fuggire immediatamente; per questo test, l'unit\u00e0 attaccata deve ottenere almeno 2 teschi, a meno che non incuta Paura o Terrore, nel qual caso basta 1 teschio; unit\u00e0 immuni alla psicologia o implacabili non devono effettuare alcun test)"
       ],
       "equipment": [],
       "ranged": [],
@@ -6637,19 +6692,26 @@
       "category": "Truppe",
       "cost_per_model": 30,
       "stats": {
-        "M": "2*",
-        "DC": "3**",
-        "D": "2",
-        "F": "1",
-        "R": "0"
+        "Movimento": "2",
+        "Attacco": "3",
+        "Difesa": "2",
+        "Corpo": "1",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare",
+        "Attacco": "ignora la difesa"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 3,
       "max_size": 10,
       "rules": [
-        "terrore, senza volont\u00e0, immuni agli attacchi non magici o da fuoco"
+        "Terrore",
+        "Senza Volont\u00e0",
+        "immuni agli attacchi non magici o da fuoco"
       ],
       "equipment": [
         "arma a 2 mani"
@@ -6665,20 +6727,24 @@
       "category": "Truppe",
       "cost_per_model": 16,
       "stats": {
-        "M": "2",
-        "DC": "2",
-        "D": "2",
-        "F": "1",
-        "R": "0"
+        "Movimento": "2*",
+        "Attacco": "2",
+        "Difesa": "2",
+        "Corpo": "1",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "marcia solo di 1 casella"
       },
       "type": [
-        "cavalleria leggera"
+        "cavalleria leggera",
+        "nommorto"
       ],
       "min_size": 3,
       "max_size": 10,
       "rules": [
-        "paura",
-        "senza volont\u00e0"
+        "Paura",
+        "Senza Volont\u00e0"
       ],
       "equipment": [
         "cavallo scheletrico"
@@ -6688,6 +6754,10 @@
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": "scudo",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost_per_model": 2
         },
         {
@@ -6698,6 +6768,10 @@
         {
           "id": "lancia_da_cavaliere",
           "name": "lancia da cavaliere",
+          "add_equipment": "lancia da cavaliere",
+          "add_spec": {
+            "Attacco": "+2 in carica (se a cavallo)"
+          },
           "cost_per_model": 4
         },
         {
@@ -6708,6 +6782,9 @@
         {
           "id": "campione",
           "name": "campione",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
           "cost": 30
         }
       ],
@@ -6720,20 +6797,24 @@
       "category": "Truppe",
       "cost_per_model": 26,
       "stats": {
-        "M": "2*",
-        "DC": "3",
-        "D": "5",
-        "F": "2",
-        "R": "0"
+        "Movimento": "2",
+        "Attacco": "3",
+        "Difesa": "5",
+        "Corpo": "2",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare"
       },
       "type": [
-        "cavalleria pesante"
+        "cavalleria pesante",
+        "nommorto"
       ],
       "min_size": 3,
       "max_size": 10,
       "rules": [
-        "paura",
-        "senza volont\u00e0"
+        "Paura",
+        "Senza Volont\u00e0"
       ],
       "equipment": [
         "armatura pesante",
@@ -6744,11 +6825,19 @@
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": "scudo",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost_per_model": 2
         },
         {
           "id": "lancia_da_cavaliere",
           "name": "lancia da cavaliere",
+          "add_equipment": "lancia da cavaliere",
+          "add_spec": {
+            "Attacco": "+2 in carica (se a cavallo)"
+          },
           "cost_per_model": 4
         },
         {
@@ -6759,6 +6848,9 @@
         {
           "id": "campione",
           "name": "campione",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
           "cost": 30
         }
       ],
@@ -6771,11 +6863,11 @@
       "category": "Truppe",
       "cost_per_model": 52,
       "stats": {
-        "M": "2",
-        "DC": "4",
-        "D": "5",
-        "F": "2",
-        "R": "5"
+        "Movimento": "2",
+        "Attacco": "4",
+        "Difesa": "5",
+        "Corpo": "2",
+        "Coraggio": "5"
       },
       "type": [
         "cavalleria pesante"
@@ -6783,22 +6875,31 @@
       "min_size": 3,
       "max_size": 10,
       "rules": [
-        "paura, rigenerazione (5+)"
+        "Paura, Rigenerazione (5+)"
       ],
       "equipment": [
         "armatura pesante",
-        "cavallo scheletrico bardato"
+        "cavallo scheletrico bardato",
+        "nommorto"
       ],
       "ranged": [],
       "options": [
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": "scudo",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost_per_model": 2
         },
         {
           "id": "lancia_da_cavaliere",
           "name": "lancia da cavaliere",
+          "add_equipment": "lancia da cavaliere",
+          "add_spec": {
+            "Attacco": "+2 in carica (se a cavallo)"
+          },
           "cost_per_model": 4
         },
         {
@@ -6809,6 +6910,9 @@
         {
           "id": "campione",
           "name": "campione",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
           "cost": 30
         }
       ],
@@ -6816,34 +6920,38 @@
       "max_per_army": 0
     },
     {
-      "id": "catapulta_scheletrica",
-      "name": "Catapulta scheletrica",
-      "category": "Macchine Da Guerra",
+      "id": "catapulta_lanciateschi",
+      "name": "Catapulta Lanciateschi",
+      "category": "Macchine e Mostri",
       "cost_per_model": 85,
       "stats": {
-        "M": "1*",
-        "DC": "1",
-        "D": "4",
-        "F": "3",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "1",
+        "Difesa": "4",
+        "Corpo": "3",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 caricare n\u00e9 marciare"
       },
       "type": [
         "macchina da guerra",
-        "catapulta"
+        "catapulta",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "paura",
-        "senza volont\u00e0"
+        "Paura",
+        "Senza Volont\u00e0"
       ],
       "equipment": [],
       "ranged": [
         {
-          "name": "Catapulta piccola",
-          "range": "7",
-          "dc": "4",
-          "special": "*"
+          "name": "Lanciateschi",
+          "range": "2-8",
+          "att": "4",
+          "spec": "catapulta, unit\u00e0 colpita test di Panico"
         }
       ],
       "options": [],
@@ -6853,33 +6961,39 @@
     {
       "id": "carro_scheletrico",
       "name": "Carro scheletrico",
-      "category": "Macchine Da Guerra",
+      "category": "Macchine e Mostri",
       "cost_per_model": 80,
       "stats": {
-        "M": "2*",
-        "DC": "2**",
-        "D": "4",
-        "F": "4",
-        "R": "0"
+        "Movimento": "2",
+        "Attacco": "2",
+        "Difesa": "4",
+        "Corpo": "4",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare",
+        "Attacco": "+1D6+1 in carica"
       },
       "type": [
-        "carro leggero"
+        "carro leggero",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "paura",
-        "senza volont\u00e0"
+        "Paura",
+        "Senza Volont\u00e0"
       ],
       "equipment": [
+        "lancia",
         "arco"
       ],
       "ranged": [
         {
           "name": "Arco",
           "range": "4",
-          "dc": "1",
-          "special": "-"
+          "att": "1",
+          "spec": "-"
         }
       ],
       "options": [],
@@ -6892,21 +7006,24 @@
       "category": "Personaggi",
       "cost_per_model": 225,
       "stats": {
-        "M": "2",
-        "DC": "5",
-        "D": "4",
-        "F": "4",
-        "R": "7"
+        "Movimento": "2",
+        "Attacco": "5",
+        "Difesa": "4",
+        "Corpo": "4",
+        "Coraggio": "7"
       },
       "type": [
         "personaggio",
         "fanteria",
-        "mago"
+        "Mago",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "paura, rigenerazione (5+), mago livello 2 (Negromanzia o Magia delle Tenebre)"
+        "Paura",
+        "Rigenerazione (5+)",
+        "Mago livello 2 (Negromanzia o Magia delle Tenebre)"
       ],
       "equipment": [],
       "ranged": [],
@@ -6914,34 +7031,88 @@
         {
           "id": "arma_a_due_mani_2_armi",
           "name": "arma a due mani / 2 armi",
+          "add_equipment": "arma a due mani / 2 armi",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
           "cost": 8
         },
         {
           "id": "lancia_da_cavaliere",
           "name": "lancia da cavaliere",
+          "add_equipment": "lancia da cavaliere",
+          "add_spec": {
+            "Attacco": "+2 in carica (se a cavallo)"
+          },
           "cost": 8
         },
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": "scudo",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost": 4
         },
         {
           "id": "armatura_pesante",
           "name": "armatura pesante",
+          "add_equipment": "armatura pesante",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost": 4
         },
         {
           "id": "cavallo_scheletrico",
           "name": "cavallo scheletrico",
-          "cost": 25
+          "cost": 25,
+          "add_mount": "cavallo scheletrico",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria leggera"
+          }
         },
         {
           "id": "cavallo_scheletrico_bardato",
           "name": "cavallo scheletrico bardato",
-          "cost": 25
+          "cost": 25,
+          "add_mount": "cavallo scheletrico bardato",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Difesa": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria pesante"
+          }
+        },
+        {
+          "id": "incubo_alato",
+          "name": "Incubo Alato",
+          "cost": 125,
+          "add_mount": "incubo_alato"
+        },
+        {
+          "id": "drago_zombie",
+          "name": "Drago Zombie",
+          "cost": 325,
+          "add_mount": "drago_zombie"
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cavallo_scheletrico",
+          "cavallo_scheletrico_bardato",
+          "incubo_alato",
+          "drago_zombie"
+        ]
+      },
       "magic_item_slots": 3,
       "max_per_army": 0
     },
@@ -6951,21 +7122,23 @@
       "category": "Personaggi",
       "cost_per_model": 275,
       "stats": {
-        "M": "2",
-        "DC": "4",
-        "D": "4",
-        "F": "4",
-        "R": "6"
+        "Movimento": "2",
+        "Attacco": "4",
+        "Difesa": "4",
+        "Corpo": "4",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio",
         "fanteria",
-        "mago"
+        "Mago",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "paura, rigenerazione (5+), mago livello 3 (Negromanzia o Magia delle Tenebre)"
+        "Paura, Rigenerazione (5+)",
+        "Mago livello 3 (Negromanzia o Magia delle Tenebre)"
       ],
       "equipment": [],
       "ranged": [],
@@ -6978,14 +7151,52 @@
         {
           "id": "cavallo_scheletrico",
           "name": "cavallo scheletrico",
-          "cost": 25
+          "cost": 25,
+          "add_mount": "cavallo scheletrico",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria leggera"
+          }
         },
         {
           "id": "cavallo_scheletrico_bardato",
           "name": "cavallo scheletrico bardato",
-          "cost": 25
+          "cost": 25,
+          "add_mount": "cavallo scheletrico bardato",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Difesa": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria pesante"
+          }
+        },
+        {
+          "id": "incubo_alato",
+          "name": "Incubo Alato",
+          "cost": 125,
+          "add_mount": "incubo_alato"
+        },
+        {
+          "id": "drago_zombie",
+          "name": "Drago Zombie",
+          "cost": 325,
+          "add_mount": "drago_zombie"
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cavallo_scheletrico",
+          "cavallo_scheletrico_bardato",
+          "incubo_alato",
+          "drago_zombie"
+        ]
+      },
       "magic_item_slots": 4,
       "max_per_army": 0
     },
@@ -6995,21 +7206,27 @@
       "category": "Personaggi",
       "cost_per_model": 300,
       "stats": {
-        "M": "1*",
-        "DC": "4",
-        "D": "4",
-        "F": "4",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "4",
+        "Corpo": "4",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare"
       },
       "type": [
         "personaggio",
         "fanteria",
-        "mago"
+        "Mago",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "paura, senza volont\u00e0, mago livello 4 (Negromanzia o Magia delle Tenebre)"
+        "Paura",
+        "Senza Volont\u00e0",
+        "Mago livello 4 (Negromanzia o Magia delle Tenebre)"
       ],
       "equipment": [],
       "ranged": [],
@@ -7017,14 +7234,52 @@
         {
           "id": "cavallo_scheletrico",
           "name": "cavallo scheletrico",
-          "cost": 25
+          "cost": 25,
+          "add_mount": "cavallo scheletrico",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria leggera"
+          }
         },
         {
           "id": "cavallo_scheletrico_bardato",
           "name": "cavallo scheletrico bardato",
-          "cost": 25
+          "cost": 25,
+          "add_mount": "cavallo scheletrico bardato",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Difesa": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria pesante"
+          }
+        },
+        {
+          "id": "incubo_alato",
+          "name": "Incubo Alato",
+          "cost": 125,
+          "add_mount": "incubo_alato"
+        },
+        {
+          "id": "drago_zombie",
+          "name": "Drago Zombie",
+          "cost": 325,
+          "add_mount": "drago_zombie"
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cavallo_scheletrico",
+          "cavallo_scheletrico_bardato",
+          "incubo_alato",
+          "drago_zombie"
+        ]
+      },
       "magic_item_slots": 4,
       "max_per_army": 0
     },
@@ -7034,21 +7289,21 @@
       "category": "Personaggi",
       "cost_per_model": 225,
       "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "4",
-        "F": "4",
-        "R": "6"
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "4",
+        "Corpo": "4",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio",
         "fanteria",
-        "mago"
+        "Mago"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "mago livello 3 (Negromanzia o Magia delle Tenebre)"
+        "Mago livello 3 (Negromanzia o Magia delle Tenebre)"
       ],
       "equipment": [],
       "ranged": [],
@@ -7061,14 +7316,52 @@
         {
           "id": "cavallo_scheletrico",
           "name": "cavallo scheletrico",
-          "cost": 25
+          "cost": 25,
+          "add_mount": "cavallo scheletrico",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria leggera"
+          }
         },
         {
           "id": "cavallo_scheletrico_bardato",
           "name": "cavallo scheletrico bardato",
-          "cost": 25
+          "cost": 25,
+          "add_mount": "cavallo scheletrico bardato",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Difesa": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria pesante"
+          }
+        },
+        {
+          "id": "incubo_alato",
+          "name": "Incubo Alato",
+          "cost": 125,
+          "add_mount": "incubo_alato"
+        },
+        {
+          "id": "drago_zombie",
+          "name": "Drago Zombie",
+          "cost": 325,
+          "add_mount": "drago_zombie"
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cavallo_scheletrico",
+          "cavallo_scheletrico_bardato",
+          "incubo_alato",
+          "drago_zombie"
+        ]
+      },
       "magic_item_slots": 4,
       "max_per_army": 0
     },
@@ -7078,21 +7371,24 @@
       "category": "Personaggi",
       "cost_per_model": 135,
       "stats": {
-        "M": "2",
-        "DC": "5",
-        "D": "3",
-        "F": "3",
-        "R": "6"
+        "Movimento": "2",
+        "Attacco": "5",
+        "Difesa": "3",
+        "Corpo": "3",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio",
         "fanteria",
-        "mago"
+        "Mago",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "paura, rigenerazione (5+), mago livello 1 (Negromanzia o Magia delle Tenebre)"
+        "Paura",
+        "Rigenerazione (5+)",
+        "Mago livello 1 (Negromanzia o Magia delle Tenebre)"
       ],
       "equipment": [],
       "ranged": [],
@@ -7100,34 +7396,88 @@
         {
           "id": "arma_a_due_mani_2_armi",
           "name": "arma a due mani / 2 armi",
+          "add_equipment": "arma a due mani / 2 armi",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
           "cost": 6
         },
         {
           "id": "lancia_da_cavaliere",
           "name": "lancia da cavaliere",
+          "add_equipment": "lancia da cavaliere",
+          "add_spec": {
+            "Attacco": "+2 in carica (se a cavallo)"
+          },
           "cost": 6
         },
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": "scudo",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost": 3
         },
         {
           "id": "armatura_pesante",
           "name": "armatura pesante",
+          "add_equipment": "armatura pesante",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost": 3
         },
         {
           "id": "cavallo_scheletrico",
           "name": "cavallo scheletrico",
-          "cost": 20
+          "cost": 20,
+          "add_mount": "cavallo scheletrico",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria leggera"
+          }
         },
         {
           "id": "cavallo_scheletrico_bardato",
           "name": "cavallo scheletrico bardato",
-          "cost": 20
+          "cost": 20,
+          "add_mount": "cavallo scheletrico bardato",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Difesa": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria pesante"
+          }
+        },
+        {
+          "id": "incubo_alato",
+          "name": "Incubo Alato",
+          "cost": 125,
+          "add_mount": "incubo_alato"
+        },
+        {
+          "id": "drago_zombie",
+          "name": "Drago Zombie",
+          "cost": 325,
+          "add_mount": "drago_zombie"
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cavallo_scheletrico",
+          "cavallo_scheletrico_bardato",
+          "incubo_alato",
+          "drago_zombie"
+        ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -7137,20 +7487,26 @@
       "category": "Personaggi",
       "cost_per_model": 70,
       "stats": {
-        "M": "1*",
-        "DC": "4",
-        "D": "4",
-        "F": "4",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "4",
+        "Corpo": "4",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare"
       },
       "type": [
         "personaggio",
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "paura, senza volont\u00e0, infiammabile"
+        "Paura",
+        "Senza Volont\u00e0",
+        "Infiammabile"
       ],
       "equipment": [],
       "ranged": [],
@@ -7158,24 +7514,56 @@
         {
           "id": "arma_a_due_mani_2_armi",
           "name": "arma a due mani / 2 armi",
+          "add_equipment": "arma a due mani / 2 armi",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
           "cost": 6
         },
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": "scudo",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost": 3
         },
         {
           "id": "cavallo_scheletrico",
           "name": "cavallo scheletrico",
-          "cost": 25
+          "cost": 25,
+          "add_mount": "cavallo scheletrico",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria leggera"
+          }
         },
         {
           "id": "cavallo_scheletrico_bardato",
           "name": "cavallo scheletrico bardato",
-          "cost": 25
+          "cost": 25,
+          "add_mount": "cavallo scheletrico bardato",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Difesa": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria pesante"
+          }
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cavallo_scheletrico",
+          "cavallo_scheletrico_bardato"
+        ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -7185,21 +7573,26 @@
       "category": "Personaggi",
       "cost_per_model": 55,
       "stats": {
-        "M": "1*",
-        "DC": "4**",
-        "D": "3",
-        "F": "3",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "3",
+        "Corpo": "3",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare",
+        "Attacco": "-1 alla Difesa"
       },
       "type": [
         "personaggio",
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "paura",
-        "senza volont\u00e0"
+        "Paura",
+        "Senza Volont\u00e0"
       ],
       "equipment": [],
       "ranged": [],
@@ -7207,34 +7600,81 @@
         {
           "id": "arma_a_due_mani_2_armi",
           "name": "arma a due mani / 2 armi",
+          "add_equipment": "arma a due mani / 2 armi",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
           "cost": 6
         },
         {
           "id": "lancia_da_cavaliere",
           "name": "lancia da cavaliere",
+          "add_equipment": "lancia da cavaliere",
+          "add_spec": {
+            "Attacco": "+2 in carica (se a cavallo)"
+          },
           "cost": 6
         },
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": "scudo",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost": 3
         },
         {
           "id": "armatura_pesante",
           "name": "armatura pesante",
+          "add_equipment": "armatura pesante",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost": 3
         },
         {
           "id": "cavallo_scheletrico",
           "name": "cavallo scheletrico",
-          "cost": 20
+          "cost": 20,
+          "add_mount": "cavallo scheletrico",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria leggera"
+          }
         },
         {
           "id": "cavallo_scheletrico_bardato",
           "name": "cavallo scheletrico bardato",
-          "cost": 20
+          "cost": 20,
+          "add_mount": "cavallo scheletrico bardato",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Difesa": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria pesante"
+          }
+        },
+        {
+          "id": "drago_zombie",
+          "name": "Drago Zombie",
+          "cost": 325,
+          "add_mount": "drago_zombie"
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cavallo_scheletrico",
+          "cavallo_scheletrico_bardato",
+          "drago_zombie"
+        ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -7244,21 +7684,21 @@
       "category": "Personaggi",
       "cost_per_model": 70,
       "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "3",
-        "F": "2",
-        "R": "4"
+        "Movimento": "1",
+        "Attacco": "3",
+        "Difesa": "3",
+        "Corpo": "2",
+        "Coraggio": "4"
       },
       "type": [
         "personaggio",
         "fanteria",
-        "mago"
+        "Mago"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "mago livello 1 (Negromanzia o Magia delle Tenebre)"
+        "Mago livello 1 (Negromanzia o Magia delle Tenebre)"
       ],
       "equipment": [],
       "ranged": [],
@@ -7271,14 +7711,38 @@
         {
           "id": "cavallo_scheletrico",
           "name": "cavallo scheletrico",
-          "cost": 15
+          "cost": 15,
+          "add_mount": "cavallo scheletrico",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria leggera"
+          }
         },
         {
           "id": "cavallo_scheletrico_bardato",
           "name": "cavallo scheletrico bardato",
-          "cost": 15
+          "cost": 15,
+          "add_mount": "cavallo scheletrico bardato",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Difesa": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria pesante"
+          }
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cavallo_scheletrico",
+          "cavallo_scheletrico_bardato"
+        ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -7288,20 +7752,27 @@
       "category": "Personaggi",
       "cost_per_model": 55,
       "stats": {
-        "M": "1*",
-        "DC": "3**",
-        "D": "3",
-        "F": "2",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "3",
+        "Difesa": "3",
+        "Corpo": "2",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "non pu\u00f2 marciare",
+        "Attacco": "-1 alla Difesa"
       },
       "type": [
         "personaggio",
-        "fanteria"
+        "fanteria",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "paura, senza volont\u00e0, stendardo da battaglia (+1 al combattimento in difesa, unit\u00e0 amiche a 2 caselle o meno ritirano test di coraggio)"
+        "Paura",
+        "Senza Volont\u00e0",
+        "Stendardo da Battaglia (+1 al combattimento in difesa, unit\u00e0 amiche a 2 caselle o meno ritirano test di coraggio / dimezzano i danni da Senza Volont\u00e0)"
       ],
       "equipment": [],
       "ranged": [],
@@ -7309,66 +7780,110 @@
         {
           "id": "arma_a_due_mani_2_armi",
           "name": "arma a due mani / 2 armi",
+          "add_equipment": "arma a due mani / 2 armi",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
           "cost": 4
         },
         {
           "id": "lancia_da_cavaliere",
           "name": "lancia da cavaliere",
+          "add_equipment": "lancia da cavaliere",
+          "add_spec": {
+            "Attacco": "+2 in carica (se a cavallo)"
+          },
           "cost": 4
         },
         {
           "id": "scudo",
           "name": "scudo",
+          "add_equipment": "scudo",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost": 2
         },
         {
           "id": "armatura_pesante",
           "name": "armatura pesante",
+          "add_equipment": "armatura pesante",
+          "stat_modifiers": {
+            "Difesa": 1
+          },
           "cost": 2
         },
         {
           "id": "cavallo_scheletrico",
           "name": "cavallo scheletrico",
-          "cost": 15
+          "cost": 15,
+          "add_mount": "cavallo scheletrico",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria leggera"
+          }
         },
         {
           "id": "cavallo_scheletrico_bardato",
           "name": "cavallo scheletrico bardato",
-          "cost": 15
+          "cost": 15,
+          "add_mount": "cavallo scheletrico bardato",
+          "stat_modifiers": {
+            "Movimento": 1,
+            "Difesa": 1,
+            "Corpo": 1
+          },
+          "change_type": {
+            "fanteria": "cavalleria pesante"
+          }
         }
       ],
+      "option_categories": {
+        "cavalcatura": [
+          "nessuno",
+          "cavallo_scheletrico",
+          "cavallo_scheletrico_bardato"
+        ]
+      },
       "magic_item_slots": 1,
       "max_per_army": 1,
       "magic_banner_slot": true
     },
     {
-      "id": "nagash_signore_supremo_dei_nommorti",
-      "name": "Nagash, Signore Supremo dei Nommorti",
+      "id": "nagash",
+      "name": "Nagash, Signore Supremo dei Morti",
       "category": "Personaggi",
       "cost_per_model": 750,
       "stats": {
-        "M": "1",
-        "DC": "7*",
-        "D": "7",
-        "F": "7",
-        "R": "7"
+        "Movimento": "1",
+        "Attacco": "6",
+        "Difesa": "6",
+        "Corpo": "7",
+        "Coraggio": "7"
       },
       "type": [
         "personaggio speciale",
         "fanteria mostruosa",
-        "mago"
+        "Mago",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "implacabile, terrore, tiro salvezza 4+, resistenza alla magia 4+, mago livello 5 (Negromanzia, Magia delle Tenebre), supremo negromante (\\textit{Nagash pu\u00f2 scegliere incantesimi dal mazzo Negromanzia e da quello Magia delle Tenebre in qualsiasi combinazione; inoltre pu\u00f2 sempre usare carte Dispersione come se fossero carte Potere e pu\u00f2 sempre rilanciare lo stesso incantesimo pi\u00f9 volte al turno"
+        "Implacabile",
+        "Terrore",
+        "Mago livello 4 (Negromanzia, Magia delle Tenebre)",
+        "Supremo Negromante (pu\u00f2 scegliere incantesimi dal mazzo Negromanzia e da quello Magia delle Tenebre in qualsiasi combinazione; inoltre pu\u00f2 sempre usare carte Dispersione come se fossero carte Potere e pu\u00f2 sempre rilanciare lo stesso incantesimo pi\u00f9 volte al turno)"
       ],
       "equipment": [],
       "magic_items": [
-        "Il Libro Di Nagash",
-        "Lo Scettro Del Potere",
-        "L'Armatura Nera Di Nagash",
-        "Mortis - La Grande Lama Della Morte"
+        "il_libro_di_nagash",
+        "lo_scettro_del_potere",
+        "mortis_la_grande_lama_della_morte",
+        "larmatura_nera_di_nagash"
       ],
       "ranged": [],
       "options": [],
@@ -7376,73 +7891,71 @@
       "max_per_army": 1
     },
     {
-      "id": "catapulta_scheletrica",
-      "name": "Catapulta scheletrica",
-      "category": "Macchine e Mostri",
-      "cost_per_model": 85,
+      "id": "drago_zombie",
+      "name": "Drago Zombie",
+      "category": "none",
+      "cost_per_model": 325,
       "stats": {
-        "M": "1*",
-        "DC": "1",
-        "D": "4",
-        "F": "3",
-        "R": "0"
+        "Movimento": "1",
+        "Attacco": "5",
+        "Difesa": "5",
+        "Corpo": "8",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "movimento in volo 4 caselle"
       },
       "type": [
-        "macchina da guerra",
-        "catapulta"
+        "mostro",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "paura, senza volont\u00e0"
+        "Volare",
+        "Terrore",
+        "Senza Volont\u00e0"
       ],
       "equipment": [],
       "ranged": [
         {
-          "name": "Catapulta piccola",
-          "range": "7",
-          "dc": "4",
-          "special": "*"
+          "name": "Soffio",
+          "range": "1",
+          "att": "4",
+          "spec": "ignora la difesa, anche in CaC"
         }
       ],
-      "options": [],
-      "magic_item_slots": 0,
-      "max_per_army": 0
+      "options": []
     },
     {
-      "id": "carro_scheletrico",
-      "name": "Carro scheletrico",
-      "category": "Macchine e Mostri",
-      "cost_per_model": 80,
+      "id": "incubo_alato",
+      "name": "Incubo Alato",
+      "category": "none",
+      "cost_per_model": 125,
       "stats": {
-        "M": "2*",
-        "DC": "2**",
-        "D": "4",
-        "F": "4",
-        "R": "0"
+        "Movimento": "2",
+        "Attacco": "3",
+        "Difesa": "3",
+        "Corpo": "4",
+        "Coraggio": "0"
+      },
+      "spec": {
+        "Movimento": "movimento in volo 4 caselle"
       },
       "type": [
-        "carro leggero"
+        "mostro",
+        "nommorto"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
-        "paura, senza volont\u00e0"
+        "Volare",
+        "Paura",
+        "Senza Volont\u00e0"
       ],
-      "equipment": [
-        "arco"
-      ],
-      "ranged": [
-        {
-          "name": "Arco",
-          "range": "4",
-          "dc": "1",
-          "special": "-"
-        }
-      ],
-      "options": [],
-      "magic_item_slots": 0,
-      "max_per_army": 0
+      "equipment": [],
+      "ranged": [],
+      "options": []
     }
   ],
   "caos": [
@@ -7452,11 +7965,11 @@
       "category": "Truppe",
       "cost_per_model": 15,
       "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "5",
-        "F": "1",
-        "R": "6"
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "5",
+        "Corpo": "1",
+        "Coraggio": "6"
       },
       "type": [
         "fanteria"
@@ -7495,11 +8008,11 @@
       "category": "Truppe",
       "cost_per_model": 16,
       "stats": {
-        "M": "1",
-        "DC": "5",
-        "D": "4",
-        "F": "1",
-        "R": "6"
+        "Movimento": "1",
+        "Attacco": "5",
+        "Difesa": "4",
+        "Corpo": "1",
+        "Coraggio": "6"
       },
       "type": [
         "fanteria"
@@ -7533,11 +8046,11 @@
       "category": "Truppe",
       "cost_per_model": 9,
       "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "3",
-        "F": "1",
-        "R": "4"
+        "Movimento": "1",
+        "Attacco": "3",
+        "Difesa": "3",
+        "Corpo": "1",
+        "Coraggio": "4"
       },
       "type": [
         "fanteria"
@@ -7583,11 +8096,11 @@
       "category": "Truppe",
       "cost_per_model": 8,
       "stats": {
-        "M": "1",
-        "DC": "2",
-        "D": "2",
-        "F": "1",
-        "R": "4"
+        "Movimento": "1",
+        "Attacco": "2",
+        "Difesa": "2",
+        "Corpo": "1",
+        "Coraggio": "4"
       },
       "type": [
         "fanteria"
@@ -7627,11 +8140,11 @@
       "category": "Truppe",
       "cost_per_model": 9,
       "stats": {
-        "M": "1",
-        "DC": "3*",
-        "D": "2",
-        "F": "1",
-        "R": "4"
+        "Movimento": "1",
+        "Attacco": "3*",
+        "Difesa": "2",
+        "Corpo": "1",
+        "Coraggio": "4"
       },
       "type": [
         "fanteria"
@@ -7674,11 +8187,11 @@
       "category": "Truppe",
       "cost_per_model": 40,
       "stats": {
-        "M": "2",
-        "DC": "4*",
-        "D": "3",
-        "F": "3",
-        "R": "5"
+        "Movimento": "2",
+        "Attacco": "4*",
+        "Difesa": "3",
+        "Corpo": "3",
+        "Coraggio": "5"
       },
       "type": [
         "creature mostruose"
@@ -7714,11 +8227,11 @@
       "category": "Truppe",
       "cost_per_model": 75,
       "stats": {
-        "M": "2",
-        "DC": "6",
-        "D": "4",
-        "F": "4",
-        "R": "6"
+        "Movimento": "2",
+        "Attacco": "6",
+        "Difesa": "4",
+        "Corpo": "4",
+        "Coraggio": "6"
       },
       "type": [
         "creature mostruose"
@@ -7753,11 +8266,11 @@
       "category": "Truppe",
       "cost_per_model": 36,
       "stats": {
-        "M": "2",
-        "DC": "4",
-        "D": "6",
-        "F": "2",
-        "R": "6"
+        "Movimento": "2",
+        "Attacco": "4",
+        "Difesa": "6",
+        "Corpo": "2",
+        "Coraggio": "6"
       },
       "type": [
         "cavalleria pesante"
@@ -7792,11 +8305,11 @@
       "category": "Truppe",
       "cost_per_model": 20,
       "stats": {
-        "M": "2",
-        "DC": "3*",
-        "D": "2",
-        "F": "2",
-        "R": "4"
+        "Movimento": "2",
+        "Attacco": "3*",
+        "Difesa": "2",
+        "Corpo": "2",
+        "Coraggio": "4"
       },
       "type": [
         "cavalleria leggera"
@@ -7839,11 +8352,11 @@
       "category": "Truppe",
       "cost_per_model": 16,
       "stats": {
-        "M": "1",
-        "DC": "5*",
-        "D": "4",
-        "F": "1",
-        "R": "5"
+        "Movimento": "1",
+        "Attacco": "5*",
+        "Difesa": "4",
+        "Corpo": "1",
+        "Coraggio": "5"
       },
       "type": [
         "fanteria"
@@ -7878,11 +8391,11 @@
       "category": "Truppe",
       "cost_per_model": 25,
       "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "3",
-        "F": "1*",
-        "R": "5"
+        "Movimento": "1",
+        "Attacco": "3",
+        "Difesa": "3",
+        "Corpo": "1*",
+        "Coraggio": "5"
       },
       "type": [
         "fanteria"
@@ -7917,11 +8430,11 @@
       "category": "Truppe",
       "cost_per_model": 22,
       "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "5",
-        "F": "1",
-        "R": "5"
+        "Movimento": "1",
+        "Attacco": "3",
+        "Difesa": "5",
+        "Corpo": "1",
+        "Coraggio": "5"
       },
       "type": [
         "fanteria"
@@ -7956,11 +8469,11 @@
       "category": "Truppe",
       "cost_per_model": 16,
       "stats": {
-        "M": "1",
-        "DC": "4*",
-        "D": "3**",
-        "F": "1",
-        "R": "5"
+        "Movimento": "1",
+        "Attacco": "4*",
+        "Difesa": "3**",
+        "Corpo": "1",
+        "Coraggio": "5"
       },
       "type": [
         "fanteria"
@@ -7995,11 +8508,11 @@
       "category": "Truppe",
       "cost_per_model": 36,
       "stats": {
-        "M": "3",
-        "DC": "4",
-        "D": "4",
-        "F": "2",
-        "R": "5"
+        "Movimento": "3",
+        "Attacco": "4",
+        "Difesa": "4",
+        "Corpo": "2",
+        "Coraggio": "5"
       },
       "type": [
         "cavalleria leggera"
@@ -8024,11 +8537,11 @@
       "category": "Truppe",
       "cost_per_model": 55,
       "stats": {
-        "M": "1+2DC",
-        "DC": "2",
-        "D": "3",
-        "F": "3",
-        "R": "5"
+        "Movimento": "1+2DC",
+        "Attacco": "2",
+        "Difesa": "3",
+        "Corpo": "3",
+        "Coraggio": "5"
       },
       "type": [
         "creature mostruose"
@@ -8058,11 +8571,11 @@
       "category": "Macchine e Mostri",
       "cost_per_model": 120,
       "stats": {
-        "M": "2*",
-        "DC": "4**",
-        "D": "6",
-        "F": "5",
-        "R": "6"
+        "Movimento": "2*",
+        "Attacco": "4**",
+        "Difesa": "6",
+        "Corpo": "5",
+        "Coraggio": "6"
       },
       "type": [
         "carro pesante"
@@ -8082,11 +8595,11 @@
       "category": "Macchine e Mostri",
       "cost_per_model": 200,
       "stats": {
-        "M": "2",
-        "DC": "6",
-        "D": "6",
-        "F": "8",
-        "R": "5"
+        "Movimento": "2",
+        "Attacco": "6",
+        "Difesa": "6",
+        "Corpo": "8",
+        "Coraggio": "5"
       },
       "type": [
         "mostro"
@@ -8115,11 +8628,11 @@
       "category": "Personaggi",
       "cost_per_model": 95,
       "stats": {
-        "M": "1",
-        "DC": "5",
-        "D": "4",
-        "F": "4",
-        "R": "8"
+        "Movimento": "1",
+        "Attacco": "5",
+        "Difesa": "4",
+        "Corpo": "4",
+        "Coraggio": "8"
       },
       "type": [
         "personaggio"
@@ -8190,11 +8703,11 @@
       "category": "Personaggi",
       "cost_per_model": 65,
       "stats": {
-        "M": "1",
-        "DC": "5",
-        "D": "3",
-        "F": "3",
-        "R": "7"
+        "Movimento": "1",
+        "Attacco": "5",
+        "Difesa": "3",
+        "Corpo": "3",
+        "Coraggio": "7"
       },
       "type": [
         "personaggio"
@@ -8265,11 +8778,11 @@
       "category": "Personaggi",
       "cost_per_model": 55,
       "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "3",
-        "F": "2",
-        "R": "6"
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "3",
+        "Corpo": "2",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio"
@@ -8329,11 +8842,11 @@
       "category": "Personaggi",
       "cost_per_model": 215,
       "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "4",
-        "F": "4",
-        "R": "7"
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "4",
+        "Corpo": "4",
+        "Coraggio": "7"
       },
       "type": [
         "personaggio",
@@ -8382,11 +8895,11 @@
       "category": "Personaggi",
       "cost_per_model": 70,
       "stats": {
-        "M": "1",
-        "DC": "2",
-        "D": "2",
-        "F": "2",
-        "R": "6"
+        "Movimento": "1",
+        "Attacco": "2",
+        "Difesa": "2",
+        "Corpo": "2",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio",
@@ -8420,11 +8933,11 @@
       "category": "Personaggi",
       "cost_per_model": 50,
       "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "3",
-        "F": "3",
-        "R": "5"
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "3",
+        "Corpo": "3",
+        "Coraggio": "5"
       },
       "type": [
         "personaggio"
@@ -8460,11 +8973,11 @@
       "category": "Personaggi",
       "cost_per_model": 100,
       "stats": {
-        "M": "2",
-        "DC": "4*",
-        "D": "3",
-        "F": "5",
-        "R": "6"
+        "Movimento": "2",
+        "Attacco": "4*",
+        "Difesa": "3",
+        "Corpo": "5",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio"
@@ -8503,11 +9016,11 @@
       "category": "Personaggi",
       "cost_per_model": 150,
       "stats": {
-        "M": "2",
-        "DC": "6",
-        "D": "4",
-        "F": "6",
-        "R": "7"
+        "Movimento": "2",
+        "Attacco": "6",
+        "Difesa": "4",
+        "Corpo": "6",
+        "Coraggio": "7"
       },
       "type": [
         "personaggio"
@@ -8545,11 +9058,11 @@
       "category": "Personaggi",
       "cost_per_model": 600,
       "stats": {
-        "M": "2",
-        "DC": "12*",
-        "D": "6",
-        "F": "10",
-        "R": "7"
+        "Movimento": "2",
+        "Attacco": "12*",
+        "Difesa": "6",
+        "Corpo": "10",
+        "Coraggio": "7"
       },
       "type": [
         "demone maggiore"
@@ -8574,11 +9087,11 @@
       "category": "Personaggi",
       "cost_per_model": 600,
       "stats": {
-        "M": "2",
-        "DC": "5",
-        "D": "5",
-        "F": "7",
-        "R": "7"
+        "Movimento": "2",
+        "Attacco": "5",
+        "Difesa": "5",
+        "Corpo": "7",
+        "Coraggio": "7"
       },
       "type": [
         "demone maggiore"
@@ -8604,11 +9117,11 @@
       "category": "Personaggi",
       "cost_per_model": 450,
       "stats": {
-        "M": "3",
-        "DC": "8*",
-        "D": "5**",
-        "F": "8",
-        "R": "7"
+        "Movimento": "3",
+        "Attacco": "8*",
+        "Difesa": "5**",
+        "Corpo": "8",
+        "Coraggio": "7"
       },
       "type": [
         "demone maggiore"
@@ -8632,11 +9145,11 @@
       "category": "Personaggi",
       "cost_per_model": 600,
       "stats": {
-        "M": "1*",
-        "DC": "6",
-        "D": "6",
-        "F": "12",
-        "R": "7"
+        "Movimento": "1*",
+        "Attacco": "6",
+        "Difesa": "6",
+        "Corpo": "12",
+        "Coraggio": "7"
       },
       "type": [
         "demone maggiore"
@@ -8661,11 +9174,11 @@
       "category": "Personaggi",
       "cost_per_model": 265,
       "stats": {
-        "M": "2",
-        "DC": "5",
-        "D": "5",
-        "F": "5",
-        "R": "7"
+        "Movimento": "2",
+        "Attacco": "5",
+        "Difesa": "5",
+        "Corpo": "5",
+        "Coraggio": "7"
       },
       "type": [
         "demone maggiore"
@@ -8701,11 +9214,11 @@
       "category": "Personaggi",
       "cost_per_model": 70,
       "stats": {
-        "M": "1",
-        "DC": "6",
-        "D": "4",
-        "F": "3",
-        "R": "6"
+        "Movimento": "1",
+        "Attacco": "6",
+        "Difesa": "4",
+        "Corpo": "3",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio",
@@ -8729,11 +9242,11 @@
       "category": "Personaggi",
       "cost_per_model": 85,
       "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "3",
-        "F": "3",
-        "R": "6"
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "3",
+        "Corpo": "3",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio",
@@ -8774,11 +9287,11 @@
       "category": "Personaggi",
       "cost_per_model": 70,
       "stats": {
-        "M": "1",
-        "DC": "5*",
-        "D": "3**",
-        "F": "3",
-        "R": "6"
+        "Movimento": "1",
+        "Attacco": "5*",
+        "Difesa": "3**",
+        "Corpo": "3",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio",
@@ -8802,11 +9315,11 @@
       "category": "Personaggi",
       "cost_per_model": 85,
       "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "4",
-        "F": "3",
-        "R": "6"
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "4",
+        "Corpo": "3",
+        "Coraggio": "6"
       },
       "type": [
         "personaggio",
@@ -8831,11 +9344,11 @@
       "category": "Personaggi",
       "cost_per_model": 550,
       "stats": {
-        "M": "2",
-        "DC": "7",
-        "D": "6",
-        "F": "8",
-        "R": "8"
+        "Movimento": "2",
+        "Attacco": "7",
+        "Difesa": "6",
+        "Corpo": "8",
+        "Coraggio": "8"
       },
       "type": [
         "demone maggiore"
@@ -12171,6 +12684,48 @@
       "only_for_unit": [
         "zarina_katarina_di_kislev"
       ]
+    },
+    {
+      "id": "mortis_la_grande_lama_della_morte",
+      "name": "Mortis - La Grande Lama della Morte",
+      "cost": 70,
+      "category": "Armi Magiche",
+      "description": "+1 in Attacco, ogni ferita inflitta cura una ferita del possessore.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "only_for_unit": [
+        "nagash"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "larmatura_nera_di_nagash",
+      "name": "L'Armatura Nera di Nagash",
+      "cost": 80,
+      "category": "Armature Magiche",
+      "description": "+1 in Difesa, Tiro Salvezza 4+, Resistenza alla Magia 4+.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "only_for_unit": [
+        "nagash"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_scettro_del_potere",
+      "name": "Lo Scettro Del Potere",
+      "cost": 60,
+      "category": "Arcani",
+      "description": "Il possessore pu\u00f2 trattenere fino a 4 carte Venti di Magia in pi\u00f9. Inizia la partita con 2 carta Venti di Magia.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "only_for_unit": [
+        "nagash"
+      ],
+      "not_for_type": []
     }
   ],
   "magic_banners": [
@@ -12709,6 +13264,7 @@
     return ARMY_NAMES[army] || autoRenderName(army);
   }
 
+  // Nomi senza caratteri speciali
   function autoRenderName(name) {
     return name
     .replace(/_/g, " ")
@@ -12716,10 +13272,22 @@
     .replace(/\b\w/g, c => c.toUpperCase());
   }
 
-  // Nomi senza caratteri speciali
   function renderName(name) {
     name = name.replace("\\","");
     return name;
+  }
+
+  function ensureArray(a) {
+    if (Array.isArray(a)) return a;
+    let arr = [];
+    arr.push(a);
+    return arr;
+    // let arr = [];
+    // if (a) {
+    //   if (Array.isArray(a)) arr.concat(a);
+    //   else arr.push(a);
+    // }
+    // return arr;
   }
 
   // Funzione che popola il menu delle fazioni
@@ -13156,10 +13724,10 @@
     // ---
 
     function collectEquipment(unit, selectedOptionIds) {
-      const eq = [...(unit.equipment || [])];
+      const eq = ensureArray(unit.equipment);
       for (const opt of unit.options || []) {
         if (selectedOptionIds.has(opt.id) && opt.add_equipment) {
-          eq.push(...opt.add_equipment);
+          eq.push(opt.add_equipment);
         }
       }
       return eq;
@@ -13368,7 +13936,7 @@
           const rangedSpecs = collectRangedSpecs(rangedWeapons);
 
           // --- TIPO UNITÀ ---
-          const type = unit.type || null;
+          const type = computeModifiedType(unit, selectedOptionIds);
 
           // --- CAVALCATURE ---
           const mount = collectMount(unit, selectedOptionIds) || null;
@@ -13666,7 +14234,6 @@
           const line = `${stars}: ${texts.join(", ")}`;
 
           doc.setFont("helvetica", "italic");
-          // doc.text(line, colX(), y);
           const lines = doc.splitTextToSize(line, columnWidth);
           doc.text(lines, colX(), y);
           y += 2 + lines.length * 12;
@@ -13685,14 +14252,14 @@
       // Regole speciali
       if (unit.rules && unit.rules.length > 0) {
         doc.setFontSize(11);
-        const text = unit.rules.map(t => {return autoRenderName(t);}).join(", ");
+        const text = unit.rules.map(t => {return renderName(t);}).join(", ");
         y = drawLabelAndWrappedText(doc, "Regole speciali:", text, colX(), y, columnWidth);
       }
 
       // Equipaggiamento
       if (unit.equipment && unit.equipment.length > 0) {
         doc.setFontSize(11);
-        const text = unit.equipment.map(t => {return autoRenderName(t);}).join(", ");
+        const text = unit.equipment.map(t => {return renderName(t);}).join(", ");
         y = drawLabelAndWrappedText(doc, "Equipaggiamento:", text, colX(), y, columnWidth);
       }
 
@@ -13700,16 +14267,15 @@
       if (unit.mount) {
         doc.setFontSize(11);
         let text = null;
-        console.log(unit.mount.name);
-        if (unit.mount.name) text = autoRenderName(unit.mount.name);
-        else text = autoRenderName(unit.mount);
+        if (unit.mount.name) text = renderName(unit.mount.name);
+        else text = renderName(unit.mount);
         y = drawLabelAndWrappedText(doc, "Cavalcatura:", text, colX(), y, columnWidth);
       }
 
       // Upgrade
       if (unit.upgrades && unit.upgrades.length > 0) {
         doc.setFontSize(11);
-        const text = unit.upgrades.map(t => {return autoRenderName(t);}).join(", ");
+        const text = unit.upgrades.map(t => {return renderName(t);}).join(", ");
         y = drawLabelAndWrappedText(doc, "Upgrade:", text, colX(), y, columnWidth);
       }
 
@@ -13779,7 +14345,7 @@
 
       if (unit.magicItems && unit.magicItems.length > 0) {
         doc.setFontSize(11);
-        const items = unit.magicItems.map(t => {return autoRenderName(t);});
+        const items = unit.magicItems.map(t => {return renderName(t);});
         const text = items.join(", ");
         y = drawLabelAndWrappedText(doc, "Oggetti Magici:", text, colX(), y, columnWidth);
       }
@@ -13787,7 +14353,7 @@
       // Stendardo magico
       if (unit.magicBanner) {
         doc.setFontSize(11);
-        const text = autoRenderName(unit.magicBanner);
+        const text = renderName(unit.magicBanner);
         y = drawLabelAndWrappedText(doc, "Stendardo Magico:", text, colX(), y, columnWidth);
       }
     }
@@ -13830,7 +14396,7 @@
 
       // Equipaggiamento
       if (mount.equipment && mount.equipment.length > 0) {
-        const text = mount.equipment.join(", ");
+        const text = ensureArray(mount.equipment).join(", ");
         const lines = doc.splitTextToSize(text, columnWidth);
         h += lines.length * 11 + 5;
       }
@@ -13965,7 +14531,7 @@
         ensureSpace(5);
         doc.setFont("helvetica", "bold");
         doc.setFontSize(11);
-        doc.text(`${autoRenderName(item.name)} — ${item.cost} pt`, colX(), y);
+        doc.text(`${renderName(item.name)} — ${item.cost} pt`, colX(), y);
         y += 12;
 
         doc.setFont("helvetica", "italic");
@@ -14330,11 +14896,12 @@
     const box = document.getElementById("unitEquipmentBox");
     box.innerHTML = "";
     // Equipaggiamento base
-    let eq = [...(unit.equipment || [])];
+    let eq = [];
+    eq.concat(ensureArray(unit.equipment));
     // Equipaggiamento aggiunto dalle opzioni
     for (const opt of unit.options || []) {
       if (selectedOptionIds.has(opt.id) && opt.add_equipment) {
-        eq.push(...opt.add_equipment);
+        eq.push(ensureArray(opt.add_equipment));
       }
     }
     if (eq.length === 0) return;
@@ -14461,6 +15028,7 @@
     const parts = [];
     for (const id of selectedMagicItems) {
       const item = magicItemsById[id];
+      if (!item) continue;
       const count = magicItemCounts[id] ?? 1;
       if (count > 1) parts.push(`${renderName(item.name)} ×${count}`);
       else parts.push(renderName(item.name));
@@ -14672,7 +15240,8 @@
     renderUnitSpecialRules(modifiedRules);
     renderUnitEquipment(unit, selectedOptionIds);
     renderUnitMount(unit, selectedOptionIds);
-    renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById);
+    const preselectedMagicItems = new Set(existingEntry ? existingEntry.preselectedMagicItems : selectedUnit.magic_items);
+    renderUnitMagicItems(selectedMagicItems.union(preselectedMagicItems), magicItemCounts, magicItemsById);
     const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
     renderUnitRanged(rangedWeapons);
     const rangedSpecs = collectRangedSpecs(rangedWeapons);
@@ -14680,7 +15249,7 @@
     const upgrades = collectUpgrades(unit, selectedOptionIds);
     renderUnitUpgrades(upgrades);
     renderUnitMagicBanners(selectedMagicBanner);
-    let sizeInput = 1
+    let sizeInput = 1;
     if (unit.min_size != 1 || unit.max_size != 1) {
       const sizeRow = document.createElement("div");
       sizeRow.className = "config-row";
@@ -16096,7 +16665,6 @@
     });
 
     document.getElementById("exportPdfBtn").addEventListener("click", () => {
-      // document.getElementById("exportPdfBtn").click();
       const pdfData = buildArmyDataForPdf();
       exportArmyPDF(pdfData);
       closeModal();

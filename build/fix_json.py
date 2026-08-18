@@ -19,6 +19,16 @@ def pretty_json(data):
     # data = re.sub(r'', r'', data)
     # data = re.sub(r'', r'', data)
 
+    data = re.sub(r'"M":','"Movimento":', data)
+    data = re.sub(r'"DC":','"Attacco":', data)
+    data = re.sub(r'"D":','"Difesa":', data)
+    data = re.sub(r'"F":','"Corpo":', data)
+    data = re.sub(r'"R":','"Coraggio":', data)
+
+    data = re.sub(r'"dc":','"att":', data)
+    data = re.sub(r'"special":','"spec":', data)
+
+
     return data
 
 # ---- ESEMPIO DI UTILIZZO ----
