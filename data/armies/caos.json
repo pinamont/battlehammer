@@ -13,9 +13,9 @@
       "equipment": [ "armatura pesante", "scudo" ],
       "ranged": [],
       "options": [
-        { "id": "alabarda", "name": "alabarda", "cost_per_model": 1 },
+        { "id": "alabarda", "name": "alabarda", "add_equipment": "alabarda", "add_spec": {"Attacco": "+1 se non carica e l'unità è 8+"}, "cost_per_model": 1 },
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 20 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -33,7 +33,7 @@
       "ranged": [],
       "options": [
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 20 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -50,11 +50,11 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "scudo", "name": "scudo", "cost_per_model": 1 },
-        { "id": "alabarda", "name": "alabarda", "cost_per_model": 1 },
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost_per_model": 2 },
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "stat_modifiers": {"Difesa": 1}, "cost_per_model": 1 },
+        { "id": "alabarda", "name": "alabarda", "add_equipment": "alabarda", "add_spec": {"Attacco": "+1 se non carica e l'unità è 8+"}, "cost_per_model": 1 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "stat_modifiers": {"Attacco": 1}, "cost_per_model": 2 },
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 20 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -70,10 +70,10 @@
       "rules": [],
       "equipment": [ "arco" ],
       "ranged": [
-        { "name": "Arco", "range": "4", "dc": "2", "spcial": "" } ],
+        { "name": "Arco", "range": "4", "att": "2", "spec": "-" } ],
       "options": [
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 20 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -82,7 +82,8 @@
       "name": "Barbari",
       "category": "Truppe",
       "cost_per_model": 9,
-      "stats": { "Movimento": "1", "Attacco": "3*", "Difesa": "2", "Corpo": "1", "Coraggio": "4" },
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "2", "Corpo": "1", "Coraggio": "4" },
+      "spec": { "Attacco": "+1 finché soggetti a Furia"},
       "type": [ "fanteria" ],
       "min_size": 5,
       "max_size": 20,
@@ -90,10 +91,10 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "scudo", "name": "scudo", "cost_per_model": 1 },
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost_per_model": 2 },
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "stat_modifiers": {"Difesa": 1}, "cost_per_model": 1 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "stat_modifiers": {"Attacco": 1}, "cost_per_model": 2 },
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 20 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -102,7 +103,8 @@
       "name": "Minotauri",
       "category": "Truppe",
       "cost_per_model": 40,
-      "stats": { "Movimento": "2", "Attacco": "4*", "Difesa": "3", "Corpo": "3", "Coraggio": "5" },
+      "stats": { "Movimento": "2", "Attacco": "4", "Difesa": "3", "Corpo": "3", "Coraggio": "5" },
+      "spec": { "Attacco": "+1 finché soggetti a Furia"},
       "type": [ "creature mostruose" ],
       "min_size": 2,
       "max_size": 6,
@@ -111,7 +113,7 @@
       "ranged": [],
       "options": [
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 30 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 30 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -129,7 +131,7 @@
       "ranged": [],
       "options": [
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 30 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 30 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -147,7 +149,7 @@
       "ranged": [],
       "options": [
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 30 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 30 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -156,7 +158,8 @@
       "name": "Barbari a cavallo",
       "category": "Truppe",
       "cost_per_model": 20,
-      "stats": { "Movimento": "2", "Attacco": "3*", "Difesa": "2", "Corpo": "2", "Coraggio": "4" },
+      "stats": { "Movimento": "2", "Attacco": "3", "Difesa": "2", "Corpo": "2", "Coraggio": "4" },
+      "spec": { "Attacco": "+1 finché soggetti a Furia"},
       "type": [ "cavalleria leggera" ],
       "min_size": 3,
       "max_size": 10,
@@ -164,10 +167,10 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost_per_model": 4 },
-        { "id": "scudo", "name": "scudo", "cost_per_model": 2 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "stat_modifiers": {"Attacco": 1}, "cost_per_model": 4 },
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "stat_modifiers": {"Difesa": 1}, "cost_per_model": 2 },
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 30 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 30 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -176,7 +179,8 @@
       "name": "Sanguinari di Khorne",
       "category": "Truppe",
       "cost_per_model": 16,
-      "stats": { "Movimento": "1", "Attacco": "5*", "Difesa": "4", "Corpo": "1", "Coraggio": "5" },
+      "stats": { "Movimento": "1", "Attacco": "5", "Difesa": "4", "Corpo": "1", "Coraggio": "5" },
+      "spec": { "Attacco": "-1 alla Difesa"},
       "type": [ "fanteria" ],
       "min_size": 5,
       "max_size": 20,
@@ -185,7 +189,7 @@
       "ranged": [],
       "options": [
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 20 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -194,7 +198,8 @@
       "name": "Orrori Rosa di Tzteench",
       "category": "Truppe",
       "cost_per_model": 25,
-      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "3", "Corpo": "1*", "Coraggio": "5" },
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "3", "Corpo": "1", "Coraggio": "5" },
+      "spec": { "Corpo": "alla morte creano 2 orrori blu (1, 2, 2, 1, 3)" },
       "type": [ "fanteria" ],
       "min_size": 5,
       "max_size": 20,
@@ -203,7 +208,7 @@
       "ranged": [],
       "options": [
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 20 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -221,7 +226,7 @@
       "ranged": [],
       "options": [
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 20 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -230,7 +235,8 @@
       "name": "Demonette di Slanesh",
       "category": "Truppe",
       "cost_per_model": 16,
-      "stats": { "Movimento": "1", "Attacco": "4*", "Difesa": "3**", "Corpo": "1", "Coraggio": "5" },
+      "stats": { "Movimento": "1", "Attacco": "4", "Difesa": "3", "Corpo": "1", "Coraggio": "5" },
+      "spec": { "Attacco": "-1 alla Difesa", "Difesa": "-1 all'Attacco" },
       "type": [ "fanteria" ],
       "min_size": 5,
       "max_size": 20,
@@ -239,7 +245,7 @@
       "ranged": [],
       "options": [
         { "id": "stendardo", "name": "stendardo", "cost": 10 },
-        { "id": "campione", "name": "campione", "cost": 20 } ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1},  "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -271,7 +277,7 @@
       "rules": [ "paura", "instabilità demoniaca" ],
       "equipment": [],
       "ranged": [
-        { "name": "Fuoco di Tzeench", "range": "3", "dc": "1D6+2", "special": "*" } ],
+        { "name": "Fuoco di Tzeench", "range": "3", "att": "1D6+2", "spec": "ignora la difesa, fuoco" } ],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -281,8 +287,9 @@
       "name": "Carro del Caos",
       "category": "Macchine e Mostri",
       "cost_per_model": 120,
-      "stats": { "Movimento": "2*", "Attacco": "4**", "Difesa": "6", "Corpo": "5", "Coraggio": "6" },
-      "type": [ "carro pesante" ],
+      "stats": { "Movimento": "2", "Attacco": "4", "Difesa": "6", "Corpo": "5", "Coraggio": "6" },
+      "spec": { "Movimento": "non può marciare", "Attacco": "+1D6+2 in carica"},
+      "type": [ "carro_pesante" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
@@ -304,7 +311,7 @@
       "rules": [ "paura" ],
       "equipment": [],
       "ranged": [
-        { "name": "Masso", "range": "2", "dc": "5", "spcial": "" } ],
+        { "name": "Masso", "range": "2", "att": "5", "spec": "-" } ],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -322,16 +329,19 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "scudo", "name": "scudo", "cost": 4 },
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost": 8 },
-        { "id": "due_armi", "name": "due armi", "cost": 8 },
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "stat_modifiers": {"Difesa": 1}, "cost": 4 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "stat_modifiers": {"Attacco": 1}, "cost": 8 },
+        { "id": "due_armi", "name": "due armi", "add_equipment": ["due armi"], "stat_modifiers": {"Attacco": 1}, "cost": 8 },
         { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "cost": 8 },
-        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 4 },
-        { "id": "cavallo", "name": "cavallo", "cost": 20 },
-        { "id": "cavallo_bardato", "name": "cavallo bardato", "cost": 20 },
-        { "id": "drago", "name": "drago", "cost": 380 },
-        { "id": "manticora", "name": "manticora", "cost": 220 },
-        { "id": "bestia_da_soma", "name": "bestia da soma", "cost": 110 } ],
+        { "id": "armatura_pesante", "name": "armatura pesante", "add_equipment": ["armatura pesante"], "stat_modifiers": {"Difesa": 1}, "cost": 4 },
+        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "switch_type": {"fanteria": "cavalleria_leggera"}, "cost": 20 },
+        { "id": "cavallo_bardato", "name": "cavallo bardato", "add_mount": "cavallo bardato", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "switch_type": {"fanteria": "cavalleria_pesante"}, "cost": 20 },
+        { "id": "drago", "name": "drago", "add_mount": "drago", "cost": 380 },
+        { "id": "manticora", "name": "manticora", "add_mount": "manticora", "cost": 220 },
+        { "id": "bestia_da_soma", "name": "bestia da soma", "add_mount": "bestia_da_soma", "cost": 110 } ],
+      "option_categories": {
+        "cavalcatura": ["nessuno", "cavallo", "cavallo_bardato", "bestia_da_soma", "manticora", "drago"]
+      },
       "magic_item_slots": 3,
       "max_per_army": 0
     },
@@ -348,16 +358,19 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "scudo", "name": "scudo", "cost": 3 },
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost": 6 },
-        { "id": "due_armi", "name": "due armi", "cost": 6 },
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "stat_modifiers": {"Difesa": 1}, "cost": 3 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "stat_modifiers": {"Attacco": 1}, "cost": 6 },
+        { "id": "due_armi", "name": "due armi", "add_equipment": ["due armi"], "stat_modifiers": {"Attacco": 1}, "cost": 6 },
         { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "cost": 6 },
-        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 3 },
-        { "id": "cavallo", "name": "cavallo", "cost": 15 },
-        { "id": "cavallo_bardato", "name": "cavallo bardato", "cost": 15 },
-        { "id": "drago", "name": "drago", "cost": 380 },
-        { "id": "manticora", "name": "manticora", "cost": 220 },
-        { "id": "bestia_da_soma", "name": "bestia da soma", "cost": 110 } ],
+        { "id": "armatura_pesante", "name": "armatura pesante", "add_equipment": ["armatura pesante"], "stat_modifiers": {"Difesa": 1}, "cost": 3 },
+        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "switch_type": {"fanteria": "cavalleria_leggera"}, "cost": 15 },
+        { "id": "cavallo_bardato", "name": "cavallo bardato", "add_mount": "cavallo bardato", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "switch_type": {"fanteria": "cavalleria_pesante"}, "cost": 15 },
+        { "id": "drago", "name": "drago", "add_mount": "drago", "cost": 380 },
+        { "id": "manticora", "name": "manticora", "add_mount": "manticora", "cost": 220 },
+        { "id": "bestia_da_soma", "name": "bestia da soma", "add_mount": "bestia_da_soma", "cost": 110 } ],
+      "option_categories": {
+        "cavalcatura": ["nessuno", "cavallo", "cavallo_bardato", "bestia_da_soma", "manticora", "drago"]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -370,17 +383,20 @@
       "type": [ "personaggio" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [ "stendardo da battaglia (+1 al combattimento in difesa", "unità amiche a 2 caselle o meno ritirano test di coraggio)" ],
+      "rules": [ "Stendardo da Battaglia (+1 al combattimento in difesa", "unità amiche a 2 caselle o meno ritirano test di coraggio)" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "scudo", "name": "scudo", "cost": 2 },
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost": 4 },
-        { "id": "due_armi", "name": "due armi", "cost": 4 },
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "stat_modifiers": {"Difesa": 1}, "cost": 2 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "stat_modifiers": {"Attacco": 1}, "cost": 4 },
+        { "id": "due_armi", "name": "due armi", "add_equipment": ["due armi"], "stat_modifiers": {"Attacco": 1}, "cost": 4 },
         { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "cost": 4 },
-        { "id": "armatura_pesante", "name": "armatura pesante", "cost": 2 },
-        { "id": "cavallo", "name": "cavallo", "cost": 5 },
-        { "id": "cavallo_bardato", "name": "cavallo bardato", "cost": 5 } ],
+        { "id": "armatura_pesante", "name": "armatura pesante", "add_equipment": ["armatura pesante"], "stat_modifiers": {"Difesa": 1}, "cost": 2 },
+        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "switch_type": {"fanteria": "cavalleria_leggera"}, "cost": 5 },
+        { "id": "cavallo_bardato", "name": "cavallo bardato", "add_mount": "cavallo bardato", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "switch_type": {"fanteria": "cavalleria_pesante"}, "cost": 5 } ],
+      "option_categories": {
+        "cavalcatura": ["nessuno", "cavallo", "cavallo_bardato"]
+      },
       "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
@@ -399,10 +415,13 @@
       "ranged": [],
       "options": [
         { "id": "livello_4", "name": "livello 4", "cost": 65 },
-        { "id": "cavallo", "name": "cavallo", "cost": 20 },
-        { "id": "drago", "name": "drago", "cost": 380 },
-        { "id": "manticora", "name": "manticora", "cost": 220 },
-        { "id": "bestia_da_soma", "name": "bestia da soma", "cost": 110 } ],
+        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "switch_type": {"fanteria": "cavalleria_leggera"}, "cost": 20 },
+        { "id": "drago", "name": "drago", "add_mount": "drago", "cost": 380 },
+        { "id": "manticora", "name": "manticora", "add_mount": "manticora", "cost": 220 },
+        { "id": "bestia_da_soma", "name": "bestia da soma", "add_mount": "bestia_da_soma", "cost": 110 } ],
+      "option_categories": {
+        "cavalcatura": ["nessuno", "cavallo", "bestia_da_soma", "manticora", "drago"]
+      },
       "magic_item_slots": 4,
       "max_per_army": 0
     },
@@ -420,7 +439,7 @@
       "ranged": [],
       "options": [
         { "id": "livello_2", "name": "livello 2", "cost": 45 },
-        { "id": "cavallo", "name": "cavallo", "cost": 10 } ],
+        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "switch_type": {"fanteria": "cavalleria_leggera"}, "cost": 10 } ],
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -437,9 +456,9 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "scudo", "name": "scudo", "cost": 3 },
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost": 6 },
-        { "id": "due_armi", "name": "due armi", "cost": 6 } ],
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "stat_modifiers": {"Difesa": 1}, "cost": 3 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "stat_modifiers": {"Attacco": 1}, "cost": 6 },
+        { "id": "due_armi", "name": "due armi", "add_equipment": ["due armi"], "stat_modifiers": {"Attacco": 1}, "cost": 6 } ],
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -448,7 +467,8 @@
       "name": "Eroe Minotauro",
       "category": "Personaggi",
       "cost_per_model": 100,
-      "stats": { "Movimento": "2", "Attacco": "4*", "Difesa": "3", "Corpo": "5", "Coraggio": "6" },
+      "stats": { "Movimento": "2", "Attacco": "4", "Difesa": "3", "Corpo": "5", "Coraggio": "6" },
+      "spec": { "Attacco": "+1 finché soggetti a Furia"},
       "type": [ "personaggio" ],
       "min_size": 1,
       "max_size": 1,
@@ -456,9 +476,9 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "scudo", "name": "scudo", "cost": 5 },
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost": 10 },
-        { "id": "due_armi", "name": "due armi", "cost": 10 } ],
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "stat_modifiers": {"Difesa": 1}, "cost": 5 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "stat_modifiers": {"Attacco": 1}, "cost": 10 },
+        { "id": "due_armi", "name": "due armi", "add_equipment": ["due armi"], "stat_modifiers": {"Attacco": 1}, "cost": 10 } ],
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -475,9 +495,9 @@
       "equipment": [],
       "ranged": [],
       "options": [
-        { "id": "scudo", "name": "scudo", "cost": 6 },
-        { "id": "arma_a_due_mani", "name": "arma a due mani", "cost": 12 },
-        { "id": "due_armi", "name": "due armi", "cost": 12 } ],
+        { "id": "scudo", "name": "scudo", "add_equipment": ["scudo"], "stat_modifiers": {"Difesa": 1}, "cost": 6 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": ["arma a due mani"], "stat_modifiers": {"Attacco": 1}, "cost": 12 },
+        { "id": "due_armi", "name": "due armi", "add_equipment": ["due armi"], "stat_modifiers": {"Attacco": 1}, "cost": 12 } ],
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -486,7 +506,8 @@
       "name": "Divoratore di Anime",
       "category": "Personaggi",
       "cost_per_model": 600,
-      "stats": { "Movimento": "2", "Attacco": "12*", "Difesa": "6", "Corpo": "10", "Coraggio": "7" },
+      "stats": { "Movimento": "2", "Attacco": "12", "Difesa": "6", "Corpo": "10", "Coraggio": "7" },
+      "spec": { "Movimento": "movimento in volo 4 caselle", "Attacco": "-1 alla Difesa"},
       "type": [ "demone maggiore" ],
       "min_size": 1,
       "max_size": 1,
@@ -503,6 +524,7 @@
       "category": "Personaggi",
       "cost_per_model": 600,
       "stats": { "Movimento": "2", "Attacco": "5", "Difesa": "5", "Corpo": "7", "Coraggio": "7" },
+      "spec": { "Movimento": "movimento in volo 4 caselle" },
       "type": [ "demone maggiore" ],
       "min_size": 1,
       "max_size": 1,
@@ -518,7 +540,8 @@
       "name": "Custode dei Segreti",
       "category": "Personaggi",
       "cost_per_model": 450,
-      "stats": { "Movimento": "3", "Attacco": "8*", "Difesa": "5**", "Corpo": "8", "Coraggio": "7" },
+      "stats": { "Movimento": "3", "Attacco": "8", "Difesa": "5", "Corpo": "8", "Coraggio": "7" },
+      "spec": { "Attacco": "-1 alla Difesa", "Difesa": "-1 all'Attacco" },
       "type": [ "demone maggiore" ],
       "min_size": 1,
       "max_size": 1,
@@ -534,11 +557,12 @@
       "name": "Grande Immondo",
       "category": "Personaggi",
       "cost_per_model": 600,
-      "stats": { "Movimento": "1*", "Attacco": "6", "Difesa": "6", "Corpo": "12", "Coraggio": "7" },
+      "stats": { "Movimento": "1", "Attacco": "6", "Difesa": "6", "Corpo": "12", "Coraggio": "7" },
+      "spec": { "Movimento": "non può marciare" },
       "type": [ "demone maggiore" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [ "terrore", "instabilità demoniaca", "rigenerazione", "mago livello 3 (magia di Nurgle)" ],
+      "rules": [ "terrore", "instabilità demoniaca", "Rigenerazione (5+)", "mago livello 3 (magia di Nurgle)" ],
       "equipment": [],
       "ranged": [],
       "options": [],
@@ -603,7 +627,8 @@
       "name": "Araldo di Slaanesh",
       "category": "Personaggi",
       "cost_per_model": 70,
-      "stats": { "Movimento": "1", "Attacco": "5*", "Difesa": "3**", "Corpo": "3", "Coraggio": "6" },
+      "stats": { "Movimento": "1", "Attacco": "5", "Difesa": "3", "Corpo": "3", "Coraggio": "6" },
+      "spec": { "Attacco": "-1 alla Difesa", "Difesa": "-1 all'Attacco" },
       "type": [ "personaggio", "demone" ],
       "min_size": 1,
       "max_size": 1,
@@ -623,7 +648,7 @@
       "type": [ "personaggio", "demone" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [ "paura", "instabilità demoniaca", "rigenerazione (5-20)" ],
+      "rules": [ "paura", "instabilità demoniaca", "rigenerazione (5+)" ],
       "equipment": [],
       "ranged": [],
       "options": [],
@@ -645,6 +670,55 @@
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
+    },
+    {
+      "id": "drago",
+      "name": "Drago",
+      "category": "none",
+      "cost_per_model": 380,
+      "stats": {"Movimento": "2", "Attacco": "6", "Difesa": "6", "Corpo": "8", "Coraggio": "7"},
+      "spec": { "Movimento": "movimento in volo (4 caselle)" },
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Volare", "Terrore" ],
+      "ranged": [
+        { "name": "Soffio", "range": "1", "att": "5", "spec": "ignora la difesa, anche in CaC" }
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": []
+    },
+    {
+      "id": "manticora",
+      "name": "Manticora",
+      "category": "none",
+      "cost_per_model": 220,
+      "stats": { "Movimento": "2", "Attacco": "5", "Difesa": "4", "Corpo": "6", "Coraggio": "4" },
+      "spec": {"Movimento": "movimento in volo 4 caselle"},
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Volare", "Terrore" ],
+      "equipment": [],
+      "ranged": [],
+      "options": []
+    },
+    {
+      "id": "bestia_da_soma",
+      "name": "Bestia da Soma",
+      "category": "none",
+      "cost_per_model": 110,
+      "stats": { "Movimento": "2", "Attacco": "4", "Difesa": "5", "Corpo": "5", "Coraggio": "4" },
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Paura" ],
+      "equipment": [],
+      "ranged": [
+        { "name": "Soffio", "range": "1", "att": "3", "spec": "ignora la difesa, anche in CaC" }
+      ],
+      "options": []
     }
   ]
 }

@@ -5,42 +5,17 @@
       "name": "Elfi Arcieri",
       "category": "Truppe",
       "cost_per_model": 13,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2",
-        "F": "1",
-        "R": "5"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "2", "Corpo": "1", "Coraggio": "5" },
+      "type": [ "fanteria" ],
       "min_size": 5,
       "max_size": 20,
       "rules": [],
-      "equipment": [
-        "arco lungo"
-      ],
+      "equipment": [ "arco lungo" ],
       "ranged": [
-        {
-          "name": "Arco lungo",
-          "range": "5",
-          "dc": "3",
-          "special": "-"
-        }
-      ],
+        { "name": "Arco lungo", "range": "5", "att": "3", "spec": "-" } ],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1}, "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -49,45 +24,18 @@
       "name": "Guardavia",
       "category": "Truppe",
       "cost_per_model": 17,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2*",
-        "F": "1",
-        "R": "5"
-      },
-      "type": [
-        "fanteria",
-        "schermagliatori"
-      ],
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "2", "Corpo": "1", "Coraggio": "5" },
+      "spec": { "Difesa": "-1 agli attacchi a distanza (-2 se dentro a un bosco)"},
+      "type": [ "fanteria", "schermagliatori" ],
       "min_size": 5,
       "max_size": 10,
-      "rules": [
-        "infiltrazione"
-      ],
-      "equipment": [
-        "arco lungo"
-      ],
+      "rules": [ "infiltrazione" ],
+      "equipment": [ "arco lungo" ],
       "ranged": [
-        {
-          "name": "Arco lungo",
-          "range": "5",
-          "dc": "3",
-          "special": "-"
-        }
-      ],
+        { "name": "Arco lungo", "range": "5", "att": "3", "spec": "-" } ],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1}, "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -96,35 +44,17 @@
       "name": "Guardia della radura",
       "category": "Truppe",
       "cost_per_model": 11,
-      "stats": {
-        "M": "1",
-        "DC": "3*",
-        "D": "3",
-        "F": "1",
-        "R": "5"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "3", "Corpo": "1", "Coraggio": "5" },
+      "spec": { "Attacco": "+1 se non carica e unità 8+"},
+      "type": [ "fanteria" ],
       "min_size": 5,
       "max_size": 20,
       "rules": [],
-      "equipment": [
-        "lancia", "scudo"
-      ],
+      "equipment": [ "lancia", "scudo" ],
       "ranged": [],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1}, "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -133,31 +63,16 @@
       "name": "Danzatori di Guerra",
       "category": "Truppe",
       "cost_per_model": 14,
-      "stats": {
-        "M": "1",
-        "DC": "4*",
-        "D": "2**",
-        "F": "1",
-        "R": "5"
-      },
-      "type": [
-        "fanteria",
-        "schermagliatori"
-      ],
+      "stats": { "Movimento": "1", "Attacco": "4", "Difesa": "2", "Corpo": "1", "Coraggio": "5" },
+      "spec": { "Attacco": "-1 alla Difesa", "Difesa": "-1 agli attacchi in CaC e a distanza"},
+      "type": [ "fanteria", "schermagliatori" ],
       "min_size": 5,
       "max_size": 20,
       "rules": [],
-      "equipment": [
-        "due armi"
-      ],
+      "equipment": [ "due armi" ],
       "ranged": [],
       "options": [
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1}, "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -166,21 +81,11 @@
       "name": "Driadi",
       "category": "Truppe",
       "cost_per_model": 18,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "3",
-        "F": "2",
-        "R": "5"
-      },
-      "type": [
-        "fanteria"
-      ],
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "3", "Corpo": "2", "Coraggio": "5" },
+      "type": [ "fanteria" ],
       "min_size": 5,
       "max_size": 20,
-      "rules": [
-        "paura", "Infiammabile"
-      ],
+      "rules": [ "paura", "Infiammabile" ],
       "equipment": [],
       "ranged": [],
       "options": [],
@@ -188,25 +93,16 @@
       "max_per_army": 0
     },
     {
-      "id": "spirito_del_legno",
-      "name": "Spirito del legno",
+      "id": "spiriti_del_legno",
+      "name": "Spiriti del legno",
       "category": "Truppe",
       "cost_per_model": 85,
-      "stats": {
-        "M": "1",
-        "DC": "5",
-        "D": "3*",
-        "F": "3",
-        "R": "6"
-      },
-      "type": [
-        "creature mostruose"
-      ],
+      "stats": { "Movimento": "1", "Attacco": "5", "Difesa": "3", "Corpo": "3", "Coraggio": "6" },
+      "spec": { "Difesa": "Corazza 1"},
+      "type": [ "creature_mostruose" ],
       "min_size": 3,
       "max_size": 10,
-      "rules": [
-        "paura", "Infiammabile"
-      ],
+      "rules": [ "Paura", "Infiammabile" ],
       "equipment": [],
       "ranged": [],
       "options": [],
@@ -218,32 +114,15 @@
       "name": "Cavalca-falco",
       "category": "Truppe",
       "cost_per_model": 55,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2*",
-        "F": "2",
-        "R": "5"
-      },
-      "type": [
-        "cavalleria volante"
-      ],
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "2", "Corpo": "2", "Coraggio": "5" },
+      "spec": { "Difesa": "-1 agli attacchi a distanza"},
+      "type": [ "cavalleria_volante" ],
       "min_size": 3,
       "max_size": 10,
-      "rules": [
-        "Volare"
-      ],
-      "equipment": [
-        "arco lungo"
-      ],
+      "rules": [ "Volare" ],
+      "equipment": [ "arco lungo" ],
       "ranged": [
-        {
-          "name": "Arco lungo",
-          "range": "5",
-          "dc": "3",
-          "special": "-"
-        }
-      ],
+        { "name": "Arco lungo", "range": "5", "att": "3", "spec": "-" } ],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -253,32 +132,15 @@
       "name": "Ninfe",
       "category": "Truppe",
       "cost_per_model": 30,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2*",
-        "F": "1",
-        "R": "5"
-      },
-      "type": [
-        "fanteria volante"
-      ],
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "2", "Corpo": "1", "Coraggio": "5" },
+      "spec": { "Difesa": "-1 agli attacchi a distanza"},
+      "type": [ "fanteria_volante" ],
       "min_size": 5,
       "max_size": 20,
-      "rules": [
-        "Volare"
-      ],
-      "equipment": [
-        "arco lungo"
-      ],
+      "rules": [ "Volare" ],
+      "equipment": [ "arco lungo" ],
       "ranged": [
-        {
-          "name": "Arco lungo",
-          "range": "5",
-          "dc": "3",
-          "special": "-"
-        }
-      ],
+        { "name": "Arco lungo", "range": "5", "att": "3", "spec": "-" } ],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 0
@@ -288,37 +150,17 @@
       "name": "Cavalieri selvaggi",
       "category": "Truppe",
       "cost_per_model": 28,
-      "stats": {
-        "M": "3",
-        "DC": "3*",
-        "D": "3",
-        "F": "2",
-        "R": "5"
-      },
-      "type": [
-        "cavalleria leggera"
-      ],
+      "stats": { "Movimento": "3", "Attacco": "3", "Difesa": "3", "Corpo": "2", "Coraggio": "5" },
+      "spec": { "Attacco": "+1 se soggetti a Furia, +2 in carica"},
+      "type": [ "cavalleria_leggera" ],
       "min_size": 3,
       "max_size": 10,
-      "rules": [
-        "Furia"
-      ],
-      "equipment": [
-        "lancia", "scudo"
-      ],
+      "rules": [ "Furia" ],
+      "equipment": [ "lancia", "scudo" ],
       "ranged": [],
       "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "cost": 20
-        }
-      ],
+        { "id": "stendardo", "name": "stendardo", "cost": 10 },
+        { "id": "campione", "name": "campione", "stat_modifiers": {"Attacco": 1}, "cost": 20 } ],
       "magic_item_slots": 0,
       "max_per_army": 0
     },
@@ -327,19 +169,12 @@
       "name": "Uomo Albero",
       "category": "Macchine e Mostri",
       "cost_per_model": 350,
-      "stats": {
-        "M": "2",
-        "DC": "7",
-        "D": "4*",
-        "F": "7",
-        "R": "7"
-      },
-      "type": [],
+      "stats": { "Movimento": "2", "Attacco": "7", "Difesa": "4", "Corpo": "7", "Coraggio": "7" },
+      "spec": {"Difesa": "Corazza 2"},
+      "type": [ "mostro" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "Terrore", "Infiammabile"
-      ],
+      "rules": [ "Terrore", "Implacabile", "Infiammabile" ],
       "equipment": [],
       "ranged": [],
       "options": [],
@@ -351,19 +186,12 @@
       "name": "Aquila gigante",
       "category": "Macchine e Mostri",
       "cost_per_model": 95,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "3*",
-        "F": "3",
-        "R": "6"
-      },
-      "type": [],
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "3", "Corpo": "3", "Coraggio": "6" },
+      "spec": { "Movimento": "movimento in volo (4 caselle)", "Difesa": "-1 attacchi a distanza avversari" },
+      "type": [ "mostro" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "Volare"
-      ],
+      "rules": [ "Volare" ],
       "equipment": [],
       "ranged": [],
       "options": [],
@@ -375,66 +203,27 @@
       "name": "Lord",
       "category": "Personaggi",
       "cost_per_model": 75,
-      "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "3",
-        "F": "4",
-        "R": "7"
-      },
-      "type": [],
+      "stats": { "Movimento": "1", "Attacco": "4", "Difesa": "3", "Corpo": "4", "Coraggio": "7" },
+      "type": [ "personaggio", "fanteria" ],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 4
-        },
-        {
-          "id": "arma_a_due_mani",
-          "name": "arma a due mani",
-          "cost": 8
-        },
-        {
-          "id": "lancia",
-          "name": "lancia",
-          "cost": 4
-        },
-        {
-          "id": "lancia_da_cavaliere",
-          "name": "lancia da cavaliere",
-          "cost": 8
-        },
-        {
-          "id": "arco_lungo",
-          "name": "arco lungo",
-          "cost": 16
-        },
-        {
-          "id": "cavallo",
-          "name": "cavallo",
-          "cost": 25
-        },
-        {
-          "id": "falco_gigante",
-          "name": "falco gigante",
-          "cost": 50
-        },
-        {
-          "id": "aquila",
-          "name": "aquila",
-          "cost": 95
-        },
-        {
-          "id": "drago",
-          "name": "drago",
-          "cost": 380
-        }
-      ],
+        { "id": "scudo", "name": "scudo", "add_equipment": "scudo", "stat_modifiers": {"Difesa": 1}, "cost": 4 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": "arma a due mani", "stat_modifiers": {"Attacco": 1}, "cost": 8 },
+        { "id": "lancia", "name": "lancia", "add_equipment": "lancia", "add_spec": {"Attacco": "+1 in carica (se a cavallo)"}, "cost": 4 },
+        { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "add_equipment": "lancia da cavaliere", "add_spec": {"Attacco": "+2 in carica (se a cavallo)"}, "cost": 8 },
+        { "id": "arco_lungo", "name": "arco lungo", "cost": 16 },
+        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 25 },
+        { "id": "cervo", "name": "cervo", "add_mount": "cervo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 30 },
+        { "id": "falco_gigante", "name": "falco gigante", "add_mount": "falco gigante", "stat_modifiers": {"Corpo": 1}, "change_type": {"fanteria": "cavalleria_volante"}, "add_spec": {"Movimento": "movimento in volo 4 caselle"}, "cost": 50 },
+        { "id": "aquila_gigante", "name": "aquila gigante", "add_mount": "aquila_gigante", "cost": 95 },
+        { "id": "drago", "name": "drago", "add_mount": "drago", "cost": 380 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "aquila_gigante", "drago" ]
+      },
       "magic_item_slots": 3,
       "max_per_army": 0
     },
@@ -443,66 +232,27 @@
       "name": "Eroe",
       "category": "Personaggi",
       "cost_per_model": 50,
-      "stats": {
-        "M": "1",
-        "DC": "4",
-        "D": "2",
-        "F": "3",
-        "R": "6"
-      },
-      "type": [],
+      "stats": { "Movimento": "1", "Attacco": "4", "Difesa": "2", "Corpo": "3", "Coraggio": "6" },
+      "type": ["personaggio", "fanteria"],
       "min_size": 1,
       "max_size": 1,
       "rules": [],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 3
-        },
-        {
-          "id": "arma_a_due_mani",
-          "name": "arma a due mani",
-          "cost": 6
-        },
-        {
-          "id": "lancia",
-          "name": "lancia",
-          "cost": 3
-        },
-        {
-          "id": "lancia_da_cavaliere",
-          "name": "lancia da cavaliere",
-          "cost": 6
-        },
-        {
-          "id": "arco_lungo",
-          "name": "arco lungo",
-          "cost": 12
-        },
-        {
-          "id": "cavallo",
-          "name": "cavallo",
-          "cost": 20
-        },
-        {
-          "id": "falco_gigante",
-          "name": "falco gigante",
-          "cost": 40
-        },
-        {
-          "id": "aquila",
-          "name": "aquila",
-          "cost": 95
-        },
-        {
-          "id": "drago",
-          "name": "drago",
-          "cost": 380
-        }
-      ],
+        { "id": "scudo", "name": "scudo", "add_equipment": "scudo", "stat_modifiers": {"Difesa": 1}, "cost": 3 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": "arma a due mani", "stat_modifiers": {"Attacco": 1}, "cost": 6 },
+        { "id": "lancia", "name": "lancia", "add_equipment": "lancia", "add_spec": {"Attacco": "+1 in carica (se a cavallo)"}, "cost": 3 },
+        { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "add_equipment": "lancia da cavaliere", "add_spec": {"Attacco": "+2 in carica (se a cavallo)"}, "cost": 6 },
+        { "id": "arco_lungo", "name": "arco lungo", "cost": 12 },
+        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 20 },
+        { "id": "cervo", "name": "cervo", "add_mount": "cervo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 24 },
+        { "id": "falco_gigante", "name": "falco gigante", "add_mount": "falco gigante", "stat_modifiers": {"Corpo": 1}, "change_type": {"fanteria": "cavalleria_volante"}, "add_spec": {"Movimento": "movimento in volo 4 caselle"}, "cost": 40 },
+        { "id": "aquila_gigante", "name": "aquila gigante", "add_mount": "aquila_gigante", "cost": 95 },
+        { "id": "drago", "name": "drago", "add_mount": "drago", "cost": 380 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "aquila_gigante", "drago" ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -511,48 +261,20 @@
       "name": "Eroe Centauro",
       "category": "Personaggi",
       "cost_per_model": 75,
-      "stats": {
-        "M": "2*",
-        "DC": "4",
-        "D": "2",
-        "F": "4",
-        "R": "6"
-      },
-      "type": [],
+      "stats": { "Movimento": "2", "Attacco": "4", "Difesa": "2", "Corpo": "4", "Coraggio": "6" },
+      "spec": { "Attacco": "+1 quando soggetto a Furia"},
+      "type": [ "personaggio", "cavalleria_leggera" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "Furia"
-      ],
+      "rules": [ "Furia" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 4
-        },
-        {
-          "id": "arma_a_due_mani",
-          "name": "arma a due mani",
-          "cost": 8
-        },
-        {
-          "id": "lancia",
-          "name": "lancia",
-          "cost": 4
-        },
-        {
-          "id": "lancia_da_cavaliere",
-          "name": "lancia da cavaliere",
-          "cost": 8
-        },
-        {
-          "id": "arco_lungo",
-          "name": "arco lungo",
-          "cost": 16
-        }
-      ],
+        { "id": "scudo", "name": "scudo", "add_equipment": "scudo", "stat_modifiers": {"Difesa": 1}, "cost": 4 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": "arma a due mani", "stat_modifiers": {"Attacco": 1}, "cost": 8 },
+        { "id": "lancia", "name": "lancia", "add_equipment": "lancia", "add_spec": {"Attacco": "+1 in carica (se a cavallo)"}, "cost": 4 },
+        { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "add_equipment": "lancia da cavaliere", "add_spec": {"Attacco": "+2 in carica (se a cavallo)"}, "cost": 8 },
+        { "id": "arco_lungo", "name": "arco lungo", "cost": 16 } ],
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -561,53 +283,21 @@
       "name": "Alfiere",
       "category": "Personaggi",
       "cost_per_model": 50,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "2",
-        "F": "2",
-        "R": "5"
-      },
-      "type": [],
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "2", "Corpo": "2", "Coraggio": "5" },
+      "type": ["personaggio", "fanteria"],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "stendardo da battaglia (+1 al combattimento in difesa", "unità amiche a 2 caselle o meno ritirano test di coraggio)"
-      ],
+      "rules": [ "stendardo da battaglia (+1 al combattimento in difesa", "unità amiche a 2 caselle o meno ritirano test di coraggio)" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "scudo",
-          "name": "scudo",
-          "cost": 2
-        },
-        {
-          "id": "arma_a_due_mani",
-          "name": "arma a due mani",
-          "cost": 4
-        },
-        {
-          "id": "lancia",
-          "name": "lancia",
-          "cost": 2
-        },
-        {
-          "id": "lancia_da_cavaliere",
-          "name": "lancia da cavaliere",
-          "cost": 4
-        },
-        {
-          "id": "arco_lungo",
-          "name": "arco lungo",
-          "cost": 8
-        },
-        {
-          "id": "cavallo",
-          "name": "cavallo",
-          "cost": 15
-        }
-      ],
+        { "id": "scudo", "name": "scudo", "add_equipment": "scudo", "stat_modifiers": {"Difesa": 1}, "cost": 2 },
+        { "id": "arma_a_due_mani", "name": "arma a due mani", "add_equipment": "arma a due mani", "stat_modifiers": {"Attacco": 1}, "cost": 4 },
+        { "id": "lancia", "name": "lancia", "add_equipment": "lancia", "add_spec": {"Attacco": "+1 in carica (se a cavallo)"}, "cost": 2 },
+        { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "add_equipment": "lancia da cavaliere", "add_spec": {"Attacco": "+2 in carica (se a cavallo)"}, "cost": 4 },
+        { "id": "arco_lungo", "name": "arco lungo", "cost": 8 },
+        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 15 },
+        { "id": "cervo", "name": "cervo", "add_mount": "cervo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 18 } ],
       "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
@@ -617,48 +307,23 @@
       "name": "Mago Supremo",
       "category": "Personaggi",
       "cost_per_model": 165,
-      "stats": {
-        "M": "1",
-        "DC": "3",
-        "D": "3",
-        "F": "4",
-        "R": "6"
-      },
-      "type": ["mago"],
+      "stats": { "Movimento": "1", "Attacco": "3", "Difesa": "3", "Corpo": "4", "Coraggio": "6" },
+      "type": [ "personaggio", "fanteria", "mago" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "mago livello 3 (magia da Battaglia o della Natura)"
-      ],
+      "rules": [ "mago livello 3 (magia da Battaglia o della Natura)" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "livello_4",
-          "name": "livello 4",
-          "cost": 60
-        },
-        {
-          "id": "cavallo",
-          "name": "cavallo",
-          "cost": 25
-        },
-        {
-          "id": "falco_gigante",
-          "name": "falco gigante",
-          "cost": 50
-        },
-        {
-          "id": "aquila",
-          "name": "aquila",
-          "cost": 95
-        },
-        {
-          "id": "drago",
-          "name": "drago",
-          "cost": 380
-        }
-      ],
+        { "id": "livello_4", "name": "livello 4", "cost": 60 },
+        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 25 },
+        { "id": "cervo", "name": "cervo", "add_mount": "cervo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 30 },
+        { "id": "falco_gigante", "name": "falco gigante", "add_mount": "falco gigante", "stat_modifiers": {"Corpo": 1}, "change_type": {"fanteria": "cavalleria_volante"}, "add_spec": {"Movimento": "movimento in volo 4 caselle"}, "cost": 50 },
+        { "id": "aquila_gigante", "name": "aquila gigante", "add_mount": "aquila_gigante", "cost": 95 },
+        { "id": "drago", "name": "drago", "add_mount": "drago", "cost": 380 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "aquila_gigante", "drago" ]
+      },
       "magic_item_slots": 4,
       "max_per_army": 0
     },
@@ -667,43 +332,22 @@
       "name": "Mago",
       "category": "Personaggi",
       "cost_per_model": 55,
-      "stats": {
-        "M": "1",
-        "DC": "2",
-        "D": "2",
-        "F": "2",
-        "R": "5"
-      },
-      "type": ["mago"],
+      "stats": { "Movimento": "1", "Attacco": "2", "Difesa": "2", "Corpo": "2", "Coraggio": "5" },
+      "type": [ "personaggio", "fanteria", "mago" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "mago livello 1 (magia da Battaglia o della Natura)"
-      ],
+      "rules": [ "mago livello 1 (magia da Battaglia o della Natura)" ],
       "equipment": [],
       "ranged": [],
       "options": [
-        {
-          "id": "livello_2",
-          "name": "livello 2",
-          "cost": 40
-        },
-        {
-          "id": "cavallo",
-          "name": "cavallo",
-          "cost": 15
-        },
-        {
-          "id": "falco_gigante",
-          "name": "falco gigante",
-          "cost": 30
-        },
-        {
-          "id": "aquila",
-          "name": "aquila",
-          "cost": 95
-        }
-      ],
+        { "id": "livello_2", "name": "livello 2", "cost": 40 },
+        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 15 },
+        { "id": "cervo", "name": "cervo", "add_mount": "cervo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 18 },
+        { "id": "falco_gigante", "name": "falco gigante", "add_mount": "falco gigante", "stat_modifiers": {"Corpo": 1}, "change_type": {"fanteria": "cavalleria_volante"}, "add_spec": {"Movimento": "movimento in volo 4 caselle"}, "cost": 30 },
+        { "id": "aquila_gigante", "name": "aquila gigante", "add_mount": "aquila_gigante", "cost": 95 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "aquila_gigante" ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -712,29 +356,68 @@
       "name": "Regina dei rampicanti",
       "category": "Personaggi",
       "cost_per_model": 365,
-      "stats": {
-        "M": "2",
-        "DC": "5",
-        "D": "5*",
-        "F": "5",
-        "R": "7"
-      },
-      "type": [],
+      "stats": { "Movimento": "2", "Attacco": "5", "Difesa": "5", "Corpo": "5", "Coraggio": "7" },
+      "spec": { "Difesa": "Corazza 1"},
+      "type": [ "personaggio_speciale", "creatura_mostruosa", "mago" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [
-        "Paura", "Infiammabile", "Mago livello 3 (magia della Natura"
-      ],
-      "equipment": [
-      ],
+      "rules": [ "Paura", "Infiammabile", "Mago livello 3 (magia della Natura" ],
+      "equipment": [],
       "ranged": [],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 1,
-      "magin_items": [
-        "Lancia sacra Ira di Kurnotheal",
-        "Corona di Verdia"
-      ]
+      "magin_items": [ "Lancia sacra Ira di Kurnotheal", "Corona di Verdia" ]
+    },
+    {
+      "id": "unicorno",
+      "name": "Unicorno",
+      "category": "none",
+      "cost_per_model": 40,
+      "stats": {"Movimento": "2", "Attacco": "3", "Difesa": "3", "Corpo": "2", "Coraggio": "6"},
+      "spec": { "Attacco": "+1 in carica, attacchi magici" },
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Resistenza alla Magia 4+" ],
+      "ranged": [],
+      "equipment": [],
+      "ranged": [],
+      "options": []
+    },
+    {
+      "id": "alce",
+      "name": "Alce",
+      "category": "none",
+      "cost_per_model": 50,
+      "stats": {"Movimento": "2", "Attacco": "3", "Difesa": "3", "Corpo": "3", "Coraggio": "6"},
+      "spec": { "Attacco": "+2 in carica" },
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [],
+      "ranged": [],
+      "equipment": [],
+      "ranged": [],
+      "options": []
+    },
+    {
+      "id": "drago",
+      "name": "Drago",
+      "category": "none",
+      "cost_per_model": 380,
+      "stats": {"Movimento": "2", "Attacco": "6", "Difesa": "6", "Corpo": "8", "Coraggio": "7"},
+      "spec": { "Movimento": "movimento in volo (4 caselle)" },
+      "type": [ "mostro" ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [ "Volare", "Terrore" ],
+      "ranged": [
+        { "name": "Soffio", "range": "1", "att": "5", "spec": "ignora la difesa, anche in CaC" }
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": []
     }
   ]
 }
