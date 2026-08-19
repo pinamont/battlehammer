@@ -219,10 +219,12 @@
         { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 25 },
         { "id": "cervo", "name": "cervo", "add_mount": "cervo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 30 },
         { "id": "falco_gigante", "name": "falco gigante", "add_mount": "falco gigante", "stat_modifiers": {"Corpo": 1}, "change_type": {"fanteria": "cavalleria_volante"}, "add_spec": {"Movimento": "movimento in volo 4 caselle"}, "cost": 50 },
+        { "id": "unicorno", "name": "unicorno", "add_mount": "unicorno", "cost": 40 },
+        { "id": "alce", "name": "alce", "add_mount": "alce", "cost": 50 },
         { "id": "aquila_gigante", "name": "aquila gigante", "add_mount": "aquila_gigante", "cost": 95 },
         { "id": "drago", "name": "drago", "add_mount": "drago", "cost": 380 } ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "aquila_gigante", "drago" ]
+        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "unicorno", "alce", "aquila_gigante", "drago" ]
       },
       "magic_item_slots": 3,
       "max_per_army": 0
@@ -248,10 +250,12 @@
         { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 20 },
         { "id": "cervo", "name": "cervo", "add_mount": "cervo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 24 },
         { "id": "falco_gigante", "name": "falco gigante", "add_mount": "falco gigante", "stat_modifiers": {"Corpo": 1}, "change_type": {"fanteria": "cavalleria_volante"}, "add_spec": {"Movimento": "movimento in volo 4 caselle"}, "cost": 40 },
+        { "id": "unicorno", "name": "unicorno", "add_mount": "unicorno", "cost": 40 },
+        { "id": "alce", "name": "alce", "add_mount": "alce", "cost": 50 },
         { "id": "aquila_gigante", "name": "aquila gigante", "add_mount": "aquila_gigante", "cost": 95 },
         { "id": "drago", "name": "drago", "add_mount": "drago", "cost": 380 } ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "aquila_gigante", "drago" ]
+        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "unicorno", "alce", "aquila_gigante", "drago" ]
       },
       "magic_item_slots": 2,
       "max_per_army": 0
@@ -297,7 +301,11 @@
         { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "add_equipment": "lancia da cavaliere", "add_spec": {"Attacco": "+2 in carica (se a cavallo)"}, "cost": 4 },
         { "id": "arco_lungo", "name": "arco lungo", "cost": 8 },
         { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 15 },
-        { "id": "cervo", "name": "cervo", "add_mount": "cervo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 18 } ],
+        { "id": "cervo", "name": "cervo", "add_mount": "cervo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 18 },
+        { "id": "falco_gigante", "name": "falco gigante", "add_mount": "falco gigante", "stat_modifiers": {"Corpo": 1}, "change_type": {"fanteria": "cavalleria_volante"}, "add_spec": {"Movimento": "movimento in volo 4 caselle"}, "cost": 30 } ],
+      "option_categories": {
+        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante" ]
+      },
       "magic_item_slots": 1,
       "max_per_army": 0,
       "magic_banner_slot": true
@@ -319,10 +327,12 @@
         { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 25 },
         { "id": "cervo", "name": "cervo", "add_mount": "cervo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 30 },
         { "id": "falco_gigante", "name": "falco gigante", "add_mount": "falco gigante", "stat_modifiers": {"Corpo": 1}, "change_type": {"fanteria": "cavalleria_volante"}, "add_spec": {"Movimento": "movimento in volo 4 caselle"}, "cost": 50 },
+        { "id": "unicorno", "name": "unicorno", "add_mount": "unicorno", "cost": 40 },
+        { "id": "alce", "name": "alce", "add_mount": "alce", "cost": 50 },
         { "id": "aquila_gigante", "name": "aquila gigante", "add_mount": "aquila_gigante", "cost": 95 },
         { "id": "drago", "name": "drago", "add_mount": "drago", "cost": 380 } ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "aquila_gigante", "drago" ]
+        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "unicorno", "alce", "aquila_gigante", "drago" ]
       },
       "magic_item_slots": 4,
       "max_per_army": 0
@@ -344,9 +354,10 @@
         { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 15 },
         { "id": "cervo", "name": "cervo", "add_mount": "cervo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "add_spec": {"Attacco": "+1 in carica"}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 18 },
         { "id": "falco_gigante", "name": "falco gigante", "add_mount": "falco gigante", "stat_modifiers": {"Corpo": 1}, "change_type": {"fanteria": "cavalleria_volante"}, "add_spec": {"Movimento": "movimento in volo 4 caselle"}, "cost": 30 },
+        { "id": "unicorno", "name": "unicorno", "add_mount": "unicorno", "cost": 40 },
         { "id": "aquila_gigante", "name": "aquila gigante", "add_mount": "aquila_gigante", "cost": 95 } ],
       "option_categories": {
-        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "aquila_gigante" ]
+        "cavalcatura": [ "nessuno", "cavallo", "cervo", "falco_gigante", "unicorno", "aquila_gigante" ]
       },
       "magic_item_slots": 2,
       "max_per_army": 0
@@ -361,13 +372,13 @@
       "type": [ "personaggio_speciale", "creatura_mostruosa", "mago" ],
       "min_size": 1,
       "max_size": 1,
-      "rules": [ "Paura", "Infiammabile", "Mago livello 3 (magia della Natura" ],
+      "rules": [ "Paura", "Infiammabile", "Mago livello 3 (magia della Natura)" ],
       "equipment": [],
       "ranged": [],
       "options": [],
       "magic_item_slots": 0,
       "max_per_army": 1,
-      "magin_items": [ "Lancia sacra Ira di Kurnotheal", "Corona di Verdia" ]
+      "magic_items": [ "lancia_sacra_ira_di_kurnotheal", "corona_di_verdia" ]
     },
     {
       "id": "unicorno",

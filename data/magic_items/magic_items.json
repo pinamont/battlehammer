@@ -1968,6 +1968,30 @@
       "only_for_type": [],
       "only_for_unit": ["nagash"],
       "not_for_type": []
+    },
+    {
+      "id": "lancia_sacra_ira_di_kurnotheal",
+      "name": "Lancia sacra Ira di Kurnotheal",
+      "cost": 50,
+      "category": "Armi Magiche",
+      "description": "Il possessore può utilizzare carte Potere per aggiungere +1 all'Attacco e far sì che i suoi attacchi in CaC ignorino la Difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "only_for_unit": ["regina_dei_rampicanti"],
+      "not_for_type": []
+    },
+    {
+      "id": "corona_di_verdia",
+      "name": "Corona di Verdia",
+      "cost": 25,
+      "category": "Arcani",
+      "description": "Il possessore può pescare +1D3 carte Venti di Magia ogni turno.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "only_for_unit": ["regina_dei_rampicanti"],
+      "not_for_type": []
     }
   ]
 }
