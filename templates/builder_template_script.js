@@ -52,6 +52,8 @@
   };
   let selectedUnit = null;
   let nextEntryId = 1;
+  let canonicalOrder = {};
+  let ruleDescriptions = {"test": "whaaaaaa??"};
 
   // --- UTILITY ---
 
@@ -554,19 +556,19 @@
           // --- OPZIONI SELEZIONATE ---
           const selectedOptionIds = new Set([
             ...(e.preselectedOptions || []),
-                                            ...(e.options || [])
+            ...(e.options || [])
           ]);
 
           // --- MAGIC ITEMS ---
           const magicItemList = [
             ...(e.preselectedMagicItems || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean),
-                           ...(e.magicItems || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean)
+            ...(e.magicItems || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean)
           ];
 
           // --- KNIGHTLY VIRTUES ---
           const knightlyVirtueList = [
             ...(e.preselectedKnightlyVirtues || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean),
-                           ...(e.knightlyVirtues || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean)
+            ...(e.knightlyVirtues || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean)
           ];
 
           // --- EQUIPAGGIAMENTO ---
@@ -577,6 +579,7 @@
 
           // --- REGOLE SPECIALI ---
           const rules = computeModifiedRules(unit, selectedOptionIds);
+          const parsedRules = parseRules(rules);
 
           // --- STATISTICHE MODIFICATE ---
           const modifiedStats = computeModifiedStats(unit, selectedOptionIds);
@@ -603,7 +606,7 @@
             stats: modifiedStats,
             specs: groupedSpecs,
             type,
-            rules,
+            rules: parsedRules,
             equipment,
             upgrades,
             magicItems: magicItemList,
@@ -616,8 +619,6 @@
             rangedSpecs,
 
             mount
-            // ,
-            // mountProfile
           };
         })
       };
@@ -630,114 +631,6 @@
       sections
     };
   }
-
-  // function exportArmyPDF(armyData) {
-  //   const { jsPDF } = window.jspdf;
-  //   const doc = new jsPDF({ unit: "pt", format: "a4" });
-  //
-  //   const pageWidth = doc.internal.pageSize.getWidth();
-  //   const pageHeight = doc.internal.pageSize.getHeight();
-  //   const margin = 40;
-  //   let y = margin;
-  //
-  //   // --- HEADER PRINCIPALE ---
-  //   doc.setFont("helvetica", "bold");
-  //   doc.setFontSize(18);
-  //   doc.text("Battle Hammer", pageWidth / 2, y, { align: "center" });
-  //   y += 10;
-  //   doc.line(margin, y, pageWidth - margin, y);
-  //   y += 20;
-  //
-  //   // --- INFO LISTA ---
-  //   doc.setFont("helvetica", "bolditalic");
-  //   doc.setFontSize(14);
-  //   const headerLine = `${armyData.name} — ${armyName(armyData.faction)} — ${armyData.totalPoints} pt`;
-  //   doc.text(headerLine, pageWidth / 2, y, { align: "center" });
-  //   y += 15;
-  //
-  //   // doc.line(margin, y, pageWidth - margin, y);
-  //   y += 20;
-  //
-  //   // --- SEZIONI ---
-  //   armyData.sections.forEach(section => {
-  //     // separatore
-  //     doc.line(margin, y, pageWidth - margin, y);
-  //     y += 20;
-  //
-  //     // titolo sezione
-  //     doc.setFont("helvetica", "bold");
-  //     doc.setFontSize(14);
-  //     doc.text(section.name, margin, y);
-  //     y += 20;
-  //
-  //     // unità
-  //     section.units.forEach(unit => {
-  //       // --- UNITÀ ---
-  //       doc.setFont("helvetica", "normal");
-  //       doc.setFontSize(12);
-  //
-  //       const sizeText = unit.size > 1 ? ` (${unit.size} modelli)` : "";
-  //       const unitLine = `• ${unit.name}${sizeText} — ${unit.points} pt`;
-  //
-  //       doc.text(unitLine, margin + 20, y);
-  //       y += 20;
-  //
-  //       // --- OPZIONI (tutte in una riga) ---
-  //       doc.setFont("helvetica", "italic");
-  //       doc.setFontSize(11);
-  //
-  //       const optionsLine = [];
-  //
-  //       if (unit.options.length > 0) {
-  //         optionsLine.push(unit.options.join(", "));
-  //       }
-  //
-  //       if (unit.magicItems.length > 0) {
-  //         optionsLine.push(renderName(unit.magicItems.join(", ")));
-  //       }
-  //
-  //       if (unit.knightlyVirtues.length > 0) {
-  //         optionsLine.push(rednerName(unit.knightlyVirtues.join(", ")));
-  //       }
-  //
-  //       if (unit.magicBanner) {
-  //         optionsLine.push(renderName(unit.magicBanner));
-  //       }
-  //
-  //       if (optionsLine.length > 0) {
-  //         y -= 5;
-  //         optionText = optionsLine.join(" — ");
-  //         splitOptionText = doc.splitTextToSize(optionText, doc.internal.pageSize.width - (margin * 2 + 40));
-  //         doc.text(splitOptionText, margin + 40, y);
-  //         y += 20;
-  //       }
-  //
-  //       // salto pagina
-  //       if (y > pageHeight - 60) {
-  //         addFooter(doc, pageWidth, pageHeight);
-  //         doc.addPage();
-  //         y = margin;
-  //       }
-  //     });
-  //   });
-  //
-  //   // footer finale
-  //   addFooter(doc, pageWidth, pageHeight);
-  //
-  //   doc.save(`BattleHammer - ${armyName(currentFaction)} - ${armyData.name}.pdf`);
-  //
-  //   // --- FOOTER ---
-  //   function addFooter(doc, pageWidth, pageHeight) {
-  //     doc.line(margin, pageHeight - 40, pageWidth - margin, pageHeight - 40);
-  //     doc.setFontSize(10);
-  //     doc.text(
-  //       `${doc.internal.getNumberOfPages()}`,
-  //              pageWidth / 2,
-  //              pageHeight - 25,
-  //              { align: "center" }
-  //     );
-  //   }
-  // }
 
   function exportArmyPDF(armyData) {
     const { jsPDF } = window.jspdf;
@@ -905,7 +798,7 @@
       // Regole speciali
       if (unit.rules && unit.rules.length > 0) {
         doc.setFontSize(11);
-        const text = unit.rules.map(t => {return renderName(t);}).join(", ");
+        const text = unit.rules.map(r => {return renderName(r.name);}).join(", ");
         y = drawLabelAndWrappedText(doc, "Regole speciali:", text, colX(), y, columnWidth);
       }
 
@@ -1042,7 +935,7 @@
 
       // Regole speciali
       if (mount.rules && mount.rules.length > 0) {
-        const text = mount.rules.join(", ");
+        const text = mount.rules.map(r => {return r.name;}).join(", ");
         const lines = doc.splitTextToSize(text, columnWidth);
         h += lines.length * 11 + 5;
       }
@@ -1087,8 +980,8 @@
     y += 20;
 
     // Raccoglie tutti gli oggetti magici usati
-    const usedMagicItems = new Map();   // id → oggetto JSON
-    const usedMagicBanners = new Map(); // id → stendardo JSON
+    const usedMagicItems = new Map();
+    const usedMagicBanners = new Map();
 
     armyData.sections.forEach(section => {
       section.units.forEach(unit => {
@@ -1098,19 +991,31 @@
           if (item) usedMagicItems.set(item.id, item);
         });
 
-          // Virtù cavalleresche (se usi lo stesso JSON)
-          (unit.knightlyVirtues || []).forEach(name => {
-            const item = MAGIC_ITEMS.find(m => m.name === name);
-            if (item) usedMagicItems.set(item.id, item);
-          });
+        // Virtù cavalleresche (se usi lo stesso JSON)
+        (unit.knightlyVirtues || []).forEach(name => {
+          const item = MAGIC_ITEMS.find(m => m.name === name);
+          if (item) usedMagicItems.set(item.id, item);
+        });
 
-            // Stendardi magici
-            if (unit.magicBanner) {
-              const banner = MAGIC_BANNERS.find(b => b.name === unit.magicBanner);
-              if (banner) usedMagicBanners.set(banner.id, banner);
-            }
+        // Stendardi magici
+        if (unit.magicBanner) {
+          const banner = MAGIC_BANNERS.find(b => b.name === unit.magicBanner);
+          if (banner) usedMagicBanners.set(banner.id, banner);
+        }
       });
     });
+
+    // Raccoglie tutte le regole speciali con descrizione
+    const usedDetailedRules = new Map();
+
+    armyData.sections.forEach(section => {
+      section.units.forEach(unit => {
+        (unit.rules || []).forEach(r => {
+          if (r.descr) usedDetailedRules.set(r.name, r);
+        });
+      });
+    });
+
 
     // SEZIONI + UNITÀ
     armyData.sections.forEach(section => {
@@ -1162,9 +1067,39 @@
       y += 20;
     });
 
-    if (usedMagicItems.size > 0 || usedMagicBanners.size > 0) {
+    if (usedDetailedRules.size > 0 || usedMagicItems.size > 0 || usedMagicBanners.size > 0) {
       ensureSpace(3);
       y += 3*14;
+    }
+
+    // ----------------------------
+    // APPENDICE: REGOLE SPECIALI
+    // ----------------------------
+    if (usedDetailedRules.size > 0) {
+      ensureSpace(10);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(16);
+      doc.text("Regole Speciali", colX(), y);
+      y += 6;
+      doc.line(colX(), y, colX()+columnWidth, y);
+      y += 24;
+
+      usedDetailedRules.forEach(rule => {
+        ensureSpace(3);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.text(autoRenderName(rule.name), colX(), y);
+        y += 12;
+
+        doc.setFont("helvetica", "normal");
+        const lines = doc.splitTextToSize(rule.descr, columnWidth);
+        doc.setFontSize(11);
+        doc.text(lines, colX(), y);
+        y += lines.length * 12 + 10;
+      });
+
+      y += 24;
     }
 
     // ----------------------------
@@ -1528,6 +1463,25 @@
     return rules;
   }
 
+  function parseRules(rules) {
+    const parsedRules = [];
+    for (const r of rules || []) {
+      if (typeof r === "string") {
+        parsedRules.push({name: r});
+      } else if (typeof r === "object" && r.name) {
+        parsedRules.push(r);
+        if (r.descr && !ruleDescriptions[r.name] ) ruleDescriptions[r.name] = r.descr;
+      }
+    }
+    // check if there is any existing rule with same name and a description
+    parsedRules.forEach(r => {
+      if (!r.descr && ruleDescriptions[r.name] ) {
+        r.descr = ruleDescriptions[r.name];
+      }
+    });
+    return parsedRules;
+  }
+
   function renderUnitSpecialRules(rules) {
     const box = document.getElementById("unitSpecialRulesBox");
     box.innerHTML = "";
@@ -1538,10 +1492,25 @@
     const title = document.createElement("span");
     title.textContent = "Regole speciali: ";
     title.style.fontWeight = "bold";
-    const list = document.createElement("span");
-    list.textContent = rules.join(", ");
     wrapper.appendChild(title);
-    wrapper.appendChild(list);
+    let isFirstRule = true;
+    for (const r of rules) {
+      if (!isFirstRule) {
+        const comma = document.createElement("span");
+        comma.textContent = ", ";
+        wrapper.appendChild(comma);
+      }
+      else isFirstRule = false;
+      const rule = document.createElement("span");
+      rule.textContent = autoRenderName(r.name);
+      if (r.descr) {
+        rule.addEventListener("mousemove", (e) => {
+          showMagicTooltip(r.descr, e.clientX, e.clientY);
+        });
+        rule.addEventListener("mouseleave", hideMagicTooltip);
+      }
+      wrapper.appendChild(rule);
+    }
     box.appendChild(wrapper);
   }
 
@@ -1584,6 +1553,7 @@
         if (opt.mount_profile) {
           opt.mount_profile.specs = collectSpecModifiers(opt.mount_profile,[]);
           opt.mount_profile.rangedSpecs = collectRangedSpecs(opt.mount_profile.ranged);
+          opt.mount_profile.rules = parseRules(opt.mount_profile.rules);
           return opt.mount_profile;
         }
         else if (opt.add_mount) {
@@ -1598,7 +1568,7 @@
               type: mountUnit.type,
               min_size: mountUnit.min_size,
               max_size: mountUnit.max_size,
-              rules: mountUnit.rules,
+              rules: parseRules(mountUnit.rules),
               equipment: mountUnit.equipment,
               ranged: mountUnit.ranged,
               rangedSpecs: collectRangedSpecs(mountUnit.ranged)
@@ -1619,6 +1589,7 @@
       if (unit.mount.stats){
         unit.mount.specs = collectSpecModifiers(unit.mount,[]);
         unit.mount.rangedSpecs = collectRangedSpecs(unit.mount.ranged);
+        unit.mount.rules = parseRules(unit.mount.rules);
         return unit.mount;
       }
       else {
@@ -1633,7 +1604,7 @@
             type: mountUnit.type,
             min_size: mountUnit.min_size,
             max_size: mountUnit.max_size,
-            rules: mountUnit.rules,
+            rules: parseRules(mountUnit.rules),
             equipment: mountUnit.equipment,
             ranged: mountUnit.ranged,
             rangedSpecs: collectRangedSpecs(mountUnit.ranged)
@@ -1702,6 +1673,7 @@
     for (const opt of unit.options || []) {
       if (selectedOptionIds.has(opt.id) && opt.add_ranged) {
         ranged.push(...opt.add_ranged);
+        console.log("Adding "+opt.add_ranged.map(r => {return r.name;}));
       }
     }
     return ranged;
@@ -1890,7 +1862,8 @@
     const types = computeModifiedType(unit, selectedOptionIds);
     renderUnitType(types);
     const modifiedRules = computeModifiedRules(unit, selectedOptionIds);
-    renderUnitSpecialRules(modifiedRules);
+    const parserdRules = parseRules(modifiedRules);
+    renderUnitSpecialRules(parserdRules);
     renderUnitEquipment(unit, selectedOptionIds);
     renderUnitMount(unit, selectedOptionIds);
     const preselectedMagicItems = new Set(existingEntry ? existingEntry.preselectedMagicItems : selectedUnit.magic_items);
@@ -2346,7 +2319,8 @@
       const types = computeModifiedType(unit, selectedOptionIds);
       renderUnitType(types);
       const modifiedRules = computeModifiedRules(unit, selectedOptionIds);
-      renderUnitSpecialRules(modifiedRules);
+      const parserdRules = parseRules(modifiedRules);
+      renderUnitSpecialRules(parserdRules);
       renderUnitEquipment(unit, selectedOptionIds);
       renderUnitMount(unit, selectedOptionIds);
       renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById);
@@ -2830,6 +2804,17 @@
 
   function renderArmy() {
     const { stats, errors, hasPersonaggio } = validateArmy();
+
+    if (currentFaction!="") {
+      // Ordine canonico unità
+      UNITS_BY_FACTION[currentFaction].forEach((u, index) => {
+        canonicalOrder[u.id] = index;
+      });
+      // ordina unità
+      army.entries.sort((a,b) => {
+        return canonicalOrder[a.unitId] - canonicalOrder[b.unitId];
+      });
+    }
 
     const top = document.getElementById("armySummaryTop");
     top.innerHTML = "";
