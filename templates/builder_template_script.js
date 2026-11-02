@@ -3776,10 +3776,48 @@
   // --- MAGIC TOOLTIP ---
   const magicTooltip = document.getElementById("magicTooltip");
 
+  // function showMagicTooltip(text, x, y) {
+  //   magicTooltip.textContent = text;
+  //   magicTooltip.style.left = (x + 12) + "px";
+  //   magicTooltip.style.top = (y + 12) + "px";
+  //   magicTooltip.style.opacity = 1;
+  // }
+
   function showMagicTooltip(text, x, y) {
     magicTooltip.textContent = text;
-    magicTooltip.style.left = (x + 12) + "px";
-    magicTooltip.style.top = (y + 12) + "px";
+
+    // Rendilo temporaneamente visibile per misurarne le dimensioni
+    magicTooltip.style.opacity = 0;
+    magicTooltip.style.display = "block";
+
+    const tooltipWidth = magicTooltip.offsetWidth;
+    const tooltipHeight = magicTooltip.offsetHeight;
+
+    let left = x + 12;
+    let top = y + 12;
+
+    // Se esce dal basso, mostralo sopra il mouse
+    if (top + tooltipHeight > window.innerHeight) {
+      top = y - tooltipHeight - 12;
+    }
+
+    // Se esce a destra, spostalo verso sinistra
+    if (left + tooltipWidth > window.innerWidth) {
+      left = x - tooltipWidth - 12;
+    }
+
+    // Evita che finisca fuori dalla finestra in alto
+    if (top < 0) {
+      top = 4;
+    }
+
+    // Evita che finisca fuori a sinistra
+    if (left < 0) {
+      left = 4;
+    }
+
+    magicTooltip.style.left = left + "px";
+    magicTooltip.style.top = top + "px";
     magicTooltip.style.opacity = 1;
   }
 

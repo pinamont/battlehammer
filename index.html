@@ -417,6 +417,14 @@
       max-height: 1500px; /* abbastanza grande per contenere tutte le unità */
     }
 
+    #magicTooltip {
+      position: fixed;
+      max-width: 300px;
+      white-space: normal;
+      word-wrap: break-word;
+      z-index: 9999;
+    }
+
   </style>
 
 </head>
@@ -10340,9 +10348,7 @@
       "rules": [
         "volare",
         "terrore",
-        "instabilit\u00e0 demoniaca",
-        "mago livello 4 (magia di Tzteench)",
-        "+1D6 carte magia a turno"
+        "instabilit\u00e0 demoniaca"
       ],
       "equipment": [],
       "ranged": [],
@@ -10368,7 +10374,7 @@
         "Coraggio": "7"
       },
       "spec": {
-        "Difesa": "Tiro Salvezza 5+, test di Coraggio per attaccarlo in CaC"
+        "Difesa": "Tiro Salvezza 5+"
       },
       "type": [
         "demone maggiore",
@@ -10379,8 +10385,7 @@
       "max_size": 1,
       "rules": [
         "terrore",
-        "instabilit\u00e0 demoniaca",
-        "mago livello 4 (magia di Slanesh)"
+        "instabilit\u00e0 demoniaca"
       ],
       "equipment": [],
       "ranged": [],
@@ -10406,7 +10411,6 @@
         "Coraggio": "7"
       },
       "spec": {
-        "Attacco": "Fiume di Putredine",
         "Difesa": "Tiro Salvezza 5+"
       },
       "type": [
@@ -10418,8 +10422,7 @@
       "max_size": 1,
       "rules": [
         "terrore",
-        "instabilit\u00e0 demoniaca",
-        "mago livello 4 (magia di Nurgle)"
+        "instabilit\u00e0 demoniaca"
       ],
       "equipment": [],
       "ranged": [],
@@ -18925,10 +18928,48 @@
   // --- MAGIC TOOLTIP ---
   const magicTooltip = document.getElementById("magicTooltip");
 
+  // function showMagicTooltip(text, x, y) {
+  //   magicTooltip.textContent = text;
+  //   magicTooltip.style.left = (x + 12) + "px";
+  //   magicTooltip.style.top = (y + 12) + "px";
+  //   magicTooltip.style.opacity = 1;
+  // }
+
   function showMagicTooltip(text, x, y) {
     magicTooltip.textContent = text;
-    magicTooltip.style.left = (x + 12) + "px";
-    magicTooltip.style.top = (y + 12) + "px";
+
+    // Rendilo temporaneamente visibile per misurarne le dimensioni
+    magicTooltip.style.opacity = 0;
+    magicTooltip.style.display = "block";
+
+    const tooltipWidth = magicTooltip.offsetWidth;
+    const tooltipHeight = magicTooltip.offsetHeight;
+
+    let left = x + 12;
+    let top = y + 12;
+
+    // Se esce dal basso, mostralo sopra il mouse
+    if (top + tooltipHeight > window.innerHeight) {
+      top = y - tooltipHeight - 12;
+    }
+
+    // Se esce a destra, spostalo verso sinistra
+    if (left + tooltipWidth > window.innerWidth) {
+      left = x - tooltipWidth - 12;
+    }
+
+    // Evita che finisca fuori dalla finestra in alto
+    if (top < 0) {
+      top = 4;
+    }
+
+    // Evita che finisca fuori a sinistra
+    if (left < 0) {
+      left = 4;
+    }
+
+    magicTooltip.style.left = left + "px";
+    magicTooltip.style.top = top + "px";
     magicTooltip.style.opacity = 1;
   }
 
