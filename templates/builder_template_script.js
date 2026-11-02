@@ -2681,14 +2681,14 @@
         // Aggiungi gli oggetti della categoria
         let n_items = 0;
         for (const item of items) {
-          if (!isItemAllowedForUnit(item, unit, currentFaction, selectedOptionIds)) {
-            continue;
-          }
-
           const row = document.createElement("div");
           row.className = "option-row";
           row.id = "optionRow-"+item.id;
-          row.style.display = "flex";
+          if (isItemAllowedForUnit(item, unit, currentFaction, selectedOptionIds)) {
+            row.style.display = "flex";
+          } else {
+            row.style.display = "none";
+          }
           row.style.justifyContent = "space-between";
           row.style.alignItems = "center";
           row.style.margin = "2px 0";
@@ -2859,14 +2859,14 @@
       // Aggiungi le virtù
       let n_items = 0;
       for (const virtue of virtues) {
-        if (!isItemAllowedForUnit(virtue, unit, currentFaction, selectedOptionIds)) {
-          continue; // non mostrare l'oggetto
-        }
-
         const row = document.createElement("div");
         row.className = "option-row";
         row.id = "optionRow-"+virtue.id;
-        row.style.display = "flex";
+        if (isItemAllowedForUnit(virtue, unit, currentFaction, selectedOptionIds)) {
+          row.style.display = "flex";
+        } else {
+          row.style.display = "none";
+        }
         row.style.justifyContent = "space-between";
         row.style.alignItems = "center";
         row.style.margin = "2px 0";

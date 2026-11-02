@@ -9854,9 +9854,48 @@
           "name": "bestia da soma",
           "add_mount": "bestia_da_soma",
           "cost": 110
+        },
+        {
+          "id": "khorne",
+          "name": "Khorne",
+          "add_type": [
+            "Khorne"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "nurgle",
+          "name": "Nurgle",
+          "add_type": [
+            "Nurgle"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "slaanesh",
+          "name": "Slaanesh",
+          "add_type": [
+            "Slaanesh"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "tzeentch",
+          "name": "Tzeentch",
+          "add_type": [
+            "Tzeentch"
+          ],
+          "cost": 0
         }
       ],
       "option_categories": {
+        "marchio": [
+          "nessuno",
+          "khorne",
+          "nurgle",
+          "slaanesh",
+          "tzeentch"
+        ],
         "cavalcatura": [
           "nessuno",
           "cavallo",
@@ -9968,9 +10007,48 @@
             "fanteria": "cavalleria_pesante"
           },
           "cost": 5
+        },
+        {
+          "id": "khorne",
+          "name": "Khorne",
+          "add_type": [
+            "Khorne"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "nurgle",
+          "name": "Nurgle",
+          "add_type": [
+            "Nurgle"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "slaanesh",
+          "name": "Slaanesh",
+          "add_type": [
+            "Slaanesh"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "tzeentch",
+          "name": "Tzeentch",
+          "add_type": [
+            "Tzeentch"
+          ],
+          "cost": 0
         }
       ],
       "option_categories": {
+        "marchio": [
+          "nessuno",
+          "khorne",
+          "nurgle",
+          "slaanesh",
+          "tzeentch"
+        ],
         "cavalcatura": [
           "nessuno",
           "cavallo",
@@ -10040,9 +10118,39 @@
           "name": "bestia da soma",
           "add_mount": "bestia_da_soma",
           "cost": 110
+        },
+        {
+          "id": "nurgle",
+          "name": "Nurgle",
+          "add_type": [
+            "Nurgle"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "slaanesh",
+          "name": "Slaanesh",
+          "add_type": [
+            "Slaanesh"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "tzeentch",
+          "name": "Tzeentch",
+          "add_type": [
+            "Tzeentch"
+          ],
+          "cost": 0
         }
       ],
       "option_categories": {
+        "marchio": [
+          "nessuno",
+          "nurgle",
+          "slaanesh",
+          "tzeentch"
+        ],
         "cavalcatura": [
           "nessuno",
           "cavallo",
@@ -10095,8 +10203,40 @@
             "fanteria": "cavalleria_leggera"
           },
           "cost": 10
+        },
+        {
+          "id": "nurgle",
+          "name": "Nurgle",
+          "add_type": [
+            "Nurgle"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "slaanesh",
+          "name": "Slaanesh",
+          "add_type": [
+            "Slaanesh"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "tzeentch",
+          "name": "Tzeentch",
+          "add_type": [
+            "Tzeentch"
+          ],
+          "cost": 0
         }
       ],
+      "option_categories": {
+        "marchio": [
+          "nessuno",
+          "nurgle",
+          "slaanesh",
+          "tzeentch"
+        ]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
@@ -10290,13 +10430,12 @@
       "stats": {
         "Movimento": "2",
         "Attacco": "10",
-        "Difesa": "6",
+        "Difesa": "4",
         "Corpo": "8",
         "Coraggio": "7"
       },
       "spec": {
         "Movimento": "movimento in volo 4 caselle",
-        "Attacco": "1D3 ferite",
         "Difesa": "Tiro Salvezza 5+"
       },
       "type": [
@@ -17833,14 +17972,14 @@
         // Aggiungi gli oggetti della categoria
         let n_items = 0;
         for (const item of items) {
-          if (!isItemAllowedForUnit(item, unit, currentFaction, selectedOptionIds)) {
-            continue;
-          }
-
           const row = document.createElement("div");
           row.className = "option-row";
           row.id = "optionRow-"+item.id;
-          row.style.display = "flex";
+          if (isItemAllowedForUnit(item, unit, currentFaction, selectedOptionIds)) {
+            row.style.display = "flex";
+          } else {
+            row.style.display = "none";
+          }
           row.style.justifyContent = "space-between";
           row.style.alignItems = "center";
           row.style.margin = "2px 0";
@@ -18011,14 +18150,14 @@
       // Aggiungi le virtù
       let n_items = 0;
       for (const virtue of virtues) {
-        if (!isItemAllowedForUnit(virtue, unit, currentFaction, selectedOptionIds)) {
-          continue; // non mostrare l'oggetto
-        }
-
         const row = document.createElement("div");
         row.className = "option-row";
         row.id = "optionRow-"+virtue.id;
-        row.style.display = "flex";
+        if (isItemAllowedForUnit(virtue, unit, currentFaction, selectedOptionIds)) {
+          row.style.display = "flex";
+        } else {
+          row.style.display = "none";
+        }
         row.style.justifyContent = "space-between";
         row.style.alignItems = "center";
         row.style.margin = "2px 0";

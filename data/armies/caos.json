@@ -505,8 +505,14 @@
         { "id": "cavallo_bardato", "name": "cavallo bardato", "add_mount": "cavallo bardato", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_pesante"}, "cost": 15 },
         { "id": "drago", "name": "drago", "add_mount": "drago", "cost": 380 },
         { "id": "manticora", "name": "manticora", "add_mount": "manticora", "cost": 220 },
-        { "id": "bestia_da_soma", "name": "bestia da soma", "add_mount": "bestia_da_soma", "cost": 110 } ],
+        { "id": "bestia_da_soma", "name": "bestia da soma", "add_mount": "bestia_da_soma", "cost": 110 },
+        { "id": "khorne", "name": "Khorne", "add_type": ["Khorne"], "cost": 0 },
+        { "id": "nurgle", "name": "Nurgle", "add_type": ["Nurgle"], "cost": 0 },
+        { "id": "slaanesh", "name": "Slaanesh", "add_type": ["Slaanesh"], "cost": 0 },
+        { "id": "tzeentch", "name": "Tzeentch", "add_type": ["Tzeentch"], "cost": 0 }
+      ],
       "option_categories": {
+        "marchio": ["nessuno", "khorne", "nurgle", "slaanesh", "tzeentch"],
         "cavalcatura": ["nessuno", "cavallo", "cavallo_bardato", "bestia_da_soma", "manticora", "drago"]
       },
       "magic_item_slots": 2,
@@ -531,8 +537,14 @@
         { "id": "lancia_da_cavaliere", "name": "lancia da cavaliere", "cost": 4 },
         { "id": "armatura_pesante", "name": "armatura pesante", "add_equipment": ["armatura pesante"], "stat_modifiers": {"Difesa": 1}, "cost": 2 },
         { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 5 },
-        { "id": "cavallo_bardato", "name": "cavallo bardato", "add_mount": "cavallo bardato", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_pesante"}, "cost": 5 } ],
+        { "id": "cavallo_bardato", "name": "cavallo bardato", "add_mount": "cavallo bardato", "stat_modifiers": {"Movimento": 1, "Difesa": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_pesante"}, "cost": 5 },
+        { "id": "khorne", "name": "Khorne", "add_type": ["Khorne"], "cost": 0 },
+        { "id": "nurgle", "name": "Nurgle", "add_type": ["Nurgle"], "cost": 0 },
+        { "id": "slaanesh", "name": "Slaanesh", "add_type": ["Slaanesh"], "cost": 0 },
+        { "id": "tzeentch", "name": "Tzeentch", "add_type": ["Tzeentch"], "cost": 0 }
+      ],
       "option_categories": {
+        "marchio": ["nessuno", "khorne", "nurgle", "slaanesh", "tzeentch"],
         "cavalcatura": ["nessuno", "cavallo", "cavallo_bardato"]
       },
       "magic_item_slots": 1,
@@ -556,8 +568,13 @@
         { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 20 },
         { "id": "drago", "name": "drago", "add_mount": "drago", "cost": 380 },
         { "id": "manticora", "name": "manticora", "add_mount": "manticora", "cost": 220 },
-        { "id": "bestia_da_soma", "name": "bestia da soma", "add_mount": "bestia_da_soma", "cost": 110 } ],
+        { "id": "bestia_da_soma", "name": "bestia da soma", "add_mount": "bestia_da_soma", "cost": 110 },
+        { "id": "nurgle", "name": "Nurgle", "add_type": ["Nurgle"], "cost": 0 },
+        { "id": "slaanesh", "name": "Slaanesh", "add_type": ["Slaanesh"], "cost": 0 },
+        { "id": "tzeentch", "name": "Tzeentch", "add_type": ["Tzeentch"], "cost": 0 }
+      ],
       "option_categories": {
+        "marchio": ["nessuno", "nurgle", "slaanesh", "tzeentch"],
         "cavalcatura": ["nessuno", "cavallo", "bestia_da_soma", "manticora", "drago"]
       },
       "magic_item_slots": 4,
@@ -577,7 +594,14 @@
       "ranged": [],
       "options": [
         { "id": "livello_2", "name": "livello 2", "cost": 45 },
-        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 10 } ],
+        { "id": "cavallo", "name": "cavallo", "add_mount": "cavallo", "stat_modifiers": {"Movimento": 1, "Corpo": 1}, "change_type": {"fanteria": "cavalleria_leggera"}, "cost": 10 },
+        { "id": "nurgle", "name": "Nurgle", "add_type": ["Nurgle"], "cost": 0 },
+        { "id": "slaanesh", "name": "Slaanesh", "add_type": ["Slaanesh"], "cost": 0 },
+        { "id": "tzeentch", "name": "Tzeentch", "add_type": ["Tzeentch"], "cost": 0 }
+      ],
+      "option_categories": {
+        "marchio": ["nessuno", "nurgle", "slaanesh", "tzeentch"]
+      },
       "magic_item_slots": 2,
       "max_per_army": 0
     },
