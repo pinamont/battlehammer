@@ -20,7 +20,9 @@
   const MAGIC_ITEMS =
     JSON.parse(document.getElementById("ITEM_DATA").textContent).magic_items.concat(
       JSON.parse(document.getElementById("ITEM_DATA").textContent).chaos_rewards.concat(
-        JSON.parse(document.getElementById("ITEM_DATA").textContent).knightly_virtues
+        JSON.parse(document.getElementById("ITEM_DATA").textContent).knightly_virtues.concat(
+          JSON.parse(document.getElementById("ITEM_DATA").textContent).demonic_rewards
+        )
       )
   );
 
@@ -118,7 +120,7 @@
   }
 
   // Calcola punti unità
-  function calcUnitPoints(unit, size, selectedOptionIds, optionCounts = {}, magicItems = [], magicItemCounts = {}, magicBanner = null, knightlyVirtues = []) {
+  function calcUnitPoints(unit, size, selectedOptionIds, optionCounts = {}, magicItems = [], magicItemCounts = {}, magicBanner = null, knightlyVirtues = [], demonicRewards = []) {
     let total = unit.cost_per_model * size;
     for (const opt of unit.options || []) {
       if (!selectedOptionIds.includes(opt.id)) continue;
@@ -148,6 +150,12 @@
       for (const id of knightlyVirtues) {
         const virtue = MAGIC_ITEMS.find(m => m.id === id);
         if (virtue) total += virtue.cost;
+      }
+    }
+    if (demonicRewards) {
+      for (const id of demonicRewards) {
+        const reward = MAGIC_ITEMS.find(m => m.id === id);
+        if (reward) total += reward.cost;
       }
     }
     return total;
@@ -192,6 +200,13 @@
     return false;
   }
 
+  function isDemonicRewardTaken(rewardId, currentEntryId = null) {
+    for (const e of army.entries) {
+      if (e.id === currentEntryId) continue;
+      if (e.demonicRewards && e.demonicRewards.includes(itemId)) return true;
+    }
+    return false;
+  }
   function isMagicBannerTaken(bannerId, currentEntryId = null) {
     for (const e of army.entries) {
       if (e.id === currentEntryId) continue;
@@ -201,8 +216,8 @@
   }
 
   // Valido per oggetti magici, stendardi magici e virtù
-  function isItemAllowedForUnit(item, unit, currentFaction) {
-    const unitTypes = unit.type || [];
+  function isItemAllowedForUnit(item, unit, currentFaction, selectedOptionIds) {
+    const unitTypes = computeModifiedType(unit, selectedOptionIds) || [];
 
     // Normalizza a array
     const onlyForType = Array.isArray(item.only_for_type)
@@ -407,6 +422,20 @@
           }
         }
 
+        // Ricompense Demoniache
+        if (e.demonicRewards?.length || e.preselectedDemonicRewards?.length) {
+          let names = []
+          if (e.preselectedDemonicRewards?.length) names = names.concat(e.preselectedDemonicRewards
+            .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+            .filter(Boolean));
+          if (e.demonicRewards?.length) names = names.concat(e.demonicRewards
+            .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+            .filter(Boolean));
+          if (names.length > 0) {
+            lines.push(renderName("    " + names.join(", ")));
+          }
+        }
+
         // Stendardo Magico
         if (e.magicBanner) {
           const banner = MAGIC_BANNERS.find(b => b.id === e.magicBanner);
@@ -506,6 +535,18 @@
           }
         }
 
+        // Ricompense Demoniache
+        if (e.demonicRewards?.length || e.preselectedDemonicRewards?.length) {
+          let names = []
+          if (e.preselectedDemonicRewards?.length) names = names.concat(e.preselectedDemonicRewards);
+          if (e.demonicRewards?.length) names = names.concat(e.demonicRewards
+            .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+            .filter(Boolean));
+          if (names.length > 0) {
+            lines.push(renderName(`  - ${names.join(", ")}`));
+          }
+        }
+
         // Stendardo Magico
         if (e.magicBanner) {
           const banner = MAGIC_BANNERS.find(b => b.id === e.magicBanner);
@@ -571,6 +612,12 @@
             ...(e.knightlyVirtues || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean)
           ];
 
+          // --- DEMONIC REWARDS ---
+          const demonicRewardList = [
+            ...(e.preselectedDemonicRewards || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean),
+            ...(e.demonicRewards || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean)
+          ];
+
           // --- EQUIPAGGIAMENTO ---
           const equipment = collectEquipment(unit, selectedOptionIds);
 
@@ -611,6 +658,7 @@
             upgrades,
             magicItems: magicItemList,
             knightlyVirtues: knightlyVirtueList,
+            demonicRewards: demonicRewardList,
             magicBanner: e.magicBanner
             ? MAGIC_BANNERS.find(b => b.id === e.magicBanner)?.name
             : null,
@@ -896,6 +944,20 @@
         y = drawLabelAndWrappedText(doc, "Oggetti Magici:", text, colX(), y, columnWidth);
       }
 
+      if (unit.knightlyVirtues && unit.knightlyVirtues.length > 0) {
+        doc.setFontSize(11);
+        const items = unit.knightlyVirtues.map(t => {return renderName(t);});
+        const text = items.join(", ");
+        y = drawLabelAndWrappedText(doc, "Virtù Cavalleresche:", text, colX(), y, columnWidth);
+      }
+
+      if (unit.demonicRewards && unit.demonicRewards.length > 0) {
+        doc.setFontSize(11);
+        const items = unit.demonicRewards.map(t => {return renderName(t);});
+        const text = items.join(", ");
+        y = drawLabelAndWrappedText(doc, "Ricompense Demoniache:", text, colX(), y, columnWidth);
+      }
+
       // Stendardo magico
       if (unit.magicBanner) {
         doc.setFontSize(11);
@@ -991,8 +1053,14 @@
           if (item) usedMagicItems.set(item.id, item);
         });
 
-        // Virtù cavalleresche (se usi lo stesso JSON)
+        // Virtù cavalleresche
         (unit.knightlyVirtues || []).forEach(name => {
+          const item = MAGIC_ITEMS.find(m => m.name === name);
+          if (item) usedMagicItems.set(item.id, item);
+        });
+
+        // Ricompense Demoniache
+        (unit.demonicRewards || []).forEach(name => {
           const item = MAGIC_ITEMS.find(m => m.name === name);
           if (item) usedMagicItems.set(item.id, item);
         });
@@ -1196,10 +1264,12 @@
         magicItems: e.magicItems || [],
         magicItemCounts: e.magicItemCounts || {},
         knightlyVirtues: e.knightlyVirtues || [],
+        demonicRewards: e.demonicRewards || [],
         magicBanner: e.magicBanner || null,
         preselectedOptions: [...(e.preselectedOptions || [])],
         preselectedMagicItems: [...(e.preselectedMagicItems || [])],
         preselectedKnightlyVirtues: [...(e.preselectedKnightlyVirtues || [])],
+        preselectedDemonicRewards: [...(e.preselectedDemonicRewards || [])],
         points: e.points
       }))
     };
@@ -1416,7 +1486,7 @@
       types = [unit.type];
     }
 
-    // Applica le sostituzioni delle opzioni
+    // Applica le aggiunte / sostituzioni delle opzioni
     for (const opt of unit.options || []) {
       if (!selectedOptionIds.has(opt.id)) continue;
 
@@ -1429,6 +1499,17 @@
           }
         }
       }
+
+      if (opt.add_type) {
+        if (Array.isArray(opt.add_type)) {
+          for (const type of opt.add_type) {
+            types.push(type);
+          }
+        } else {
+          types.push(opt.add_type);
+        }
+      }
+
     }
 
     // Rimuove duplicati
@@ -1663,6 +1744,52 @@
     box.appendChild(wrapper);
   }
 
+  function renderUnitKnightlyVirtues(selectedKnightlyVirtues, magicItemsById) {
+    const box = document.getElementById("unitKnightlyVirtuesBox");
+    box.innerHTML = "";
+    if (selectedKnightlyVirtues.size === 0) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Virtù Cavalleresche: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    const parts = [];
+    for (const id of selectedKnightlyVirtues) {
+      const item = magicItemsById[id];
+      if (!item) continue;
+      parts.push(renderName(item.name));
+    }
+    list.textContent = parts.join(", ");
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
+  function renderUnitDemonicRewards(selectedDemonicRewards, magicItemsById) {
+    const box = document.getElementById("unitDemonicRewardsBox");
+    box.innerHTML = "";
+    if (selectedDemonicRewards.size === 0) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Ricompense Demoniache: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    const parts = [];
+    for (const id of selectedDemonicRewards) {
+      const item = magicItemsById[id];
+      if (!item) continue;
+      parts.push(renderName(item.name));
+    }
+    list.textContent = parts.join(", ");
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
   function collectRangedWeapons(unit, selectedOptionIds) {
     const ranged = [];
     // Armi base
@@ -1673,7 +1800,6 @@
     for (const opt of unit.options || []) {
       if (selectedOptionIds.has(opt.id) && opt.add_ranged) {
         ranged.push(...opt.add_ranged);
-        console.log("Adding "+opt.add_ranged.map(r => {return r.name;}));
       }
     }
     return ranged;
@@ -1839,12 +1965,13 @@
     let selectedMagicItems = new Set(existingEntry ? existingEntry.magicItems : []);
     let magicItemCounts = existingEntry ? { ...existingEntry.magicItemCounts } : {};
     let selectedKnightlyVirtues = new Set(existingEntry ? existingEntry.knightlyVirtues : []);
+    let selectedDemonicRewards = new Set(existingEntry ? existingEntry.demonicRewards : []);
     let selectedMagicBanner = existingEntry ? existingEntry.magicBanner : null;
     const unit = selectedUnit;
     const isEdit = !!existingEntry;
     const sizeValue = isEdit ? existingEntry.size : unit.min_size;
     const selectedOptionIds = new Set(isEdit ? existingEntry.options : []);
-    const tempPoints = calcUnitPoints(unit, sizeValue, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
+    const tempPoints = calcUnitPoints(unit, sizeValue, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues), Array.from(selectedDemonicRewards));
     panel.innerHTML = "";
     document.getElementById("configUnitName").textContent = unit.name;
     let textContent = "";
@@ -1868,6 +1995,10 @@
     renderUnitMount(unit, selectedOptionIds);
     const preselectedMagicItems = new Set(existingEntry ? existingEntry.preselectedMagicItems : selectedUnit.magic_items);
     renderUnitMagicItems(selectedMagicItems.union(preselectedMagicItems), magicItemCounts, magicItemsById);
+    const preselectedKnightlyVirtues = new Set(existingEntry ? existingEntry.preselectedKnightlyVirtues : selectedUnit.knightly_virtues);
+    renderUnitKnightlyVirtues(selectedKnightlyVirtues.union(preselectedKnightlyVirtues), magicItemsById);
+    const preselectedDemonicRewards = new Set(existingEntry ? existingEntry.preselectedDemonicRewards : selectedUnit.demonic_rewards);
+    renderUnitDemonicRewards(selectedDemonicRewards.union(preselectedDemonicRewards), magicItemsById);
     const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
     renderUnitRanged(rangedWeapons);
     const rangedSpecs = collectRangedSpecs(rangedWeapons);
@@ -1990,6 +2121,8 @@
 
           // 4) aggiorna visibilità delle opzioni condizionali
           refreshConditionalOptionsVisibility(unit, selectedOptionIds);
+          refreshConditionalMagicItemVisibility(unit, selectedMagicItems);
+          refreshConditionalDemonicRewardVisibility(unit, selectedDemonicRewards);
 
           // 5) punti + riepilogo
           updatePointsPreview();
@@ -2087,6 +2220,8 @@
             else selectedOptionIds.delete(opt.id);
             optionCounts[opt.id] = qty.value;
             refreshConditionalOptionsVisibility(unit, selectedOptionIds);
+            refreshConditionalMagicItemVisibility(unit, selectedOptionIds);
+            refreshConditionalDemonicRewardVisibility(unit, selectedOptionIds);
             updatePointsPreview();
           }
 
@@ -2114,6 +2249,8 @@
               }
             }
             refreshConditionalOptionsVisibility(unit, selectedOptionIds);
+            refreshConditionalMagicItemVisibility(unit, selectedOptionIds);
+            refreshConditionalDemonicRewardVisibility(unit, selectedOptionIds);
             updatePointsPreview();
           };
 
@@ -2225,6 +2362,11 @@
       RenderKnightlyVirtues();
     }
 
+    // Ricompense Demoniache
+    if ((unit.demonic_reward_slots && unit.demonic_reward_slots > 0) || unit.deomonic_rewards?.length > 0) {
+      RenderDemonicRewards();
+    }
+
     // Costo in punti complessivo
     {
       let textContent = `${tempPoints} pt`;
@@ -2239,7 +2381,7 @@
     mainBtn.onclick = () => {
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
       const opts = Array.from(selectedOptionIds);
-      const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
+      const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues), Array.from(selectedDemonicRewards));
 
       let preselectedOptions = [];
       if (unit.mount) {
@@ -2256,10 +2398,12 @@
         existingEntry.magicItems = Array.from(selectedMagicItems);
         existingEntry.magicItemCounts = magicItemCounts;
         existingEntry.knightlyVirtues = Array.from(selectedKnightlyVirtues);
+        existingEntry.demonicRewards = Array.from(selectedDemonicRewards);
         existingEntry.magicBanner = selectedMagicBanner;
         existingEntry.preselectedOptions = preselectedOptions;
         existingEntry.preselectedMagicItems = [...(unit.magic_items || [])];
         existingEntry.preselectedKnightlyVirtues = [...(unit.knightly_virtues || [])];
+        existingEntry.preselectedDemonicRewards = [...(unit.demonic_rewards || [])];
         clearConfigPanel();
         // in mobile-mode, torna a lista esercito
         if (window.innerWidth < 768) {
@@ -2277,10 +2421,12 @@
           magicItems: Array.from(selectedMagicItems),
           magicItemCounts: magicItemCounts,
           knightlyVirtues: Array.from(selectedKnightlyVirtues),
+          demonicRewards: Array.from(selectedDemonicRewards),
           magicBanner: selectedMagicBanner,
           preselectedOptions: preselectedOptions,
           preselectedMagicItems: [...(unit.magic_items || [])],
           preselectedKnightlyVirtues: [...(unit.knightly_virtues || [])],
+          preselectedDemonicRewards: [...(unit.demonic_rewards || [])],
           points: pts
         });
         clearConfigPanel();
@@ -2323,7 +2469,12 @@
       renderUnitSpecialRules(parserdRules);
       renderUnitEquipment(unit, selectedOptionIds);
       renderUnitMount(unit, selectedOptionIds);
-      renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById);
+      const preselectedMagicItems = new Set(existingEntry ? existingEntry.preselectedMagicItems : selectedUnit.magic_items);
+      renderUnitMagicItems(selectedMagicItems.union(preselectedMagicItems), magicItemCounts, magicItemsById);
+      const preselectedKnightlyVirtues = new Set(existingEntry ? existingEntry.preselectedKnightlyVirtues : selectedUnit.knightly_virtues);
+      renderUnitKnightlyVirtues(selectedKnightlyVirtues.union(preselectedKnightlyVirtues), magicItemsById);
+      const preselectedDemonicRewards = new Set(existingEntry ? existingEntry.preselectedDemonicRewards : selectedUnit.demonic_rewards);
+      renderUnitDemonicRewards(selectedDemonicRewards.union(preselectedDemonicRewards), magicItemsById);
       const upgrades = collectUpgrades(unit, selectedOptionIds);
       const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
       renderUnitRanged(rangedWeapons);
@@ -2333,7 +2484,7 @@
       renderUnitMagicBanners(selectedMagicBanner);
       // Update actual points
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
-      const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
+      const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues), Array.from(selectedDemonicRewards));
       configPoints = document.getElementById("configPoints");
       configPoints.textContent = `${pts} pt`;
     }
@@ -2346,14 +2497,33 @@
         if (optId === "NONE") return;
         // retrieve option object
         const opt = unit.options.find(o => o.id === optId.replace("optionRow-",""));
-        if (!opt) return;
-        if (isOptionEnabled(opt, selectedOptionIds)) {
-          row.style.display = "flex";
+        if (opt) {
+          if (isOptionEnabled(opt, selectedOptionIds)) {
+            row.style.display = "flex";
+          }
+          else {
+            row.style.display = "none";
+          }
         }
-        else {
-          row.style.display = "none";
+        // retrieve magic item
+        const item = MAGIC_ITEMS.find(i => i.id == optId.replace("optionRow-",""));
+        if (item) {
+          if (isItemAllowedForUnit(item, unit, currentFaction, selectedOptionIds)) {
+            row.style.display = "flex";
+          }
+          else {
+            row.style.display = "none";
+          }
         }
       });
+    }
+
+    function refreshConditionalMagicItemVisibility(unit, selectedMagicItems) {
+      // ...
+    }
+
+    function refreshConditionalDemonicRewardVisibility(unit, selectedDemonicRewards) {
+      // ...
     }
 
     function populateOptionCategory(catName,optionIds,unit,select,hasNone){
@@ -2399,7 +2569,7 @@
     function RenderMagicBanners() {
       // Loop sugli stendardi disponibili
       for (const banner of MAGIC_BANNERS) {
-        if (!isItemAllowedForUnit(banner, unit, currentFaction)) {
+        if (!isItemAllowedForUnit(banner, unit, currentFaction, selectedOptionIds)) {
           continue;
         }
 
@@ -2480,6 +2650,9 @@
         // salta le virtù Cavalleresche
         if (category === "Virtù Cavalleresche") continue;
 
+        // salta le Ricompense Demoniache
+        if (category === "Ricompense Demoniache") continue;
+
         const catBox = document.createElement("div");
         catBox.style.marginTop = "8px";
         catBox.style.border = "1px solid #30363d";
@@ -2508,7 +2681,7 @@
         // Aggiungi gli oggetti della categoria
         let n_items = 0;
         for (const item of items) {
-          if (!isItemAllowedForUnit(item, unit, currentFaction)) {
+          if (!isItemAllowedForUnit(item, unit, currentFaction, selectedOptionIds)) {
             continue;
           }
 
@@ -2686,7 +2859,7 @@
       // Aggiungi le virtù
       let n_items = 0;
       for (const virtue of virtues) {
-        if (!isItemAllowedForUnit(virtue, unit, currentFaction)) {
+        if (!isItemAllowedForUnit(virtue, unit, currentFaction, selectedOptionIds)) {
           continue; // non mostrare l'oggetto
         }
 
@@ -2744,6 +2917,122 @@
 
         // Costi
         let costText = `${virtue.cost} pt`;
+        right.appendChild(document.createTextNode(costText));
+
+        n_items += 1;
+
+        row.appendChild(left);
+        row.appendChild(right);
+        content.appendChild(row);
+      }
+
+      if (n_items === 0) {
+        header.style.display = "none"
+        catBox.style.display = "none"
+      }
+
+      catBox.appendChild(header);
+      catBox.appendChild(content);
+      panel.appendChild(catBox);
+    }
+
+    function RenderDemonicRewards() {
+      const title = document.createElement("div");
+      title.style.marginTop = "10px";
+      title.style.fontSize = "12px";
+      title.textContent = "Ricompense Demoniache";
+      title.textContent += ` (fino a ${unit.demonic_reward_slots})`;
+      panel.appendChild(title);
+
+      const category = "Ricompense Demoniache";
+      const rewards = magicByCategory[category];
+
+      const catBox = document.createElement("div");
+      catBox.style.marginTop = "8px";
+      catBox.style.border = "1px solid #30363d";
+      catBox.style.borderRadius = "6px";
+      catBox.style.overflow = "hidden";
+
+      // Header cliccabile
+      const header = document.createElement("div");
+      header.textContent = category;
+      header.style.padding = "6px 8px";
+      header.style.cursor = "pointer";
+      header.style.background = "#161b22";
+      header.style.fontWeight = "bold";
+      header.style.fontSize = "12px";
+
+      // Contenuto nascosto
+      const content = document.createElement("div");
+      content.style.display = "none";
+      content.style.padding = "6px 8px";
+      content.style.fontSize = "12px";
+
+      header.onclick = () => {
+        content.style.display = content.style.display === "none" ? "block" : "none";
+      };
+
+      // Aggiungi le ricompense
+      let n_items = 0;
+      for (const reward of rewards) {
+        const row = document.createElement("div");
+        row.className = "option-row";
+        row.id = "optionRow-"+reward.id;
+        if(isItemAllowedForUnit(reward, unit, currentFaction, selectedOptionIds)) {
+          row.style.display = "flex";
+        } else {
+          row.style.display = "none";
+        }
+        row.style.justifyContent = "space-between";
+        row.style.alignItems = "center";
+        row.style.margin = "2px 0";
+
+        const left = document.createElement("span");
+        const right = document.createElement("span");
+
+        const div = document.createElement("div");
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        const labelSpan = document.createElement("span");
+        labelSpan.textContent = " " + reward.name;
+        if (reward.description) {
+          labelSpan.addEventListener("mousemove", (e) => {
+            showMagicTooltip(reward.description, e.clientX, e.clientY);
+          });
+          labelSpan.addEventListener("mouseleave", hideMagicTooltip);
+        }
+
+        // ricompense pre-selezionate?
+        if (unit.demonic_rewards && (unit.demonic_rewards.includes(reward.name) || unit.demonic_rewards.includes(reward.id))) {
+          div.className = "option disabled-option";
+          cb.checked = true;
+          cb.disabled = true;
+          div.appendChild(cb);
+          labelSpan.class = "greyed";
+          div.appendChild(labelSpan);
+          left.appendChild(div);
+        } else { // ... o selezionabile
+          // const cb = document.createElement("input");
+          cb.checked = selectedDemonicRewards.has(reward.id);
+          cb.onchange = () => {
+            if (cb.checked) {
+              if (selectedDemonicRewards.size < unit.demonic_reward_slots) {
+                if (!selectedDemonicRewards.has(reward.id)) selectedDemonicRewards.add(reward.id);
+              } else {
+                cb.checked = false;
+                showInfoToast("Hai già raggiunto il numero massimo di Ricompense Demoniache","alert",3000);
+              }
+            } else {
+              if (selectedDemonicRewards.has(reward.id)) selectedDemonicRewards.delete(reward.id);
+            }
+            updatePointsPreview();
+          };
+          left.appendChild(cb);
+          left.appendChild(labelSpan);
+        }
+
+        // Costi
+        let costText = `${reward.cost} pt`;
         right.appendChild(document.createTextNode(costText));
 
         n_items += 1;
@@ -2931,6 +3220,26 @@
           div.appendChild(line);
         }
 
+        // Ricompense Deminiache
+        if (e.demonicRewards?.length > 0 || e.preselectedDemonicRewards?.length > 0) {
+          const line = document.createElement("div");
+          line.style.fontSize = "11px";
+          line.style.opacity = "0.8";
+          const fullList = [];
+          for (const rewardId of e.preselectedDemonicRewards) {
+            const reward = MAGIC_ITEMS.find(o => o.id === rewardId);
+            if (!reward) continue;
+            fullList.push(renderName(reward.name));
+          }
+          for (const rewardId of e.demonicRewards) {
+            const reward = MAGIC_ITEMS.find(o => o.id === rewardId);
+            if (!reward) continue;
+            fullList.push(renderName(reward.name));
+          }
+          line.textContent = fullList.join(", ");
+          div.appendChild(line);
+        }
+
         // Oggetti Magici
         if (e.magicItems?.length > 0 || e.preselectedMagicItems?.length > 0) {
           const line = document.createElement("div");
@@ -3103,10 +3412,12 @@
         magicItems: u.magicItems || [],
         magicItemCounts: u.magicItemCounts || {},
         knightlyVirtues: u.knightlyVirtues || [],
+        demonicRewards: u.demonicRewards || [],
         magicBanner: u.magicBanner || null,
         preselectedOptions: [...(u.preselectedOptions || [])],
         preselectedMagicItems: [...(u.preselectedMagicItems || [])],
         preselectedKnightlyVirtues: [...(u.preselectedKnightlyVirtues || [])],
+        preselectedDemonicRewards: [...(u.preselectedDemonicRewards || [])],
         points: u.points
       });
     }

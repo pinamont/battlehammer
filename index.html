@@ -498,6 +498,8 @@
     <div id="unitRangedBox"></div>
     <div id="unitRangedSpecBox"></div>
     <div id="unitMagicItemsBox"></div>
+    <div id="unitKnightlyVirtuesBox"></div>
+    <div id="unitDemonicRewardsBox"></div>
     <div id="unitUpgradeBox"></div>
     <div id="unitMagicBannersBox"></div>
     <hr style="height: 1px; background-color: #30363d; width: 100%; margin: 10px auto; border: none">
@@ -9050,19 +9052,21 @@
       "id": "sanguinari_di_khorne",
       "name": "Sanguinari di Khorne",
       "category": "Truppe",
-      "cost_per_model": 16,
+      "cost_per_model": 25,
       "stats": {
         "Movimento": "1",
         "Attacco": "5",
-        "Difesa": "4",
+        "Difesa": "3",
         "Corpo": "1",
         "Coraggio": "5"
       },
       "spec": {
-        "Attacco": "-1 alla Difesa"
+        "Attacco": "1D3 ferite",
+        "Difesa": "Tiro Salvezza 5+"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "demone"
       ],
       "min_size": 5,
       "max_size": 20,
@@ -9070,6 +9074,249 @@
         "paura",
         "instabilit\u00e0 demoniaca",
         "devono sempre caricare e inseguire"
+      ],
+      "equipment": [
+        "Lama Infernale"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "cavalieri_del_sangue_di_khorne",
+      "name": "Cavalieri del Sangue di Khorne",
+      "category": "Truppe",
+      "cost_per_model": 80,
+      "stats": {
+        "Movimento": "2",
+        "Attacco": "6",
+        "Difesa": "6",
+        "Corpo": "3",
+        "Coraggio": "5"
+      },
+      "spec": {
+        "Attacco": "+2 in carica, 1D3 di ferite",
+        "Difesa": "Tiro Salvezza 5+"
+      },
+      "type": [
+        "creature mostruose",
+        "demone"
+      ],
+      "min_size": 2,
+      "max_size": 6,
+      "rules": [
+        "paura",
+        "instabilit\u00e0 demoniaca",
+        "devono sempre caricare e inseguire"
+      ],
+      "equipment": [
+        "Juggernaut di Khorne",
+        "Lama Infernale"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
+          "cost": 30
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "mastini_di_khorne",
+      "name": "Mastini di Khorne",
+      "category": "Truppe",
+      "cost_per_model": 45,
+      "stats": {
+        "Movimento": "2",
+        "Attacco": "4",
+        "Difesa": "3",
+        "Corpo": "2",
+        "Coraggio": "5"
+      },
+      "spec": {
+        "Difesa": "Tiro Salvezza 5+"
+      },
+      "type": [
+        "cavalleria leggera",
+        "demone"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [
+        "paura",
+        "instabilit\u00e0 demoniaca",
+        "immuni alla magia",
+        "devono sempre caricare e inseguire"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "untori_di_nurgle",
+      "name": "Untori di Nurgle",
+      "category": "Truppe",
+      "cost_per_model": 30,
+      "stats": {
+        "Movimento": "1",
+        "Attacco": "3",
+        "Difesa": "2",
+        "Corpo": "1",
+        "Coraggio": "5"
+      },
+      "spec": {
+        "Attacco": "creature mortali ferite uccise con 4+ su 1D6",
+        "Difesa": "Tiro Salvezza 5+, nube di mosche (-1 agli attacchi avversari in CaC)"
+      },
+      "type": [
+        "fanteria",
+        "demone"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "paura",
+        "instabilit\u00e0 demoniaca",
+        "unit\u00e0 magica"
+      ],
+      "equipment": [
+        "Lama del Contagio"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "aberrazioni_di_nurgle",
+      "name": "Aberrazioni di Nurgle",
+      "category": "Truppe",
+      "cost_per_model": 65,
+      "stats": {
+        "Movimento": "1+2DC",
+        "Attacco": "2+1D6",
+        "Difesa": "5",
+        "Corpo": "3",
+        "Coraggio": "5"
+      },
+      "spec": {
+        "Movimento": "Non possono marciare",
+        "Difesa": "Tiro Salvezza 5+"
+      },
+      "type": [
+        "creature mostruose",
+        "demone"
+      ],
+      "min_size": 2,
+      "max_size": 6,
+      "rules": [
+        "paura",
+        "instabilit\u00e0 demoniaca"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "nurglini",
+      "name": "Nurglini",
+      "category": "Truppe",
+      "cost_per_model": 20,
+      "stats": {
+        "Movimento": "1",
+        "Attacco": "2",
+        "Difesa": "2",
+        "Corpo": "3",
+        "Coraggio": "4"
+      },
+      "spec": {
+        "Difesa": "Tiro Salvezza 5+"
+      },
+      "type": [
+        "sciame",
+        "demone"
+      ],
+      "min_size": 1,
+      "max_size": 3,
+      "rules": [
+        "paura",
+        "instabilit\u00e0 demoniaca"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "demonette_di_slaanesh",
+      "name": "Demonette di Slaanesh",
+      "category": "Truppe",
+      "cost_per_model": 25,
+      "stats": {
+        "Movimento": "1",
+        "Attacco": "5",
+        "Difesa": "2",
+        "Corpo": "1",
+        "Coraggio": "5"
+      },
+      "spec": {
+        "Difesa": "Tiro Salvezza 5+"
+      },
+      "type": [
+        "fanteria",
+        "demone"
+      ],
+      "min_size": 5,
+      "max_size": 20,
+      "rules": [
+        "paura",
+        "instabilit\u00e0 demoniaca",
+        "unit\u00e0 magica"
       ],
       "equipment": [],
       "ranged": [],
@@ -9092,22 +9339,103 @@
       "max_per_army": 0
     },
     {
-      "id": "orrori_rosa_di_tzteench",
-      "name": "Orrori Rosa di Tzteench",
+      "id": "cavalieri_della_perversione_di_slaanesh",
+      "name": "Cavalieri della Perversione di Slaanesh",
+      "category": "Truppe",
+      "cost_per_model": 50,
+      "stats": {
+        "Movimento": "2",
+        "Attacco": "5",
+        "Difesa": "2",
+        "Corpo": "2",
+        "Coraggio": "5"
+      },
+      "spec": {
+        "Difesa": "Tiro Salvezza 5+"
+      },
+      "type": [
+        "cavalleria leggera",
+        "demone"
+      ],
+      "min_size": 3,
+      "max_size": 10,
+      "rules": [
+        "paura",
+        "instabilit\u00e0 demoniaca",
+        "unit\u00e0 magica"
+      ],
+      "equipment": [
+        "Destrieri di Slaanesh"
+      ],
+      "ranged": [],
+      "options": [
+        {
+          "id": "stendardo",
+          "name": "stendardo",
+          "cost": 10
+        },
+        {
+          "id": "campione",
+          "name": "campione",
+          "stat_modifiers": {
+            "Attacco": 1
+          },
+          "cost": 20
+        }
+      ],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "seduttori_di_slaanesh",
+      "name": "Seduttori di Slaanesh",
+      "category": "Truppe",
+      "cost_per_model": 70,
+      "stats": {
+        "Movimento": "2",
+        "Attacco": "5",
+        "Difesa": "3",
+        "Corpo": "3",
+        "Coraggio": "5"
+      },
+      "spec": {
+        "Attacco": "attacco addizionale con 1DC, che infligge 1D3 di ferite",
+        "Difesa": "-1 DC all'attacco avversario in CaC, tiro salvezza 5+"
+      },
+      "type": [
+        "creature mostruose",
+        "demone"
+      ],
+      "min_size": 2,
+      "max_size": 6,
+      "rules": [
+        "paura",
+        "instabilit\u00e0 demoniaca"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "max_per_army": 0
+    },
+    {
+      "id": "orrori_rosa_di_tzeentch",
+      "name": "Orrori Rosa di Tzeentch",
       "category": "Truppe",
       "cost_per_model": 25,
       "stats": {
         "Movimento": "1",
         "Attacco": "3",
-        "Difesa": "3",
+        "Difesa": "2",
         "Corpo": "1",
         "Coraggio": "5"
       },
       "spec": {
-        "Corpo": "alla morte creano 2 orrori blu (1, 2, 2, 1, 3)"
+        "Corpo": "alla morte creano 2 orrori blu in unit\u00e0 separata a contatto"
       },
       "type": [
-        "fanteria"
+        "fanteria",
+        "demone"
       ],
       "min_size": 5,
       "max_size": 20,
@@ -9137,136 +9465,24 @@
       "max_per_army": 0
     },
     {
-      "id": "untori_di_nurgle",
-      "name": "Untori di Nurgle",
+      "id": "pirodemoni_di_tzeentch",
+      "name": "Pirodemoni di Tzeentch",
       "category": "Truppe",
-      "cost_per_model": 22,
-      "stats": {
-        "Movimento": "1",
-        "Attacco": "3",
-        "Difesa": "5",
-        "Corpo": "1",
-        "Coraggio": "5"
-      },
-      "type": [
-        "fanteria"
-      ],
-      "min_size": 5,
-      "max_size": 20,
-      "rules": [
-        "paura",
-        "instabilit\u00e0 demoniaca",
-        "rigenerazione (5-20)"
-      ],
-      "equipment": [],
-      "ranged": [],
-      "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "stat_modifiers": {
-            "Attacco": 1
-          },
-          "cost": 20
-        }
-      ],
-      "magic_item_slots": 0,
-      "max_per_army": 0
-    },
-    {
-      "id": "demonette_di_slanesh",
-      "name": "Demonette di Slanesh",
-      "category": "Truppe",
-      "cost_per_model": 16,
-      "stats": {
-        "Movimento": "1",
-        "Attacco": "4",
-        "Difesa": "3",
-        "Corpo": "1",
-        "Coraggio": "5"
-      },
-      "spec": {
-        "Attacco": "-1 alla Difesa",
-        "Difesa": "-1 all'Attacco"
-      },
-      "type": [
-        "fanteria"
-      ],
-      "min_size": 5,
-      "max_size": 20,
-      "rules": [
-        "paura",
-        "instabilit\u00e0 demoniaca",
-        "rigenerazione"
-      ],
-      "equipment": [],
-      "ranged": [],
-      "options": [
-        {
-          "id": "stendardo",
-          "name": "stendardo",
-          "cost": 10
-        },
-        {
-          "id": "campione",
-          "name": "campione",
-          "stat_modifiers": {
-            "Attacco": 1
-          },
-          "cost": 20
-        }
-      ],
-      "magic_item_slots": 0,
-      "max_per_army": 0
-    },
-    {
-      "id": "mastini_di_khorne",
-      "name": "Mastini di Khorne",
-      "category": "Truppe",
-      "cost_per_model": 36,
-      "stats": {
-        "Movimento": "3",
-        "Attacco": "4",
-        "Difesa": "4",
-        "Corpo": "2",
-        "Coraggio": "5"
-      },
-      "type": [
-        "cavalleria leggera"
-      ],
-      "min_size": 3,
-      "max_size": 10,
-      "rules": [
-        "paura",
-        "instabilit\u00e0 demoniaca",
-        "immuni alla magia",
-        "devono sempre caricare e inseguire"
-      ],
-      "equipment": [],
-      "ranged": [],
-      "options": [],
-      "magic_item_slots": 0,
-      "max_per_army": 0
-    },
-    {
-      "id": "pirodemoni_di_tzteench",
-      "name": "Pirodemoni di Tzteench",
-      "category": "Truppe",
-      "cost_per_model": 55,
+      "cost_per_model": 65,
       "stats": {
         "Movimento": "1+2DC",
         "Attacco": "2",
-        "Difesa": "3",
+        "Difesa": "2",
         "Corpo": "3",
         "Coraggio": "5"
       },
+      "spec": {
+        "Movimento": "non possono marciare, possono saltare oltre ostacoli e unit\u00e0",
+        "Difesa": "Tiro Salvezza 5+"
+      },
       "type": [
-        "creature mostruose"
+        "creature mostruose",
+        "demone"
       ],
       "min_size": 2,
       "max_size": 6,
@@ -9277,10 +9493,10 @@
       "equipment": [],
       "ranged": [
         {
-          "name": "Fuoco di Tzeench",
+          "name": "Fuoco di Tzeentch",
           "range": "3",
           "att": "1D6+2",
-          "spec": "ignora la difesa, fuoco"
+          "spec": "ignora la difesa, fuoco, anche in CaC"
         }
       ],
       "options": [],
@@ -9426,7 +9642,7 @@
             "Movimento": 1,
             "Corpo": 1
           },
-          "switch_type": {
+          "change_type": {
             "fanteria": "cavalleria_leggera"
           },
           "cost": 20
@@ -9440,7 +9656,7 @@
             "Difesa": 1,
             "Corpo": 1
           },
-          "switch_type": {
+          "change_type": {
             "fanteria": "cavalleria_pesante"
           },
           "cost": 20
@@ -9462,9 +9678,48 @@
           "name": "bestia da soma",
           "add_mount": "bestia_da_soma",
           "cost": 110
+        },
+        {
+          "id": "khorne",
+          "name": "Khorne",
+          "add_type": [
+            "Khorne"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "nurgle",
+          "name": "Nurgle",
+          "add_type": [
+            "Nurgle"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "slaanesh",
+          "name": "Slaanesh",
+          "add_type": [
+            "Slaanesh"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "tzeentch",
+          "name": "Tzeentch",
+          "add_type": [
+            "Tzeentch"
+          ],
+          "cost": 0
         }
       ],
       "option_categories": {
+        "marchio": [
+          "nessuno",
+          "khorne",
+          "nurgle",
+          "slaanesh",
+          "tzeentch"
+        ],
         "cavalcatura": [
           "nessuno",
           "cavallo",
@@ -9555,7 +9810,7 @@
             "Movimento": 1,
             "Corpo": 1
           },
-          "switch_type": {
+          "change_type": {
             "fanteria": "cavalleria_leggera"
           },
           "cost": 15
@@ -9569,7 +9824,7 @@
             "Difesa": 1,
             "Corpo": 1
           },
-          "switch_type": {
+          "change_type": {
             "fanteria": "cavalleria_pesante"
           },
           "cost": 15
@@ -9687,7 +9942,7 @@
             "Movimento": 1,
             "Corpo": 1
           },
-          "switch_type": {
+          "change_type": {
             "fanteria": "cavalleria_leggera"
           },
           "cost": 5
@@ -9701,7 +9956,7 @@
             "Difesa": 1,
             "Corpo": 1
           },
-          "switch_type": {
+          "change_type": {
             "fanteria": "cavalleria_pesante"
           },
           "cost": 5
@@ -9755,7 +10010,7 @@
             "Movimento": 1,
             "Corpo": 1
           },
-          "switch_type": {
+          "change_type": {
             "fanteria": "cavalleria_leggera"
           },
           "cost": 20
@@ -9828,7 +10083,7 @@
             "Movimento": 1,
             "Corpo": 1
           },
-          "switch_type": {
+          "change_type": {
             "fanteria": "cavalleria_leggera"
           },
           "cost": 10
@@ -10023,20 +10278,22 @@
       "id": "divoratore_di_anime",
       "name": "Divoratore di Anime",
       "category": "Personaggi",
-      "cost_per_model": 600,
+      "cost_per_model": 650,
       "stats": {
         "Movimento": "2",
-        "Attacco": "12",
+        "Attacco": "10",
         "Difesa": "6",
-        "Corpo": "10",
+        "Corpo": "8",
         "Coraggio": "7"
       },
       "spec": {
         "Movimento": "movimento in volo 4 caselle",
-        "Attacco": "-1 alla Difesa"
+        "Attacco": "1D3 ferite",
+        "Difesa": "Tiro Salvezza 5+"
       },
       "type": [
-        "demone maggiore"
+        "demone maggiore",
+        "Khorne"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -10050,25 +10307,33 @@
       "ranged": [],
       "options": [],
       "magic_item_slots": 0,
+      "demonic_rewards": [
+        "frusta_e_ascia_di_khorne",
+        "armatua_del_caos"
+      ],
+      "demonic_reward_slots": 1,
       "max_per_army": 0
     },
     {
       "id": "signore_del_mutamento",
       "name": "Signore del Mutamento",
       "category": "Personaggi",
-      "cost_per_model": 600,
+      "cost_per_model": 650,
       "stats": {
         "Movimento": "2",
-        "Attacco": "5",
-        "Difesa": "5",
-        "Corpo": "7",
+        "Attacco": "6",
+        "Difesa": "4",
+        "Corpo": "8",
         "Coraggio": "7"
       },
       "spec": {
-        "Movimento": "movimento in volo 4 caselle"
+        "Movimento": "movimento in volo 4 caselle",
+        "Difesa": "Tiro Salvezza 5+"
       },
       "type": [
-        "demone maggiore"
+        "demone maggiore",
+        "mago",
+        "Tzeentch"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -10076,33 +10341,39 @@
         "volare",
         "terrore",
         "instabilit\u00e0 demoniaca",
-        "mago livello 5 (magia di Tzteench)",
+        "mago livello 4 (magia di Tzteench)",
         "+1D6 carte magia a turno"
       ],
       "equipment": [],
       "ranged": [],
       "options": [],
       "magic_item_slots": 0,
+      "demonic_rewards": [
+        "stregoneria_4",
+        "potere_di_tzeentch"
+      ],
+      "demonic_reward_slots": 1,
       "max_per_army": 0
     },
     {
       "id": "custode_dei_segreti",
       "name": "Custode dei Segreti",
       "category": "Personaggi",
-      "cost_per_model": 450,
+      "cost_per_model": 550,
       "stats": {
-        "Movimento": "3",
+        "Movimento": "2",
         "Attacco": "8",
-        "Difesa": "5",
+        "Difesa": "4",
         "Corpo": "8",
         "Coraggio": "7"
       },
       "spec": {
-        "Attacco": "-1 alla Difesa",
-        "Difesa": "-1 all'Attacco"
+        "Difesa": "Tiro Salvezza 5+, test di Coraggio per attaccarlo in CaC"
       },
       "type": [
-        "demone maggiore"
+        "demone maggiore",
+        "mago",
+        "Slaanesh"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -10115,6 +10386,11 @@
       "ranged": [],
       "options": [],
       "magic_item_slots": 0,
+      "demonic_rewards": [
+        "stregoneria_4",
+        "aura_di_slaanesh"
+      ],
+      "demonic_reward_slots": 1,
       "max_per_army": 0
     },
     {
@@ -10125,28 +10401,35 @@
       "stats": {
         "Movimento": "1",
         "Attacco": "6",
-        "Difesa": "6",
-        "Corpo": "12",
+        "Difesa": "4",
+        "Corpo": "10",
         "Coraggio": "7"
       },
       "spec": {
-        "Movimento": "non pu\u00f2 marciare"
+        "Attacco": "Fiume di Putredine",
+        "Difesa": "Tiro Salvezza 5+"
       },
       "type": [
-        "demone maggiore"
+        "demone maggiore",
+        "mago",
+        "Nurgle"
       ],
       "min_size": 1,
       "max_size": 1,
       "rules": [
         "terrore",
         "instabilit\u00e0 demoniaca",
-        "Rigenerazione (5+)",
-        "mago livello 3 (magia di Nurgle)"
+        "mago livello 4 (magia di Nurgle)"
       ],
       "equipment": [],
       "ranged": [],
       "options": [],
       "magic_item_slots": 0,
+      "demonic_rewards": [
+        "stregoneria_4",
+        "fiume_di_putredine"
+      ],
+      "demonic_reward_slots": 1,
       "max_per_army": 0
     },
     {
@@ -10156,10 +10439,13 @@
       "cost_per_model": 265,
       "stats": {
         "Movimento": "2",
-        "Attacco": "5",
-        "Difesa": "5",
+        "Attacco": "6",
+        "Difesa": "4",
         "Corpo": "5",
         "Coraggio": "7"
+      },
+      "spec": {
+        "Difesa": "Tiro Salvezza 5+"
       },
       "type": [
         "demone maggiore"
@@ -10169,118 +10455,78 @@
       "rules": [
         "volare",
         "terrore",
-        "instabilit\u00e0 demoniaca",
-        "mago livello 2 (magia Nera o del Caos)"
+        "instabilit\u00e0 demoniaca"
       ],
       "equipment": [],
       "ranged": [],
       "options": [
         {
-          "id": "livello_3",
-          "name": "livello 3",
-          "cost": 60
+          "id": "khorne",
+          "name": "Khorne",
+          "add_type": [
+            "Khorne"
+          ],
+          "cost": 0
         },
         {
-          "id": "livello_4",
-          "name": "livello 4",
-          "cost": 125
+          "id": "nurgle",
+          "name": "Nurgle",
+          "add_type": [
+            "Nurgle"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "slaanesh",
+          "name": "Slaanesh",
+          "add_type": [
+            "Slaanesh"
+          ],
+          "cost": 0
+        },
+        {
+          "id": "tzeentch",
+          "name": "Tzeentch",
+          "add_type": [
+            "Tzeentch"
+          ],
+          "cost": 0
         }
       ],
+      "option_categories": {
+        "marchio": [
+          "nessuno",
+          "khorne",
+          "nurgle",
+          "slaanesh",
+          "tzeentch"
+        ]
+      },
       "magic_item_slots": 0,
+      "demonic_reward_slots": 3,
       "max_per_army": 0
     },
     {
       "id": "araldo_di_khrone",
       "name": "Araldo di Khrone",
       "category": "Personaggi",
-      "cost_per_model": 70,
+      "cost_per_model": 110,
       "stats": {
         "Movimento": "1",
         "Attacco": "6",
-        "Difesa": "4",
-        "Corpo": "3",
-        "Coraggio": "6"
-      },
-      "type": [
-        "personaggio",
-        "demone"
-      ],
-      "min_size": 1,
-      "max_size": 1,
-      "rules": [
-        "paura",
-        "instabilit\u00e0 demoniaca"
-      ],
-      "equipment": [],
-      "ranged": [],
-      "options": [],
-      "magic_item_slots": 0,
-      "max_per_army": 0
-    },
-    {
-      "id": "araldo_di_tzeench",
-      "name": "Araldo di Tzeench",
-      "category": "Personaggi",
-      "cost_per_model": 85,
-      "stats": {
-        "Movimento": "1",
-        "Attacco": "4",
-        "Difesa": "3",
-        "Corpo": "3",
-        "Coraggio": "6"
-      },
-      "type": [
-        "personaggio",
-        "demone"
-      ],
-      "min_size": 1,
-      "max_size": 1,
-      "rules": [
-        "paura",
-        "instabilit\u00e0 demoniaca",
-        "mago livello 1"
-      ],
-      "equipment": [],
-      "ranged": [],
-      "options": [
-        {
-          "id": "livello_2",
-          "name": "livello 2",
-          "cost": 40
-        },
-        {
-          "id": "livello_3",
-          "name": "livello 3",
-          "cost": 100
-        },
-        {
-          "id": "livello_4",
-          "name": "livello 4",
-          "cost": 185
-        }
-      ],
-      "magic_item_slots": 0,
-      "max_per_army": 0
-    },
-    {
-      "id": "araldo_di_slaanesh",
-      "name": "Araldo di Slaanesh",
-      "category": "Personaggi",
-      "cost_per_model": 70,
-      "stats": {
-        "Movimento": "1",
-        "Attacco": "5",
         "Difesa": "3",
         "Corpo": "3",
         "Coraggio": "6"
       },
       "spec": {
-        "Attacco": "-1 alla Difesa",
-        "Difesa": "-1 all'Attacco"
+        "Attacco": "1D3 ferite",
+        "Difesa": "Tiro Salvezza 5+"
       },
       "type": [
         "personaggio",
-        "demone"
+        "demone",
+        "fateria",
+        "Khorne"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -10288,10 +10534,22 @@
         "paura",
         "instabilit\u00e0 demoniaca"
       ],
-      "equipment": [],
+      "equipment": [
+        "lama infernale"
+      ],
       "ranged": [],
-      "options": [],
+      "options": [
+        {
+          "id": "juggernaut",
+          "name": "Juggernaut",
+          "cost": 75,
+          "change_type": {
+            "fanteria": "cavalleria"
+          }
+        }
+      ],
       "magic_item_slots": 0,
+      "demonic_reward_slots": 2,
       "max_per_army": 0
     },
     {
@@ -10302,13 +10560,19 @@
       "stats": {
         "Movimento": "1",
         "Attacco": "4",
-        "Difesa": "4",
+        "Difesa": "3",
         "Corpo": "3",
         "Coraggio": "6"
       },
+      "spec": {
+        "Attacco": "creature mortali ferite uccise con 4+ su 1D6 (lama del contagio)",
+        "Difesa": "Tiro Salvezza 5+, nube di mosche (-1 agli attacchi avversari in CaC)"
+      },
       "type": [
         "personaggio",
-        "demone"
+        "demone",
+        "fanteria",
+        "Nurgle"
       ],
       "min_size": 1,
       "max_size": 1,
@@ -10317,10 +10581,90 @@
         "instabilit\u00e0 demoniaca",
         "rigenerazione (5+)"
       ],
+      "equipment": [
+        "lama del contagio"
+      ],
+      "ranged": [],
+      "options": [],
+      "magic_item_slots": 0,
+      "demonic_reward_slots": 2,
+      "max_per_army": 0
+    },
+    {
+      "id": "araldo_di_slaanesh",
+      "name": "Araldo di Slaanesh",
+      "category": "Personaggi",
+      "cost_per_model": 85,
+      "stats": {
+        "Movimento": "1",
+        "Attacco": "6",
+        "Difesa": "2",
+        "Corpo": "3",
+        "Coraggio": "6"
+      },
+      "spec": {
+        "Difesa": "Tiro Salvezza 5+"
+      },
+      "type": [
+        "personaggio",
+        "demone",
+        "fanteria",
+        "Slaanesh"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura",
+        "instabilit\u00e0 demoniaca"
+      ],
+      "equipment": [],
+      "ranged": [],
+      "options": [
+        {
+          "id": "destriero_di_slaanesh",
+          "name": "Destriero di Slaanesh",
+          "cost": 40,
+          "change_type": {
+            "fanteria": "cavalleria"
+          }
+        }
+      ],
+      "magic_item_slots": 0,
+      "demonic_reward_slots": 2,
+      "max_per_army": 0
+    },
+    {
+      "id": "araldo_di_tzeentch",
+      "name": "Araldo di Tzeentch",
+      "category": "Personaggi",
+      "cost_per_model": 70,
+      "stats": {
+        "Movimento": "1",
+        "Attacco": "4",
+        "Difesa": "2",
+        "Corpo": "3",
+        "Coraggio": "6"
+      },
+      "spec": {
+        "Difesa": "Tiro Salvezza 5+"
+      },
+      "type": [
+        "personaggio",
+        "demone",
+        "fanteria",
+        "Tzeentch"
+      ],
+      "min_size": 1,
+      "max_size": 1,
+      "rules": [
+        "paura",
+        "instabilit\u00e0 demoniaca"
+      ],
       "equipment": [],
       "ranged": [],
       "options": [],
       "magic_item_slots": 0,
+      "demonic_reward_slots": 2,
       "max_per_army": 0
     },
     {
@@ -11815,7 +12159,7 @@
     },
     {
       "id": "la_nera_ascia_di_krell",
-      "name": "La Nera Ascia Di Krell",
+      "name": "La Nera Ascia di Krell",
       "cost": 125,
       "category": "Armi Magiche",
       "description": "Arma a 2 mani (+1 DC in attacco), ignora la difesa. Un modello ferito subisce una ferita all'inizio di ogni suo turno se ottiene teschio su 1 DC.",
@@ -11879,7 +12223,7 @@
     },
     {
       "id": "la_spada_della_morte",
-      "name": "La Spada Della Morte",
+      "name": "La Spada della Morte",
       "cost": 100,
       "category": "Armi Magiche",
       "description": "+3 DC in attacco, ignora la difesa.",
@@ -11890,7 +12234,7 @@
     },
     {
       "id": "la_lama_del_gelo",
-      "name": "La Lama Del Gelo",
+      "name": "La Lama del Gelo",
       "cost": 100,
       "category": "Armi Magiche",
       "description": "Ignora la difesa. Un modello ferito \u00e8 automaticamente ucciso se non ottiene almeno uno scudo tirando 1 DC per ogni suo punto corpo.",
@@ -11901,7 +12245,7 @@
     },
     {
       "id": "la_spada_della_distruzione",
-      "name": "La Spada Della Distruzione",
+      "name": "La Spada \\della Distruzione",
       "cost": 100,
       "category": "Armi Magiche",
       "description": "Il portatore non pu\u00f2 avere altri oggetti magici. Nessun oggetto magico funziona nelle caselle a contatto. Per ogni ferita inflitta a un personaggio con oggetti magici, uno di essi (scelto a caso) viene distrutto.",
@@ -11912,7 +12256,7 @@
     },
     {
       "id": "la_spada_di_teclis",
-      "name": "La Spada Di Teclis",
+      "name": "La Spada di Teclis",
       "cost": 100,
       "category": "Armi Magiche",
       "description": "+2 DC in attacco. Una volta per battaglia, un'unit\u00e0 nemica in combattimento viene attaccata con 2D6 DC, ignorando la difesa.",
@@ -11925,7 +12269,7 @@
     },
     {
       "id": "il_martello_di_sigmar",
-      "name": "Il Martello Di Sigmar",
+      "name": "Il Martello di Sigmar",
       "cost": 100,
       "category": "Armi Magiche",
       "description": "Arma a 2 mani, +1 DC in attacco (totale +2 DC), ignora la difesa, permette di ritirare tutti i dadi di attacco che non hanno ottenuto teschio.",
@@ -11938,7 +12282,7 @@
     },
     {
       "id": "il_bastone_della_corruzione",
-      "name": "Il Bastone \\Della Corruzione",
+      "name": "Il Bastone \\della Corruzione",
       "cost": 100,
       "category": "Armi Magiche",
       "description": "Per ogni teschio ottenuto attaccando, il bersaglio deve ottenere un numero pari o inferiore al suo punteggio di Corpo su 1D6, o rimanere ucciso.",
@@ -11951,7 +12295,7 @@
     },
     {
       "id": "la_lama_del_gigante",
-      "name": "La Lama Del Gigante",
+      "name": "La Lama del Gigante",
       "cost": 80,
       "category": "Armi Magiche",
       "description": "+3 DC in attacco.",
@@ -11962,7 +12306,7 @@
     },
     {
       "id": "la_lama_sepolcrale_del_caos",
-      "name": "La Lama \\Sepolcrale Del Caos",
+      "name": "La Lama \\Sepolcrale del Caos",
       "cost": 75,
       "category": "Armi Magiche",
       "description": "+2 DC in attacco. Per ogni ferita inflitta dal portatore, il suo controllore pu\u00f2 pescare una carta magia.",
@@ -11998,7 +12342,7 @@
     },
     {
       "id": "la_spada_del_veleno",
-      "name": "La Spada Del Veleno",
+      "name": "La Spada del Veleno",
       "cost": 70,
       "category": "Armi Magiche",
       "description": "Ogni ferita inflitta sottrae 1D6 punti corpo invece di 1.",
@@ -12009,7 +12353,7 @@
     },
     {
       "id": "la_spada_runica_del_caos_di_grungni_cuor_d_acciaio",
-      "name": "La Spada Runica Del Caos \\Di Grungni Cuor D'Acciaio",
+      "name": "La Spada Runica del Caos \\di Grungni Cuor D'Acciaio",
       "cost": 65,
       "category": "Armi Magiche",
       "description": "+2 DC in attacco, ignora la difesa, +1 DC in difesa.",
@@ -12059,7 +12403,7 @@
     },
     {
       "id": "mordielfi_l_ascia_di_grom",
-      "name": "Mordielfi - L'Ascia Di Grom",
+      "name": "Mordielfi - L'Ascia di Grom",
       "cost": 50,
       "category": "Armi Magiche",
       "description": "Arma a 2 mani (+1 DC in attacco), ignora la difesa, raddoppia le ferite inflitte.",
@@ -12074,7 +12418,7 @@
     },
     {
       "id": "l_arco_di_loren",
-      "name": "L'Arco Di Loren",
+      "name": "L'Arco di Loren",
       "cost": 50,
       "category": "Armi Magiche",
       "description": "E' un arco lungo che attacca con 4 DC (senza il consueto -1 per attacco da tiro da parte di un personaggio), gittata 6.",
@@ -12088,7 +12432,7 @@
     },
     {
       "id": "la_spada_del_drago",
-      "name": "La Spada Del Drago",
+      "name": "La Spada del Drago",
       "cost": 50,
       "category": "Armi Magiche",
       "description": "Per ogni teschio ottenuto in attacco, aggiungi 1 DC all'attacco.",
@@ -12112,7 +12456,7 @@
     },
     {
       "id": "la_lama_di_gromril",
-      "name": "La Lama Di Gromril",
+      "name": "La Lama di Gromril",
       "cost": 50,
       "category": "Armi Magiche",
       "description": "Ignora la difesa.",
@@ -12125,7 +12469,7 @@
     },
     {
       "id": "la_spada_di_skabsktrath",
-      "name": "La Spada Di Skabsktrath",
+      "name": "La Spada di Skabsktrath",
       "cost": 50,
       "category": "Armi Magiche",
       "description": "Chi la impugna incute Terrore.",
@@ -12138,7 +12482,7 @@
     },
     {
       "id": "la_spada_del_mutamento",
-      "name": "La Spada Del Mutamento",
+      "name": "La Spada del Mutamento",
       "cost": 50,
       "category": "Armi Magiche",
       "description": "Quando infligge almeno una ferita a un avversario, senza ucciderlo, tira 1D6: se ottieni un numero pari o inferiore al numero di ferite inflitte, l'avversario si tramuta in un Abominio del Caos.",
@@ -12162,7 +12506,7 @@
     },
     {
       "id": "la_spada_della_giustizia",
-      "name": "La Spada Della Giustizia",
+      "name": "La Spada della Giustizia",
       "cost": 50,
       "category": "Armi Magiche",
       "description": "Permette di ritirare tutti i dadi in attacco che non hanno ottenuto teschio, ignora la difesa.",
@@ -12175,7 +12519,7 @@
     },
     {
       "id": "la_lama_sepolcrale_di_arkhan",
-      "name": "La Lama Sepolcrale \\Di Arkhan",
+      "name": "La Lama Sepolcrale \\di Arkhan",
       "cost": 50,
       "category": "Armi Magiche",
       "description": "+2 DC in attacco. Ogni modello ucciso di taglia normale crea uno scheletro al servizio del possessore.",
@@ -12190,7 +12534,7 @@
     },
     {
       "id": "lama_runica_del_caos",
-      "name": "Lama Runica Del Caos",
+      "name": "Lama Runica del Caos",
       "cost": 45,
       "category": "Armi Magiche",
       "description": "Ignora la difesa, ogni ferita inflitta sottrae 1D3 di punti corpo invece di 1.",
@@ -12203,7 +12547,7 @@
     },
     {
       "id": "la_lancia_del_drago",
-      "name": "La Lancia Del Drago",
+      "name": "La Lancia del Drago",
       "cost": 40,
       "category": "Armi Magiche",
       "description": "Lancia da cavaliere. In carica, puoi ritirare tutti i dadi che non hanno ottenuto un teschio.",
@@ -12249,7 +12593,7 @@
     },
     {
       "id": "il_flagello_di_teschi",
-      "name": "Il Flagello Di Teschi",
+      "name": "Il Flagello di Teschi",
       "cost": 30,
       "category": "Armi Magiche",
       "description": "Arma a 2 mani (+1 DC in attacco). Raddoppia le ferite inflitte.",
@@ -12260,7 +12604,7 @@
     },
     {
       "id": "la_zanna_di_runa",
-      "name": "La Zanna Di Runa",
+      "name": "La Zanna di Runa",
       "cost": 30,
       "category": "Armi Magiche",
       "description": "Ignora la difesa. Contro i nommorti e i demoni raddoppia le ferite inflitte.",
@@ -12298,7 +12642,7 @@
     },
     {
       "id": "la_spada_di_difesa",
-      "name": "La Spada Di Difesa",
+      "name": "La Spada di Difesa",
       "cost": 20,
       "category": "Armi Magiche",
       "description": "-1 DC in attacco agli avversari in CaC.",
@@ -12309,7 +12653,7 @@
     },
     {
       "id": "la_spada_della_forza",
-      "name": "La Spada Della Forza",
+      "name": "La Spada della Forza",
       "cost": 20,
       "category": "Armi Magiche",
       "description": "+1 DC in attacco.",
@@ -12320,7 +12664,7 @@
     },
     {
       "id": "la_spada_di_bork",
-      "name": "La Spada Di Bork",
+      "name": "La Spada di Bork",
       "cost": 10,
       "category": "Armi Magiche",
       "description": "L'unit\u00e0 del portatore ignora il primo test di animosit\u00e0 fallito.",
@@ -12333,7 +12677,7 @@
     },
     {
       "id": "la_lama_del_nord",
-      "name": "La Lama Del Nord",
+      "name": "La Lama del Nord",
       "cost": 100,
       "category": "Armi Magiche",
       "description": "+3DC in attacco. Raddoppia le ferite inflitte.",
@@ -12357,7 +12701,7 @@
     },
     {
       "id": "le_lame_di_gork_e_mork",
-      "name": "Le Lame Di Gork E Mork",
+      "name": "Le Lame di Gork E Mork",
       "cost": 75,
       "category": "Armi Magiche",
       "description": "Due armi. +1DC in attacco (oltre al +1 per le due armi), +1DC in difesa, permette di ritirare tutti i dadi d'attacco che non hanno ottenuto teschio.",
@@ -12374,7 +12718,7 @@
     },
     {
       "id": "la_spada_di_hoeth",
-      "name": "La Spada Di Hoeth",
+      "name": "La Spada di Hoeth",
       "cost": 25,
       "category": "Armi Magiche",
       "description": "Spada a 2 mani. Conferisce +1 DC in Attacco (per un totale di +2).",
@@ -12417,7 +12761,7 @@
     },
     {
       "id": "l_armatura_di_protezione",
-      "name": "L'Armatura Di Protezione",
+      "name": "L'Armatura di Protezione",
       "cost": 50,
       "category": "Armature Magiche",
       "description": "Armatura pesante. Tiro Salvezza di 4+.",
@@ -12430,7 +12774,7 @@
     },
     {
       "id": "lo_scudo_runico_del_caos",
-      "name": "Lo Scudo Runico Del Caos",
+      "name": "Lo Scudo Runico del Caos",
       "cost": 50,
       "category": "Armature Magiche",
       "description": "Scudo. Le armi magiche non funzionano contro il portatore.",
@@ -12471,7 +12815,7 @@
     },
     {
       "id": "l_armatura_di_mutapietra",
-      "name": "L'Armatura Di Mutapietra",
+      "name": "L'Armatura di Mutapietra",
       "cost": 50,
       "category": "Armature Magiche",
       "description": "Armatura pesante. Tiro Salvezza di 4+, per ogni ferita salvata chi ha attaccato (in CaC) subisce un attacco con 1DC (somma tutti i dadi in un unico attacco), senza potersi difendere.",
@@ -12484,7 +12828,7 @@
     },
     {
       "id": "l_armatura_di_ferro_meteoritico",
-      "name": "L'Armatura \\Di Ferro Meteoritico",
+      "name": "L'Armatura \\di Ferro Meteoritico",
       "cost": 25,
       "category": "Armature Magiche",
       "description": "Armatura pesante. Conferisce Difesa 6, non migliorabile.",
@@ -12497,7 +12841,7 @@
     },
     {
       "id": "lo_scudo_della_tempesta",
-      "name": "Lo Scudo Della Tempesta",
+      "name": "Lo Scudo della Tempesta",
       "cost": 25,
       "category": "Armature Magiche",
       "description": "Scudo. Ogni volta che il portatore para uno o pi\u00f9 teschi da un attacco avversario, chi ha portato l'attacco viene attaccato con un numero di DC pari al numero di teschi parati, senza potersi difendere.",
@@ -12512,7 +12856,7 @@
     },
     {
       "id": "l_armatura_scarlatta_di_dargan",
-      "name": "L'Armatura \\Scarlatta Di Dargan",
+      "name": "L'Armatura \\Scarlatta di Dargan",
       "cost": 25,
       "category": "Armature Magiche",
       "description": "Armatura pesante. +1 DC in Difesa. Per attaccare il portatore in CaC \u00e8 necessario passare un test di Coraggio, ottenendo almeno 2 teschi.",
@@ -12525,7 +12869,7 @@
     },
     {
       "id": "l_armatura_della_fortuna",
-      "name": "L'Armatura Della Fortuna",
+      "name": "L'Armatura della Fortuna",
       "cost": 15,
       "category": "Armature Magiche",
       "description": "Armatura pesante. Tiro Salvezza di 5+.",
@@ -12538,7 +12882,7 @@
     },
     {
       "id": "l_armatura_del_caos",
-      "name": "L'Armatura Del Caos",
+      "name": "L'Armatura del Caos",
       "cost": 10,
       "category": "Armature Magiche",
       "description": "Armatura pesante. +2 DC in difesa invece di +1.",
@@ -12551,7 +12895,7 @@
     },
     {
       "id": "l_elmo_del_drago",
-      "name": "L'Elmo Del Drago",
+      "name": "L'Elmo del Drago",
       "cost": 10,
       "category": "Armature Magiche",
       "description": "Tiro salvezza di 2+ contro gli attacchi da fuoco.",
@@ -12564,7 +12908,7 @@
     },
     {
       "id": "lo_scudo_di_ptolos",
-      "name": "Lo Scudo Di Ptolos",
+      "name": "Lo Scudo di Ptolos",
       "cost": 10,
       "category": "Armature Magiche",
       "description": "Scudo. +5 DC in difesa invece di +1 contro gli attacchi da tiro.",
@@ -12577,7 +12921,7 @@
     },
     {
       "id": "l_armatura_di_resistenza",
-      "name": "L'Armatura Di Resistenza",
+      "name": "L'Armatura di Resistenza",
       "cost": 5,
       "category": "Armature Magiche",
       "description": "Armatura pesante. Tiro Salvezza di 6+.",
@@ -12616,7 +12960,7 @@
     },
     {
       "id": "i_colori_magici_di_guerra",
-      "name": "I Colori Magici Di Guerra",
+      "name": "I Colori Magici di Guerra",
       "cost": 5,
       "category": "Armature Magiche",
       "description": "Se il possessore non porta armature, +2 DC Difesa in CaC o +4 contro attacchi da tiro.",
@@ -12631,7 +12975,7 @@
     },
     {
       "id": "la_corazza_di_borin",
-      "name": "La Corazza Di Borin",
+      "name": "La Corazza di Borin",
       "cost": 50,
       "category": "Armature Magiche",
       "description": "Armatura pesante. +2 in difesa invece di +1, permette di difendersi anche contro gli attacchi che negano la difesa.",
@@ -12657,7 +13001,7 @@
     },
     {
       "id": "l_armatura_di_adamantio",
-      "name": "L'Armatura Di Adamantio",
+      "name": "L'Armatura di Adamantio",
       "cost": 50,
       "category": "Armature Magiche",
       "description": "Armatura pesante. Corazza 1.",
@@ -12670,7 +13014,7 @@
     },
     {
       "id": "lo_scudo_del_karma",
-      "name": "Lo Scudo Del Karma",
+      "name": "Lo Scudo del Karma",
       "cost": 50,
       "category": "Armature Magiche",
       "description": "Scudo. +2DC in difesa invece di +1. In CacC, ogni teschio difeso dal portatore diventa un teschio inflitto a chi a portato l'attacco.",
@@ -12683,7 +13027,7 @@
     },
     {
       "id": "lo_scudo_di_difesa",
-      "name": "Lo Scudo Di Difesa",
+      "name": "Lo Scudo di Difesa",
       "cost": 40,
       "category": "Armature Magiche",
       "description": "Scudo. Il possessore viene attaccato con 1 DC in meno, sia in CaC che da armi da tiro.",
@@ -12735,7 +13079,7 @@
     },
     {
       "id": "l_armatura_di_smeraldo",
-      "name": "L'Armatura Di Smeraldo",
+      "name": "L'Armatura di Smeraldo",
       "cost": 10,
       "category": "Armature Magiche",
       "description": "Armatura pesante. Ignora la prima ferita subita.",
@@ -12770,7 +13114,7 @@
     },
     {
       "id": "la_corona_d_oro_di_atrazar",
-      "name": "La Corona D'Oro \\Di Atrazar",
+      "name": "La Corona D'Oro \\di Atrazar",
       "cost": 50,
       "category": "Difese Arcane",
       "description": "Tiro salvezza di 4+.",
@@ -12792,7 +13136,7 @@
     },
     {
       "id": "i_bracciali_del_fulmine",
-      "name": "I Bracciali Del Fulmine",
+      "name": "I Bracciali del Fulmine",
       "cost": 25,
       "category": "Difese Arcane",
       "description": "Tiro salvezza di 3+ contro gli attacchi a distanza.",
@@ -12803,7 +13147,7 @@
     },
     {
       "id": "l_amuleto_di_fuoco",
-      "name": "L'Amuleto Di Fuoco",
+      "name": "L'Amuleto di Fuoco",
       "cost": 25,
       "category": "Difese Arcane",
       "description": "Il possessore e la sua unit\u00e0 guadagnano resistenza alla magia 4+.",
@@ -12814,7 +13158,7 @@
     },
     {
       "id": "l_amuleto_di_giada",
-      "name": "L'Amuleto Di Giada",
+      "name": "L'Amuleto di Giada",
       "cost": 5,
       "category": "Difese Arcane",
       "description": "Tiro salvezza di 2+ contro una singola ferita.",
@@ -12825,7 +13169,7 @@
     },
     {
       "id": "l_anello_di_protezione",
-      "name": "L'Anello Di Protezione",
+      "name": "L'Anello di Protezione",
       "cost": 15,
       "category": "Difese Arcane",
       "description": "Tiro Salvezza 5+.",
@@ -12847,7 +13191,7 @@
     },
     {
       "id": "l_amuleto_di_difesa",
-      "name": "L'Amuleto Di Difesa",
+      "name": "L'Amuleto di Difesa",
       "cost": 5,
       "category": "Difese Arcane",
       "description": "Tiro Salvezza 6+.",
@@ -12858,7 +13202,7 @@
     },
     {
       "id": "la_corona_della_stregoneria",
-      "name": "La Corona \\Della Stregoneria",
+      "name": "La Corona \\della Stregoneria",
       "cost": 125,
       "category": "Oggetti Incantati",
       "description": "Il possessore pu\u00f2 lanciare incantesimi come un necromante di livello 3.",
@@ -12880,7 +13224,7 @@
     },
     {
       "id": "il_talismano_di_hoeth",
-      "name": "Il Talismano Di Hoeth",
+      "name": "Il Talismano di Hoeth",
       "cost": 85,
       "category": "Oggetti Incantati",
       "description": "Il possessore pu\u00f2 lanciare incantesimi come un mago elfo alto di livello 2.",
@@ -12906,7 +13250,7 @@
     },
     {
       "id": "il_calice_di_rubino",
-      "name": "Il Calice Di Rubino",
+      "name": "Il Calice di Rubino",
       "cost": 60,
       "category": "Oggetti Incantati",
       "description": "Attivato quando l'unit\u00e0 subisce una ferita. -2 DC agli attacchi a distanza contro l'unit\u00e0 del portatore, -1 in corpo a corpo.",
@@ -12917,18 +13261,20 @@
     },
     {
       "id": "il_boccale_di_bugman",
-      "name": "Il Boccale Di Bugman",
+      "name": "Il Boccale di Bugman",
       "cost": 50,
       "category": "Oggetti Incantati",
-      "description": "Pu\u00f2 essere usato una volta per turno (anche avversario) in qualsiasi momento, per recuperare un PC perso.",
-      "only_for_army": [],
+      "description": "Pu\u00f2 essere usato una volta per turno (anche avversario) in qualsiasi momento, per recuperare un PC perso. Usare solo 3 volte.",
+      "only_for_army": [
+        "nani"
+      ],
       "not_for_army": [],
       "only_for_type": [],
       "not_for_type": []
     },
     {
       "id": "la_corona_del_comando",
-      "name": "La Corona Del Comando",
+      "name": "La Corona del Comando",
       "cost": 50,
       "category": "Oggetti Incantati",
       "description": "Il possessore guadagna Coraggio 8.",
@@ -12939,7 +13285,7 @@
     },
     {
       "id": "lo_scettro_di_norgrim",
-      "name": "Lo Scettro Di Norgrim",
+      "name": "Lo Scettro di Norgrim",
       "cost": 50,
       "category": "Oggetti Incantati",
       "description": "Ogni turno il possessore e la sua unit\u00e0 possono scegliere se ottenere +1 DC in Attacco (in CaC), +3 DC in Difesa o poter marciare.",
@@ -12952,7 +13298,7 @@
     },
     {
       "id": "la_pozione_di_cura",
-      "name": "La Pozione Di Cura",
+      "name": "La Pozione di Cura",
       "cost": 50,
       "category": "Oggetti Incantati",
       "description": "Pu\u00f2 essere bevuta durante il proprio turno. Ripristina tutti i punti corpo persi.",
@@ -13000,7 +13346,7 @@
     },
     {
       "id": "la_gemma_nera_di_gnar",
-      "name": "La Gemma Nera Di Gnar",
+      "name": "La Gemma Nera di Gnar",
       "cost": 25,
       "category": "Oggetti Incantati",
       "description": "Pu\u00f2 essere usata contro un personaggio in corpo a corpo. Il possessore e il personaggio sono bloccati all'interno della gemma e rimossi temporaneamente dal gioco. All'inizio di ogni turno di ciascun giocatore, l'incantesimo si spezza ottenendo uni scudo su 1 DC.",
@@ -13025,7 +13371,7 @@
     },
     {
       "id": "il_cuore_del_dolore",
-      "name": "Il Cuore Del Dolore",
+      "name": "Il Cuore del Dolore",
       "cost": 25,
       "category": "Oggetti Incantati",
       "description": "Esplode alla morte del possessore. L'unit\u00e0 del possessore, cos\u00ec come un'unit\u00e0 nemica a scelta del possessore e fino a un personaggio all'interno di questa unit\u00e0, sono attaccati ciascuno con 1D6 DC, +1 per ogni PC originario del possessore.",
@@ -13036,7 +13382,7 @@
     },
     {
       "id": "l_amuleto_di_mutapietra",
-      "name": "L'Amuleto Di Mutapietra",
+      "name": "L'Amuleto di Mutapietra",
       "cost": 25,
       "category": "Oggetti Incantati",
       "description": "Per attaccare il portatore in CaC \u00e8 necessario passare un test di Coraggio, ottenendo almeno 2 teschi.",
@@ -13060,7 +13406,7 @@
     },
     {
       "id": "la_corona_di_bretonnia",
-      "name": "La Corona Di Bretonnia",
+      "name": "La Corona di Bretonnia",
       "cost": 15,
       "category": "Oggetti Incantati",
       "description": "All'inizio della battaglia, scegli tra: +1 in Attacco, +3 in Difesa o +1 PC. Con 5+ su 1D6 il possessore ottiene questo bonus. Altrimenti scegline un altro, che viene ottenuto con 3+ su 1D6. Se anche questo tiro fallisce, il bonus restante \u00e8 ottenuto automaticamente.",
@@ -13073,7 +13419,7 @@
     },
     {
       "id": "la_pozione_di_forza",
-      "name": "La Pozione Di Forza",
+      "name": "La Pozione di Forza",
       "cost": 10,
       "category": "Oggetti Incantati",
       "description": "Pu\u00f2 essere bevuta durante il proprio turno. +3 DC in attacco in corpo a corpo per un turno.",
@@ -13108,7 +13454,7 @@
     },
     {
       "id": "il_talismano_della_fortuna",
-      "name": "Il Talismano \\Della Fortuna",
+      "name": "Il Talismano \\della Fortuna",
       "cost": 25,
       "category": "Oggetti Incantati",
       "description": "Il possessore pu\u00f2 ripetere il tiro di un dado durante la partita.",
@@ -13119,7 +13465,7 @@
     },
     {
       "id": "il_corno_della_risolutezza",
-      "name": "Il Corno Della Risolutezza",
+      "name": "Il Corno della Risolutezza",
       "cost": 50,
       "category": "Oggetti Incantati",
       "description": "Pu\u00f2 essere suonato una volta per battaglia in qualsiasi momento. Tutte le unit\u00e0 amiche entro 2 caselle raddoppiano il bonus di ranghi al risultato del combattimento.",
@@ -13130,7 +13476,7 @@
     },
     {
       "id": "l_amuleto_della_possanza",
-      "name": "L'Amuleto Della Possanza",
+      "name": "L'Amuleto della Possanza",
       "cost": 30,
       "category": "Oggetti Incantati",
       "description": "Il portatore aggiunge +1 DC al suo Attacco.",
@@ -13141,7 +13487,7 @@
     },
     {
       "id": "la_pietra_da_battaglia_di_le_marquis",
-      "name": "La Pietra Da Battaglia \\Di Le Marquis",
+      "name": "La Pietra Da Battaglia \\di Le Marquis",
       "cost": 25,
       "category": "Oggetti Incantati",
       "description": "Pu\u00f2 essere usata durante il turno del possessore. Il possessore e la sua unit\u00e0 ottengono +1 DC in Attacco fino alla fine del turno.",
@@ -13152,7 +13498,7 @@
     },
     {
       "id": "pozione_della_battaglia",
-      "name": "La Pozione Della Battaglia",
+      "name": "La Pozione della Battaglia",
       "cost": 15,
       "category": "Oggetti Incantati",
       "description": "Il portatore pu\u00f2 berla durante il suo turno, per ottenere +1D6 DC in Attacco fino alla fine del turno.",
@@ -13163,7 +13509,7 @@
     },
     {
       "id": "la_corona_da_guerra_di_saphery",
-      "name": "La Corona Da Guerra \\Di Saphery",
+      "name": "La Corona Da Guerra \\di Saphery",
       "cost": 125,
       "category": "Arcani",
       "description": "Aumenta il livello del possessore di 1, fino a un massimo di 5.",
@@ -13178,7 +13524,7 @@
     },
     {
       "id": "il_libro_di_nagash",
-      "name": "Il Libro Di Nagash",
+      "name": "Il Libro di Nagash",
       "cost": 100,
       "category": "Arcani",
       "description": "Aumenta il livello del possessore di 1, fino a un massimo di 5.",
@@ -13223,7 +13569,7 @@
     },
     {
       "id": "il_libro_di_ashur",
-      "name": "Il Libro Di Ashur",
+      "name": "Il Libro di Ashur",
       "cost": 50,
       "category": "Arcani",
       "description": "Il possessore pu\u00f2 scegliere incantesimi da un qualsiasi mazzo, in qualsiasi combinazione. Inoltre, il possessore si considera sempre di livello superiore a chi cerca di disperdergli un incantesimo.",
@@ -13249,7 +13595,7 @@
     },
     {
       "id": "famiglio_del_caos",
-      "name": "Famiglio Del Caos",
+      "name": "Famiglio del Caos",
       "cost": 50,
       "category": "Arcani",
       "description": "Famiglio (M1, A1, D2, C1, C4). Una volta a turno, lo stregone pu\u00f2 aggiungere o sottrarre 1 a un tiro di D6 (dichiarandolo prima), o aggiungere un teschio a un tiro che prevede il lancio di DC.",
@@ -13264,7 +13610,7 @@
     },
     {
       "id": "famiglio_del_sapere",
-      "name": "Famiglio Del Sapere",
+      "name": "Famiglio del Sapere",
       "cost": 50,
       "category": "Arcani",
       "description": "Famiglio (M1, A1, D2, C1, C4). Il mago pu\u00f2 prendere un incantesimo addizionale all'inizio della partita, e pu\u00f2 usarlo fintanto che il famiglio \u00e8 vivo ed \u00e8 nella sua stessa unit\u00e0.",
@@ -13277,7 +13623,7 @@
     },
     {
       "id": "il_mantello_della_nebbia",
-      "name": "Il Mantello Della Nebbia",
+      "name": "Il Mantello della Nebbia",
       "cost": 50,
       "category": "Arcani",
       "description": "Il possessore diventa etereo: pu\u00f2 muovere di 4 caselle oltrepassando ostacoli e altre unit\u00e0, \u00e8 immune a tutti gli attacchi non magici, ma non pu\u00f2 attaccare.",
@@ -13290,7 +13636,7 @@
     },
     {
       "id": "la_pozione_della_conoscenza",
-      "name": "La Pozione \\Della Conoscenza",
+      "name": "La Pozione \\della Conoscenza",
       "cost": 50,
       "category": "Arcani",
       "description": "Il possessore pu\u00f2 berla durante il suo turno, e fino alla fine del turno lancia i suoi incantesimi senza usare carte potere. Per ogni incantesimo lanciato in questo modo tira 1 DC. Se ottiene uno scudo, il possessore diventa affetto da Stupidit\u00e0 per il resto della partita.",
@@ -13303,7 +13649,7 @@
     },
     {
       "id": "il_bastone_del_fulmine",
-      "name": "Il Bastone Del Fulmine",
+      "name": "Il Bastone del Fulmine",
       "cost": 50,
       "category": "Arcani",
       "description": "Incantesimo infuso: gittata 4 caselle, attacco 4 DC, ignora la difesa.",
@@ -13316,7 +13662,7 @@
     },
     {
       "id": "il_bastone_della_morte_ardente",
-      "name": "Il Bastone \\Della Morte Ardente",
+      "name": "Il Bastone \\della Morte Ardente",
       "cost": 50,
       "category": "Arcani",
       "description": "Incantesimo infuso: gittata 4 caselle, attacco 1D6 DC, ignora la difesa, attacco da fuoco. Un'unit\u00e0 che subisce una o pi\u00f9 perdite, deve immediatamente effettuare un test di Panico.",
@@ -13329,7 +13675,7 @@
     },
     {
       "id": "il_bastone_di_osiride",
-      "name": "Il Bastone Di Osiride",
+      "name": "Il Bastone di Osiride",
       "cost": 50,
       "category": "Arcani",
       "description": "Incantesimo infuso: gittata 3 caselle, attacco 3DC, ignora la difesa. Per ogni vittima, attacca ulteriormente con 1DC, e procedi finch\u00e9 fai vittime.",
@@ -13342,7 +13688,7 @@
     },
     {
       "id": "il_bastone_di_giaietto",
-      "name": "Il Bastone Di Giaietto",
+      "name": "Il Bastone di Giaietto",
       "cost": 50,
       "category": "Arcani",
       "description": "Pu\u00f2 essere usato per ridurre di 1 il numero di carte Potere necessarie a lanciare un incantesimo. Si scarica ottenendo uno scudo su 1 DC a ogni utilizzo.",
@@ -13355,7 +13701,7 @@
     },
     {
       "id": "il_bastone_della_dannazione",
-      "name": "Il Bastone \\Della Dannazione",
+      "name": "Il Bastone \\della Dannazione",
       "cost": 50,
       "category": "Arcani",
       "description": "Incantesimo infuso: gittata 6 caselle. L'unit\u00e0 bersaglio di scheletri, zombie, mummie o spettri pu\u00f2 immediatamente muovere di 1 casella, attaccare in CaC o tirare con armi da tiro. Se si sceglie l'attacco, i personaggi all'interno dell'unit\u00e0 non attaccano a loro volta.",
@@ -13370,7 +13716,7 @@
     },
     {
       "id": "pergamenadi_cancellazione",
-      "name": "Pergamena \\Di Cancellazione",
+      "name": "Pergamena \\di Cancellazione",
       "cost": 50,
       "category": "Arcani",
       "description": "Disperde automaticamente un incantesimo appena lanciato o uno gi\u00e0 in gioco (si applicano le solite restrizioni sulla distanza massima per le dispersioni). La carta incantesimo viene inoltre scartata ottenendo un 4+ su 1D6.",
@@ -13383,7 +13729,7 @@
     },
     {
       "id": "il_calice_del_caos",
-      "name": "Il Calice Del Caos",
+      "name": "Il Calice del Caos",
       "cost": 50,
       "category": "Arcani",
       "description": "Pu\u00f2 essere usato quando si distribuiscono le carte Venti di Magia. Tira 1D6: 1: lo stregone si trasforma in un Abominio del Caos; 2-3: l'avversario riceve una carta Venti di Magia in meno; 4-5: lo stregone riceve una carta Venti di Magia in pi\u00f9; 6: l'avversario riceve una carta Venti di Magia in meno e lo stregone una in pi\u00f9.",
@@ -13396,7 +13742,7 @@
     },
     {
       "id": "il_calicedella_stregoneria",
-      "name": "Il Calice \\Della Stregoneria",
+      "name": "Il Calice \\della Stregoneria",
       "cost": 35,
       "category": "Arcani",
       "description": "Il possessore pu\u00f2 pescare una carta venti di magia in pi\u00f9 a turno. Se lo fa, tira 1 DC: se ottiene uno scudo, subisce una ferita.",
@@ -13409,7 +13755,7 @@
     },
     {
       "id": "il_teschio_di_katam",
-      "name": "Il Teschio Di Katam",
+      "name": "Il Teschio di Katam",
       "cost": 35,
       "category": "Arcani",
       "description": "Il possessore pu\u00f2 lanciare incantesimi usando una carta potere in meno. Ogni volta che lo fa, deve superare un test di Coraggio: se lo fallisce, il mago impazzisce e viene rimosso dalla partita.",
@@ -13424,7 +13770,7 @@
     },
     {
       "id": "il_bastone_del_teschio",
-      "name": "Il Bastone Del Teschio",
+      "name": "Il Bastone del Teschio",
       "cost": 35,
       "category": "Arcani",
       "description": "Quando tenta di disperdere un incantesimo, il possessore si considera sempre di livello pi\u00f9 alto del lanciatore.",
@@ -13437,7 +13783,7 @@
     },
     {
       "id": "pergamena_del_potere",
-      "name": "Pergamena Del Potere",
+      "name": "Pergamena del Potere",
       "cost": 30,
       "category": "Arcani",
       "description": "Il possessore pu\u00f2 lanciare uno dei suoi incantesimi senza usare carte potere. Un solo uso.",
@@ -13450,7 +13796,7 @@
     },
     {
       "id": "famiglio_del_potere",
-      "name": "Famiglio Del Potere",
+      "name": "Famiglio del Potere",
       "cost": 30,
       "category": "Arcani",
       "description": "Famiglio (M1, A1, D2, C1, C4). Pu\u00f2 accumulare 1 carta Venti di Magia, utilizzabile da un mago nella sua stessa unit\u00e0. Inizia la partita con 1 carta Venti di Magia pescata a caso.",
@@ -13463,7 +13809,7 @@
     },
     {
       "id": "pergamena_di_dispersione",
-      "name": "Pergamena Di Dispersione",
+      "name": "Pergamena di Dispersione",
       "cost": 25,
       "category": "Arcani",
       "description": "Disperde automaticamente un incantesimo appena lanciata o uno gi\u00e0 in gioco (si applicano le solite restrizioni sulla distanza massimo per le dispersioni). Un solo uso. Se ne pu\u00f2 selezionare pi\u00f9 di una per esercito.",
@@ -13478,7 +13824,7 @@
     },
     {
       "id": "il_bastone_del_potere",
-      "name": "Il Bastone Del Potere",
+      "name": "Il Bastone del Potere",
       "cost": 25,
       "category": "Arcani",
       "description": "Il possessore pu\u00f2 trattenere fino a 2 carte Venti di Magia in pi\u00f9. Inizia la partita con 1 carta Venti di Magia.",
@@ -13504,7 +13850,7 @@
     },
     {
       "id": "la_gemma_di_taranto",
-      "name": "La Gemma Di Taranto",
+      "name": "La Gemma di Taranto",
       "cost": 50,
       "category": "Arcani",
       "description": "Pu\u00f2 essere usata per disperdere automaticamente un incantesimo lanciato contro il portatore o la sua unit\u00e0. L'incantesimo viene quindi risucchiato dalla gemma e il portatore pu\u00f2 lanciarlo per il resto della partita come se fosse un suo incantesimo (se questo incantesimo viene fatto scartare per qualsiasi motivo, non viene pescata un'altra carta incantesimo).",
@@ -13530,7 +13876,7 @@
     },
     {
       "id": "la_pergamena_della_maledizione_di_bufo",
-      "name": "La Pergamena Della \\Maledizione Di Bufo",
+      "name": "La Pergamena della \\Maledizione di Bufo",
       "cost": 50,
       "category": "Arcani",
       "description": "Pu\u00f2 essere usata per disperdere automaticamente un incantesimo diretto verso il portatore o la sua unit\u00e0. Il lanciatore viene quindi tramutato in un rospo! Mentre \u00e8 nella forma di rospo, il mago avversario ha tutte le caratteristiche ridotte a 1, non pu\u00f2 lanciare incantesimi e non pu\u00f2 disperderli, n\u00e9 usare oggetti magici. All'inizio di ogni turno successivo del mago, questo riprende la sua forma con 4+ su 1D6. Un solo uso.",
@@ -13543,7 +13889,7 @@
     },
     {
       "id": "la_pergamena_delle_fauci_fameliche",
-      "name": "La Pergamena \\Delle Fauci Fameliche",
+      "name": "La Pergamena \\delle Fauci Fameliche",
       "cost": 50,
       "category": "Arcani",
       "description": "Pu\u00f2 essere usata per disperdere un incantesimo ostile diretto verso un'unit\u00e0 amica entro 4 caselle. L'incantesimo viene scartato. Un solo uso.",
@@ -13569,7 +13915,7 @@
     },
     {
       "id": "l_anello_della_fiamma_ignea",
-      "name": "L'Anello \\Della Fiamma Ignea",
+      "name": "L'Anello \\della Fiamma Ignea",
       "cost": 100,
       "category": "Ricettacoli",
       "description": "Incantesimo infuso: raggio 3, attacco 2D6 DC, nega la difesa.",
@@ -13580,7 +13926,7 @@
     },
     {
       "id": "il_bastone_di_nurgle",
-      "name": "Il Bastone Di Nurgle",
+      "name": "Il Bastone di Nurgle",
       "cost": 100,
       "category": "Ricettacoli",
       "description": "Incantesimo infuso: raggio 2, il modello bersaglio \u00e8 ucciso a meno che non ottenga almeno uno scudo su tanti DC quanti sono i suoi punti corpo. Dopo ogni uso si scarica ottenendo uno scuso su 1DC.",
@@ -13593,7 +13939,7 @@
     },
     {
       "id": "il_corno_di_ugork",
-      "name": "Il Corno Di Ugork",
+      "name": "Il Corno di Ugork",
       "cost": 75,
       "category": "Ricettacoli",
       "description": "Incantesimo infuso: tutte le unit\u00e0 nemiche in CaC entro 4 caselle devono effettuare un test di Panico e se lo falliscono fuggire immediatamente. Tutte le unit\u00e0 amiche in fuga entro 4 caselle sono chiamate a raccolta.",
@@ -13604,7 +13950,7 @@
     },
     {
       "id": "la_cornamusa_del_fato",
-      "name": "La Cornamusa Del Fato",
+      "name": "La Cornamusa del Fato",
       "cost": 75,
       "category": "Ricettacoli",
       "description": "Incantesimo infuso: raggio 3, l'unit\u00e0 di cavalleria bersaglio viene attaccata con 1D6 DC e non pu\u00f2 caricare nel turno seguente.",
@@ -13615,7 +13961,7 @@
     },
     {
       "id": "il_pungolo_di_skarsnik",
-      "name": "Il Pungolo Di Skarsnik",
+      "name": "Il Pungolo di Skarsnik",
       "cost": 75,
       "category": "Ricettacoli",
       "description": "Incantesimo infuso: raggio 4, attacco pari al doppio del numero di unit\u00e0 di orchi o goblin entro 2 caselle dal portatore (con almeno 5 modelli), ignora la difesa.",
@@ -13628,7 +13974,7 @@
     },
     {
       "id": "l_artiglio_di_nagash",
-      "name": "L'Artiglio Di Nagash",
+      "name": "L'Artiglio di Nagash",
       "cost": 50,
       "category": "Ricettacoli",
       "description": "Incantesimo infuso: raggio 1, il modello singolo bersaglio (anche all'interno di un'unit\u00e0) subisce un numero di ferite pari a 2D6 meno il suo valore di Attacco (non modificato da armi). Tiri salvezza e rigenerazione sono concessi normalmente.",
@@ -13639,7 +13985,7 @@
     },
     {
       "id": "l_anello_di_corin",
-      "name": "L'Anello Di Corin",
+      "name": "L'Anello di Corin",
       "cost": 50,
       "category": "Ricettacoli",
       "description": "Incantesimo infuso: raggio 2, un oggetto magico bersaglio viene distrutto se si ottiene un numero pari o superiore al suo costo in punti tirando 2D6 e moltiplicando per 10.",
@@ -13650,7 +13996,7 @@
     },
     {
       "id": "l_anello_di_volans",
-      "name": "L'Anello Di Volans",
+      "name": "L'Anello di Volans",
       "cost": 25,
       "category": "Ricettacoli",
       "description": "Scegli un incantesimo di Magia da Battaglia all'inizio della partita. Questo incantesimo pu\u00f2 essere usato come Incantesimo infuso. Un solo uso.",
@@ -13661,7 +14007,7 @@
     },
     {
       "id": "lo_scettro_del_comando",
-      "name": "Lo Scettro Del Comando",
+      "name": "Lo Scettro del Comando",
       "cost": 80,
       "category": "Oggetti Incantati",
       "description": "Rende il possessore un mago di 2\u00b0 livello, con Magia Suprema. Inoltre, se l'Altare della Guerra \u00e8 illeso, il portatore ha +2 DC in Attacco in CaC, se danneggiato +1. Se l'Altare da Guerra \u00e8 distrutto, lo Scettro perde tutti i suoi poteri.",
@@ -13675,7 +14021,7 @@
     },
     {
       "id": "il_bastone_di_volans",
-      "name": "Il Bastone Di Volans",
+      "name": "Il Bastone di Volans",
       "cost": 75,
       "category": "Arcani",
       "description": "Pu\u00f2 essere usato una volta a turno per rendere un incantesimo lanciato impossibile da contrastare, come se fosse stato lanciato con Potere Totale. Dopo ogni utilizzo, si scarica ottenendo 1 o 2 su 1D6.",
@@ -13689,7 +14035,7 @@
     },
     {
       "id": "il_grifone_di_giada",
-      "name": "Il Grifone Di Giada",
+      "name": "Il Grifone di Giada",
       "cost": 75,
       "category": "Difese Arcane",
       "description": "Se il possessore \u00e8 ancora in in vita, rigenera tutti PC persi dal possessore alla fine di ogni turno (proprio o dell'avversario).",
@@ -13703,7 +14049,7 @@
     },
     {
       "id": "larco_del_drago",
-      "name": "L'Arco Del Drago",
+      "name": "L'Arco del Drago",
       "cost": 40,
       "category": "Armi Magiche",
       "description": "Arco, raggio 6, Attacco 3 DC.",
@@ -13717,7 +14063,7 @@
     },
     {
       "id": "il_corno_di_sigismund",
-      "name": "Il Corno Di Sigismund",
+      "name": "Il Corno di Sigismund",
       "cost": 35,
       "category": "Oggetti Incantati",
       "description": "Il possessore causa Terrore quando carica.",
@@ -13731,7 +14077,7 @@
     },
     {
       "id": "il_talismano_di_ulric",
-      "name": "Il Talismano Di Ulric",
+      "name": "Il Talismano di Ulric",
       "cost": 25,
       "category": "Difese Arcane",
       "description": "Il possessore riguadagna un punto corpo perso all'inizio di ogni suo turno.",
@@ -13745,10 +14091,10 @@
     },
     {
       "id": "la_spada_di_ghiaccio",
-      "name": "La Spada Di Ghiaccio",
+      "name": "La Spada di Ghiaccio",
       "cost": 100,
       "category": "Armi Magiche",
-      "description": "Ignora la Difesa. Un avversario ferito subisce altre 1D6 di ferite alla fine dell'attacco.",
+      "description": "Arma a due mani, ignora la Difesa. Un avversario ferito subisce altre 1D6 di ferite alla fine dell'attacco.",
       "only_for_army": [],
       "not_for_army": [],
       "only_for_type": [],
@@ -13787,7 +14133,7 @@
     },
     {
       "id": "lo_scettro_del_potere",
-      "name": "Lo Scettro Del Potere",
+      "name": "Lo Scettro del Potere",
       "cost": 60,
       "category": "Arcani",
       "description": "Il possessore pu\u00f2 trattenere fino a 4 carte Venti di Magia in pi\u00f9. Inizia la partita con 2 carta Venti di Magia.",
@@ -14029,12 +14375,507 @@
       "not_for_type": []
     }
   ],
+  "demonic_rewards": [
+    {
+      "id": "gloria_oscura",
+      "name": "Gloria Oscura",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Le unit\u00e0 nemiche entro 1 casella hanno -1 al Coraggio (a meno che non siano demoni o nommorti).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "sevizie_infernali",
+      "name": "Sevizie Infernali",
+      "cost": 10,
+      "category": "Ricompense Demoniache",
+      "description": "Se il demone uccide un personaggio in CaC, tutte le unit\u00e0 nemiche entro 1 casella devono passare un test di Panico o fuggire.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "sguardo_di_morte",
+      "name": "Sguardo di Morte",
+      "cost": 10,
+      "category": "Ricompense Demoniache",
+      "description": "Attacco a distanza, raggio 2 caselle, 2DC, ignora la difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "stregoneria_1",
+      "name": "Stregoneria (livello 1)",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Il demone diventa un mago di livello 1. Il demone pu\u00f2 usare solo la magia del suo dio se \u00e8 di un dio specifico e ha un marchio di un dio specifico, o la magia oscura altrimenti.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "Khorne"
+      ]
+    },
+    {
+      "id": "stregoneria_2",
+      "name": "Stregoneria (livello 2)",
+      "cost": 100,
+      "category": "Ricompense Demoniache",
+      "description": "Il demone diventa un mago di livello 2. Il demone pu\u00f2 usare solo la magia del suo dio se \u00e8 di un dio specifico e ha un marchio di un dio specifico, o la magia oscura altrimenti.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "Khorne"
+      ]
+    },
+    {
+      "id": "stregoneria_3",
+      "name": "Stregoneria (livello 3)",
+      "cost": 150,
+      "category": "Ricompense Demoniache",
+      "description": "Il demone diventa un mago di livello 3. Il demone pu\u00f2 usare solo la magia del suo dio se \u00e8 di un dio specifico e ha un marchio di un dio specifico, o la magia oscura altrimenti.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "Khorne"
+      ]
+    },
+    {
+      "id": "stregoneria_4",
+      "name": "Stregoneria (livello 4)",
+      "cost": 200,
+      "category": "Ricompense Demoniache",
+      "description": "Il demone diventa un mago di livello 4. Il demone pu\u00f2 usare solo la magia del suo dio se \u00e8 di un dio specifico e ha un marchio di un dio specifico, o la magia oscura altrimenti.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": [
+        "Khorne"
+      ]
+    },
+    {
+      "id": "evanescenza",
+      "name": "Evanescenza",
+      "cost": 25,
+      "category": "Ricompense Demoniache",
+      "description": "Tiro Salvezza 3+ contro attacchi da tiro.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lama_degli_inferi",
+      "name": "Lama degli Inferi",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Arma da CaC. Ignora la difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "forza_titanica",
+      "name": "Forza Titanica",
+      "cost": 20,
+      "category": "Ricompense Demoniache",
+      "description": "+1 DC in Attacco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "taglia_eccezionale",
+      "name": "Taglia Eccezionale",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "+1 PC.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "grande_guerriero",
+      "name": "Grande Guerriero",
+      "cost": 20,
+      "category": "Ricompense Demoniache",
+      "description": "+1 in Attacco in CaC.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "arroganza_suprema",
+      "name": "Arroganza Suprema",
+      "cost": 30,
+      "category": "Ricompense Demoniache",
+      "description": "+2 al Coraggio.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "vesti_demoniache",
+      "name": "Vesti Demoniache",
+      "cost": 40,
+      "category": "Ricompense Demoniache",
+      "description": "-1 agli attacchi in CaC contro il demone.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "occhio_arcano",
+      "name": "Occhio Arcano",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Il controllore del demone pu\u00f2 guardare le carte incantesimo possedute da maghi entro 4 caselle, cos\u00ec come le carte Venti di Magia da lui trattenute, e quelle in mano dell'avversario, se un mago nemico si trova entro 4 caselle.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "armatua_del_caos",
+      "name": "Armatura del Caos",
+      "cost": 15,
+      "category": "Ricompense Demoniache",
+      "description": "+2 alla Difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "frusta_e_ascia_di_khorne",
+      "name": "Frusta e Ascia di Khorne",
+      "cost": 55,
+      "category": "Ricompense Demoniache",
+      "description": "+1 in Attacco e ogni ferita moltiplicata per 1D3.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "Khorne"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "sdegno_di_khorne",
+      "name": "Sdegno di Khorne",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Se l'armata non contiene alcun mago, il demone pu\u00f2 disperdere come se fosse un mago, e si considera sempre di livello pi\u00f9 alto del lanciatore.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "Khorne"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "nube_di_mosche",
+      "name": "Nube di Mosche",
+      "cost": 30,
+      "category": "Ricompense Demoniache",
+      "description": "-1 agli attacchi nemici in CaC.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "Nurgle"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "fiume_di_putredine",
+      "name": "Fiume di Putredine",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Ogni volta che attacca in CaC, tira 1 DC per ogni modello nell'unit\u00e0 attaccata (se non di demoni o nommorti). Ottenendo Scudo il modello subisce 1 ferita.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "Nurgle"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "flagello_della_peste",
+      "name": "Flagello della Peste",
+      "cost": 25,
+      "category": "Ricompense Demoniache",
+      "description": "Arma da CaC. Raddoppia le ferite inflitte (non funziona su nommorti e demoni).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "Nurgle"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "aura_di_slaanesh",
+      "name": "Aura di Slaanesh",
+      "cost": 40,
+      "category": "Ricompense Demoniache",
+      "description": "Ogni unit\u00e0 che vuole attaccare il demone deve superare un test di Coraggio.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "Slaanesh"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "fiamme_di_tzeentch",
+      "name": "Fiamme di Tzeentch",
+      "cost": 25,
+      "category": "Ricompense Demoniache",
+      "description": "Attacco a distanza, raggio 4 caselle, Attacco 1D6, danno da fuoco, ignora la difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "Tzeentch"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "potere_di_tzeentch",
+      "name": "Potere di Tzeentch",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Se il demone ha la ricompensa Stregoneria, pu\u00f2 pescare 1D6 di carte Venti di Magia aggiuntive durante il suo turno.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "Tzeentch"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "sapere_di_tzeentch",
+      "name": "Sapere di Tzeentch",
+      "cost": 60,
+      "category": "Ricompense Demoniache",
+      "description": "Se il demone ha la ricompensa Stregoneria a livello 4, il suo livello magico diventa 5.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [
+        "Tzeentch"
+      ],
+      "not_for_type": []
+    }
+  ],
   "chaos_rewards": [
+    {
+      "id": "il_collare_di_khorne",
+      "name": "Il Collare di Khorne",
+      "cost": 100,
+      "category": "Ricompense del Caos",
+      "description": "Il possessore e la sua unit\u00e0 ottengono Resistenza alla Magia 4+. Se un incantesimo viene disperso grazie a questa resistenza, la carta va scartata con 4+, e il lanciatore subisce una ferita. Inoltre, se il possessore viene attaccato da un'arma magica e ottiene almeno uno scudo difendendosi, l'arma magica \u00e8 distrutta.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "Khorne"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "l_ascia_di_khorne",
+      "name": "L'Ascia di Khorne",
+      "cost": 75,
+      "category": "Ricompense del Caos",
+      "description": "Arma a due mani, +1 DC in attacco (per un totale di +2 DC), moltiplica le ferite per 1D3.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "Khorne"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "l_ira_funesta_di_khorne",
+      "name": "L'Ira Funesta di Khorne",
+      "cost": 50,
+      "category": "Ricompense del Caos",
+      "description": "Il possessore deve sempre caricare o muovere verso il nemico, e deve sempre inseguire se pu\u00f2 farlo. In CaC ottiene +1 DC in attacco, pi\u00f9 un ulteriore +1 in carica.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "Khorne"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "l_invocazione_a_khorne",
+      "name": "L'Invocazione a Khorne",
+      "cost": 25,
+      "category": "Ricompense del Caos",
+      "description": "Il possessore pu\u00f2 ritirare i DC in difesa che non hanno ottenuto scudo.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "Khorne"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_miasma_di_nurgle",
+      "name": "Il Miasma di Nurgle",
+      "cost": 50,
+      "category": "Ricompense del Caos",
+      "description": "-2 DC agli attacchi in CaC contro il possessore o la sua unit\u00e0.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "Nurgle"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "la_cancrena_di_nurgle",
+      "name": "La Cancrena di Nurgle",
+      "cost": 35,
+      "category": "Ricompense del Caos",
+      "description": "Dopo ogni attacco in CaC, l'unit\u00e0 attaccata \u00e8 potenzialmente colpita dalla cancrena. Sono potenzialmente colpiti fino a 4 modelli, partendo dai personaggi nell'unit\u00e0. Per ogni modello potenzialmente colpito tira 1 DC: se ottieni scudo il modello perde 1 PC, senza poter salvarsi in alcun modo. Per carri e macchine da guerra, tira 1 DC pari al numero di PC residui meno 1.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "Nurgle"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "la_nube_di_mosche_di_nurgle",
+      "name": "La Nube di Mosche di Nurgle",
+      "cost": 30,
+      "category": "Ricompense del Caos",
+      "description": "-1 DC agli attacchi in CaC contro il possessore o la sua unit\u00e0.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "Nurgle"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_fascino_di_slaanesh",
+      "name": "Il Fascino di Slaanesh",
+      "cost": 50,
+      "category": "Ricompense del Caos",
+      "description": "Ogni unit\u00e0 che vuole attaccare il possessore deve superare un test di Coraggio ottenendo almeno 3 Teschi. Se non lo supera non pu\u00f2 attaccare il possessore. Se lo supera, non deve pi\u00f9 effettuare questo test per il resto della partita.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "Slaanesh"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "lo_sguardo_di_slaanesh",
+      "name": "Lo Sguardo di Slaanesh",
+      "cost": 30,
+      "category": "Ricompense del Caos",
+      "description": "-1 DC agli attacchi in CaC contro il possessore o la sua unit\u00e0.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "Slaanesh"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "il_destino_di_tzeentch",
+      "name": "Il Destino di Tzeentch",
+      "cost": 40,
+      "category": "Ricompense del Caos",
+      "description": "Ogni volta che il possessore subisce una ferita, questa viene salvata, ma tira 1 DC: se ottieni Teschio, il possessore perde i benefici del Destino di Tzeentch per il resto della partita.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "Tzeentch"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "la_fortuna_di_tzeentch",
+      "name": "La Fortuna di Tzeentch",
+      "cost": 35,
+      "category": "Ricompense del Caos",
+      "description": "Una volta per turno, il possessore pu\u00f2 ripetere il tiro di un dado. Dopo averlo fatto, tira 1 DC: la Fortuna di Tzeentch si esaurisce se ottieni Scudo.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [
+        "Tzeentch"
+      ],
+      "not_for_type": []
+    },
+    {
+      "id": "soffio_di_fuoco",
+      "name": "Soffio di Fuoco",
+      "cost": 50,
+      "category": "Ricompense del Caos",
+      "description": "Il possessore acquisisce un attacco da tiro con raggio 1, 4DC, ignora la difesa, attacco da fuoco, utilizzabile anche in CaC.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
     {
       "id": "rigenerazione",
       "name": "Rigenerazione",
       "cost": 50,
       "category": "Ricompense del Caos",
+      "description": "Il possessore acquisisce Rigenerazione (4+).",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "pelle_d_acciaio",
+      "name": "Pelle d'Acciaio",
+      "cost": 40,
+      "category": "Ricompense del Caos",
+      "description": "Il possessore acquisisce Corazza 1.",
       "only_for_army": [
         "caos"
       ],
@@ -14044,9 +14885,10 @@
     },
     {
       "id": "aspetto_orribile",
-      "name": "Aspetto orribile",
+      "name": "Aspetto Orribile",
       "cost": 35,
       "category": "Ricompense del Caos",
+      "description": "Il possessore causa Paura.",
       "only_for_army": [
         "caos"
       ],
@@ -14056,9 +14898,10 @@
     },
     {
       "id": "coda_dello_scorpione",
-      "name": "Coda dello scorpione",
+      "name": "Coda dello Scorpione",
       "cost": 35,
       "category": "Ricompense del Caos",
+      "description": "Il possessore pu\u00f2 portare un attacco addizionale con 1DC, che infligge 1D3 di ferite.",
       "only_for_army": [
         "caos"
       ],
@@ -14067,10 +14910,11 @@
       "not_for_type": []
     },
     {
-      "id": "soffio_di_fuoco",
-      "name": "Soffio di fuoco",
-      "cost": 50,
+      "id": "coda_a_mazza",
+      "name": "Coda a Mazza",
+      "cost": 25,
       "category": "Ricompense del Caos",
+      "description": "+1 DC in attacco in CaC.",
       "only_for_army": [
         "caos"
       ],
@@ -14079,10 +14923,11 @@
       "not_for_type": []
     },
     {
-      "id": "ascia_di_khorne",
-      "name": "Ascia di Khorne",
-      "cost": 75,
+      "id": "molte_braccia",
+      "name": "Molte Braccia",
+      "cost": 25,
       "category": "Ricompense del Caos",
+      "description": "+1 DC in attacco in CaC.",
       "only_for_army": [
         "caos"
       ],
@@ -14091,10 +14936,24 @@
       "not_for_type": []
     },
     {
-      "id": "pelle_dacciaio",
-      "name": "Pelle d'acciaio",
-      "cost": 40,
+      "id": "corna_massicce",
+      "name": "Corna Massicce",
+      "cost": 25,
       "category": "Ricompense del Caos",
+      "description": "+2 DC in attacco in carica.",
+      "only_for_army": [
+        "caos"
+      ],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "pelle_a_scaglie",
+      "name": "Pelle a Scaglie",
+      "cost": 25,
+      "category": "Ricompense del Caos",
+      "description": "+2 DC in difesa.",
       "only_for_army": [
         "caos"
       ],
@@ -14310,7 +15169,9 @@
   const MAGIC_ITEMS =
     JSON.parse(document.getElementById("ITEM_DATA").textContent).magic_items.concat(
       JSON.parse(document.getElementById("ITEM_DATA").textContent).chaos_rewards.concat(
-        JSON.parse(document.getElementById("ITEM_DATA").textContent).knightly_virtues
+        JSON.parse(document.getElementById("ITEM_DATA").textContent).knightly_virtues.concat(
+          JSON.parse(document.getElementById("ITEM_DATA").textContent).demonic_rewards
+        )
       )
   );
 
@@ -14408,7 +15269,7 @@
   }
 
   // Calcola punti unità
-  function calcUnitPoints(unit, size, selectedOptionIds, optionCounts = {}, magicItems = [], magicItemCounts = {}, magicBanner = null, knightlyVirtues = []) {
+  function calcUnitPoints(unit, size, selectedOptionIds, optionCounts = {}, magicItems = [], magicItemCounts = {}, magicBanner = null, knightlyVirtues = [], demonicRewards = []) {
     let total = unit.cost_per_model * size;
     for (const opt of unit.options || []) {
       if (!selectedOptionIds.includes(opt.id)) continue;
@@ -14438,6 +15299,12 @@
       for (const id of knightlyVirtues) {
         const virtue = MAGIC_ITEMS.find(m => m.id === id);
         if (virtue) total += virtue.cost;
+      }
+    }
+    if (demonicRewards) {
+      for (const id of demonicRewards) {
+        const reward = MAGIC_ITEMS.find(m => m.id === id);
+        if (reward) total += reward.cost;
       }
     }
     return total;
@@ -14482,6 +15349,13 @@
     return false;
   }
 
+  function isDemonicRewardTaken(rewardId, currentEntryId = null) {
+    for (const e of army.entries) {
+      if (e.id === currentEntryId) continue;
+      if (e.demonicRewards && e.demonicRewards.includes(itemId)) return true;
+    }
+    return false;
+  }
   function isMagicBannerTaken(bannerId, currentEntryId = null) {
     for (const e of army.entries) {
       if (e.id === currentEntryId) continue;
@@ -14491,8 +15365,8 @@
   }
 
   // Valido per oggetti magici, stendardi magici e virtù
-  function isItemAllowedForUnit(item, unit, currentFaction) {
-    const unitTypes = unit.type || [];
+  function isItemAllowedForUnit(item, unit, currentFaction, selectedOptionIds) {
+    const unitTypes = computeModifiedType(unit, selectedOptionIds) || [];
 
     // Normalizza a array
     const onlyForType = Array.isArray(item.only_for_type)
@@ -14697,6 +15571,20 @@
           }
         }
 
+        // Ricompense Demoniache
+        if (e.demonicRewards?.length || e.preselectedDemonicRewards?.length) {
+          let names = []
+          if (e.preselectedDemonicRewards?.length) names = names.concat(e.preselectedDemonicRewards
+            .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+            .filter(Boolean));
+          if (e.demonicRewards?.length) names = names.concat(e.demonicRewards
+            .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+            .filter(Boolean));
+          if (names.length > 0) {
+            lines.push(renderName("    " + names.join(", ")));
+          }
+        }
+
         // Stendardo Magico
         if (e.magicBanner) {
           const banner = MAGIC_BANNERS.find(b => b.id === e.magicBanner);
@@ -14796,6 +15684,18 @@
           }
         }
 
+        // Ricompense Demoniache
+        if (e.demonicRewards?.length || e.preselectedDemonicRewards?.length) {
+          let names = []
+          if (e.preselectedDemonicRewards?.length) names = names.concat(e.preselectedDemonicRewards);
+          if (e.demonicRewards?.length) names = names.concat(e.demonicRewards
+            .map(id => MAGIC_ITEMS.find(m => m.id === id)?.name)
+            .filter(Boolean));
+          if (names.length > 0) {
+            lines.push(renderName(`  - ${names.join(", ")}`));
+          }
+        }
+
         // Stendardo Magico
         if (e.magicBanner) {
           const banner = MAGIC_BANNERS.find(b => b.id === e.magicBanner);
@@ -14861,6 +15761,12 @@
             ...(e.knightlyVirtues || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean)
           ];
 
+          // --- DEMONIC REWARDS ---
+          const demonicRewardList = [
+            ...(e.preselectedDemonicRewards || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean),
+            ...(e.demonicRewards || []).map(id => MAGIC_ITEMS.find(m => m.id === id)?.name).filter(Boolean)
+          ];
+
           // --- EQUIPAGGIAMENTO ---
           const equipment = collectEquipment(unit, selectedOptionIds);
 
@@ -14901,6 +15807,7 @@
             upgrades,
             magicItems: magicItemList,
             knightlyVirtues: knightlyVirtueList,
+            demonicRewards: demonicRewardList,
             magicBanner: e.magicBanner
             ? MAGIC_BANNERS.find(b => b.id === e.magicBanner)?.name
             : null,
@@ -15186,6 +16093,20 @@
         y = drawLabelAndWrappedText(doc, "Oggetti Magici:", text, colX(), y, columnWidth);
       }
 
+      if (unit.knightlyVirtues && unit.knightlyVirtues.length > 0) {
+        doc.setFontSize(11);
+        const items = unit.knightlyVirtues.map(t => {return renderName(t);});
+        const text = items.join(", ");
+        y = drawLabelAndWrappedText(doc, "Virtù Cavalleresche:", text, colX(), y, columnWidth);
+      }
+
+      if (unit.demonicRewards && unit.demonicRewards.length > 0) {
+        doc.setFontSize(11);
+        const items = unit.demonicRewards.map(t => {return renderName(t);});
+        const text = items.join(", ");
+        y = drawLabelAndWrappedText(doc, "Ricompense Demoniache:", text, colX(), y, columnWidth);
+      }
+
       // Stendardo magico
       if (unit.magicBanner) {
         doc.setFontSize(11);
@@ -15281,8 +16202,14 @@
           if (item) usedMagicItems.set(item.id, item);
         });
 
-        // Virtù cavalleresche (se usi lo stesso JSON)
+        // Virtù cavalleresche
         (unit.knightlyVirtues || []).forEach(name => {
+          const item = MAGIC_ITEMS.find(m => m.name === name);
+          if (item) usedMagicItems.set(item.id, item);
+        });
+
+        // Ricompense Demoniache
+        (unit.demonicRewards || []).forEach(name => {
           const item = MAGIC_ITEMS.find(m => m.name === name);
           if (item) usedMagicItems.set(item.id, item);
         });
@@ -15486,10 +16413,12 @@
         magicItems: e.magicItems || [],
         magicItemCounts: e.magicItemCounts || {},
         knightlyVirtues: e.knightlyVirtues || [],
+        demonicRewards: e.demonicRewards || [],
         magicBanner: e.magicBanner || null,
         preselectedOptions: [...(e.preselectedOptions || [])],
         preselectedMagicItems: [...(e.preselectedMagicItems || [])],
         preselectedKnightlyVirtues: [...(e.preselectedKnightlyVirtues || [])],
+        preselectedDemonicRewards: [...(e.preselectedDemonicRewards || [])],
         points: e.points
       }))
     };
@@ -15706,7 +16635,7 @@
       types = [unit.type];
     }
 
-    // Applica le sostituzioni delle opzioni
+    // Applica le aggiunte / sostituzioni delle opzioni
     for (const opt of unit.options || []) {
       if (!selectedOptionIds.has(opt.id)) continue;
 
@@ -15719,6 +16648,17 @@
           }
         }
       }
+
+      if (opt.add_type) {
+        if (Array.isArray(opt.add_type)) {
+          for (const type of opt.add_type) {
+            types.push(type);
+          }
+        } else {
+          types.push(opt.add_type);
+        }
+      }
+
     }
 
     // Rimuove duplicati
@@ -15953,6 +16893,52 @@
     box.appendChild(wrapper);
   }
 
+  function renderUnitKnightlyVirtues(selectedKnightlyVirtues, magicItemsById) {
+    const box = document.getElementById("unitKnightlyVirtuesBox");
+    box.innerHTML = "";
+    if (selectedKnightlyVirtues.size === 0) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Virtù Cavalleresche: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    const parts = [];
+    for (const id of selectedKnightlyVirtues) {
+      const item = magicItemsById[id];
+      if (!item) continue;
+      parts.push(renderName(item.name));
+    }
+    list.textContent = parts.join(", ");
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
+  function renderUnitDemonicRewards(selectedDemonicRewards, magicItemsById) {
+    const box = document.getElementById("unitDemonicRewardsBox");
+    box.innerHTML = "";
+    if (selectedDemonicRewards.size === 0) return;
+    const wrapper = document.createElement("div");
+    wrapper.style.marginTop = "6px";
+    wrapper.style.fontSize = "12px";
+    const title = document.createElement("span");
+    title.textContent = "Ricompense Demoniache: ";
+    title.style.fontWeight = "bold";
+    const list = document.createElement("span");
+    const parts = [];
+    for (const id of selectedDemonicRewards) {
+      const item = magicItemsById[id];
+      if (!item) continue;
+      parts.push(renderName(item.name));
+    }
+    list.textContent = parts.join(", ");
+    wrapper.appendChild(title);
+    wrapper.appendChild(list);
+    box.appendChild(wrapper);
+  }
+
   function collectRangedWeapons(unit, selectedOptionIds) {
     const ranged = [];
     // Armi base
@@ -15963,7 +16949,6 @@
     for (const opt of unit.options || []) {
       if (selectedOptionIds.has(opt.id) && opt.add_ranged) {
         ranged.push(...opt.add_ranged);
-        console.log("Adding "+opt.add_ranged.map(r => {return r.name;}));
       }
     }
     return ranged;
@@ -16129,12 +17114,13 @@
     let selectedMagicItems = new Set(existingEntry ? existingEntry.magicItems : []);
     let magicItemCounts = existingEntry ? { ...existingEntry.magicItemCounts } : {};
     let selectedKnightlyVirtues = new Set(existingEntry ? existingEntry.knightlyVirtues : []);
+    let selectedDemonicRewards = new Set(existingEntry ? existingEntry.demonicRewards : []);
     let selectedMagicBanner = existingEntry ? existingEntry.magicBanner : null;
     const unit = selectedUnit;
     const isEdit = !!existingEntry;
     const sizeValue = isEdit ? existingEntry.size : unit.min_size;
     const selectedOptionIds = new Set(isEdit ? existingEntry.options : []);
-    const tempPoints = calcUnitPoints(unit, sizeValue, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
+    const tempPoints = calcUnitPoints(unit, sizeValue, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues), Array.from(selectedDemonicRewards));
     panel.innerHTML = "";
     document.getElementById("configUnitName").textContent = unit.name;
     let textContent = "";
@@ -16158,6 +17144,10 @@
     renderUnitMount(unit, selectedOptionIds);
     const preselectedMagicItems = new Set(existingEntry ? existingEntry.preselectedMagicItems : selectedUnit.magic_items);
     renderUnitMagicItems(selectedMagicItems.union(preselectedMagicItems), magicItemCounts, magicItemsById);
+    const preselectedKnightlyVirtues = new Set(existingEntry ? existingEntry.preselectedKnightlyVirtues : selectedUnit.knightly_virtues);
+    renderUnitKnightlyVirtues(selectedKnightlyVirtues.union(preselectedKnightlyVirtues), magicItemsById);
+    const preselectedDemonicRewards = new Set(existingEntry ? existingEntry.preselectedDemonicRewards : selectedUnit.demonic_rewards);
+    renderUnitDemonicRewards(selectedDemonicRewards.union(preselectedDemonicRewards), magicItemsById);
     const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
     renderUnitRanged(rangedWeapons);
     const rangedSpecs = collectRangedSpecs(rangedWeapons);
@@ -16280,6 +17270,8 @@
 
           // 4) aggiorna visibilità delle opzioni condizionali
           refreshConditionalOptionsVisibility(unit, selectedOptionIds);
+          refreshConditionalMagicItemVisibility(unit, selectedMagicItems);
+          refreshConditionalDemonicRewardVisibility(unit, selectedDemonicRewards);
 
           // 5) punti + riepilogo
           updatePointsPreview();
@@ -16377,6 +17369,8 @@
             else selectedOptionIds.delete(opt.id);
             optionCounts[opt.id] = qty.value;
             refreshConditionalOptionsVisibility(unit, selectedOptionIds);
+            refreshConditionalMagicItemVisibility(unit, selectedOptionIds);
+            refreshConditionalDemonicRewardVisibility(unit, selectedOptionIds);
             updatePointsPreview();
           }
 
@@ -16404,6 +17398,8 @@
               }
             }
             refreshConditionalOptionsVisibility(unit, selectedOptionIds);
+            refreshConditionalMagicItemVisibility(unit, selectedOptionIds);
+            refreshConditionalDemonicRewardVisibility(unit, selectedOptionIds);
             updatePointsPreview();
           };
 
@@ -16515,6 +17511,11 @@
       RenderKnightlyVirtues();
     }
 
+    // Ricompense Demoniache
+    if ((unit.demonic_reward_slots && unit.demonic_reward_slots > 0) || unit.deomonic_rewards?.length > 0) {
+      RenderDemonicRewards();
+    }
+
     // Costo in punti complessivo
     {
       let textContent = `${tempPoints} pt`;
@@ -16529,7 +17530,7 @@
     mainBtn.onclick = () => {
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
       const opts = Array.from(selectedOptionIds);
-      const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
+      const pts = calcUnitPoints(unit, size, opts, optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues), Array.from(selectedDemonicRewards));
 
       let preselectedOptions = [];
       if (unit.mount) {
@@ -16546,10 +17547,12 @@
         existingEntry.magicItems = Array.from(selectedMagicItems);
         existingEntry.magicItemCounts = magicItemCounts;
         existingEntry.knightlyVirtues = Array.from(selectedKnightlyVirtues);
+        existingEntry.demonicRewards = Array.from(selectedDemonicRewards);
         existingEntry.magicBanner = selectedMagicBanner;
         existingEntry.preselectedOptions = preselectedOptions;
         existingEntry.preselectedMagicItems = [...(unit.magic_items || [])];
         existingEntry.preselectedKnightlyVirtues = [...(unit.knightly_virtues || [])];
+        existingEntry.preselectedDemonicRewards = [...(unit.demonic_rewards || [])];
         clearConfigPanel();
         // in mobile-mode, torna a lista esercito
         if (window.innerWidth < 768) {
@@ -16567,10 +17570,12 @@
           magicItems: Array.from(selectedMagicItems),
           magicItemCounts: magicItemCounts,
           knightlyVirtues: Array.from(selectedKnightlyVirtues),
+          demonicRewards: Array.from(selectedDemonicRewards),
           magicBanner: selectedMagicBanner,
           preselectedOptions: preselectedOptions,
           preselectedMagicItems: [...(unit.magic_items || [])],
           preselectedKnightlyVirtues: [...(unit.knightly_virtues || [])],
+          preselectedDemonicRewards: [...(unit.demonic_rewards || [])],
           points: pts
         });
         clearConfigPanel();
@@ -16613,7 +17618,12 @@
       renderUnitSpecialRules(parserdRules);
       renderUnitEquipment(unit, selectedOptionIds);
       renderUnitMount(unit, selectedOptionIds);
-      renderUnitMagicItems(selectedMagicItems, magicItemCounts, magicItemsById);
+      const preselectedMagicItems = new Set(existingEntry ? existingEntry.preselectedMagicItems : selectedUnit.magic_items);
+      renderUnitMagicItems(selectedMagicItems.union(preselectedMagicItems), magicItemCounts, magicItemsById);
+      const preselectedKnightlyVirtues = new Set(existingEntry ? existingEntry.preselectedKnightlyVirtues : selectedUnit.knightly_virtues);
+      renderUnitKnightlyVirtues(selectedKnightlyVirtues.union(preselectedKnightlyVirtues), magicItemsById);
+      const preselectedDemonicRewards = new Set(existingEntry ? existingEntry.preselectedDemonicRewards : selectedUnit.demonic_rewards);
+      renderUnitDemonicRewards(selectedDemonicRewards.union(preselectedDemonicRewards), magicItemsById);
       const upgrades = collectUpgrades(unit, selectedOptionIds);
       const rangedWeapons = collectRangedWeapons(unit, selectedOptionIds);
       renderUnitRanged(rangedWeapons);
@@ -16623,7 +17633,7 @@
       renderUnitMagicBanners(selectedMagicBanner);
       // Update actual points
       const size = parseInt(sizeInput.value, 10) || unit.min_size;
-      const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues));
+      const pts = calcUnitPoints(unit, size, Array.from(selectedOptionIds), optionCounts, Array.from(selectedMagicItems), magicItemCounts, selectedMagicBanner, Array.from(selectedKnightlyVirtues), Array.from(selectedDemonicRewards));
       configPoints = document.getElementById("configPoints");
       configPoints.textContent = `${pts} pt`;
     }
@@ -16636,14 +17646,33 @@
         if (optId === "NONE") return;
         // retrieve option object
         const opt = unit.options.find(o => o.id === optId.replace("optionRow-",""));
-        if (!opt) return;
-        if (isOptionEnabled(opt, selectedOptionIds)) {
-          row.style.display = "flex";
+        if (opt) {
+          if (isOptionEnabled(opt, selectedOptionIds)) {
+            row.style.display = "flex";
+          }
+          else {
+            row.style.display = "none";
+          }
         }
-        else {
-          row.style.display = "none";
+        // retrieve magic item
+        const item = MAGIC_ITEMS.find(i => i.id == optId.replace("optionRow-",""));
+        if (item) {
+          if (isItemAllowedForUnit(item, unit, currentFaction, selectedOptionIds)) {
+            row.style.display = "flex";
+          }
+          else {
+            row.style.display = "none";
+          }
         }
       });
+    }
+
+    function refreshConditionalMagicItemVisibility(unit, selectedMagicItems) {
+      // ...
+    }
+
+    function refreshConditionalDemonicRewardVisibility(unit, selectedDemonicRewards) {
+      // ...
     }
 
     function populateOptionCategory(catName,optionIds,unit,select,hasNone){
@@ -16689,7 +17718,7 @@
     function RenderMagicBanners() {
       // Loop sugli stendardi disponibili
       for (const banner of MAGIC_BANNERS) {
-        if (!isItemAllowedForUnit(banner, unit, currentFaction)) {
+        if (!isItemAllowedForUnit(banner, unit, currentFaction, selectedOptionIds)) {
           continue;
         }
 
@@ -16770,6 +17799,9 @@
         // salta le virtù Cavalleresche
         if (category === "Virtù Cavalleresche") continue;
 
+        // salta le Ricompense Demoniache
+        if (category === "Ricompense Demoniache") continue;
+
         const catBox = document.createElement("div");
         catBox.style.marginTop = "8px";
         catBox.style.border = "1px solid #30363d";
@@ -16798,7 +17830,7 @@
         // Aggiungi gli oggetti della categoria
         let n_items = 0;
         for (const item of items) {
-          if (!isItemAllowedForUnit(item, unit, currentFaction)) {
+          if (!isItemAllowedForUnit(item, unit, currentFaction, selectedOptionIds)) {
             continue;
           }
 
@@ -16976,7 +18008,7 @@
       // Aggiungi le virtù
       let n_items = 0;
       for (const virtue of virtues) {
-        if (!isItemAllowedForUnit(virtue, unit, currentFaction)) {
+        if (!isItemAllowedForUnit(virtue, unit, currentFaction, selectedOptionIds)) {
           continue; // non mostrare l'oggetto
         }
 
@@ -17034,6 +18066,122 @@
 
         // Costi
         let costText = `${virtue.cost} pt`;
+        right.appendChild(document.createTextNode(costText));
+
+        n_items += 1;
+
+        row.appendChild(left);
+        row.appendChild(right);
+        content.appendChild(row);
+      }
+
+      if (n_items === 0) {
+        header.style.display = "none"
+        catBox.style.display = "none"
+      }
+
+      catBox.appendChild(header);
+      catBox.appendChild(content);
+      panel.appendChild(catBox);
+    }
+
+    function RenderDemonicRewards() {
+      const title = document.createElement("div");
+      title.style.marginTop = "10px";
+      title.style.fontSize = "12px";
+      title.textContent = "Ricompense Demoniache";
+      title.textContent += ` (fino a ${unit.demonic_reward_slots})`;
+      panel.appendChild(title);
+
+      const category = "Ricompense Demoniache";
+      const rewards = magicByCategory[category];
+
+      const catBox = document.createElement("div");
+      catBox.style.marginTop = "8px";
+      catBox.style.border = "1px solid #30363d";
+      catBox.style.borderRadius = "6px";
+      catBox.style.overflow = "hidden";
+
+      // Header cliccabile
+      const header = document.createElement("div");
+      header.textContent = category;
+      header.style.padding = "6px 8px";
+      header.style.cursor = "pointer";
+      header.style.background = "#161b22";
+      header.style.fontWeight = "bold";
+      header.style.fontSize = "12px";
+
+      // Contenuto nascosto
+      const content = document.createElement("div");
+      content.style.display = "none";
+      content.style.padding = "6px 8px";
+      content.style.fontSize = "12px";
+
+      header.onclick = () => {
+        content.style.display = content.style.display === "none" ? "block" : "none";
+      };
+
+      // Aggiungi le ricompense
+      let n_items = 0;
+      for (const reward of rewards) {
+        const row = document.createElement("div");
+        row.className = "option-row";
+        row.id = "optionRow-"+reward.id;
+        if(isItemAllowedForUnit(reward, unit, currentFaction, selectedOptionIds)) {
+          row.style.display = "flex";
+        } else {
+          row.style.display = "none";
+        }
+        row.style.justifyContent = "space-between";
+        row.style.alignItems = "center";
+        row.style.margin = "2px 0";
+
+        const left = document.createElement("span");
+        const right = document.createElement("span");
+
+        const div = document.createElement("div");
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        const labelSpan = document.createElement("span");
+        labelSpan.textContent = " " + reward.name;
+        if (reward.description) {
+          labelSpan.addEventListener("mousemove", (e) => {
+            showMagicTooltip(reward.description, e.clientX, e.clientY);
+          });
+          labelSpan.addEventListener("mouseleave", hideMagicTooltip);
+        }
+
+        // ricompense pre-selezionate?
+        if (unit.demonic_rewards && (unit.demonic_rewards.includes(reward.name) || unit.demonic_rewards.includes(reward.id))) {
+          div.className = "option disabled-option";
+          cb.checked = true;
+          cb.disabled = true;
+          div.appendChild(cb);
+          labelSpan.class = "greyed";
+          div.appendChild(labelSpan);
+          left.appendChild(div);
+        } else { // ... o selezionabile
+          // const cb = document.createElement("input");
+          cb.checked = selectedDemonicRewards.has(reward.id);
+          cb.onchange = () => {
+            if (cb.checked) {
+              if (selectedDemonicRewards.size < unit.demonic_reward_slots) {
+                if (!selectedDemonicRewards.has(reward.id)) selectedDemonicRewards.add(reward.id);
+              } else {
+                cb.checked = false;
+                showInfoToast("Hai già raggiunto il numero massimo di Ricompense Demoniache","alert",3000);
+              }
+            } else {
+              if (selectedDemonicRewards.has(reward.id)) selectedDemonicRewards.delete(reward.id);
+            }
+            updatePointsPreview();
+          };
+          left.appendChild(cb);
+          left.appendChild(labelSpan);
+        }
+
+        // Costi
+        let costText = `${reward.cost} pt`;
         right.appendChild(document.createTextNode(costText));
 
         n_items += 1;
@@ -17221,6 +18369,26 @@
           div.appendChild(line);
         }
 
+        // Ricompense Deminiache
+        if (e.demonicRewards?.length > 0 || e.preselectedDemonicRewards?.length > 0) {
+          const line = document.createElement("div");
+          line.style.fontSize = "11px";
+          line.style.opacity = "0.8";
+          const fullList = [];
+          for (const rewardId of e.preselectedDemonicRewards) {
+            const reward = MAGIC_ITEMS.find(o => o.id === rewardId);
+            if (!reward) continue;
+            fullList.push(renderName(reward.name));
+          }
+          for (const rewardId of e.demonicRewards) {
+            const reward = MAGIC_ITEMS.find(o => o.id === rewardId);
+            if (!reward) continue;
+            fullList.push(renderName(reward.name));
+          }
+          line.textContent = fullList.join(", ");
+          div.appendChild(line);
+        }
+
         // Oggetti Magici
         if (e.magicItems?.length > 0 || e.preselectedMagicItems?.length > 0) {
           const line = document.createElement("div");
@@ -17393,10 +18561,12 @@
         magicItems: u.magicItems || [],
         magicItemCounts: u.magicItemCounts || {},
         knightlyVirtues: u.knightlyVirtues || [],
+        demonicRewards: u.demonicRewards || [],
         magicBanner: u.magicBanner || null,
         preselectedOptions: [...(u.preselectedOptions || [])],
         preselectedMagicItems: [...(u.preselectedMagicItems || [])],
         preselectedKnightlyVirtues: [...(u.preselectedKnightlyVirtues || [])],
+        preselectedDemonicRewards: [...(u.preselectedDemonicRewards || [])],
         points: u.points
       });
     }

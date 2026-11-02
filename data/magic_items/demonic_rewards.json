@@ -1,0 +1,279 @@
+{
+  "demonic_rewards": [
+    {
+      "id": "gloria_oscura",
+      "name": "Gloria Oscura",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Le unità nemiche entro 1 casella hanno -1 al Coraggio (a meno che non siano demoni o nommorti).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "sevizie_infernali",
+      "name": "Sevizie Infernali",
+      "cost": 10,
+      "category": "Ricompense Demoniache",
+      "description": "Se il demone uccide un personaggio in CaC, tutte le unità nemiche entro 1 casella devono passare un test di Panico o fuggire.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "sguardo_di_morte",
+      "name": "Sguardo di Morte",
+      "cost": 10,
+      "category": "Ricompense Demoniache",
+      "description": "Attacco a distanza, raggio 2 caselle, 2DC, ignora la difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "stregoneria_1",
+      "name": "Stregoneria (livello 1)",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Il demone diventa un mago di livello 1. Il demone può usare solo la magia del suo dio se è di un dio specifico e ha un marchio di un dio specifico, o la magia oscura altrimenti.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": ["Khorne"]
+    },
+    {
+      "id": "stregoneria_2",
+      "name": "Stregoneria (livello 2)",
+      "cost": 100,
+      "category": "Ricompense Demoniache",
+      "description": "Il demone diventa un mago di livello 2. Il demone può usare solo la magia del suo dio se è di un dio specifico e ha un marchio di un dio specifico, o la magia oscura altrimenti.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": ["Khorne"]
+    },
+    {
+      "id": "stregoneria_3",
+      "name": "Stregoneria (livello 3)",
+      "cost": 150,
+      "category": "Ricompense Demoniache",
+      "description": "Il demone diventa un mago di livello 3. Il demone può usare solo la magia del suo dio se è di un dio specifico e ha un marchio di un dio specifico, o la magia oscura altrimenti.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": ["Khorne"]
+    },
+    {
+      "id": "stregoneria_4",
+      "name": "Stregoneria (livello 4)",
+      "cost": 200,
+      "category": "Ricompense Demoniache",
+      "description": "Il demone diventa un mago di livello 4. Il demone può usare solo la magia del suo dio se è di un dio specifico e ha un marchio di un dio specifico, o la magia oscura altrimenti.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": ["Khorne"]
+    },
+    {
+      "id": "evanescenza",
+      "name": "Evanescenza",
+      "cost": 25,
+      "category": "Ricompense Demoniache",
+      "description": "Tiro Salvezza 3+ contro attacchi da tiro.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "lama_degli_inferi",
+      "name": "Lama degli Inferi",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Arma da CaC. Ignora la difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "forza_titanica",
+      "name": "Forza Titanica",
+      "cost": 20,
+      "category": "Ricompense Demoniache",
+      "description": "+1 DC in Attacco.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "taglia_eccezionale",
+      "name": "Taglia Eccezionale",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "+1 PC.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "grande_guerriero",
+      "name": "Grande Guerriero",
+      "cost": 20,
+      "category": "Ricompense Demoniache",
+      "description": "+1 in Attacco in CaC.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "arroganza_suprema",
+      "name": "Arroganza Suprema",
+      "cost": 30,
+      "category": "Ricompense Demoniache",
+      "description": "+2 al Coraggio.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "vesti_demoniache",
+      "name": "Vesti Demoniache",
+      "cost": 40,
+      "category": "Ricompense Demoniache",
+      "description": "-1 agli attacchi in CaC contro il demone.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "occhio_arcano",
+      "name": "Occhio Arcano",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Il controllore del demone può guardare le carte incantesimo possedute da maghi entro 4 caselle, così come le carte Venti di Magia da lui trattenute, e quelle in mano dell'avversario, se un mago nemico si trova entro 4 caselle.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "armatua_del_caos",
+      "name": "Armatura del Caos",
+      "cost": 15,
+      "category": "Ricompense Demoniache",
+      "description": "+2 alla Difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": [],
+      "not_for_type": []
+    },
+    {
+      "id": "frusta_e_ascia_di_khorne",
+      "name": "Frusta e Ascia di Khorne",
+      "cost": 55,
+      "category": "Ricompense Demoniache",
+      "description": "+1 in Attacco e ogni ferita moltiplicata per 1D3.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": ["Khorne"],
+      "not_for_type": []
+    },
+    {
+      "id": "sdegno_di_khorne",
+      "name": "Sdegno di Khorne",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Se l'armata non contiene alcun mago, il demone può disperdere come se fosse un mago, e si considera sempre di livello più alto del lanciatore.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": ["Khorne"],
+      "not_for_type": []
+    },
+    {
+      "id": "nube_di_mosche",
+      "name": "Nube di Mosche",
+      "cost": 30,
+      "category": "Ricompense Demoniache",
+      "description": "-1 agli attacchi nemici in CaC.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": ["Nurgle"],
+      "not_for_type": []
+    },
+    {
+      "id": "fiume_di_putredine",
+      "name": "Fiume di Putredine",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Ogni volta che attacca in CaC, tira 1 DC per ogni modello nell'unità attaccata (se non di demoni o nommorti). Ottenendo Scudo il modello subisce 1 ferita.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": ["Nurgle"],
+      "not_for_type": []
+    },
+    {
+      "id": "flagello_della_peste",
+      "name": "Flagello della Peste",
+      "cost": 25,
+      "category": "Ricompense Demoniache",
+      "description": "Arma da CaC. Raddoppia le ferite inflitte (non funziona su nommorti e demoni).",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": ["Nurgle"],
+      "not_for_type": []
+    },
+    {
+      "id": "aura_di_slaanesh",
+      "name": "Aura di Slaanesh",
+      "cost": 40,
+      "category": "Ricompense Demoniache",
+      "description": "Ogni unità che vuole attaccare il demone deve superare un test di Coraggio.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": ["Slaanesh"],
+      "not_for_type": []
+    },
+    {
+      "id": "fiamme_di_tzeentch",
+      "name": "Fiamme di Tzeentch",
+      "cost": 25,
+      "category": "Ricompense Demoniache",
+      "description": "Attacco a distanza, raggio 4 caselle, Attacco 1D6, danno da fuoco, ignora la difesa.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": ["Tzeentch"],
+      "not_for_type": []
+    },
+    {
+      "id": "potere_di_tzeentch",
+      "name": "Potere di Tzeentch",
+      "cost": 50,
+      "category": "Ricompense Demoniache",
+      "description": "Se il demone ha la ricompensa Stregoneria, può pescare 1D6 di carte Venti di Magia aggiuntive durante il suo turno.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": ["Tzeentch"],
+      "not_for_type": []
+    },
+    {
+      "id": "sapere_di_tzeentch",
+      "name": "Sapere di Tzeentch",
+      "cost": 60,
+      "category": "Ricompense Demoniache",
+      "description": "Se il demone ha la ricompensa Stregoneria a livello 4, il suo livello magico diventa 5.",
+      "only_for_army": [],
+      "not_for_army": [],
+      "only_for_type": ["Tzeentch"],
+      "not_for_type": []
+    }
+  ]
+}
