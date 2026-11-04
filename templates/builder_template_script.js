@@ -1084,7 +1084,6 @@
       });
     });
 
-
     // SEZIONI + UNITÀ
     armyData.sections.forEach(section => {
       y += 6;
